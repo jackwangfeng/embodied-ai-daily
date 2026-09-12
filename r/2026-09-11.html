@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报（2026-09-11）</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报（2026-09-11）</h1>
+<p><strong>本期配比</strong>：软件 3 条 / 硬件 3 条。上期（09-10）4 软 2 硬、上上期（09-09）偏硬件，本期回到对半。
+国外两条硬件都是「打印 + 焊板就能做」的量级；国内硬件是一块 ¥200 出头的开发板 + 一个编码器。
+专题这期从上期的「自动建模」段轮到<strong>打印执行</strong>段（可打印性判定、切片器桥接、G-code 分析）。</p>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· OpenWAM —— 世界-动作模型的「对照实验」被整套开源了，包括 20 多个消融检查点</h3>
+<p><strong>类型：软件 ｜ Apache-2.0 ｜ ★493（建仓 5 天）｜ 2026-09-06 建仓、2026-09-10 还在推 ｜ 清华 + 北大 + 港大 + 浙大 + 港中文 + 上交 + NUS ｜ 硬件 0 元 ｜ 单卡可做的是「评测」不是「训练」</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一个把 <strong>World–Action Model（WAM，世界模型 + 动作模型）</strong> 的设计选择全部拆成可替换模块、并把对照实验结果连同检查点一起放出来的研究基座。三块：<ul>
+<li><strong>OpenWAM-Infra</strong> —— 4 个视觉编码器 × 5 个视频骨干（Wan2.2-TI2V-5B / Wan2.1-VACE-1.3B / Wan2.1-I2V-14B / Cosmos-Predict2.5-2B / Cosmos3-Edge）× 6 种架构变体（<code>single_system</code> vanilla/moe、<code>dual_system</code> joint_self_attn/joint_cross_attn/idm、<code>tri_system</code>）× 4 种注意力掩码，全部藏在<strong>同一个 trainer、同一个 policy server、同一套评测协议</strong>后面。</li>
+<li><strong>OpenWAM-Study</strong> —— 六个<strong>顺序</strong>提问的对照实验（架构 → 骨干 → 表征 → 视频↔动作交互 → 数据配方 → 去噪策略），每一问都在前一问定下的条件里测。</li>
+<li><strong>OpenWAM-α</strong> —— 按结论搭出来的预训练模型，518M 帧 / 约 6400 小时第一人称人类 + 机器人数据，80 维统一动作空间，在 8 个仿真 benchmark + 3 个真机平台上评测过。</li>
+</ul>
+</li>
+<li><strong>为什么现在值得做。</strong> 这个领域今年的通病是「每篇论文一个 monolithic 实现」：换个骨干、换个注意力掩码就得重写一遍训练代码，于是<strong>没人能判断某个提升到底来自哪个设计选择</strong>。OpenWAM 干的事情不是又发一个更强的模型，而是<strong>把六个设计维度正交化，然后把每个格点的检查点都传到 HF 上</strong>。翻一眼 <a href="https://huggingface.co/OpenWAM">HF 组织页</a> 就明白它的诚意在哪：<code>robotwin_dual_system_joint_self_attention</code> / <code>..._joint_cross_attention</code> / <code>..._joint_cross_attention_detach</code> / <code>..._idm</code> / <code>robotwin_single_system_vanilla</code> / <code>..._moe</code> / <code>robotwin_tri_system_joint_self_attention</code> 一字排开，还有 <code>..._isolated</code> / <code>..._mutual</code> / <code>..._video_sees_action</code> 三个注意力掩码变体，以及 <code>pretrain_robot_only</code> / <code>pretrain_ego_robot_cotrain_mutual</code> / <code>pretrain_two_stage_*</code> 这一组数据配方对照。<strong>这是把「消融表格」变成了「可下载的对象」。</strong>
+三条结论本身也值得记住（<a href="https://openwam-official.github.io/">项目页 Findings</a>）：① 上游世界知识靠<strong>足够强的生成式骨干 + 紧凑而信息密集的隐空间</strong>传下来 —— 重建式编码器不是唯一选项，带维度压缩的表征式编码器同样好用；② 世界-动作协同需要<strong>独立的动作容量 + 训练时显式的世界→动作信息流 + 推理时同步联合去噪</strong>；③ 具身预训练主要改善的是<strong>域外泛化</strong>，第一人称视频 + 机器人数据<strong>一阶段共训</strong>优于两阶段。</li>
+<li><strong>个人怎么切进去（分步、带成本和时间）。</strong> 先把话说清楚：<strong>训练这东西个人做不了</strong>，README 自己写着推荐 8×80GB。个人的入口是<strong>评测和复现排序</strong>，而这恰好是它最缺第三方数据的地方。<ol>
+<li><strong>第 0 步（30 分钟，0 元）</strong>：<code>pip install -e .</code>，只装基础环境。别碰 Cosmos extras（要编 transformer-engine，<code>nvcc</code> 必需）。<code>deepspeed</code> 是源码分发、装的时候现编，<code>gcc</code> 得在 PATH 上 —— 这两点是最常见的第一道墙。</li>
+<li><strong>第 1 步（半天，0 元 + 电费）</strong>：<code>python scripts/download_assets/download_benchmark_data.py</code> 选 <strong>LIBERO</strong>（8 个 benchmark 里数据量最小、评测 client 最成熟，见 <a href="https://github.com/OpenWAM-Official/OpenWAM/tree/main/benchmarks/libero"><code>benchmarks/libero/</code></a>），再 <code>download_openwam_checkpoints.py</code> 下 <strong><a href="https://huggingface.co/OpenWAM/robotwin_dual_system_joint_self_attention_wan21_vace_1_3b"><code>robotwin_dual_system_joint_self_attention_wan21_vace_1_3b</code></a></strong> —— <strong>专挑 1.3B 那个 VACE 变体，它是这批里唯一能塞进 16G 显存做推理的</strong>。每个检查点目录自带 config，<code>bash scripts/deploy.sh &lt;ckpt_dir&gt;</code> 直接起 policy server。</li>
+<li><strong>第 2 步（1–2 天）</strong>：跑 <strong>同一个 benchmark、两个只差一处设计的检查点</strong>。最便宜、结论最干净的一对是 <code>robotwin_dual_system_joint_cross_attention</code> vs <code>..._joint_cross_attention_detach</code> —— 只差「动作梯度是否回流进视频 DiT」这一个布尔量。把两条曲线和成功率贴出来。</li>
+<li><strong>第 3 步（想留下点东西）</strong>：Support Status 表里 <strong>SimplerEnv 和 Calvin 都标着 <code>Planned</code></strong>。这两个环境的评测 client 是<strong>结构清晰、边界明确、不需要 GPU 集群的活</strong>，照着 <code>benchmarks/libero/</code> 的 WebSocket client 抄一份就是一个有人会用的 PR。这是本期最实在的一个贡献口。</li>
+</ol>
+</li>
+<li><strong>坑与风险。</strong> ① <strong>别被 ★493 骗去训练</strong> —— 8×80GB 是 Wan2.2-5B 及更小骨干的推荐配置，A4000 单卡连 5B 的训练都起不来，微调也别想；② 1.3B 变体是<strong>评测可行</strong>，不代表<strong>质量可比</strong> —— 它在原文里就是骨干消融的下界，拿它的分数去和 α 比毫无意义；③ 8 个 benchmark 的数据下载量很大，<code>assets/</code> 会迅速吃掉几百 GB，先看盘；④ 论文 09-09 才上 arXiv、代码 09-06 才放，<strong>接口很可能还在动</strong>，锁个 commit 再开始；⑤ 那 20 多个 study 检查点没有单独的 model card，靠命名区分，配对之前把每个目录里的 config diff 一遍再下结论。</li>
+<li><strong>出处。</strong> <a href="https://github.com/OpenWAM-Official/OpenWAM">OpenWAM-Official/OpenWAM</a>
+相关：<a href="https://openwam-official.github.io/">项目页（六个问题 + 三条结论 + 雷达图）</a> ｜ <a href="https://arxiv.org/abs/2609.07398">arXiv 2609.07398</a> ｜ <a href="https://huggingface.co/OpenWAM">HF 全部检查点与数据</a> ｜ <a href="https://github.com/XPolicyLab/XPolicyLab">XPolicyLab（已集成，另一条评测路径）</a></li>
+</ul>
+<h3>2 · qdd-joint —— 从零手写的 QDD 关节驱动器，一条命令自动认出电机参数</h3>
+<p><strong>类型：硬件（固件 + 上位机）｜ MIT（vendor 目录 Apache-2.0 © ST/Arm）｜ ★2 ｜ 2026-08-23 ｜ 整套约 ¥400–700</strong></p>
+<ul>
+<li><strong>是什么。</strong> 面向人形 / 足式机器人关节的<strong>准直驱（QDD）无刷驱动器完整控制栈</strong>，对标 MIT Mini-Cheetah / 宇树那类关节的控制架构。M0–M7 里程碑全部标 ✅：SVPWM、闭环 dq 电流环（PI + 解耦前馈）、级联位置/速度环、<strong>MIT 阻抗模式</strong>（<code>iq = kp·(p_des − p) + kd·(v_des − v) + iq_ff</code>，就是人形机器人那个标准关节接口）、二类 PLL 编码器跟踪观测器、CRC16 二进制协议、Qt/C++ 实时上位机。</li>
+<li><strong>两个真正值得抄的设计。</strong> ① <strong><code>identify</code> 一条命令做完全部参数辨识</strong> —— Rs（V/I）、Ls（电压阶跃的伏秒积）、极对数 + 编码器方向 + 零点偏移（单次开环扫描的最小二乘拟合），结果自动落 flash 最后一页。传统流程里这一串是手调常数，这里被换成一次转子转一圈。② <strong>SIL（软件在环）+ CI 门禁</strong> —— <code>control/</code> 层是纯可移植 C，在<strong>主机上</strong>对着一个 PMSM 数学模型验证：电流环阶跃、完整位置级联、<strong>以及整条辨识链（仿真电机 → 辨识出的参数）</strong>，9 个测试套件由 CI 把关。换句话说，<strong>没有电机也能把控制算法跑到有把握再上板</strong>。</li>
+<li><strong>零框架依赖。</strong> 不用 ST MCSDK、不基于 SimpleFOC、不是 ODrive 的 fork，寄存器级驱动直接压在裸 CMSIS 头上。想真正搞懂 FOC 的人，这份代码比任何库都好读。</li>
+<li><strong>个人怎么切进去。</strong> ① <strong>0 元第一步</strong>：<code>tests/run.ps1</code>（或直接 gcc/clang 编 <code>control/</code>），在主机上把 SIL 跑通，看电流环阶跃和辨识链的输出 —— 这一步决定你要不要买板；② <strong>买件（约 ¥400–700）</strong>：控制板 <strong>B-G431B-ESC1</strong>（STM32G431CBU6 @170MHz，板载三相桥 + 三电阻采样，官方开发板，¥200 上下）、<strong>AS5047P</strong> 14 位绝对值磁编码器（¥30–60）、42 机座 BLDC（¥100–300，参数不用管、自动辨识）、24V 限流电源；③ 按 <a href="https://github.com/pantianen333777/qdd-joint/blob/master/docs/board.md"><code>docs/board.md</code></a> 接线（SPI1: SCK=PB3 / MISO=PB4 / MOSI=PB5 / CS=PA15，USART1 PB6/PB7 @921600）→ 串口敲 <code>identify</code> → <code>cl 0.5</code>（力矩）/ <code>spd 5</code>（速度）/ <code>move 90</code>（位置）；④ 上限玩法：把 MIT 模式接进你手上任何一条腿或一根臂，这块板就是宇树那类关节的<strong>可读版</strong>替身。</li>
+<li><strong>坑。</strong> ① <strong>★2、最后一次提交 2026-08-23</strong>，是个人项目，别指望 issue 有人回；② README 的安全提示不是客套 —— <strong>首次上电必须限流（≤2A）+ 降压（12V）</strong>，反接电源当场炸功率级；<code>identify</code> 会让转子至少转一圈，<strong>手和线离轴远点</strong>，轴上别挂负载；③ 刷写脚本和主机测试脚本是 <strong>PowerShell（Windows 路线）</strong>，Linux 下要自己换 st-flash / openocd；④ 上位机要 <strong>Qt 6</strong>，编译比固件麻烦，先用串口 shell 也能玩全部模式；⑤ SIL 验证的是<strong>控制算法</strong>，不是<strong>你的电机和布线</strong> —— 绿灯不等于上板安全。</li>
+<li><strong>出处。</strong> <a href="https://github.com/pantianen333777/qdd-joint">pantianen333777/qdd-joint</a>
+相关：<a href="https://github.com/pantianen333777/qdd-joint/blob/master/README_zh.md">中文说明 README_zh.md</a> ｜ <a href="https://github.com/pantianen333777/qdd-joint/blob/master/docs/board.md">引脚图与选型理由 docs/board.md</a> ｜ <a href="https://github.com/pantianen333777/qdd-joint/blob/master/docs/sil.md">SIL 方法说明 docs/sil.md</a></li>
+</ul>
+<h3>3 · NERV —— 给机器人接「神经系统」：脑、身、世界三种节点，中间那层负责路由、门控和留证</h3>
+<p><strong>类型：软件 ｜ MIT ｜ ★18 ｜ 2026-09-03 建仓、09-08 更新 ｜ 有完整中文文档 ｜ 硬件 0 元起（先跑仿真）</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一个把「语言模型大脑 + 机器人本体 + 世界（仿真或真机）+ 工具」四类节点解耦成独立进程的平台。节点之间<strong>永不互相 import</strong>，只通过注册表文件和五个接口（NERV/Operator、/Brain、/Body、/World、/Tool）见面。Body 和 Tool 走 <strong>MCP</strong>，World 走 ZMQ 上的 JSON 电机总线。</li>
+<li><strong>三个设计点值得记。</strong> ① <strong>双时钟</strong> —— 大脑（System 2）每步推理一次，本体（System 1）用学出来的策略跑 30–50 Hz 直到一条命令结束，<strong>策略永远不等模型</strong>；② <strong>每个接口都有数据面和控制面两层，而且不许穿透</strong> —— 大脑能看到的只有传感器流（腕部相机、桌面相机、测距），<strong>仿真器的 ground truth、场景真值、chase camera 全在控制面</strong>，平台会主动拒绝「看起来像真值」的东西进观测；③ <strong>硬件只在人「布防」之后才动</strong> —— 每个动作过安全门，开关没拨之前本体拿不到任何指令，而且大脑会被告知原因（拒绝以 tool result 的形式回去，模型可以据此改主意）。</li>
+<li><strong>对个人的价值。</strong> 09-03 那期的 quackd 是「给小机器人接个 LLM 大脑」，NERV 是同一个方向上<strong>把工程边界画清楚</strong>的版本 —— 一套动词（<code>move_joints</code> 这类 primitive、<code>move_forward</code> 这类 skill）写一次，仿真和真机是同一条电机总线的两个端点；技能执行完回报的是<strong>测出来的量</strong>（走了 2.20 m、失速、摔了、夹爪闭合），不是「已完成」。README 里那段 gpt-5.5 被要求「走到客厅」的未剪辑录像，三次 <code>move_forward</code> 分别测出 2.20 / 2.21 / 1.20 m，就是这个设计的产出。</li>
+<li><strong>个人怎么切进去。</strong> <code>nerv serve</code> 起来 → 在注册表里选一个 brain（Claude / OpenAI 兼容 / Ollama / mock）× body × world 三元组建 session → 先用 <strong>mock brain + MuJoCo world</strong> 把回路跑通（0 元、0 硬件、也不烧 token）→ 换成真模型 → 有 LeRobot 臂再把 body 换成硬件驱动，<strong>动作和动词一行都不用改</strong>。想贡献：<code>nerv conformance &lt;url&gt;</code> 是它给出的节点一致性检查器，<strong>照着 <a href="https://github.com/Yanshi-Robotics/nerv/blob/main/docs/nerv-body.md"><code>docs/nerv-body.md</code></a> 给你手上的臂写一个 body 节点并过 conformance</strong>，是这个仓当前最缺的东西。</li>
+<li><strong>坑。</strong> ① 抽象层次高，节点、注册表、会话、接口四层概念要先读完 <a href="https://github.com/Yanshi-Robotics/nerv/blob/main/AGENTS.md">AGENTS.md</a> 再动手，直接摸 API 会绕；② ★18、刚建仓一周，body family 目前只有 humanoid 和 arm 两族，别的本体得自己写；③ 安全门是<strong>软件</strong>门，不能替代物理急停 —— <code>/hold</code> 保持姿态、摔倒会自锁存，但真机上该有的保险丝和拍钮一样都不能省。</li>
+<li><strong>出处。</strong> <a href="https://github.com/Yanshi-Robotics/nerv">Yanshi-Robotics/nerv</a>
+相关：<a href="https://github.com/Yanshi-Robotics/nerv/blob/main/docs/i18n/zh/README.md">简体中文 README</a> ｜ <a href="https://github.com/Yanshi-Robotics/nerv/blob/main/docs/nerv-body.md">Body 接口规范（写自己节点看这个）</a> ｜ <a href="https://github.com/Yanshi-Robotics/nerv/blob/main/AGENTS.md">AGENTS.md（机器可读入口）</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· Show-Harness —— 让 VLM 直接「玩」机器人，采数据只要一个浏览器</h3>
+<p><strong>类型：软件 ｜ Apache-2.0 ｜ ★158（建仓 4 天）｜ 2026-09-07 建仓、09-10 还在推 ｜ Show Lab @ 新加坡国立 ｜ 硬件 0 元起 ｜ 微调有 0.8B 档，A4000 能吃下</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一个 <strong>embodied harness</strong>：一层紧凑的语义接口，让视觉语言模型在<strong>离散、增量的动作单元</strong>上推理，再由本体专属的解释器把每个单元<strong>确定性地</strong>落成运动。关键在于责任划分 —— 解释器只做映射，<strong>每一个物理决策仍然由 VLM 自己负责</strong>。同一个接口下两种模式：闭源前沿 VLM <strong>零样本</strong>开机器人；小开源模型微调后<strong>每步吐一个 action token</strong>，无 planner。</li>
+<li><strong>为什么这条值得深讲（三个点，个人都吃得到）。</strong><ol>
+<li><strong>GUMI —— 采演示不需要遥操作硬件。</strong> 每个动作单元映射到一个键或一个按钮，人（或者一个会开 GUI 的 agent）<strong>在浏览器里「玩」这个机器人</strong>就完成了一次演示，每一步直接落成训练可用的 (observation, action) 对，<strong>不需要后处理</strong>。而且带 <code>--sim</code>：<code>python gumi/collect_rollouts_web.py data/rollouts_demo --sim</code>，开 <code>localhost:8600</code>，WASD 加方向键就能驱动夹爪 —— <strong>在任何硬件到货之前，先把接口和数据格式摸清</strong>。同一套键位还能在自主 rollout 时做人工接管。</li>
+<li><strong>微调档位一路铺到 0.8B。</strong> <a href="https://huggingface.co/showlab/Show-Harness-VLMs">Show-Harness-VLMs</a> 放了五个真机语料训出来的 LoRA：<code>qwen3_5_0_8b</code> / <code>2b</code> / <code>4b</code> / <code>9b</code> / <code>gemma4_e4b</code>，外加一个覆盖两个仿真器的 <code>qwen3_5_2b_sim</code>。作者自己的说法是<strong>不到几个 H200 小时</strong>就能把小模型调成可用策略 —— 折算到 A4000 上，<strong>0.8B 那档的 LoRA 是本机真做得动的</strong>，而演示数据（<a href="https://huggingface.co/datasets/showlab/Show-Harness-Data">Show-Harness-Data</a>：真机 Franka / Piper rollout + RoboLab + ManiSkill）已经给你了。</li>
+<li><strong>插件是消融级的。</strong> 每个插件挂在回路的一个阶段上，一个布尔量开关，<strong>关掉时整条回路与「没有这个插件」逐字节相同</strong>。想量某个模块到底值几分，这是少见的、设计上就支持干净对照的实现。</li>
+</ol>
+</li>
+<li><strong>个人怎么切进去（分步、带成本和时间）。</strong><ol>
+<li><strong>第 0 步（1 小时，0 元）</strong>：<code>bash scripts/setup.sh base</code>（不带 <code>--real</code>，不装 RealSense / ROS 那一层），跑 <code>--sim</code> 的 GUMI，在浏览器里驱动一遍。<strong>这一步就能判断这套动作词表适不适合你想做的任务。</strong></li>
+<li><strong>第 1 步（半天，只花 API 费）</strong>：零样本模式。填 <code>configs/secrets.env</code>（默认 <code>GEMINI_API_KEY</code>，也能指任何 OpenAI 兼容端点），在 ManiSkill / Isaac-Lab 解释器上让前沿 VLM 自己开。<strong>成本就是 token</strong>：一步一次模型调用，一个几十步的任务大概几分到几毛钱一次 rollout，一天几十次 rollout 在十几块钱量级。</li>
+<li><strong>第 2 步（1–2 天，0 元）</strong>：拉 <code>qwen3_5_0_8b</code> adapter + 基座（<code>ADAPTER=qwen3_5_0_8b WITH_BASE=1 bash scripts/model/download_vlm_model.sh</code>），本机 vLLM serve，仿真里跑微调模式。<strong>从这里起完全离线，不再花 token。</strong></li>
+<li><strong>第 3 步（想留下点东西）</strong>：用 GUMI <code>--sim</code> 自己采一批演示 → 走 <a href="https://github.com/showlab/Show-Harness/blob/main/train/README.md"><code>train/</code></a>（自建 venv，底层 LLaMA-Factory）出一个 LoRA → <strong>把 0.8B / 2B / 4B 三档在同一批数据上的成功率贴出来</strong>。作者放了五个档位但没给个人算力下的对比曲线，这是一份现在就有人想看的东西。</li>
+<li><strong>有真机再往下</strong>：<code>--real</code> 加 Franka / Piper 硬件层，抄 <code>configs/site/franka.yaml.example</code>，<strong>先跑 <code>scripts/check_setup.py</code></strong>（它会一次性检查环境、site 配置、标定、VLM 后端连通性、机器人和相机是否应答），再 <code>run_real.py</code>。</li>
+</ol>
+</li>
+<li><strong>坑与风险。</strong> ① <strong><code>FAMILY</code> 选错会静默出错</strong> —— 训练时是 LLaMA-Factory 自己渲染对话，<code>models/chat_templates/</code> 里那些 jinja 模板只是为了让 vLLM 在 serve 时<strong>复现同一套渲染</strong>；基座模型自带的模板<strong>对不上，而且不报错</strong>，README 专门警告了这一点，是这个项目最容易踩、最难查的坑；② venv 必须分开（base / vllm / train 三套 pin 互相冲突），别图省事合一个；③ 微调模式的 prompt 是<strong>契约</strong>，<code>prompts/</code> 里带版本，&quot;training contracts that must not drift&quot; —— 改 prompt 等于换模型，别随手动；④ 真机模式有安全地板（每次自主运行都拒绝下探到标定地板以下），但<strong>出厂值只是示例</strong>，必须按自己的桌子重新标；⑤ NUS Show Lab 出品、论文 09-10 才上 HF Daily Paper，接口还年轻。</li>
+<li><strong>出处。</strong> <a href="https://github.com/showlab/Show-Harness">showlab/Show-Harness</a>
+相关：<a href="https://showlab.github.io/Show-Harness/">项目页</a> ｜ <a href="https://arxiv.org/abs/2609.10522">arXiv 2609.10522</a> ｜ <a href="https://github.com/showlab/Show-Harness/blob/main/gumi/README.md">GUMI 采集说明</a> ｜ <a href="https://huggingface.co/showlab/Show-Harness-VLMs">五个 LoRA adapter</a></li>
+</ul>
+<h3>2 · Open-Gripper-Plus —— 摆线减速执行器 + 双 ODrive + 1 kHz 主从同步的开源夹爪</h3>
+<p><strong>类型：硬件 ｜ MIT ｜ ★11 ｜ 2026-09-04 建仓、09-09 更新 ｜ 机械 STEP + STM32 工程全给</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一个围绕<strong>摆线齿轮执行器</strong>做的开源机器人夹爪，配一块 <strong>STM32H723VGT6</strong> 控制板：双路 FDCAN 跟 ODrive 通讯，SPI 上挂 BMI088 六轴，<strong>1 kHz 控制环做位置同步 + 力矩限制</strong>，UART 打日志、WS2812 出状态灯。仓里有 <code>3D Model/modified part/</code> 下的 <code>motor-base.step</code>、<code>part-1</code> 到 <code>part-6.step</code> 全部自制件 STEP，参考执行器模型（5010 电机 + 摆线减速）单独一个目录，固件是完整的 STM32CubeIDE 工程（<code>vla-arm.ioc</code> 是 CubeMX 配置）。</li>
+<li><strong>为什么值得看。</strong> 开源夹爪多，但绝大多数是<strong>舵机直驱 + 打印齿轮</strong>，一夹就打滑、一受力就丢步。这个走的是<strong>摆线减速 + 无刷 + FOC 驱动器</strong>路线 —— 大减速比、高刚度、力矩可控，是「真能夹住东西且知道自己夹了多大力」的那一档。主从两个电机节点、<code>main.c</code> 顶部就是弹簧增益 / 阻尼 / 跟随比 / 死区 / 力矩上限五个参数，改起来直观。而且 ioc 文件名叫 <code>vla-arm</code> —— 作者本来就是为 VLA 臂做的。</li>
+<li><strong>个人怎么切进去。</strong> ① 先只看 STEP：把 <code>modified part/</code> 六个件导进切片器，判断你的机器能不能打（摆线件对精度敏感）；② 电子侧最省的路是<strong>先不做板</strong> —— 双 ODrive + 5010 电机是现货，用 ODrive 自带工具把两个轴调通，再把这份固件当参考实现读；③ 要做完整版：STM32H723 板 + 两路 ODrive + 两个 5010，<strong>上电前按 README 的清单核一遍电机节点 ID、CAN 接线、使能接线、力矩上限和机械行程</strong>。</li>
+<li><strong>坑。</strong> ① <strong>成本主要在电机和驱动器</strong>，不在打印件 —— 两套 5010 + ODrive 大概 ¥1500–3000，仍在 5000 元线内但不是「零钱项目」；② README 极简（就是个 features 列表），<strong>没有 BOM、没有装配图、没有标定流程</strong>，机械和电控都得自己补；③ 摆线减速器的间隙和配合非常吃打印精度，FDM 大概率要迭代几版（正好是本期专题那条链路的用处）；④ ★11、单人项目，固件没有测试。</li>
+<li><strong>出处。</strong> <a href="https://github.com/N-B-Studio/Open-Gripper-Plus">N-B-Studio/Open-Gripper-Plus</a>
+相关：<a href="https://github.com/N-B-Studio/Open-Gripper-Plus/tree/main/STM32-H723">STM32H723 固件工程</a></li>
+</ul>
+<h3>3 · OmArm One —— 每个受弯关节都走钢制轴承的打印臂，而且所有力矩数字都附了可重跑的推导脚本</h3>
+<p><strong>类型：硬件 ｜ MIT ｜ ★0（新，09-02 建仓、09-08 更新）｜ 12 个 PLA 件约 15 h ｜ 整套约 ¥800–1200</strong></p>
+<ul>
+<li><strong>是什么。</strong> 6 关节 + 平口夹爪（6+1 DoF）的打印臂，水平臂展 485 mm，实测握持 325 g（标称 200 g / 极限 250 g @ 300 mm）。整机实测 1283 g，模型算出来 1284 g。</li>
+<li><strong>和别的打印臂差在哪 —— 两点，都很硬。</strong><ol>
+<li><strong>载荷不经过舵机齿轮箱。</strong> 每个承受弯矩的关节都跑在钢制滚珠轴承上：底座是 51110 推力轴承 + 6806ZZ 径向轴承，俯仰关节用 695ZZ 的定-游组合，前臂滚转再一个 6806ZZ。打印臂的通病就是舵机输出轴当结构轴使，几十小时就旷 —— 这个从设计上绕开了。</li>
+<li><strong>「每个数字都是推出来的，不是宣称的」。</strong> 作者的原话。流程是先立需求 → 静力学定舵机和轴承 → 力矩和载荷数字来自一个<strong>扫描每个关节全关节空间最差姿态</strong>的质量模型 —— 而且<strong>校核脚本就在仓里，你可以重跑一遍验证</strong>。PWM 侧同样有交代：PCA9685 @250 Hz → 每计数 0.086°，<strong>压在舵机 0.27° 死区之下</strong>（也就是分辨率不是瓶颈）。</li>
+</ol>
+</li>
+<li><strong>个人怎么切进去。</strong> ① 打印：12 个 PLA 件、Bambu P1S 上约 15 h；② 采购：6× DSSERVO DS3240-180（5 V 下 36 kg·cm，6 V 下 41 kg·cm，约 ¥90/个）+ SG90 夹爪 + 上面那几个轴承 + ESP32-WROOM-32 + PCA9685，人民币 ¥800–1200 量级；③ <strong>不用装 App、不用连路由器</strong>：刷 <code>OmArmOne_LittleFS</code> 固件，连上臂自己发的 WiFi，浏览器开 <code>10.10.10.1</code> 就能开；④ 想脱掉电脑和手机：刷第二个固件，蓝牙手柄双摇杆控六轴 + 夹爪，摇杆下是<strong>速度</strong>而不是位置，姿态序列存 flash，带自锁急停；⑤ 要接 ROS 2：仓里有串口固件；⑥ <strong>0 元先做的事</strong>：固件测试标着 &quot;PC, no hardware&quot; —— 先在电脑上把测试跑一遍，再决定买不买件。</li>
+<li><strong>坑。</strong> ① <strong>★0，全新项目，没有第三方复现</strong> —— 数字有推导脚本这件事让它比一般的 ★0 可信，但仍然没有别人验证过；② 6 V 舵机轨才有标称载荷，<strong>5 V 也能跑但要牺牲载荷</strong>，电源别省；③ 前作是 <a href="https://github.com/OmArTronics/OmArm-Zero">OmArm Zero</a>，README 自称 &quot;Part 1 of the series&quot;，<strong>后续部分还没出</strong>，现在入场等于跟着作者一起迭代；④ DS3240 是大扭矩舵机，堵转电流不低，别拿 USB 供电给舵机轨。</li>
+<li><strong>出处。</strong> <a href="https://github.com/omartronics/OmArm-One">omartronics/OmArm-One</a>
+相关：<a href="https://github.com/OmArTronics/OmArm-Zero">前作 OmArm Zero</a> ｜ <a href="https://github.com/omartronics/OmArm-One/tree/main/firmware">固件（Web / 手柄 / ROS 2 三套）</a></li>
+</ul>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<p>上期两条都落在<strong>自动建模</strong>那一段（text-to-cad 铺链路、MAC 压成本）。本期轮到<strong>打印执行</strong>：怎么判定一个件到底能不能打、切片怎么进 agent 的手、以及「通过」这两个字应该代表什么。
+本期两条正好是同一个问题的两种答案：一条<strong>把「通过」的定义写死成一份契约</strong>（国外），一条<strong>把整条打印链路的 token 成本压到零</strong>（国内）。</p>
+<h3>🌍 国外 · design-os-3d-blender —— 把 Blender 变成 agent 的操作系统，重点是那个「拒绝含糊通过」的生产门</h3>
+<p><strong>类型：软件 ｜ MIT ｜ ★62 ｜ 2026-09-06 建仓、09-09 更新 ｜ Blender 5.2 LTS ｜ 硬件 0 元 ｜ 成本 ≈ 每个件几毛到几块钱 token</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一套装在 Blender 5.2 上的 agent 技能 + 执行契约 + 验证门 + 已完成实例。三个技能：<code>blender-agent-core</code>（原生场景执行、数值校核、交付配方）、<code>blender-image-to-3d</code>（参考图契约、分阶段建模、构造感知的视觉复核）、<code>blender-knowledge-workbench</code>（有界的 bpy 阅读包，防止模型瞎猜 API）。<strong>执行契约</strong>是 <code>scripts/agent_runtime.py</code> + <code>headless-run.sh</code>：每次 Blender pass 在隔离进程里跑，<strong>最后一行 stdout 永远是 <code>AGENT_OK &lt;json&gt;</code> 或 <code>AGENT_FAIL &lt;json&gt;</code></strong>。</li>
+<li><strong>为什么这条值得单独讲 —— 它把「通过」定义得比大多数工程流程都严。</strong> 核心是 <a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/scripts/production-gate.py"><code>scripts/production-gate.py</code></a>：你<strong>在建细节之前</strong>先写一份 build spec（<code>target_dims_mm</code>、<code>tol_mm</code>、<code>min_wall_mm</code>、<code>orientation_up</code>、<code>max_overhang_deg</code>、每个要紧的孔位 + 紧固件规格），门读 <code>.blend</code> 只回答一个问题 —— 这个几何满不满足这份契约。退出码是冻结的契约：<code>0</code> 全过、<code>1</code> 有要求没满足、<code>2</code> 输入无效或不完整、<code>3</code> 执行错误。
+真正少见的是它对<strong>通过的边界</strong>的态度（<a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/specs/README.md"><code>specs/README.md</code></a> 原文）：绿灯只证明「建出来的实体水密、是声明的毫米尺寸、有声明直径的声明孔位、过得了 STL 往返、过了两道粗糙的可打印性筛」。它<strong>明确列出自己不证明什么</strong> —— 不证明承载/刚度/疲劳（没 FEA 没试件），不证明打得成（没跑切片器，支撑、附着、翘曲、架桥、逐机收缩全在门外），不证明装配配合，不证明螺丝或热熔螺母真能进去。每份报告都把这些重复进 <code>exclusions[]</code>，每个没量的东西进 <code>coverage.unchecked[]</code>，<strong>「不在 <code>coverage.checked[]</code> 里的说法，门就没做过」</strong>。而且<strong>没写 <code>target_dims_mm</code> 的件，门直接退出 2 拒绝运行</strong> —— 理由是「它不会假装在给一个没人标过尺寸的件把关」。
+这条设计上的自觉，比它能建多复杂的模型重要得多。上期 text-to-cad 的 <code>dfam-check</code> 是「只报事实不下判定」，这一条是「下判定，但把判定的边界写进合同」—— <strong>同一条方法论的两种成熟形态</strong>。</li>
+<li><strong>和具身智能的接口在哪。</strong> 仓里有两个已完成的机械臂实例，其中 <a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/builds/robot-arm-print-assembly/README.md"><code>builds/robot-arm-print-assembly/</code></a> 是<strong>38 件配合原型，5 张板：32 件 PETG + 6 件 TPU</strong>，按 220×220 mm 可用热床排的版，7 mm 边距、8 mm 件间距，PETG 和 TPU 分板。附 <code>parts-list.csv</code>（ID → 对象 → 板 → 材料 → 尺寸）、<code>plate-01..04-PETG.3mf</code> / <code>plate-05-TPU.3mf</code>、67 步可编辑装配动画（24 fps，帧 25–1429）+ <code>assembly-steps.csv</code> 把影片时间映射回打印件 ID。<strong>这就是「改件 → 打印 → 上机」闭环里最容易被跳过、也最花时间的那一段（排版 + 装配顺序）被做出来的样子。</strong> 另外还有一条 MakerWorld / 拓竹发布腿，做项目校验和发布约束。</li>
+<li><strong>个人怎么切进去。</strong> ① <strong>0 元</strong>：只要 Blender 5.2.x + Python 3.10+（macOS/Linux），<code>export BLENDER_BIN=...</code>，跑 <code>python3 scripts/blender-knowledge.py check</code> 和三组 unittest（<code>tests/execution</code>、<code>tests/production-gate</code>、<code>tests/hq-coverage</code>），全用标准库，<strong>不启动 agent 也不花 token</strong>；② 抄 <code>specs/examples/bracket-m3.spec.json</code> 给你手上机械臂的一个替换件（夹爪指、电池仓盖）写 spec，再让 agent 去建 —— <strong>顺序是先写 spec 再建模，反过来就没意义了</strong>；③ 跑 <code>production-gate.py --scene part.blend --spec build.spec.json --report out/report.json --export-dir out/stl</code>，看 <code>coverage.checked[]</code> 和 <code>exclusions[]</code>；④ 交互式建模接 <a href="https://github.com/ahujasid/blender-mcp">blender-mcp</a> 插件，同一个 pass 再走一遍 runtime。</li>
+<li><strong>坑。</strong> ① <strong>绿灯≠能打、更≠能用</strong> —— 门自己列了一整页免责，<code>robot-arm-print-assembly</code> 的 README 也直说「未发布用于 250 g 负载运行或制造」，腕部力矩余量、薄壁、执行器适配件、保持结构、装配/工具可达性全是<strong>未解决</strong>；② <code>BLENDER_BIN</code> 默认值是 macOS 路径，Linux 必须自己设；③ <strong>它是 mesh 侧（Blender）而不是参数化 code-CAD</strong> —— 尺寸靠 spec 事后校核，而不是靠模型天生参数化，改一版尺寸不像 build123d 那样改个数就完；④ ORC 那批组件的<strong>源模型不在公开仓里</strong>（只有渲染衍生图），能拿到的是机械臂和手表上链盒两个实例；⑤ HQ coverage gate 只在它自己那条「显式受保护的启动路线」上生效，README 承认 C05 那次刷新是<strong>绕过</strong>自动前置保护直接调渲染器的 —— 门存在不等于门总在路上；⑥ 成本仍然是 token：Blender pass 要读 bpy 知识包、要看渲染复核，<strong>一个中等复杂度的件几毛到几块钱</strong>，多轮返工时留意账单。</li>
+<li><strong>出处。</strong> <a href="https://github.com/jangtrinh/design-os-3d-blender">jangtrinh/design-os-3d-blender</a>
+相关：<a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/specs/README.md">build spec 与生产门的契约说明</a> ｜ <a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/builds/robot-arm-print-assembly/README.md">38 件机械臂配合原型（排版 + 67 步装配）</a> ｜ <a href="https://github.com/jangtrinh/design-os-3d-blender/blob/main/.agents/skills/blender-agent-core/SKILL.md">核心 Blender 技能 SKILL.md</a></li>
+</ul>
+<h3>🇨🇳 国内 · dsh-print3d —— 打印执行那一段做成 6 个确定性工具 + 5 个知识包，本地 8B 模型就能跑完，token 费 0</h3>
+<p><strong>类型：软件 ｜ MIT ｜ ★2 ｜ 2026-09-05 建仓、09-10 更新 ｜ 硬件 0 元 ｜ 成本 ≈ ¥0（本地模型路线）</strong></p>
+<ul>
+<li><strong>是什么。</strong> 给 DeepSeek Harness 的 3D 打印 / 增材制造能力插件。<strong>6 个模型工具</strong>，全是确定性、零依赖的进程内 Node 逻辑：<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>干什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>print3d_gen_parametric_stl</code></td>
+<td>生成水密 ASCII STL（box / cylinder / tube / sphere / cone / rounded_box / gear）</td>
+</tr>
+<tr>
+<td><code>print3d_gen_calibration_gcode</code></td>
+<td>生成校准件 G-code（cube / temp-tower / first-layer / retraction / bridge）</td>
+</tr>
+<tr>
+<td><code>print3d_stl_analyze</code></td>
+<td>包围盒 / 体积 / 表面积 / <strong>悬垂 / 非流形 / 水密性</strong> → JSON</td>
+</tr>
+<tr>
+<td><code>print3d_gcode_estimate</code></td>
+<td>打印时间 / 耗材 / 层数 / 温度估算 → JSON</td>
+</tr>
+<tr>
+<td><code>print3d_gcode_render</code></td>
+<td>刀路俯视图 PNG（可落盘）</td>
+</tr>
+<tr>
+<td><code>print3d_slice</code></td>
+<td><strong>桥接本机 PrusaSlicer</strong>，任意 STL → G-code</td>
+</tr>
+<tr>
+<td>外加 <strong>5 个 Markdown 技能包</strong>按需加载：<code>print3d-slicing</code>（12 种材料参数表 + 层高/线宽/温度/回抽/冷却规则）、<code>print3d-gcode</code>（Marlin / Klipper 方言、起收尾脚本、估算口径）、<code>print3d-modeling</code>（OpenSCAD 写法 + 参数化 STL）、<code>print3d-analysis</code>（STL / G-code 指标判读、3MF 策略）、<code>print3d-diagnosis</code>（<strong>10 类打印故障「症状→原因→修复」</strong>）。</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>为什么它补的是上一条补不上的那一段。</strong> design-os 的生产门明确说「没跑切片器」，切片、G-code 估算、故障诊断都在门外。<strong>这条正好就是门外那一段</strong>：<code>print3d_slice</code> 是<strong>唯一</strong>调外部进程的工具（桥 PrusaSlicer，没装就明确报错，不静默降级），其余五个都是纯确定性计算。两条拼起来才是完整链路：spec → 建模 → 几何校核（design-os 的门）→ 切片 + 时间/耗材估算 + 刀路目检（这一条）→ 上机。</li>
+<li><strong>成本这一栏是本期最值得说的数字：token 费可以是 0。</strong> 它自带一段<strong>面向本地小模型的精简 persona</strong>（短句、明确指令、直接点名工具），配「3D 打印工程 Agent（本地版）」预设 + Ollama 上的 <code>qwen3:8b</code>，<strong>全程离线免费</strong> —— 只有电费。对照一下上期的账：text-to-cad 那条路子跑 10 个件 ¥125.69，MAC 优化后 ¥9.67；这一条把<strong>打印执行段</strong>的模型调用降到 0，因为这一段的活（切片、估算、悬垂检测）本质上是<strong>确定性计算而不是推理</strong>，只需要模型会正确地调工具。<strong>这是「哪一段该给 LLM、哪一段该给代码」这条分界线被划对了的样子。</strong>
+另一个细节也是为便宜服务的：生成类工具（STL / G-code / PNG）<strong>默认直接落盘</strong>到 <code>桌面/3Doutput/</code>（分 <code>stl</code> / <code>gcode</code> / <code>preview</code>）<strong>只返回路径</strong>，不把大段 STL 文本塞进上下文 —— README 明说「对本地小模型尤其重要」。8B 模型的上下文塞不起一个几万行的 STL。</li>
+<li><strong>个人怎么切进去。</strong> ① <code>pnpm exec dsh plugin --profile web add dsh-print3d</code>，重启 DSH，任意预设的 agent 都能调 <code>print3d_*</code>；② <strong>0 元第一步</strong>：<code>scripts/</code> 下 5 个脚本可以<strong>当纯 CLI 用</strong>（<code>node scripts/xxx.cjs ...</code>），不装 DSH、不接模型，先手工跑一遍 <code>stl_analyze</code> 和 <code>gcode_estimate</code>，判断它的指标口径对不对你的胃口；③ 本地免费路线：起 Ollama（<code>qwen3:8b</code>）→ 选「3D 打印工程 Agent（本地版）」预设 → 一句话「给我一个 20×20×10 的方块 STL，再生成校准 G-code，估算打印时间」，看它是不是按 <code>gen_parametric_stl</code> → <code>gen_calibration_gcode</code> → <code>gcode_estimate</code> 三步走；④ <strong>想扩能力</strong>：<a href="https://github.com/weisofns/dsh-print3d/blob/main/MODULES.md">MODULES.md</a> 写了加一个能力 = 加一个脚本 + 一个工具定义（+ 可选一个技能），不动现有模块 —— <strong>补一个 OrcaSlicer 桥或者一个 Klipper/Moonraker 打印机控制工具，是这个仓当前最明显的缺口</strong>，也是本期专题里门槛最低的贡献口。</li>
+<li><strong>坑。</strong> ① <strong>★2、单人项目、绑 DeepSeek Harness 生态</strong> —— 不用 DSH 的人只能拿它当 5 个 CLI 脚本和 5 份 Markdown 知识包用（说实话这样也值），插件层不通用；② 安装指令是 PowerShell / Windows 路径（<code>桌面/3Doutput/</code> 也是 Windows 语境），Linux / macOS 下路径和命令都要自己调；③ <code>print3d_slice</code> 依赖本机装好 PrusaSlicer，<strong>没装就整条断</strong>（好消息是它明确报错而不是假装成功）；④ <strong>参数化 STL 只有 7 种基本体 + gear</strong>，复杂件还得靠 OpenSCAD 技能手写或者从上游（build123d / Blender）拿 —— 它是<strong>执行段</strong>的工具，不是建模引擎；⑤ 8B 本地模型跑得通不等于跑得好，工具链稳定 ≠ 工艺判断可靠，README 自己的安全红线写着「任何参数与 G-code 交付前都提示上机前人工核对，不声称绝对安全」，温度、通风（ABS/ASA/尼龙的 VOC）、机型/固件不明就先问 —— <strong>这几句照做</strong>。</li>
+<li><strong>出处。</strong> <a href="https://github.com/weisofns/dsh-print3d">weisofns/dsh-print3d</a>
+相关：<a href="https://github.com/weisofns/dsh-print3d/tree/main/skills">5 个技能知识包 skills/</a> ｜ <a href="https://github.com/weisofns/dsh-print3d/blob/main/MODULES.md">扩展方式 MODULES.md</a></li>
+</ul>
+<h3>专题分析：这一周这条链路上真正变的东西</h3>
+<ol>
+<li><strong>「通过」这两个字被拆成了合同条款，而且是双向的。</strong> 上期看到的是「工具只报事实、不下判定」（text-to-cad 的 <code>dfam-check</code>）。本期看到的是下一步：<strong>下判定，但把判定的覆盖面和排除项写进机器可读的报告</strong>。design-os 的门每次都把 <code>coverage.checked[]</code> / <code>coverage.unchecked[]</code> / <code>exclusions[]</code> 一起交出来，还立了一条硬规矩 —— <strong>没写目标尺寸的件，门拒绝运行</strong>（退出码 2），理由是「不会假装在给一个没人标过尺寸的件把关」。这比「不下判定」进了一步：<strong>不下判定是不担责，划清边界的判定是担有限的责</strong>。对 agent 流水线来说后者才可用 —— 前者你还得自己写一层决策，后者可以直接接退出码。</li>
+<li><strong>成本结构上出现了新的一刀：不是「让 LLM 更便宜」，是「把不需要 LLM 的段落拿走」。</strong> 上期 MAC 的 116× 靠的是架构（分段 + 传结构化 JSON + 确定性翻译器），本质还是在优化模型调用。dsh-print3d 走得更远一层：<strong>切片、悬垂检测、时间/耗材估算、刀路渲染，全都是确定性计算，模型在这一段的唯一职责是正确地调工具</strong> —— 于是一个本地 8B 模型就够，token 费从「几毛一个件」降到 0。判断一段该不该给 LLM，有个很实用的判据：<strong>这一段的正确答案是不是唯一且可计算的？</strong> 是，就写成工具；不是，才让模型推理。</li>
+<li><strong>上下文管理已经变成这条链路的一等工程问题。</strong> 两条都在躲同一个坑：STL / G-code 是<strong>巨大的文本</strong>，塞进上下文既贵又会挤掉真正要推理的内容。dsh-print3d 的解法是生成类工具默认落盘只回路径；design-os 的解法是每个 Blender pass 在<strong>隔离进程</strong>里跑、只回一行 <code>AGENT_OK &lt;json&gt;</code>。<strong>「工具的返回值是一个句柄，不是一堆数据」</strong>——这个模式跟 3D 打印没关系，任何要处理大产物的 agent 流水线都该抄。</li>
+<li><strong>具身侧最实际的进展是排版和装配顺序被做出来了。</strong> 一个 38 件的机械臂配合原型，5 张板、PETG / TPU 分料、<code>parts-list.csv</code> 把 ID 映到板和材料、67 步装配动画再把影片时间映回打印件 ID —— <strong>这些恰恰是「改件 → 打印 → 上机」闭环里最没人愿意做、又最容易把一个周末烧掉的活</strong>。对着开源臂改件的人，先把这套 artifact 的组织方式抄过来（哪怕手工做），比先接 agent 更划算。</li>
+<li><strong>本期最明显的两个个人贡献口（都在一天量级）。</strong> ① 给 dsh-print3d <strong>补一个 OrcaSlicer 桥或 Klipper/Moonraker 打印机控制工具</strong> —— 它的模块化扩展说明写得很清楚（加一个脚本 + 一个工具定义），而现在只桥了 PrusaSlicer、完全没有打印机控制；② 给 design-os 的生产门<strong>跑一批第三方 spec</strong>，特别是<strong>摆线件和薄壁件</strong>（正好用本期主线的 Open-Gripper-Plus 那六个 STEP 当素材），把 <code>coverage.unchecked[]</code> 里反复出现的项目公开出来 —— 这直接告诉所有人这个门当前的盲区在哪。</li>
+</ol>
+<p><strong>这条链路上还值得盯的（本期不展开，后续轮换写）</strong>：<a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a>（上期国外条，11 个 skill 铺满链路，含 <code>urdf</code>/<code>srdf</code>/<code>sdf</code>）、<a href="https://github.com/Pan-Chera/Multi-Agent-CAD">Pan-Chera/Multi-Agent-CAD</a>（上期国内条，token 1/116）、<a href="https://github.com/gumyr/build123d">gumyr/build123d</a>（参数化 code-CAD 底座）、<a href="https://github.com/ahujasid/blender-mcp">ahujasid/blender-mcp</a>（mesh 侧事实标准）。<strong>具身接口段（URDF / SRDF / SDF 自动生成、灵巧手自制零件迭代）本期没有新东西值得单写，下期优先补。</strong></p>
+<hr>
+<h2>趋势观察</h2>
+<ol>
+<li><strong>「把消融表格变成可下载的对象」正在成为开源具身项目的新标配。</strong> OpenWAM 传了 20 多个只差一处设计的检查点，Show-Harness 传了五个只差参数量的 LoRA，两家都不只是发一个最强模型。这件事对个人的意义比听起来大：<strong>过去你要复现一个消融结论，得有集群；现在你只要能做推理，就能自己验一遍作者的排序对不对。</strong> 这是本期最值得注意的结构性变化 —— 前沿工作的<strong>可检验部分</strong>第一次真正落到了单卡玩家手里。顺着这个逻辑，本期反复出现的那个贡献模式（拿作者的检查点/数据，在你自己的算力档位上跑出一条对比曲线并公开）已经不是「练手」，而是这些项目真实缺的东西。</li>
+<li><strong>采数据这件事今年被两条不同的路各自打穿了硬件门槛。</strong> 09-07 的 GRABETTE 是「手持设备，不要机器人」，本期 Show-Harness 的 GUMI 更狠：<strong>浏览器里按 WASD 就是一次演示，每一步直接成训练对</strong>，连采集设备都不要，而且 <code>--sim</code> 让你在硬件到货之前把接口摸完。这两条加起来意味着「没机器人就没数据」这个前提已经不成立了 —— 门槛从<strong>硬件</strong>转移到了<strong>你愿不愿意花时间演示</strong>。</li>
+<li><strong>控制栈的开源正在往下走到「关节」这一层，而且带上了主机端验证。</strong> 前几期是整机（Microduck、Sprite、BittleJuice）和臂（Star Arm、HumbleArm），本期的 qdd-joint 是<strong>单个关节驱动器的完整 FOC 栈 + 一条命令参数自辨识 + 主机 SIL + CI</strong>。这一层过去是「买宇树/T-Motor 的成品，或者自己啃 MCSDK」两个极端。中间这一档出现了，而且<strong>先在主机上把控制算法验对再上板</strong>的做法，是嵌入式侧少见的工程自觉。跟 09-10 BittleJuice 的 blindfold 自证脚本、本期 OmArm One 的力矩校核脚本是同一件事：<strong>给自己的结论配一个能推翻它的脚本。</strong> 这个模式在本期四条不同项目里独立出现，已经可以当成挑选项目的一条筛子了。</li>
+<li><strong>「数字是推出来的还是宣称的」值得当成硬指标。</strong> OmArm One ★0，但它给了扫描全关节空间最差姿态的质量模型和可重跑的校核脚本；design-os 的门把没量的东西列进 <code>coverage.unchecked[]</code>；Microduck 那两个挑战赛的数据卡把每个常数都标到源文件行号。反过来，本期看到不少 ★ 更高但只有一句 feature list 的仓（Open-Gripper-Plus 就是，硬件很实但文档极简）。<strong>在个人可参与这个语境下，可验证性比 star 数更能预测你会不会浪费一个周末。</strong></li>
+<li><strong>专题那条链路的分界线本周变清楚了：确定性计算的段落要从 LLM 手里拿走。</strong> 详见专题分析第 2 点。这条判据（「这一段的正确答案是不是唯一且可计算的」）不限于 3D 打印，任何 agent 流水线都能用。</li>
+</ol>
+<h2>仍开放的比赛 / bounty / 众包入口</h2>
+<p><strong>正式比赛这期基本空缺，先把核销掉的说清楚</strong>（都核过日期，别去撞墙）：</p>
+<table>
+<thead>
+<tr>
+<th>入口</th>
+<th>状态</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AGIBOT World Challenge @ ICRA 2026</td>
+<td><strong>已关闭</strong> —— 提交服务器 2026-04-20 关闭，4-30 公布线上结果</td>
+<td><a href="https://www.agibot.com/article/231/detail/45.html">官方公告</a></td>
+</tr>
+<tr>
+<td>江源杯 2026 具身智能场景技能挑战赛</td>
+<td><strong>已关闭</strong> —— 报名截止 2026-08-25，线上报名 9/3–9/4，晋级赛 9/3–9/6 已办完</td>
+<td><a href="https://www.cie.org.cn/list_43/16724.html">中国电子学会通知</a></td>
+</tr>
+<tr>
+<td>美团低空经济与具身智能挑战赛</td>
+<td><strong>已关闭</strong> —— 9 月 1 日截止</td>
+<td>见下方来源</td>
+</tr>
+<tr>
+<td>iCAN「金视线杯」具身智能应用设计挑战赛</td>
+<td>09-24 截止，但<strong>限全日制在籍本专科学生</strong>，不对一般个人开放</td>
+<td>见下方来源</td>
+</tr>
+<tr>
+<td>2026 BEHAVIOR Challenge（Stanford）</td>
+<td><strong>待确认</strong> —— 挑战页有「Submission Deadline」栏位但静态页面里是空的（JS 渲染），<strong>本期无法核实具体日期，不敢称其开放</strong></td>
+<td><a href="https://behavior.stanford.edu/challenge/index.html">challenge 页</a></td>
+</tr>
+</tbody></table>
+<p><strong>真正现在就能提交、且对个人完全开放的，是这两个 —— 本期唯一的实在入口：</strong></p>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ HF 数据集 ｜ <strong>纯 MuJoCo 仿真，零硬件，无截止日期</strong>
+把 250 mm 高、14 个位控舵机的 Microduck 从地面弄上一级台阶并<strong>站住</strong>。提交物不是策略也不是视频，而是<strong>一份 intent JSON</strong>：14 个关节目标的若干关键帧 + 时间，评分器在固定的 plant 里回放并判定（控制周期 20 ms / 50 Hz）。判据是代码里那一行，作者把每一项都标到了源文件行号：<code>honest = s.up &amp;&amp; lateral &amp;&amp; s.x &gt; RISER_X &amp;&amp; s.above &gt; 0.095 &amp;&amp; s.feetOnTread &gt;= 2</code>（<code>harness/rig3.mjs</code> 第 330 行）。
+<strong>为什么值得做</strong>：<strong>这个 bar 从来没被达到过。</strong> 及格线是 9 个鲁棒性格点里过 7 个，目前最好成绩是 60 mm 台阶高度下 <strong>5/9</strong>，而第六轮的裁判结论是「这是机器人和这一类动作的极限，而不是优化器的极限」。作者把判据、格点、当前记录、<strong>负面结果</strong>和整个 harness 全部公开，原话是「publishes ... so that somebody can beat it or show that it cannot be beaten」—— <strong>推翻它和达到它同样算成果</strong>，这在开放赛题里很少见。
+→ <a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜ <strong>零硬件，无截止日期</strong>
+让鸭子<strong>够到并推动</strong>一个 100 mm / 30 g 的球（不是踢 —— Pollen 已经有踢球策略了），从 450–1200 mm 距离、在它没法直着走过去的方位角上，14 个格点计分。两种参赛形态都从第一天起可评分：<strong>authored move</strong>（关键帧 + 混合，像 stairs 那样回放）或 <strong>policy under a command schedule</strong>（一个 <code>.onnx</code> + 一串 <code>[atSeconds, {vx, vy, vyaw}]</code>）。
+<strong>头部空间极大</strong>：作者公布的发现是「<strong>bundled 的东西没有一个能追球</strong>」—— Pollen 的两个踢球策略 <strong>0/14</strong>，一个被命令直着往前走的鸭子在 9 个核心格点里过 4 个，<strong>而且不是预测的那三个</strong>。也就是说随便一个稍微认真的方案都能刷新记录。
+→ <a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p><strong>另外两个不是比赛、但确实缺人做的口子</strong>（本期主线里已详述）：OpenWAM 的 <strong>SimplerEnv / Calvin 评测 client</strong>（Support Status 表里标 <code>Planned</code>，照 <code>benchmarks/libero/</code> 抄一份即可）；Show-Harness 的 <strong>0.8B / 2B / 4B 三档在同一批数据上的成功率对比</strong>（作者放了五个 adapter，没给个人算力档位下的曲线）。加上专题分析第 5 点里那两个（给 dsh-print3d 补 OrcaSlicer / Klipper 桥、给 design-os 的门跑第三方 spec），本期一共四个一天量级、有人会用的产出口。</p>
+<hr>
+<p><em>来源（比赛核销部分）</em>：<a href="https://www.cie.org.cn/list_43/16724.html">中国电子学会 · 江源杯通知</a> ｜ <a href="https://www.agibot.com/article/231/detail/45.html">AGIBOT World Challenge @ ICRA 2026</a> ｜ <a href="https://behavior.stanford.edu/challenge/index.html">BEHAVIOR Challenge 2026</a> ｜ <a href="https://www.dikongjie.com/10389.html">美团挑战赛报道</a> ｜ <a href="https://xingxiancn.com/article/40644">iCAN 金视线杯报名启动</a></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-11.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

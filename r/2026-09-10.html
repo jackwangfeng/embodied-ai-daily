@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-09-10 · 具身智能可参与项目日报</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>2026-09-10 · 具身智能可参与项目日报</h1>
+<p>今日主线：<strong>「大脑」这一侧的开源门槛在这一周被压到了 2B</strong>。中关村系的 PhysBrain 1.5 把理解、动作、未来状态塞进同一套 Qwen3-VL token 词表，2B 版本 4 GB 出头、一张 16 G 卡随便跑；国外这边 Perceptron 用 36B 稀疏模型把「视频理解 + 机器人控制」第一次统一到 Apache-2.0 的开源前沿，代价是个人根本跑不动。<strong>这两件事放在一起，本期真正的可参与入口其实在两端</strong>：一端是小模型（拿来就能微调、就能量化），另一端是那些把「一台三百刀的玩具狗真的走起来」写到工程细节的仓库 —— 中间那层大模型，个人这个月还是只能看。</p>
+<blockquote>
+<p>上期（9-9）硬件占了四条，本期回摆到软件四条 / 硬件两条，每区仍各自软硬兼有。</p>
+<p><strong>本期起新增固定专题「🧩 AI Agent × 3D 打印 / 自动建模」</strong>（页面下方、趋势观察之前；在主线 6 条之外，每期 2 条 + 一段分析）。今天这节是补写的，明天起随正常推送一起出。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· PhysBrain 1.5 —— 中关村系的具身 VLM，2B / 8B 权重 9 月 8 日刚上线</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元 ｜ 显存：2B 约 5 GB、8B 需量化才进 16 G ｜ 周期 1 天出结果，1–2 周做完一轮微调</strong></p>
+<p><strong>是什么。</strong> DeepCybo 团队（联合中关村学院、中关村人工智能研究院）在 <strong>2026-09-08</strong> 放出的具身视觉-语言模型，同时上线 <strong>8B 和 2B 两个尺寸</strong>。它的设计不是「又一个 VLA」，而是把具身交互的闭环拆成三件事塞进同一个自回归骨干：<strong>理解</strong>观察到的世界、<strong>生成</strong>目标导向的动作、<strong>预测</strong>环境会怎么变。实现方式很直接 —— 在预训练的 Qwen3-VL 上扩词表，加入专门的 <strong>动作 token 和视觉状态 token</strong>，语言回答、结构化空间输出、末端执行器轨迹、未来世界状态全部表示成离散 token，用同一个 next-token 目标联合训练，<strong>没有任何任务专用 head</strong>。看 <code>config.json</code> 能验证这一点：架构就是原版 <code>Qwen3VLForConditionalGeneration</code>，只有 <code>vocab_size</code> 从 Qwen3-VL 的 15 万出头涨到 <strong>168576</strong>，多出来的一万多个就是那套统一动作码本。</p>
+<p>具体能力分三块：① <strong>具身理解</strong> —— 在 28 个具身空间智能 / 规划 benchmark 上，8B 拿到 <strong>72.5 总分，开源模型里排第一</strong>，官方说法是「与领先闭源模型相当」；② <strong>动作预测</strong> —— 给指令 + 观测（+ 可选历史动作），输出下一段末端执行器动作 chunk，动作码本跨不同臂和控制配置共享，<strong>一个 checkpoint 驱动多种本体</strong>；③ <strong>未来状态预测</strong> —— 给当前观测和指令，预测一秒后的 RGB + 深度图 + 机器人 mask。</p>
+<p><strong>为什么现在值得做。</strong> 三个理由，按重要性排：</p>
+<p>第一，<strong>它是标准 Qwen3-VL 接口，不是又一套要你从源码编译的私有框架</strong>。官方明说可以直接复用 Transformers、vLLM、SGLang、LLaMA-Factory、ms-swift、veRL。这是本条和大多数具身模型最本质的区别 —— 你不需要学一套新的训练栈，<strong>LLaMA-Factory 的 LoRA 配置改个模型路径就能开跑</strong>。社区反应也印证了这点：权重上线不到一天，<code>mradermacher</code> 就出了 2B 的 i1-GGUF 量化。</p>
+<p>第二，<strong>2B 这个尺寸是真的能在这台机器上做完整实验的</strong>。bf16 下 2B 约 5 GB，A4000 的 16 G 可以放下模型 + 一个像样的 batch 做 LoRA。8B 是 4 个 safetensors 分片、bf16 约 17–18 GB，<strong>16 G 卡装不下，必须走 4-bit 或 offload</strong>。</p>
+<p>第三，<strong>它给了个人一个稀缺的中间形态</strong>：不是纯 VLM（不会输出动作），也不是纯 VLA（除了动作啥也不会）。你可以只用它的<strong>指点 / affordance / 轨迹推理</strong>能力当感知前端，接到自己已有的控制器上 —— 这条路不需要任何机器人硬件。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>今天（0 元，10 分钟）</strong>：先开 <a href="https://huggingface.co/spaces/hugging-apps/physbrain1-5-8b-demo">官方 HF Demo Space</a> 传张自己屋里的照片，试试空间理解、指点定位和规划。<strong>先确认它对你关心的场景有没有用，再决定要不要下 17 GB 权重。</strong></li>
+<li><strong>第一天（本机，2 小时）</strong>：拉 2B，用 stock <code>transformers</code> 起推理。因为架构名就是 <code>Qwen3VLForConditionalGeneration</code>，<code>AutoModelForCausalLM</code> / <code>AutoProcessor</code> 直接就能加载，不需要 <code>trust_remote_code</code> 之外的任何东西。跑通「图片 + 一句指令 → 点坐标」这条最短链路。</li>
+<li><strong>第 2–3 天</strong>：用 <a href="https://github.com/pickxiguapi/EmbodiedEvalKit">EmbodiedEvalKit</a>（官方评测用的就是它）在<strong>一两个</strong>你能跑动的 benchmark 上复现 2B 的分数。<strong>产出物是一张「2B 在 X benchmark 上的复现分 vs 官方报的分」对照表</strong> —— 官方 README 明说 2B 那一列被排除在开源排名之外、没有单独详述，这块是真空地带，谁先测谁就有话说。</li>
+<li><strong>第 2 周</strong>：LLaMA-Factory 或 ms-swift 上做一次 LoRA。<strong>别一上来微调动作 token</strong>（动作码本的编解码细节技术报告还没出），先微调空间理解 / 指点这一侧 —— 输入输出都是纯文本坐标，数据你自己就能标。</li>
+<li><strong>本机备注</strong>：<code>. /workspace/cuda/env.sh</code> 那套是给 onnxruntime 用的，跑 PyTorch 不需要。2B 全量微调在 16 G 上偏紧，LoRA 宽裕。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> 五条，前两条是硬伤：</p>
+<p>① <strong>没有声明许可证。</strong> HF 模型页的 tag 里没有任何 <code>license:</code> 字段，仓库里也没有 LICENSE 文件。<strong>这意味着你现在既不知道能不能商用，也不知道能不能再分发微调权重。</strong> 个人学习无所谓，任何往外发的东西先去问作者。
+② <strong>配套 GitHub 仓库还没公开。</strong> README 的 citation 指向 <code>github.com/DeepCybo-PhysAI/PhysBrain-1.5</code>，今天核过是 <strong>404</strong>。所以：没有官方推理示例、没有动作 token 的编解码脚本、没有微调配方。你拿到的就是权重 + 一份模型卡，<strong>动作那一路目前基本用不起来</strong>，能立刻用的是理解 / 指点 / 轨迹推理这一侧。
+③ <strong>技术报告没出</strong>，README 里写的是「更多评测细节将在技术报告中给出」。72.5 这个数是官方自评自报的，虽然他们说明了会用统一 metric 重测所有对比模型（这点比多数论文诚实），但<strong>没有第三方复现</strong>。
+④ <strong>8B 在 16 G 卡上不能 bf16 跑</strong>，见上。
+⑤ 训练数据来源、是否包含中文场景、动作码本覆盖哪些本体，<strong>模型卡里都没写</strong>。</p>
+<p><strong>出处。</strong> <a href="https://huggingface.co/DeepCybo/PhysBrain1.5-8B">DeepCybo/PhysBrain1.5-8B</a>
+相关：<a href="https://huggingface.co/DeepCybo/PhysBrain1.5-2B">PhysBrain1.5-2B（本机首选）</a> ｜ <a href="https://huggingface.co/spaces/hugging-apps/physbrain1-5-8b-demo">官方在线 Demo Space</a> ｜ <a href="https://huggingface.co/mradermacher/PhysBrain1.5-2B-i1-GGUF">社区 2B i1-GGUF 量化</a> ｜ <a href="https://github.com/pickxiguapi/EmbodiedEvalKit">EmbodiedEvalKit（官方评测框架）</a></p>
+<hr>
+<h3>2 · 北京人形 Sprite —— 31 关节人形的 FreeCAD 原始工程 + 一条命令能看的 MuJoCo 模型</h3>
+<p><strong>类型：硬件（含仿真软件资产）｜ 整机成本远超 ¥5000（不建议整机复现）｜ 纯仿真侧 0 元 ｜ 周期 1–2 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> BeijingDynamics 在 <strong>8-28</strong> 同时开了两个仓：<code>sprite_humanoid_freecad</code> 放<strong>硬件结构的 FreeCAD 源文件</strong>（<code>00-SPRITE.FCStd</code> 顶层装配 + 分系统 / 连杆 / 关节 / 电机 / 轴承 / 紧固件的子文件），许可是 <strong>CERN-OHL-S-2.0（强互惠）</strong>；<code>open_sprite</code> 放机器人描述资产和可复现的仿真入口，许可 <strong>AGPL-3.0</strong>。公开的型号是 <strong>Sprite0825</strong>，约 0.95 m 高、<strong>31 个驱动关节</strong>、V 形骨盆。仓里有 2026-08-25 的网格、当前 Isaac Lab 训练在用的 sanitized v4 URDF、一个一条命令就能开的 MuJoCo 可视模型、一个专门给控制器开发用的浮动基座 external-PD 模型，还有<strong>带 artifact 哈希的运动里程碑记录</strong>和 <code>ASSET_SHA256SUMS</code>。
+<strong>和 9-2 推过的智元 X1 的区别</strong>：X1 给的是图纸 PDF + BOM，Sprite 给的是 <strong>FreeCAD 可编辑源工程</strong>（改完能直接出加工件），加上一个把「默认场景锁关节，免得你第一次开 viewer 看到机器人瘫在地上」这种细节都想到了的仿真入口。</li>
+<li><strong>怎么切进去。</strong> 不要碰整机。<strong>三步纯软件路线</strong>：① <code>python -m mujoco.viewer --mjcf=models/sprite0825/mujoco/scene.xml</code> 先看几何；② <code>python scripts/validate_models.py</code> 跑官方校验器，它会打印 body / joint / DoF / geom / mesh / actuator / timestep 计数并验证所有相对网格路径 —— <strong>这也是最好的贡献口子，任何路径或计数对不上就是一个能提的 issue</strong>；③ 用 <code>scene_external_pd.xml</code> 那个浮动基座模型写自己的 PD 或 RL 控制器。想碰硬件就只打印一个手掌或小腿护板，验证 FreeCAD 工程能不能出可打印件。<strong>产出物 = 一条 31 DoF 人形的站立 / 平衡控制器，或一份 FreeCAD → STL 的可打印性报告。</strong></li>
+<li><strong>坑。</strong> ① <strong>AGPL-3.0 是强传染的</strong>，你基于 <code>open_sprite</code> 写的东西对外提供服务就要开源，比 X1 宽松的许可要小心得多；② 硬件侧是 <strong>CERN-OHL-S 强互惠</strong>，改了设计再分发必须同样开源；③ 仓库很新（8-28 建、8-28 最后推），<strong>只有 12 / 9 个 star，没有 issue 沉淀</strong>，遇到问题基本没人答；④ README 明确警告「制造前自行核验尺寸、材料、紧固件、载荷、间隙、公差、电机额定值、布线、安全限位和装配流程」—— 这是没有经过第三方验证的设计源文件，不是产品；⑤ 没有给 BOM 和成本。</li>
+<li><strong>出处。</strong> <a href="https://github.com/BeijingDynamics/open_sprite">BeijingDynamics/open_sprite</a>
+相关：<a href="https://github.com/BeijingDynamics/sprite_humanoid_freecad">sprite_humanoid_freecad（硬件源工程，CERN-OHL-S-2.0）</a> ｜ <a href="https://github.com/AgibotTech/agibot_x1_train">智元灵犀 X1（同类，可对照许可与交付形态）</a></li>
+</ul>
+<hr>
+<h3>3 · EngineAI Navigation —— 人形导航的完整训练到部署链路，中文文档一等公民</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元（仿真侧）｜ Apache-2.0 ｜ 周期 1–2 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 松延动力（EngineAI）<strong>9-3 上线、9-4 仍在更新</strong>的开源仓，做的是 PM01 人形的自主导航：<strong>用有序 LiDAR Range Image 当感知输入，PPO 训端到端策略，输出速度指令交给底层行走策略执行</strong>。价值不在算法新，在<strong>它把一条链路从头给全了</strong>：<code>training/</code> 是 Isaac Lab 任务 + SRU 训练框架 + 训练/导出脚本（<strong>导出 ONNX</strong>），<code>ros/src/simulation/</code> 是 Gazebo 仿真，<code>ros/src/deployment/</code> 是已在 PM01 + Livox Mid-360 上验证过的真机部署 —— 而且<strong>仿真和真机是两套源码，README 明说了这一点</strong>，没有拿仿真代码冒充真机代码。中文 README 是主文档，英文是副本。</li>
+<li><strong>怎么切进去。</strong> 真机（PM01 + Mid-360）个人显然买不起，但<strong>训练那一半完全免费</strong>：装 Isaac Lab → 跑官方<strong>冒烟测试</strong>（README 单列了这一步，这是最省时间的入口）→ 正式训练 → 导出 ONNX → 在 Gazebo 里验证。<strong>产出物 = 一条自己训的人形导航策略 + 一个 ONNX，以及一份「A4000 16G 上这个任务能开多少并行环境」的实测记录</strong> —— 后者仓里没有，是个现成的贡献。</li>
+<li><strong>坑。</strong> ① Isaac Lab 对显存和驱动都挑，16 G 卡要压并行环境数，先跑冒烟测试别直接上正式训练；② <strong>底层行走策略不在这个仓里</strong>，导航策略输出的速度指令要有东西去执行，纯看这个仓拼不出完整人形；③ ROS 2 那两套需要 colcon 工作空间和一堆依赖，只想训练的话别碰；④ 只有 23 star，同样是新仓。</li>
+<li><strong>出处。</strong> <a href="https://github.com/engineai-robotics/engineai_navigation">engineai-robotics/engineai_navigation</a>
+相关：<a href="https://github.com/Lain-Ego0/ArenaX">ArenaX Robotics（中文 MuJoCo 地形/障碍场地编辑器，8-31 上线，给腿式策略造验证场景用）</a> ｜ <a href="https://github.com/scy-v/VLA-Precision">VLA-Precision（9-2，真机在线 RL 后训练，附 UR5e / Franka 多种遥操作采集仓）</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· BittleJuice —— 一台 $319 的机器狗，从 MuJoCo 学步到真机 50 Hz 走路的完整闭环</h3>
+<p><strong>类型：硬件（含全套软件）｜ 硬件约 $319（≈ ¥2270，Petoi Bittle X v2）｜ 0 元也能玩（附训好的策略 + 仿真）｜ MIT ｜ 周期：一晚上到一周</strong></p>
+<p><strong>是什么。</strong> <strong>8-27 上线、9-6 仍在推</strong>的仓，做的是一件很具体的事：在 MuJoCo 里训一条行走策略，然后<strong>让它在一台真的 Petoi Bittle X 上以 50 Hz 走起来</strong>。仓里包含仿真、<strong>实测拟合的 plant model</strong>、把「指令 → 动作」延迟从 <strong>198 ms 砍到 54 ms</strong> 的固件补丁，以及一个不依赖 torch / mujoco 的独立运行时。<strong>训练好的策略随仓发布</strong>，所以从「拆箱的机器人」到「会走的机器人」可以完全不训练；想先看效果，三分钟、不需要任何硬件。</p>
+<p><strong>为什么现在值得做。</strong> 这是本期唯一一条<strong>四条标准全部干净命中</strong>的：$319 在预算内、单机 CPU 就够（PPO 跑一个 64 隐单元的网络，瓶颈在 MuJoCo 物理）、终点明确（robot 走路）、依赖全开源。但真正让它值得写深度的是<strong>它诚实的程度</strong>，这在开源机器人仓里非常罕见：</p>
+<ul>
+<li><strong>它主动告诉你这条策略是开环的。</strong> README 专门做了一个 blindfold 测试 —— 把两路 IMU 都替换成常量「直立静止」，策略几乎没反应：速度只掉 1.1%，在专门用来抓「有没有在读重力」的 4° 斜坡上只掉 0.2%。作者的原话是「闭环闭在管道里，不在策略里；这个机器人跑的是一段学会的节奏，而不是在对什么做出反应」，并且<strong>把它列为未开放的问题</strong>，还给出了猜测的原因（策略几乎不摔，所以没有任何东西在选择恢复能力）和一条 <code>blindfold_test.py</code> 让你自己验。</li>
+<li><strong>它告诉你哪个指标才算数。</strong> 判断策略能不能迁移的不是 reward 曲线，而是 <code>tools/mj_deployability.py</code> 输出的 <strong>slew 饱和率</strong>：随仓策略是 <strong>2.6%，阈值 15%</strong>。</li>
+<li><strong>它告诉你这台机器人有多烂。</strong> 三条硬约束驱动了整个代码库的设计：<strong>读不到关节位置</strong>（固件能推一个，但每个关节约 20 ms 且期间腿是软的，全身读一遍实测只有 9 Hz，而控制环每 tick 只有 20 ms）—— 所以 <code>dof_pos</code> / <code>dof_vel</code> 全程是<strong>估计值</strong>，用主机自己发出去的目标过一遍舵机响应模型算出来，<strong>并且仿真器也观测同一个估计值而不是它自己的 ground truth</strong>；<strong>没有原始陀螺仪</strong>（角速度是从融合姿态流差分出来的，这决定了噪声下限）；<strong>舵机很慢</strong>，而 MuJoCo 默认执行器快得多，两级必须一起拟合否则同一份延迟会被算两遍。结论作者直接写了：<strong>有意思的活儿在 plant model 里，不在算法里，RL 就是普通 PPO。</strong></li>
+</ul>
+<p><strong>个人怎么切进去。</strong> 仓里自带一张「按投入递增排序的入口表」，直接照抄：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>你得到</th>
+<th>你需要</th>
+<th>大约</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>viewer 里的一段步态</td>
+<td>一台笔记本</td>
+<td>3 分钟</td>
+</tr>
+<tr>
+<td>1</td>
+<td>一台会走的机器人</td>
+<td>Bittle X v2 + USB 线 + 刷固件</td>
+<td>一个晚上</td>
+</tr>
+<tr>
+<td>2</td>
+<td>你自己的步态</td>
+<td>上面 + 一颗像样的 CPU</td>
+<td>+5 小时</td>
+</tr>
+<tr>
+<td>3</td>
+<td>拟合到你自己那台硬件的 plant model</td>
+<td>上面 + 耐心</td>
+<td>+1 天</td>
+</tr>
+</tbody></table>
+<ol>
+<li><strong>今天（0 元，3 分钟）</strong>：<code>git clone --recurse-submodules</code> → <code>uv sync</code> → <code>uv run python sim/mj_eval.py -e shipped --video gait.mp4</code>（headless，SSH 上也能跑）。然后 <code>uv run pytest</code>（约 10 秒）和 <code>uv run python tools/mj_deployability.py -e shipped</code>。</li>
+<li><strong>今天（再 5 分钟）</strong>：跑 <code>tools/blindfold_test.py</code>，亲手看一遍「策略其实没在用 IMU」。<strong>这一步比看 demo 视频有价值得多 —— 它教你以后怎么怀疑别人的 sim2real 结果。</strong></li>
+<li><strong>买 Bittle X 之后（一个晚上）</strong>：刷固件（<strong>releases 页有 CI 构建的预编译镜像</strong>，<code>tools/flash_firmware.py</code> 会先问机器人是什么型号、型号不对拒绝写入、并且写之前把整片 flash 备份到 <code>backups/</code>）→ 按 a→e 五道闸分阶段上电：先探活、再 dry-run 不发串口、再吊起来只保持站姿、再吊起来短跑、最后落地并用手护第一次。</li>
+<li><strong>想深入</strong>：<code>deploy/</code> 只依赖 numpy + pyserial，可以整个目录拷到树莓派上。训自己的步态从 <code>docs/training.md</code> 开始。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> ① <strong>必须是 Bittle X v2 + 合金齿舵机。</strong> 作者写得很明白：舵机模型就是策略真正训练的对象，换了执行器就是换了 plant，早期版本和塑料齿舵机上「可能走得很差或者根本不走」，看到烂步态要读成 plant 不匹配而不是策略不好。② <strong>固件镜像只对 Bittle X / BiBoard V1.0 / Rev D/E</strong>，板子不同要自己编。③ <strong>策略是在固定 0.10 m/s 训的</strong>，导出时带着这个范围，别的 <code>--command</code> 会被 clamp（stdout 会说）。④ 随仓策略实测 0.097 m/s、仿真里能过 12 mm 粗糙地形不摔 —— <strong>这就是天花板，别期待跑跳</strong>。⑤ 上面那条开环性质意味着<strong>这不是一个能直接拿去做具身智能上层任务的底座</strong>，它是一个学 sim2real 工程的极好教材。</p>
+<p><strong>出处。</strong> <a href="https://github.com/mike-grayhat/bittlejuice">mike-grayhat/bittlejuice</a>
+相关：<a href="https://mike-grayhat.github.io/bittlejuice/">项目主页（含步态视频）</a> ｜ <a href="https://www.petoi.com/">Petoi Bittle X 官方商店（$319 起）</a> ｜ <a href="https://github.com/thinking0things/AlbertPro">AlbertPro（9-9 推过的 ¥150–300 自制四足，可对照：那边是自己造机身，这边是把商品机榨干）</a></p>
+<hr>
+<h3>2 · Perceptron Isaac 0.5 —— 第一个把视频理解和机器人控制放进同一个骨干的开源前沿模型</h3>
+<p><strong>类型：软件 ｜ Apache-2.0 ｜ <strong>36B 稀疏，单卡跑不动，本条明确超出「投入可控」标准</strong> ｜ 周期：读论文 1 天，真跑要租卡</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> Perceptron 在 <strong>8-26</strong> 放出的开放机器人基础模型：<strong>360 亿参数稀疏模型</strong>，一个骨干同时做多模态视频理解、具身推理、空间 grounding、任务进度估计和机器人控制。训练规模是 <strong>35+ 种机器人系统、10 万小时机器人经验、100 万小时通用视频、3 万亿多模态 token</strong>。它最有价值的产出其实不是权重，而是一条<strong>视频 / 机器人数据的 scaling law</strong>：在同一个 action loss 2.50 的目标下，用 1000 小时通用视频训的模型需要约 <strong>5900 小时遥操作数据</strong>，用 100 万小时通用视频训的只需要约 <strong>28 小时</strong> —— <strong>210 倍的遥操作需求缩减</strong>。这个数字直接回答了「我该去采数据还是去爬视频」这个所有人都在猜的问题。</li>
+<li><strong>怎么切进去。</strong> <strong>诚实说：权重你跑不动</strong>，36B 稀疏在 16 G 卡上没有可行路径，这条列进来是因为它的方法论和配套代码对个人有用，不是因为你能部署它。可做的三件事：① 读那篇 PDF 论文的 scaling law 部分，<strong>它会改变你自己项目里「采多少数据」的决策</strong>；② <code>perceptron-ai-inc/isaac</code> 仓里有动作训练与推理代码、<strong>LeRobot 集成、参考 policy server、评测工具和复现指南</strong> —— policy server 和评测工具那部分是模型无关的，可以拆出来用在自己的小模型上；③ 盯着等蒸馏 / 小尺寸版本。</li>
+<li><strong>坑。</strong> ① <strong>不支持 stock Transformers，也不支持 stock LeRobot</strong>，必须用他们 pin 死的 commit（模型卡给了具体的 <code>be6507b</code> 和一个 LeRobot commit hash）加 <code>uv sync --locked</code>，环境完全锁死；② 8-26 建仓、8-26 最后推，<strong>代码到现在没动过</strong>，别指望活跃维护；③ 上面那条 scaling law 是官方自己的实验结果，只在他们的数据配方上验证过。</li>
+<li><strong>出处。</strong> <a href="https://huggingface.co/PerceptronAI/Isaac-0.5">PerceptronAI/Isaac-0.5（权重）</a>
+相关：<a href="https://github.com/perceptron-ai-inc/isaac">perceptron-ai-inc/isaac（代码，Apache-2.0）</a></li>
+</ul>
+<hr>
+<h3>3 · RoboTok —— 不采数据，从互联网视频里「检索」人类演示来训灵巧操作</h3>
+<p><strong>类型：软件 ｜ MIT ｜ 需要 GPU（DTW kernel 是 numba CUDA）｜ 周期 1–2 周 ｜ 数据侧有硬门槛，见坑</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 莱斯大学 RobotPI Lab + NVIDIA 的工作（arXiv 2609.03199，<strong>HF Daily Papers 116 赞，本期国外热度最高的一篇</strong>）。思路是：机器人数据贵且覆盖不了长尾，那就<strong>给一段人类操作视频当 query，从网络视频里检索出「运动学上相似」的人类演示</strong>，拿来训灵巧策略。核心是<strong>从「以演员为中心的参考系」下的 3D 手部轨迹里学一个隐运动空间</strong>，外加一个 VN 模型从双手轨迹估计躯干 / 身体坐标系 —— 后者是关键，因为不把手部轨迹从相机系换到人体系，网络视频里同一个动作在不同机位下就完全不像。代码 <strong>8-31 上线、9-4 更新，43 star，MIT</strong>。</li>
+<li><strong>怎么切进去。</strong> <code>pip install -r requirements.txt</code>（CUDA 机器换 <code>faiss-gpu</code>）→ <code>python train.py --config configs/default.yaml</code> 训检索模型 → <code>pytest</code> 跑不变量测试。<strong>产出物是一个「给一段视频、返回 k 段相似人类演示」的检索器</strong>，这个东西本身就能当工具用在你自己的数据管线上 —— 这也是本条最实际的价值：<strong>它是一个数据引擎，不是一个策略</strong>，所以你不需要机器人。</li>
+<li><strong>坑（这条比较重，先看再决定投不投时间）。</strong> ① <strong>MANO / SMPL-H 模型不可再分发</strong>，要自己去 mano.is.tue.mpg.de 注册下载再放进指定目录；② <strong>重定向代码不在这个仓里</strong>，在同实验室的 <a href="https://github.com/Rice-RobotPI-Lab/EgoInfinity">EgoInfinity</a>，要设 <code>RETARGET_DIR</code> 指过去；③ <strong><code>build_dataset/</code> 和部分可视化脚本读一个未公开的私有 clip 数据库</strong>，而 <code>eval_data/torso_relative_clip_keypoints.pt</code> 是数 GB、<strong>也没放出来</strong> —— 官方说法是「训练、评测和测试从导出的 <code>.pt</code> artifact 运行」，但那个 artifact 本身缺席。<strong>所以现在这个仓更接近「方法参考实现」而不是「开箱可复现」</strong>，能不能跑起来取决于你愿不愿意自己造数据；④ DTW kernel 是 numba CUDA，没 GPU 直接出局。</li>
+<li><strong>出处。</strong> <a href="https://github.com/Rice-RobotPI-Lab/RoboTok-Code">Rice-RobotPI-Lab/RoboTok-Code</a>
+相关：<a href="https://rice-robotpi-lab.github.io/RoboTok/">项目主页</a> ｜ <a href="https://arxiv.org/abs/2609.03199">论文 arXiv:2609.03199</a> ｜ <a href="https://github.com/Rice-RobotPI-Lab/EgoInfinity">EgoInfinity（重定向 / IK 代码）</a></li>
+</ul>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<blockquote>
+<p>本期起新增的固定小节（用户点名要的方向）。它和主线不是两件事：<strong>开源机械臂、灵巧手、四足的本体零件本来就是打印出来的</strong> —— AM-ARM、LEAP Hand v2、SO-101、本期的 BittleJuice 全是 FDM 件。所以「让 agent 把改件从一句话做到上机」这条链路，对个人做具身来说不是外围工具，是**把硬件迭代周期从「等打样」压到「隔夜」**的那一环。本期两条正好卡在这条链路的两端：一条把链路铺满（国外），一条把它的成本打下来（国内）。</p>
+</blockquote>
+<h3>🌍 国外 · text-to-cad —— 从「一句话」到「打印机开始动」的 11 个 agent skill，MIT</h3>
+<p><strong>类型：软件 ｜ MIT（Thompson Labs LLC）｜ ★15.1k ｜ 2026-04-22 建仓、2026-09-09 还在推 ｜ 硬件 0 元起 ｜ 主要成本是 token</strong></p>
+<ul>
+<li><strong>是什么。</strong> 不是模型，是<strong>一套装进你现有 agent（Claude Code / Codex / Grok Build）的技能库</strong>，把「自然语言 → 可打印实体」拆成 11 个各管一段的 skill：<code>cad</code>（出 STEP，可导 STL / 3MF / GLB）、<code>cad-viewer</code>（本地浏览器预览）、<code>step-parts</code>（找现成螺丝轴承电机的 STEP 件）、<code>dxf</code>（2D 切割图）、<strong><code>dfam-check</code></strong>（按工艺量壁厚、悬垂角、支撑体积、推荐摆放方向）、<strong><code>gcode</code></strong>（调真实切片器 CLI 出带打印机 profile 的 <code>.gcode</code>，先 dry-run 再执行）、<strong><code>bambu-labs</code></strong>（校验过的 gcode 上传到本地拓竹并谨慎启动打印）、<code>sendcutsend</code>（上传外协钣金前先查）—— 以及跟具身直接相关的 <strong><code>urdf</code> / <code>srdf</code> / <code>sdf</code></strong>：写连杆关节限位惯量、给 MoveIt2 加规划组和碰撞规则、出仿真世界。</li>
+<li><strong>为什么这条值得单独讲。</strong> 市面上 text-to-CAD 的东西不少，<strong>但绝大多数停在「生成一个 mesh」</strong>。这个库把后面三步补齐了，而且补的方式是对的：<code>dfam-check</code> 的说明里写着工具<strong>只报测量事实、不给 pass/fail</strong>，判定留给工作流；<code>gcode</code> 强制先 <code>--dry-run</code>；<code>bambu-labs</code> 单独拆出来是因为它是<strong>唯一会让物理设备动起来的那个</strong>。这是一套知道自己在操作现实世界的设计。对具身的意义更直接：<strong><code>cad</code> 出零件 + <code>urdf</code> 出描述文件 + <code>sdf</code> 出仿真世界</strong>，是同一套 skill 里的三件事 —— 你改一版夹爪，能顺手把 URDF 和仿真模型一起更新掉。</li>
+<li><strong>个人怎么切进去。</strong><ol>
+<li><code>npx skills add earthtojake/text-to-cad</code>（或 <code>claude plugin marketplace add earthtojake/text-to-cad</code> + <code>claude plugin install cad@text-to-cad</code>）。<strong>更新也用 <code>add</code>，别用 <code>update</code></strong> —— README 特意点了这个坑：<code>update</code> 只刷新 lockfile 里已有的，新增的 skill 会被静默漏掉。</li>
+<li><strong>0 元第一步</strong>：只用 <code>cad</code> + <code>cad-viewer</code>，让它出一个你手上机械臂的替换件（比如 AM-ARM 的夹爪指），拿 <code>cad-viewer</code> 看，不碰打印机。这一步就能判断它对你的零件复杂度够不够用。</li>
+<li><strong>有打印机再往下</strong>：<code>dfam-check</code> 量一遍摆放和悬垂 → <code>gcode</code> 切片（本机要先装 PrusaSlicer / OrcaSlicer 的 CLI）→ 拓竹用户才走 <code>bambu-labs</code>。</li>
+</ol>
+</li>
+<li><strong>坑。</strong> ① <strong>它的能力上限 = 你挂的模型 + 你的钱包</strong>，skill 本身不省 token，naive 地跑多轮修复很贵（下一条给了具体账单）；② <code>gcode</code> 依赖本机装好切片器 CLI，<code>discover</code> 找不到后端就整条断；③ <code>step-parts</code> / <code>sendcutsend</code> 是<strong>外部服务</strong>，会把你的几何传出去，做私活的件先想清楚；④ <code>bambu-labs</code> 会真的启动打印 —— 别在没人看着的时候放手让 agent 跑完这一步；⑤ <code>models/</code> 是 LFS 指针，clone 下来是空的，正常，用 skill 不需要它。</li>
+<li><strong>出处。</strong> <a href="https://github.com/earthtojake/text-to-cad">earthtojake/text-to-cad</a>
+相关：<a href="https://www.texttocad.dev">文档站 texttocad.dev</a> ｜ <a href="https://github.com/earthtojake/text-to-cad/blob/main/skills/gcode/SKILL.md"><code>gcode</code> skill 源文件</a> ｜ <a href="https://github.com/earthtojake/text-to-cad/blob/main/skills/dfam-check/SKILL.md"><code>dfam-check</code> skill 源文件</a></li>
+</ul>
+<h3>🇨🇳 国内 · MAC（Multi-Agent CAD）—— 清华 IEI Lab，4 个 agent 分工，同样的活 1/116 的 token</h3>
+<p><strong>类型：软件 ｜ MIT（Tsinghua University · IEI Lab）｜ ★939 ｜ 2026-07-30 建仓、2026-08-13 最后更新 ｜ 硬件 0 元 ｜ 成本 ≈ ¥0.3–3 / 件</strong></p>
+<ul>
+<li><strong>是什么。</strong> 一条把「一句话 → 可打印 STEP」做成四段流水线的多智能体框架，跑在 <strong>build123d</strong>（参数化 code-CAD）+ LangGraph 上：<strong>Spec Planner</strong>（读需求出 <code>CADBrief</code> JSON）→ <strong>Geometric Architect</strong>（出 <code>ArchitectPlan</code> JSON）→ <strong>Coder</strong>（写 build123d 代码）→ <strong>Aider 修复</strong>（读 QA 报错 + build123d 参考手册改代码）。关键设计有两个：<strong>① 各 agent 之间只传结构化 JSON，不回放对话历史</strong> —— 每个 agent 只读上一段的产物，从不重读整段 transcript；<strong>② 一个确定性翻译器 <code>_plan_to_code</code></strong>，把 <code>extrude / revolve / hole / boolean / pattern / mirror / fillet / chamfer / shell</code> 这些常见操作<strong>零 token</strong> 直接从 plan 翻成代码，LLM 只在 translator 不支持的边缘情况（<code>draft</code>、<code>rib</code>、自定义多边形）上被叫醒，代码里留 <code># TODO_AIDER</code> 占位。</li>
+<li><strong>数字（官方自测，见下面的坑）。</strong> 拿 <strong>text-to-cad 的 10 个 prompt</strong> 当 benchmark 同题对比：token <strong>103.9M → 0.90M（116×）</strong>、成本 <strong>¥125.69 → ¥9.67（13×）</strong>、特征通过率 <strong>97.9% → 99.3%</strong>。单件成本最夸张的是径向发动机气缸 ¥17.42 → ¥0.53（32.9×），最小的是航空 clevis 支架 ¥15.21 → ¥3.10（4.9×）。<strong>多轮迭代的 token 本来是指数增长的（生成→执行→报错→修复→再生成，每轮把完整对话重新塞进去），传结构化状态把它拉成线性</strong> —— 这就是 116× 的来源，不是模型更强。</li>
+<li><strong>对打印这件事的硬指标。</strong> 它能出 <strong>print-in-place 多体联动件</strong>：一个 STEP 里放多个独立实体、<strong>控制 0.4–1 mm 的配合间隙</strong>，下机就能转，不用装配。README 里有球笼和陀螺仪的实拍 GIF。这比单体生成难，因为间隙差 0.2 mm 就是「卡死」和「散架」的区别 —— <strong>能稳定控住这个间隙，说明它是在做几何，不是在做形状</strong>。</li>
+<li><strong>个人怎么切进去。</strong><ol>
+<li><code>git clone</code> → <code>conda env create -f environment.yml</code> → <strong>单独 <code>pip install --no-deps &quot;aider-chat==0.82.3&quot;</code></strong>。这一步别跳：aider 在 PyPI 上硬 pin <code>numpy==1.26.4</code>，而 build123d 要 <code>numpy&gt;=2</code>，纯 pip 装会死锁，README 给了 macOS / Windows 两套绕法。</li>
+<li>配 <code>multi_agent_cad/config.py</code>：默认走阿里云 DashScope，但<strong>只是个 OpenAI 兼容 endpoint</strong>，改 <code>DS_BASE_URL</code> + 各段 <code>*_MODEL</code> 就能换 OpenAI / DeepSeek / 本地 Ollama（换非 Qwen provider 记得把 <code>*_KWARGS</code> 置空，那里面是 Qwen 专用的 thinking 开关）。</li>
+<li><strong>产出物建议直接对着上一条做</strong>：MAC 出 STEP → text-to-cad 的 <code>dfam-check</code> 量可打印性 → <code>gcode</code> 切片。<strong>这两条拼起来就是一条完整的、成本可控的个人链路</strong> —— 便宜的那段做几何，铺得全的那段做落地。</li>
+<li><strong>想做点别人认得的东西</strong>：它的 <code>pipeline_cache/</code> 全是白盒 artifact（<code>cad_brief.json</code>、<code>architect_plan.json</code>、<code>temp_measurements_*.json</code>、<code>temp_missed_*.json</code> 带 <code>MISSED_CUT</code> / <code>FILLET_FAILED</code> / <code>CHAMFER_FAILED</code> 分类），<strong>换个模型跑一遍、把 token 账单和失败分类公开</strong>，就是一份有人会引的复现报告（缺口见下面第 4 点）。</li>
+</ol>
+</li>
+<li><strong>坑。</strong> ① <strong>116× / 13× 是作者自己在 10 条 prompt 上测的、和对手是「同题不同 harness」的对比，没有第三方复现</strong> —— 当成「结构化状态传递值得抄」的证据可以，当成通用结论不行；② <strong>一个月没更新了</strong>（8-13 最后一推），比主线那些当周热更的仓要谨慎；③ <strong>必须有 API key，跑不了纯离线</strong>，README 列的本地路线是 Ollama <code>qwen3-coder:32b</code>，<strong>这台 A4000 16G 装不下</strong>，真要本地得降到 14B 级并接受质量下滑；④ 便宜归便宜，Architect 和 Coder 两段仍建议挂强模型，别指望全链路用小模型还保持 99.3%。</li>
+<li><strong>出处。</strong> <a href="https://github.com/Pan-Chera/Multi-Agent-CAD">Pan-Chera/Multi-Agent-CAD</a>
+相关：<a href="https://github.com/Pan-Chera/Multi-Agent-CAD/blob/main/docs/qwen3.7_token.md">逐件 token / 成本原始数据 <code>docs/qwen3.7_token.md</code></a> ｜ <a href="https://github.com/gumyr/build123d">build123d（底层 code-CAD 库）</a></li>
+</ul>
+<h3>专题分析：这条链路今年真正变了什么</h3>
+<ol>
+<li><strong>变的不是「模型会建模了」，是几何被拆成了可验证的中间产物。</strong> 两条都在做同一件事 —— 把「这个件对不对」从 LLM 的直觉里拿出来，交给确定性工具：MAC 的 <code>temp_measurements_*.json</code> 直接量出特征尺寸并把失败分成 <code>MISSED_CUT</code> / <code>FILLET_FAILED</code> / <code>CHAMFER_FAILED</code>；text-to-cad 的 <code>dfam-check</code> <strong>明确规定工具只报事实、不下判定</strong>。<strong>有了可量的中间产物，agent 才能自我修复；没有的话，多轮迭代只是多轮猜。</strong> 这跟主线趋势里「给自己的结论配一个能推翻它的脚本」是同一条方法论。</li>
+<li><strong>成本结构是这条赛道当前的真瓶颈，而且解法是架构层面的。</strong> ¥125.69 跑 10 个件，对个人不是能持续玩的价格；降到 ¥9.67 就是了。降的方式值得单独记住：<strong>别用单 agent 硬顶长对话</strong>——分段 + 只传结构化 JSON + 常见操作走确定性翻译器。这个模式跟 CAD 没关系，<strong>任何「生成→执行→报错→修复」的循环都能抄</strong>。</li>
+<li><strong>对具身智能的实际意义是本体迭代速度。</strong> <code>urdf</code> / <code>srdf</code> / <code>sdf</code> 三个 skill 和 <code>cad</code> 在同一套工具里，意味着改一版夹爪、连杆或电池仓，<strong>几何、机器人描述文件、仿真模型可以一次性同步更新</strong>，不再是「改完 CAD 忘了改 URDF，仿真和实机对不上」。对着开源臂改件的人，这是当下最值得先接上的一环。</li>
+<li><strong>一个明确的个人贡献口（本期唯一还开着的入口）。</strong> MAC 的 benchmark 只有 10 条 prompt、只有作者自测、只测了一个模型。<strong>拿同一批 prompt 换模型跑一遍，公开 token 账单和失败分类</strong>，成本按它自己的数据算大约十几块钱，一天能做完 —— 这是这条链路上门槛最低、又确实有人需要的产出。比赛入口方面本期依旧空缺（见下）。</li>
+</ol>
+<p><strong>这条链路上还值得盯的（本期不展开，后续轮换写）</strong>：<a href="https://github.com/ahujasid/blender-mcp">ahujasid/blender-mcp</a>（★28k，让任意 LLM 直接操作 Blender，mesh 侧自动建模的事实标准）、<a href="https://github.com/Adam-CAD/CADAM">Adam-CAD/CADAM</a>（★5.1k，开源 text-to-CAD Web 应用）、<a href="https://github.com/partcad/partcad">partcad</a>（★493，「硬件的包管理器」，模块化零件复用）、<a href="https://github.com/SadilKhan/Text2CAD">SadilKhan/Text2CAD</a>（NeurIPS&#39;24 Spotlight，学术侧基线）。</p>
+<hr>
+<h2>趋势观察</h2>
+<ol>
+<li><strong>具身模型正在退回成「标准 LLM 权重」，这对个人是决定性利好。</strong> PhysBrain 1.5 最重要的一条不是 72.5 分，是它的 <code>architectures</code> 字段写着原版 <code>Qwen3VLForConditionalGeneration</code> —— 动作和未来状态全部编码进扩出来的一万多个 token，<strong>没有一个自定义 head</strong>。后果是 vLLM、LLaMA-Factory、ms-swift、veRL 全部开箱可用，社区一天内就出了 GGUF。对比 Isaac 0.5：36B、锁死 commit、连 stock Transformers 和 stock LeRobot 都不支持。<strong>同一周里两条相反的路线，个人能吃到的那条非常清楚。</strong></li>
+<li><strong>「诚实的仓」开始出现，而且诚实本身就是可复制的方法。</strong> BittleJuice 自带 <code>blindfold_test.py</code> 证明自己的策略几乎不看 IMU，并明说判断迁移的指标是 slew 饱和率而不是 reward 曲线；RoboTok 在 README 里直接列出哪几个数据文件没放；EngineAI 说明仿真和真机是两套源码。这跟 9-9 那期观察到的「评测正在变成配置文件」是同一件事的另一面 —— <strong>当分数变得可比，藏问题的成本就高于承认问题</strong>。个人做项目可以直接抄这个格式：<strong>给自己的结论配一个能让别人推翻它的脚本</strong>。</li>
+<li><strong>硬件开源的交付形态在往上游走：从图纸到源工程。</strong> 9-2 的智元 X1 给的是图纸和 BOM，本期北京人形 Sprite 给的是 <strong>FreeCAD 可编辑装配体</strong>（CERN-OHL-S 强互惠）。差别是前者你只能照着做，后者你能改完再出加工件。代价是许可变严 —— Sprite 软件侧 AGPL-3.0、硬件侧 CERN-OHL-S，两个都是强传染的，<strong>在下载之前先想清楚你打算拿它做什么</strong>。</li>
+<li><strong>参与入口：本期依然没有对个人开放且仍在报名期的比赛。</strong> 逐条核过：「江源杯」2026 具身智能场景技能挑战赛（<a href="https://www.cie.org.cn/list_43/16724.html">中国电子学会公告</a>）虽然组队要求写了「个人或团队均可报名」，但<strong>报名已于 2026-08-25 截止</strong>（9-3 到 9-4 的宜宾晋级赛也已结束，总决赛 12 月中下旬），且参赛主体限定为合法注册的企业 / 高校科研院所 / 初创团队；iCAN「金视线杯」具身智能应用设计挑战赛报名截止 <strong>2026-09-24</strong> 尚在窗口内，但<strong>要求 3 名在校学生 + 1–2 名指导老师组队</strong>，个人和非学生进不去（<a href="https://xingxiancn.com/article/40644">赛事说明</a>）。
+<strong>仍然有效的替代入口有两个</strong>：<a href="https://robochallenge.ai/">RoboChallenge</a>（9-3 推过，远程真机评测，不用买机器人就能拿分数，长期开放）；以及本期六条里现成的贡献口子 —— PhysBrain 1.5 的 <strong>2B 档评测复现</strong>（官方把 2B 排除在排名外、没有细节，这是真空）、Sprite 的 <code>validate_models.py</code> <strong>资产校验 issue</strong>、EngineAI 的 <strong>单卡并行环境数实测</strong>。<strong>在没有比赛可打的月份，一个别人认得的复现数字比一张参赛证书有用。</strong></li>
+</ol>
+</article><div class="actions">
+<a class="btn" href="2026-09-10.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

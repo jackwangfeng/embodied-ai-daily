@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-09-06 · 具身智能可参与项目日报</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>2026-09-06 · 具身智能可参与项目日报</h1>
+<p>今日主线：<strong>这一周具身智能圈只有一件事 —— 机器鸭。</strong> Hugging Face / Pollen Robotics 的 $399 开源双足 Microduck 8 月 27 日开订，24 小时约 6500 台、$260 万，被普遍称作具身智能的「树莓派时刻」。它真正改变的不是价格（个人复刻一台反而要 ¥4100–5800），而是<strong>把「SDK + 仿真 + RL 训练栈」整条链路以 Apache-2.0 一次性给全了</strong>，并且顺带把一个此前被含糊带过的问题摆到台面上：<strong>开源硬件的「源」到底开到哪一层</strong>。国内开发者在开订次日就开始从官方仿真模型反推装配图，本期国内 top1 就是这条反推工程链。模型与仿真侧同期两件事：小米 XR-1 全量开源（README 明写「面向消费级显卡优化」），Meta 开源专为接触做的灵巧操作仿真平台 SuperDex。</p>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· <code>microduck-replica</code> —— 从仿真模型反推出整机工程的中文复刻仓</h3>
+<p><strong>类型：硬件（逆向工程 / CAD / 电控）｜纸面阅读 0 元，真做一台约 ¥4100–5800 ｜周期：读通 1–2 天，动手 3–6 周</strong></p>
+<p><strong>是什么。</strong> Microduck 开订<strong>第二天</strong>（2026-08-28）建仓，477 ⭐，9 月 1 日打了 v1.0，9 月 5 日仍在更新。它做的事是：从官方公开的 <strong>MJCF 仿真模型 + 47 个 STL 网格</strong>，反推出机械复刻所需的全部信息 —— 装配爆炸图（15 个部件沿运动链炸开、标注质量）、可直接导入 CAD 的装配体（世界变换已应用）、38 种网格 / 75 个实例的整机 BOM、约 325 件 M2 紧固件清单、轴承规格（Ø22×16×4、Ø15×10×3）、14 个受控关节的轴线与行程、15 个刚体的质量惯量。电控侧从 Rust 源码完整还原，并且把<strong>官方唯一没有开源的 <code>imu_to_dxl</code> 板</strong>画了出来（STM32G031F8P6 + LSM6DSV16X + 半双工缓冲，作为第 16 个设备挂在舵机总线上），附嘉立创工程和接线表。另有一份<strong>构建日志</strong>记录真实打印与装配过程。</p>
+<p><strong>为什么现在值得做。</strong> 三个理由，都不是「因为鸭子火」：</p>
+<p>其一，<strong>这是一次可以完整旁观的「从仿真资产反推实体工程」</strong>。MJCF 里藏着精确到 0.1 mm 的运动学树、每个零件挂在谁身上、绕哪根轴转、行程多少、质量和惯量张量 —— 把这些还原成装配关系是一门<strong>通用手艺</strong>，换任何一个「只放了仿真资产、不给 CAD」的机器人项目都能用。而这类项目正在变多。</p>
+<p>其二，<strong>这个仓库的工程记录质量高于结论本身</strong>。它把「哪些是纸上反推、哪些是实物验证、哪些还没验证」逐条标出来，甚至在 README 顶部公开挂了自己的勘误：9 月 3 日承认此前写的「硬件不开源、没有 PCB 原理图」是错的 —— 原因是只检索了 <code>microduck</code> 主仓，漏查了同组织下 <code>elec_</code> 前缀的硬件仓库。愿意这样自曝错误的开源工程日志，值得当范本读。</p>
+<p>其三，<strong>它有接收方</strong>。仓库正在公开求原理图评审，200 人的微信一群已满、二群在开。不是一个人的自嗨。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>今天（0 元，2 小时）</strong>：读 <a href="https://github.com/fanhao375/microduck-replica/blob/master/BOM.md"><code>BOM.md</code></a> + 装配爆炸图 + <code>docs/紧固件反推.md</code>，先判断自己到底要不要做。BOM 里每一项都标了依据和核对日期，可以直接当决策材料。</li>
+<li><strong>本周（0 元，纯软件）</strong>：clone <a href="https://github.com/pollen-robotics/microduck_rl"><code>pollen-robotics/microduck_rl</code></a>，在 MuJoCo 里把官方策略跑起来、再自己训一条。<strong>软件侧是 Apache-2.0 全开的，这一半和你有没有硬件完全无关</strong>，本机 A4000 训 PPO 走路策略绰绰有余。这是本期六条里唯一今天就能看到进展的动手项。</li>
+<li><strong>想真做（¥4100–5800，3–6 周）</strong>：按仓库的 <code>docs/电控采购清单.md</code>（带淘宝实链）买件 → 打印 47 个件 → HAT 板直接拿官方 KiCad 工程打样（4 层板，不用自己画）→ <code>imu_to_dxl</code> 用本仓库的第三方原理图打样。</li>
+<li><strong>最有性价比的贡献路径（0 元）</strong>：仓库明确点名想听三处意见 —— 半双工缓冲的使能逻辑（<code>2OE</code> 接常高、发送时有回显，还是也接 DE、发送时 RX 悬空）、J1/J2 直通的铜皮宽度、不上晶振时 HSI16 跑 1 Mbps 的余量够不够。<strong>有硬件背景的话，开一个 issue 就是实打实的贡献</strong>，成本为零。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> 五条，第一条最重要：</p>
+<p>① <strong>复刻不省钱，反而更贵。</strong> 15 个 Dynamixel XL330 光舵机就 $359（ROBOTIS 国际站 $23.90/个）到 $412（美国站 $27.49/个），欧洲含税要 €603–629；加上主控与传感器（$80–120）、电池供电（$30–50）、轴承（$15–30）、紧固件（$15–25）、两块 PCB 打样含 SMT（$60–150）、打印耗材（$15–30），总额约 <strong>$575–815 ≈ ¥4100–5800，比 $399 的原版还贵</strong>。$399 是矽递规模化量产 + 官方供应链的价格，个人复刻不可能达到。做这件事的理由是「能立刻动手 + 学到反推手艺 + 可以换国产平替舵机降本」，<strong>不是省钱</strong>。</p>
+<p>② <strong>仿真 STL 不是可打印工程件。</strong> 仓库自己反复强调这句，构建日志就是在验证它。目前首批打印件（头壳、躯干壳、腿部结构件、脚）已出、腿部件的 M2 紧固件反推在实物上成立，但<strong>整机还没装完</strong>。</p>
+<p>③ <strong><code>imu_to_dxl</code> 原理图没打样、没实物验证</strong>，连通性只逐网络核对过（无悬空脚、无短路），已按社区评审补了 DE 与 DXL_DATA 两处上拉。要打样自己承担风险。</p>
+<p>④ <strong>走线方案官方零资料</strong>，仓库标为「❌ 缺失」。</p>
+<p>⑤ <strong>官方给 XL330 超压运行</strong> —— 额定 3.7–6.0 V，Microduck 实际给 6.6–8.2 V（HAT 上 Dynamixel 接口直接接电池原电压，板上唯一的 5 V 降压是给树莓派的）。这是官方的选择不是笔误，但复刻时要知道它吃舵机寿命。</p>
+<p><strong>出处。</strong> <a href="https://github.com/fanhao375/microduck-replica">fanhao375/microduck-replica</a>
+相关：<a href="https://github.com/pollen-robotics/elec_RPI_Robot_HAT">官方已开源的 HAT 板 KiCad 工程 <code>elec_RPI_Robot_HAT</code></a> ｜ <a href="https://github.com/pollen-robotics/microduck_rl"><code>microduck_rl</code>（MuJoCo 仿真 + RL 训练栈）</a> ｜ <a href="https://post.smzdm.com/p/a70dm4ll/">什么值得买：买、搓、等三条路怎么算</a> ｜ <a href="https://post.smzdm.com/p/al3x0m40/">什么值得买：只开了「一半的源」</a></p>
+<hr>
+<h3>2 · 小米 Xiaomi-Robotics-1（XR-1）—— 10 万小时数据训出来的 VLA，官方写明「面向消费级显卡优化」</h3>
+<p><strong>类型：软件 ｜硬件成本 0 元（有显卡即可）｜周期 2–5 天</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 小米机器人团队 8 月初放出的完整开源套件（Apache-2.0）：<strong>后训练、推理、benchmark 评测代码 + 各 benchmark 的微调 checkpoint</strong>，基础模型 <a href="https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-5B">XR-1-5B</a> 在 HF。架构是 Qwen3-VL 通过 Mixture-of-Transformers 耦合一个 Diffusion Transformer 动作头；训练走「10 万+ 小时无本体 UMI 轨迹预训练 → 1 万+ 小时跨本体后训练」两段式。截至 2026-07-15 在 <strong>RoboCasa365 和 RoboDojo 两个榜单都排第一</strong>。README 明确写「built on HF <code>transformers</code>（pin 到 4.57.1）and <strong>optimized for consumer GPUs</strong>」—— 这句话是它区别于多数国产大模型开源的地方。</li>
+<li><strong>怎么切进去。</strong> 先拉 <a href="https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365">RoboCasa365 的官方 checkpoint</a> 跑评测，<strong>复现出官方分数</strong>，把「环境 → 数据格式 → 评测」这条链走通；再用 <code>xr1/</code> 下的后训练代码换自己的数据。产出物是一条可复现的评测记录 + 一个自己后训练的 checkpoint。</li>
+<li><strong>坑。</strong> ① 5B 参数在 16 GB 卡上推理（bf16）尚可，<strong>后训练要走 LoRA 或压 batch</strong>，直接全量会 OOM；② 榜单是仿真榜，<strong>别当真机预期</strong>；③ <code>transformers</code> 被 pin 到 4.57.1，别随手升级。</li>
+<li><strong>出处。</strong> <a href="https://github.com/XiaomiRobotics/Xiaomi-Robotics-1">XiaomiRobotics/Xiaomi-Robotics-1</a>
+相关：<a href="https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-5B">XR-1-5B 权重</a> ｜ <a href="https://arxiv.org/abs/2607.15330">论文 arXiv:2607.15330</a></li>
+</ul>
+<hr>
+<h3>3 · AGIBOT WORLD 2026 —— 24 万次下载的真机数据集，9 月 1 日仍在更新</h3>
+<p><strong>类型：软件（数据集）｜成本 0 元 + 存储 ｜周期 1 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 智元开源的全域具身数据集，<strong>100% 采自真实环境</strong>（商业空间、家庭等通用场景），基于 AgiBot G2 平台以自由形式采集 —— 遥操作员按实时情况动态执行任务，而不是照剧本走。分五期持续开源，并用数字孪生在仿真里 1:1 重建同一场景、仿真数据同步开源。HF 上<strong>最后更新 2026-09-01，累计下载 24.4 万次</strong>，是目前活跃度最高的中文来源真机数据集之一。</li>
+<li><strong>怎么切进去。</strong> 这条的价值是<strong>它替你解决了「没机器人就没数据」</strong>：直接拉一个 subset → 用上面第 2 条的 XR-1 或上期的 SmolVLA 后训练 → 交出 benchmark 分数。全程不需要任何硬件。</li>
+<li><strong>坑。</strong> ① 数据量极大，<strong>下载和存储是真实成本</strong>，务必先只拉单个主题的 subset 再决定；② 需要 <code>git-lfs</code> 和带写权限的 HF token；③ 真机数据的场景分布和你自己的场景差异很大，别指望零样本迁移。</li>
+<li><strong>出处。</strong> <a href="https://huggingface.co/datasets/agibot-world/AgiBotWorld2026">agibot-world/AgiBotWorld2026（HF 数据集）</a>
+相关：<a href="https://github.com/OpenDriveLab/AgiBot-World">OpenDriveLab/AgiBot-World（工具链与文档）</a> ｜ <a href="https://www.agibot.com/article/231/detail/54.html">官方开源说明</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· Project SuperDex —— Meta 开源的接触优先物理引擎，<code>pip</code> 装得上</h3>
+<p><strong>类型：软件 ｜硬件成本 0 元 ｜周期 1 天跑通，1–2 周出策略</strong></p>
+<p><strong>是什么。</strong> Meta（facebookresearch）2026-08-20 开源、Apache-2.0、589 ⭐、9 月 5 日仍在推进的<strong>灵巧操作统一仿真平台</strong>。四个部件：<strong>SuperDex Physics</strong>（为触觉操作专门做的 contact-first 物理引擎，是整个项目的仿真骨干）、<strong>SuperDex Robotics</strong>（机器人定义、控制器、传感器、执行器的 SDK）、<strong>SuperDex Studio</strong>（把 CAD 和机器人描述转成原生资产的桌面 GUI）、<strong>SuperDex Lab</strong>（Gymnasium 风格的 RL 接口，early preview）。</p>
+<p><strong>为什么现在值得做。</strong> 灵巧操作这条线的瓶颈很具体：<strong>接触仿真的保真度</strong>。多指抓取、柔性指尖、绳索编织、拧螺纹这类任务，通用引擎一直吃力，而这恰好是灵巧手研究的全部内容。SuperDex 是第一个由大厂以 Apache-2.0 放出、且<strong>专门为接触做的</strong>引擎。更关键的是交付方式：<code>uv pip install superdex</code> 装预编译 wheel，<strong>不用编译 C++、不用配 CUDA</strong>。对比一下 —— 上期我们说模型侧的门槛被 SmolVLA 打穿了，这一条是仿真侧的同一件事。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>今天（1 小时）</strong>：装 <code>uv</code> → <code>uv venv</code> → <code>uv pip install superdex</code> → 跑两个官方例子：<code>superdex_physics/examples/example_tendon_comparison.py</code>（腱驱对比）和 <code>superdex_robotics/examples/control/example_osc_jsc_control.py</code>（控制）。注意仓库内 <code>uv run</code> 必须加 <code>--no-project</code>，否则它会从源码构建。</li>
+<li><strong>本周</strong>：用 SuperDex Studio 把一个已有的开源手 URDF（LEAP Hand、AmazingHand 都行）导成 SuperDex 资产，<strong>产出物是一份可复用的资产文件</strong>。</li>
+<li><strong>第二周</strong>：用 Lab 的 Gym 接口在一个抓取 / 拧转任务上训 PPO。<strong>产出物是一条策略 + 一份「同一任务在 SuperDex 与 MuJoCo 下接触表现的对比记录」</strong> —— 后者是目前社区里几乎没人做过、又很容易被引用的东西。</li>
+<li><strong>本机备注</strong>：A4000 16 G 跑 RL 够用；但下面第 3 条坑要先看。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> ① <strong>SuperDex Lab 是 early preview，官方明说会有实质改动</strong>，别把接口写死进你的项目；② <strong>SuperDex Teleop（Quest 3 上的 VR 遥操作）要 Q4 2026 才有</strong>，画廊里那些实时遥操作视频现在复现不了，别按它规划；③ <strong>只提供 Python 3.12 的 wheel</strong>，更灵活的 abi3 wheel 是「future release」；④ Linux 上 Studio 和 Physics Debugger 需要 X11/XWayland + OpenGL 4.1 驱动，<strong>无头容器里 GUI 起不来</strong>，只能跑 headless 的物理与 RL 部分。</p>
+<p><strong>出处。</strong> <a href="https://github.com/facebookresearch/project_superdex">facebookresearch/project_superdex</a>
+相关：<a href="https://projectsuperdex.com/">项目官网</a> ｜ <a href="https://projectsuperdex.com/lab/">SuperDex Lab 说明</a></p>
+<hr>
+<h3>2 · Microduck —— $399 开源双足机器鸭，24 小时卖了 $260 万</h3>
+<p><strong>类型：硬件 ｜$399（约 ¥2800）+ 转运 ｜周期：软件今天就能跑，硬件等 4–6 个月</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> Hugging Face 旗下 Pollen Robotics 设计、深圳矽递制造，8 月 27 日开订。25 cm 高、约 800 g，15 个 Dynamixel XL330 舵机、广角摄像头、ToF 激光雷达、双 IMU、麦克风、喇叭、NFC、Wi-Fi/BT，主控瑞芯微 RK3566，<strong>鸭嘴当夹爪能夹 800 g</strong>。会走、会蹲、摔倒能自己爬起来。<strong>SDK、MuJoCo 仿真环境、完整 RL 训练栈全部 Apache-2.0</strong> —— 这才是它值得进这份日报的原因，硬件本身只是载体。24 小时约 6500 台订单、$260 万，新订单要等 4–6 个月。</li>
+<li><strong>怎么切进去。</strong> <strong>先别下单。</strong> <a href="https://github.com/pollen-robotics/microduck_rl"><code>microduck_rl</code></a> 今天就能在本机训 PPO 走路策略；社区的 <a href="https://github.com/jonathanhawkins/microduck-lab">microduck-lab</a> 甚至证明了普通 Mac、没有 CUDA 也能训并在浏览器里实时看。<strong>先训出一条自己满意的策略，再决定要不要花这 $399。</strong></li>
+<li><strong>坑。</strong> ① <strong>国内不直邮</strong>，要走转运，首批交付已推迟到 2026 圣诞后；② <strong>硬件只开了一半</strong> —— HAT 板全开（KiCad + Gerber + BOM + 贴片坐标），但 <code>imu_to_dxl</code> 板、可编辑机械 CAD、整机 BOM、装配文档、走线方案都没公开（详见国内第 1 条）；③ $399 不含税不含运费。</li>
+<li><strong>出处。</strong> <a href="https://github.com/pollen-robotics/microduck">pollen-robotics/microduck</a>
+相关：<a href="https://pollen-robotics.com/microduck/">官方产品页</a> ｜ <a href="https://store.pollen-robotics.com/products/microduck">预售商店</a> ｜ <a href="https://techcrunch.com/2026/08/27/hugging-face-is-selling-a-cute-399-open-source-duck-robot-microduck/">TechCrunch 报道</a></li>
+</ul>
+<hr>
+<h3>3 · Open Duck Mini v2 —— BOM &lt; $400、机械电控全开源，今天就能打印</h3>
+<p><strong>类型：硬件 ｜BOM &lt; $400（约 ¥2800）｜周期 3–5 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 迪士尼 BDX droid 的迷你开源版，42 cm（腿伸直），Apache-2.0，3969 ⭐。<strong>它是 Microduck 的完全开源前身</strong>：机械设计、电控、RL 训练与 sim2real 全部公开，不存在「哪一层没开」的问题。如果你要的是「今天就能打印、图纸完全开放、不用等预售、不用做逆向」，<strong>这条比 Microduck 和上面的复刻仓都直接</strong> —— 它本来就是给个人做的。仓库里直接给了两条训好的 ONNX 走路策略可以先跑。</li>
+<li><strong>怎么切进去。</strong> 先跑仓库自带的 <code>BEST_WALK_ONNX_2.onnx</code> 看效果 → 决定要做就照 BOM 采购打印 → 用 <a href="https://github.com/apirrone/Open_Duck_Mini_Runtime">Runtime 仓</a> 上机。有 Discord 社区可问。</li>
+<li><strong>坑。</strong> ① <strong>主仓 2026-01-31 之后没再推进</strong>（Runtime 仓 7 月还在动），文档是边做边写的、维护者自己说「有很多没整理的脚本」；② <strong>sim2real 仍在推进中</strong>，别指望开箱即走得稳；③ 表情特性（眼睛 LED、摄像头、喇叭、麦克风）在当前版本里还不完整，是装完之后再加的东西。</li>
+<li><strong>出处。</strong> <a href="https://github.com/apirrone/Open_Duck_Mini">apirrone/Open_Duck_Mini</a>
+相关：<a href="https://github.com/apirrone/Open_Duck_Mini_Runtime">Open_Duck_Mini_Runtime</a> ｜ <a href="https://github.com/blublear/open-duck-mini-hat">社区做的简化接线 HAT</a></li>
+</ul>
+<hr>
+<h2>趋势观察</h2>
+<ol>
+<li><p><strong>「树莓派时刻」的真实含义不是便宜，是软件栈统一 + 供应链现货。</strong> $399 其实不便宜 —— 个人复刻一台反而要 ¥4100–5800（舵机占大头，15 个 XL330 就 $359 起）。真正变了的是：SDK、MuJoCo 仿真、RL 训练栈全部 Apache-2.0 且互通，你为 Microduck 写的策略换到 Open Duck Mini 上改的是配置不是代码。<strong>形态收敛的红利终于兑现到了双足这一档。</strong></p>
+</li>
+<li><p><strong>「开源硬件」这个词从今天起要分层追问。</strong> Microduck 这一周把边界摆到了台面上：软件全开 ✅、HAT 板全开 ✅（KiCad + Gerber + BOM + 贴片坐标）、<code>imu_to_dxl</code> 板 ❌、可编辑机械 CAD ❌、整机 BOM ❌、走线方案 ❌。以后看到「开源机器人」先问一句<strong>开的是哪几层</strong>。国内那个复刻仓的价值恰恰在于它把这条边界一层层画清楚了 —— 包括公开挂出自己曾经画错的那次勘误。</p>
+</li>
+<li><p><strong>模型与仿真侧的关键词，从「能不能跑」变成了「官方给不给消费级显卡的路径」。</strong> 小米 XR-1 把 <code>optimized for consumer GPUs</code> 直接写进 README；Meta 的 SuperDex 用 <code>pip install</code> 装预编译 wheel、不要求编译和 CUDA。这和上期 SmolVLA 是同一个方向：<strong>厂商开始把「单卡装得上、跑得动」当成开源交付的验收标准之一</strong>，而不是发完权重就完事。</p>
+</li>
+<li><p><strong>参与入口（比赛 / bounty）本期仍然空缺，已逐条核对。</strong> 2026 美团低空经济与具身智能挑战赛 9 月 1 日截止（已过）；第二届无人系统具身智能算法挑战赛 7 月 15 日截止（已过）；2026 全国具身智能技术应用大赛 6 月 20 日截止（已过）。唯一<strong>仍在报名期</strong>的是 <a href="https://xingxiancn.com/article/40644">iCAN 大学生创新创业大赛「金视线杯」具身智能应用设计挑战赛</a>（截止 2026-09-24），但它要求 <strong>3 名在校学生 + 1–2 名指导老师、不得跨校组队</strong> —— 个人开发者不符合报名条件，按本刊「不需要机构身份」的标准<strong>不计入可参与项</strong>。
+<strong>这一周对个人真正开放的入口仍然是「给开源仓库提 PR / 提评审」</strong>：国内第 1 条那个仓库正在公开征集 <code>imu_to_dxl</code> 原理图的评审意见（半双工缓冲使能逻辑、铜皮宽度、不上晶振跑 1 Mbps 的余量），<strong>是本期唯一有明确接收方、且零成本的贡献入口</strong>。</p>
+</li>
+</ol>
+</article><div class="actions">
+<a class="btn" href="2026-09-06.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>
