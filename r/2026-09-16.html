@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报（2026-09-16）</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报（2026-09-16）</h1>
+<blockquote>
+<p>本期软硬配比：软件 3 / 硬件 2 / 软硬兼有 1。
+前两期是 2 软 1 硬 3 兼（09-14）和 3 软 2 硬 1 兼（09-15），<strong>没有连续偏向</strong>，本期维持平衡。</p>
+<p>本期有一条主轴：<strong>「让 agent 来做机器人工程」这件事，这周第一次有了一把统一的尺子。</strong>
+国外 TOP 1 的 RLE-Bench 把「机器人学习工程师的一天」拆成九个任务族、放进容器里自动打分，
+其中两个任务<strong>完全不需要 GPU</strong>；专题两条也都是同一件事在 3D 打印链路上的形态
+（打印前的门 / 打印后的诊断）。趋势观察第 1 点展开。</p>
+<p>另外提醒：国内第 2 条是本站<strong>第三次</strong>写 microduck 系列。写它是因为这条的内容和前两条不重叠
+（这次是<strong>另一块 SBC 的 bring-up 教程</strong>，不是 BOM 也不是 RL 实验），条目里会把差别说清楚；
+如果你已经看过前两期这一系列，可以直接跳到第 3 条。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· PhysBrainEvalKit —— 把 28 个空间 / 具身 benchmark 收进同一条命令，而且允许你只有一张卡</h3>
+<p><strong>是什么。</strong></p>
+<p>一套<strong>面向视觉语言模型的空间与具身智能评测工具包</strong>，9 月 8 日建仓，9 月 15 日还在推，21 星。
+作者是 <strong>DeepCybo · 中关村学院 · 中关村人工智能研究院</strong>（这三个署名印在模型卡的 logo 图上，
+不是我推断出来的）。它是在开源的 <a href="https://github.com/pickxiguapi/EmbodiedEvalKit">EmbodiedEvalKit</a>
+基础上扩出来的，这次放出的是：<strong>28 个 benchmark 的适配器、统一的 HuggingFace 推理接口、
+点定位类任务的统一指标协议，以及一个「模型常驻 + 分片」的执行器。</strong></p>
+<p>配套模型是 <strong>PhysBrain 1.5</strong>，以 <strong>Qwen3-VL</strong> 为骨干，扩了动作 token 和视觉状态 token，
+把语言回答、结构化空间输出、末端执行器轨迹、未来世界状态<strong>全部写成离散 token</strong>，
+用同一个自回归目标训练，没有任务专用头。HF 上放了 <strong>8B 和 2B 两个尺寸</strong>
+（8B 23 个赞 / 207 次下载，2B 12 个赞 / 152 次下载，均为本文写作时的数字），
+另有一个可以直接在浏览器里传图试的 Space。作者报告 8B 在这套 28 项的组合上<strong>总分 72.5</strong>，
+自称在被评的开源模型里排第一。</p>
+<p>28 个 benchmark 的名单和数据源在 README 里逐行列了 HF 仓库地址，覆盖三类：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>代表</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>沿用 EmbodiedEvalKit 协议</td>
+<td>ERQA、EgoPlan2、SAT、BLINK、CV-Bench、VSI-Bench、EmbSpatial、COSMOS、RoboVQA、VLABench…</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>点定位 / grounding（改用统一 micro-F1）</strong></td>
+<td>Part-Affordance-2K、PIOBench、PixMo-Points、PointBench、RefSpatial-Bench、RoboAfford、RoboRefit、RoboSpatial-Home、VABench-Point、Where2Place</td>
+<td>10</td>
+</tr>
+<tr>
+<td>工具包之外、沿用各自官方规则</td>
+<td>ERQA-PLUS、ViewSpatial、MindCube、MMSI-Bench、3DSRBench、Q-Spatial-Bench</td>
+<td>6</td>
+</tr>
+</tbody></table>
+<p><strong>为什么现在值得做。</strong></p>
+<p>具身 VLM 这一年最大的问题不是没模型，是<strong>没有一把公认的尺子</strong> —— 每篇论文报的 benchmark 组合不同、
+prompt 不同、点定位的判对标准更是各写各的。这个仓做的事情就是把这些<strong>钉死</strong>：
+统一输入协议、统一 prompt 模板、<strong>贪心解码（<code>temperature=0.0</code>、<code>top_p=1.0</code>、<code>top_k=-1</code>、<code>seed=3407</code>）</strong>、
+benchmark 级和分片级的 <code>--resume</code>。只有 MMSI-Bench 是故意的例外，它显式开采样
+（<code>--mmsi-temperature</code>、<code>--mmsi-seed</code>）。</p>
+<p>对个人的意义在另一处：<strong>这套东西整个社区都没有「在消费级单卡上到底能跑哪些、要多久、要多少显存、
+数据集一共多大」这张表。</strong> 作者用的是多卡分片跑法（<code>--gpus 0,1,2,3 --models-per-gpu 2</code>），
+README 里没有任何单卡数字。<strong>这张表就是你能交出去的第一份东西</strong>，它不需要你有新想法，
+只需要你有一张卡和耐心，而且它对后面每一个想复现的人都有用。</p>
+<p><strong>个人怎么分步切进去。</strong></p>
+<p><strong>Step 0（5 分钟，0 元）——</strong> 先别装环境。打开
+<a href="https://huggingface.co/spaces/DeepCybo/physbrain1-5-8b-demo">HF Space demo</a>，
+传一张你自己场景的图，试试它的空间理解、具身推理和点定位。<strong>如果这个模型的能力和你关心的事没关系，
+后面几步就别做了。</strong></p>
+<p><strong>Step 1（约 1 小时）—— 环境。</strong> Python 3.10+，作者用 3.11 验证。</p>
+<pre><code class="language-bash">python -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -r requirements.txt
+</code></pre>
+<p>分片启动器额外要 Bash、<code>taskset</code>、<code>nvidia-smi</code>。
+⚠️ <strong>FlashAttention 版本会影响分数</strong>：作者写明 PhysBrain 1.5 是在 <strong>FA4</strong> 上训的，
+用 FA4 评测结果正常，<strong>用 FA2 会有小幅波动</strong>（作者称在可接受范围内）。
+你如果用 FA2，报数字时要注明。</p>
+<p><strong>Step 2（半小时）—— 选模型，这一步决定你能不能在 16 G 卡上跑完。</strong></p>
+<table>
+<thead>
+<tr>
+<th>候选</th>
+<th>bf16 权重量级</th>
+<th>A4000 16 G</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>DeepCybo/PhysBrain1.5-2B</code></td>
+<td>约 4–5 GB</td>
+<td>✅ 宽裕，可以 <code>--models-per-gpu 2</code></td>
+</tr>
+<tr>
+<td><code>Qwen/Qwen3-VL-4B-Instruct</code></td>
+<td>约 8–9 GB</td>
+<td>✅ 单 worker 可跑，长视频 benchmark 要留余量</td>
+</tr>
+<tr>
+<td><code>DeepCybo/PhysBrain1.5-8B</code></td>
+<td>约 16 GB</td>
+<td>❌ bf16 放不下，要量化或 offload（作者未提供量化配置）</td>
+</tr>
+</tbody></table>
+<p>（权重量级是按参数量 × 2 字节的<strong>估算</strong>，不含 KV cache 和视觉 token 的激活，实际峰值更高；
+以你自己 <code>nvidia-smi</code> 看到的为准。）</p>
+<p><strong>建议的第一枪：<code>PhysBrain1.5-2B</code> + <code>--only ERQA,PointBench</code>。</strong>
+一个多选题类、一个点定位类，正好各覆盖一种指标路径。</p>
+<p><strong>Step 3（时间取决于网络）—— 先 dry-run，再下数据。</strong></p>
+<pre><code class="language-bash">export HF_HOME=/data/huggingface          # 指到大盘，别用系统盘
+export HF_DATASETS_CACHE=/data/huggingface/datasets
+bash scripts/eval_qwen3vl.sh \
+  --model-path /models/PhysBrain1.5-2B --model-name pb15-2b \
+  --output-base /results/pb15-2b --gpus 0 --models-per-gpu 1 \
+  --cpu-per-worker 4 --only ERQA,PointBench --dry-run
+</code></pre>
+<p>⚠️ <code>--dry-run</code> <strong>只验证模型配置和 CLI 参数并打印计划，不下载数据、不检查数据集文件</strong> ——
+这是 README 明说的，别把它当成「预检通过」。
+<strong>28 个数据集加起来有多大，官方没公布</strong> —— 这是你能交出去的第二个数字。</p>
+<p><strong>Step 4（跑全量）—— 去掉 <code>--dry-run</code>，加上 <code>--resume</code> 和固定的 <code>--run-id</code>。</strong>
+中断之后用同一个 <code>--run-id</code> 重启可以复用未完成的分片。单卡就 <code>--models-per-gpu 1</code>。</p>
+<p><strong>Step 5（出表）——</strong> <code>python scripts/summarize_benchmark_scores.py --help</code> 做聚合，
+然后把「显存峰值 / 每个 benchmark 的墙钟时间 / 数据集体积 / FA2 与 FA4 的差」写成一个 issue 交回去。
+<strong>这一步才是产出。</strong></p>
+<p><strong>成本与时间。</strong> 全程<strong>没有 API token 开销</strong>（模型全在本地跑）。
+自有 A4000：只有电费和时间，2B 跑完 28 项的量级估计是<strong>一整天到两天</strong>（作者未给单卡基准，
+这是按 VLM 评测的一般吞吐做的量级猜测，不是实测）。
+要跑 8B 的话，租一张 4090/A100 按市面 <strong>¥2–4/小时</strong>估，先用 <code>--only</code> 把流程跑通再包时段。</p>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li>⚠️ <strong>仓里没有 LICENSE 文件。</strong> 这是它最大的风险：<code>gh repo view</code> 返回的许可是空。
+README 只写了「数据集许可由各自所有者管辖」，<strong>没说代码本身按什么许可发布</strong>。
+用之前先开 issue 问作者，别默认可用。</li>
+<li><strong>点定位的分数不能和各 benchmark 的官方数字对比。</strong> 那 10 个任务作者改用了
+<strong>统一的 micro-averaged F1</strong>（同时衡量预测有效性和目标覆盖），这是他们自己的协议，
+见 <code>docs/final_point_metrics_protocol.md</code>。</li>
+<li><strong>两个轨迹类 benchmark 报的是 100−NRMSE</strong>，为了让「越大越好」一致 —— 读表时别按原指标理解。</li>
+<li><strong>只有 HF backend。</strong> 分片启动器目前不支持 vLLM / SGLang（模型卡里说模型本身兼容，
+但<strong>这套评测的执行器不支持</strong>），吞吐上不去就是不去。</li>
+<li><strong>数据集许可各不相同</strong>：28 个数据集各自的访问条款要逐个看，商用前尤其如此。</li>
+</ol>
+<p><strong>出处与相关链接。</strong></p>
+<p>→ <strong>仓库</strong> <a href="https://github.com/DeepCybo-PhysAI/PhysBrainEvalKit">https://github.com/DeepCybo-PhysAI/PhysBrainEvalKit</a>
+｜ 模型 <a href="https://huggingface.co/DeepCybo/PhysBrain1.5-8B">PhysBrain1.5-8B</a> ·
+<a href="https://huggingface.co/DeepCybo/PhysBrain1.5-2B">PhysBrain1.5-2B</a>
+｜ <a href="https://huggingface.co/spaces/DeepCybo/physbrain1-5-8b-demo">在线 demo</a>
+｜ <a href="https://deepcybo-physai.github.io/PhysBrain-1.5/">项目页</a>
+｜ <a href="https://arxiv.org/abs/2609.14973">arXiv:2609.14973</a>
+｜ 上游框架 <a href="https://github.com/pickxiguapi/EmbodiedEvalKit">EmbodiedEvalKit</a>
+｜ 骨干 <a href="https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct">Qwen3-VL-4B-Instruct</a></p>
+<hr>
+<h3>2 · OptiDuck —— 把 microduck 搬到一块 ¥150 的 Radxa 板子上，外加一份 149 KB 的中文踩坑教程</h3>
+<p><strong>先说清楚它和前两期那两条 microduck 的区别</strong>（避免你觉得在看重复内容）：</p>
+<table>
+<thead>
+<tr>
+<th>期</th>
+<th>条目</th>
+<th>讲的是</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>09-12</td>
+<td>Microduck 装机教程</td>
+<td><strong>整机 BOM 与装配</strong>，核价约 ¥3700–4200</td>
+</tr>
+<tr>
+<td>09-13</td>
+<td>microduck-playground</td>
+<td><strong>四组可复现 RL 实验 + ONNX 策略 + 打印件</strong></td>
+</tr>
+<tr>
+<td><strong>本期</strong></td>
+<td><strong>OptiDuck</strong></td>
+<td><strong>换一块 SBC（Radxa ZERO 3W）从零 bring-up</strong>，以及子模块工程的组织方式</td>
+</tr>
+</tbody></table>
+<p><strong>是什么。</strong> 一个 <strong>umbrella 仓</strong>：本体只放文档和归档，三块代码以 git submodule 引入 ——
+上板软件栈（<a href="https://github.com/pollen-robotics/microduck">pollen-robotics/microduck</a> 的本地变体，
+一堆 Rust daemon：<code>robotd</code>/<code>configd</code>/<code>btd</code>/<code>padd</code>/<code>updaterd</code> 加 <code>robotctl</code>/<code>duckctl</code> CLI）、
+RL 训练仓（<a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl</a> 的变体，
+mjlab + MuJoCo 任务、HD1910 舵机台架标定、BAM 作动器辨识）、
+结构硬件（<a href="https://github.com/JoyandAI/OpenMicroDuck">JoyandAI/OpenMicroDuck</a>，SolidWorks CAD + BOM）。</p>
+<p>主控从官方路线换成了 <strong>Radxa ZERO 3W（RK3566 / 2 GB）</strong>，跑 Radxa OS（Debian 13，6.1 内核），
+舵机总线走 UART2，姿态传感器走 I2C4，步态策略在 MuJoCo 里用 RL 训完导出 ONNX 上板。</p>
+<p><strong>真正的价值在那份 149 KB 的中文教程</strong>（仓根目录那份「Radxa ZERO 3W 零基础部署调试教程」），
+第 0 节直接叫「踩坑血泪史（必看！帮你节省 2~3 小时）」，七条都是<strong>只有真上过手才写得出来的</strong>：</p>
+<ol>
+<li><strong>电源不够 → 内核能起来，但 TF 卡物理设备根本识别不到</strong></li>
+<li>Windows 上烧 Armbian 镜像的已知 bug → <strong>分区表被清掉</strong></li>
+<li>Armbian 设备树里只有通用 <code>radxa-zero3</code>，<strong>没有 ZERO 3W 专用 dtb</strong></li>
+<li>PowerShell 的 <code>$env:USERPROFILE</code> 展开坑</li>
+<li>SSH <code>Connection refused</code> → 板子上压根没装 <code>openssh-server</code></li>
+<li>initramfs 里 <code>ls /dev/mmcblk*</code> 两种情况的区别</li>
+<li><strong>重启后 Wi-Fi 不自动连 → 开机即失联</strong>（凭据被存进了用户密钥环）</li>
+</ol>
+<p>第 6 节还有一段值得单独读的：<strong>先跑 7 条诊断再动手</strong>（启动配置文件叫什么、<code>/dev/ttyS2</code> 在不在、
+<strong>舵机总线上有没有 getty 在抢串口</strong> ← 这条最阴），然后 6.7 节把它抽象成方法论：
+「换一块新板子 / 换个新机器人，怎么自己设计 bring-up」。<strong>这一节和 microduck 没关系，
+对任何 SBC 机器人都成立。</strong></p>
+<p><strong>个人怎么切进去。</strong> 最低成本路线是<strong>先只买板子</strong>（Radxa ZERO 3W 零售价 ¥150 上下，
+按你自己的渠道核价）：照教程烧卡、配好免密登录、跑那 7 条诊断、跑 <code>setup-board.sh</code>，
+<strong>这一步就能验证你会不会踩那七个坑，而且一个舵机都还没买。</strong>
+再往上才是整机（以 OpenMicroDuck 的 BOM 为准，量级参考 09-12 那期的 ¥3700–4200 核价）。
+纯仿真的话，<code>microduck_rl</code> 里 HD1910 的 BAM 参数已经拟合进
+<code>vendor/bam/bam/params/hd1910/*.json</code>，<strong>不下载原始标定数据也能训</strong>。</p>
+<p><strong>坑。</strong></p>
+<ul>
+<li><strong>许可是混的</strong>：软件 Apache-2.0，但 <strong>OpenMicroDuck 的 CAD 与文档是 CC-BY-NC-SA-4.0，非商用</strong>。</li>
+<li><strong>子模块要两步提交</strong>：子仓 push 完，还得回主仓 <code>git add &lt;子模块路径&gt; &amp;&amp; git commit</code> 把指针推上去，
+否则别人 clone 到的还是旧 commit。README 把这条单独写了一节，说明作者自己被咬过。</li>
+<li><strong>大文件不在 git 里</strong>：HD1910 标定原始数据约 426 MB、训练权重归档约 405 MB，走 Release 附件，
+clone 下来是没有的。</li>
+<li>⚠️ <strong>仓根目录有一个 56 字节的小文本文件，文件名显示它记录的是作者自己的远程登录地址。</strong>
+我没有打开它，也不建议你去看 —— <strong>但把这类文件提交进公开仓是个坏习惯</strong>，值得给作者提一个 issue。</li>
+<li>新仓（9 月 15 日建），1 星，作者本人还在推。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/sim336/OptiDuck">https://github.com/sim336/OptiDuck</a>
+｜ 上游 <a href="https://github.com/pollen-robotics/microduck">microduck</a> ·
+<a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl</a> ·
+<a href="https://github.com/JoyandAI/OpenMicroDuck">OpenMicroDuck</a></p>
+<hr>
+<h3>3 · nanshanbot/hand —— 11 自由度右手，STM32 + PCA9685 + 11 个舵机，STEP/STL/组装手册全给，MIT</h3>
+<p><strong>是什么。</strong> 9 月 15 日建仓的<strong>十一自由度仿生机械手</strong>，<strong>MIT 许可</strong>（这次有 LICENSE 文件）。
+作者是 09-13 那期国内第 2 条 <a href="https://github.com/nanshanbot/ARM">nanshanbot/ARM</a>（开源六轴臂，
+BOM 逐行带淘宝链接）的同一个人 —— <strong>手和臂是配套的</strong>，这点比两个孤立项目有价值。</p>
+<p>仓里四块：</p>
+<ul>
+<li><code>3d/右手图纸/</code> —— <strong>STL、SolidWorks 源文件、结构图、组装手册</strong>、展示图（四个子目录都在）</li>
+<li><code>code/hand/</code> —— STM32F103 固件（CubeMX 生成基础工程 + CMake 构建），外加
+<code>tools/hand_debugger/</code> 一个 <strong>Python 串口调试台</strong></li>
+<li><code>code/py/shoushi.py</code> —— 普通 USB 摄像头 + MediaPipe，识别 <strong>8 种常用手势</strong>映射成手型</li>
+<li><code>code/py/main.py</code> —— <strong>Orbbec Gemini 336 RGB-D</strong> 估算真实三维关节角、连续跟随</li>
+</ul>
+<p>控制侧做了四件正确的事：<strong>稳定帧判断、滤波、舵机速度限制、姿态存取为 JSON</strong>。
+串口固定 <code>115200, 8N1</code>，接线表（PA9/PA10/GND）直接写在 README 里。</p>
+<p><strong>怎么切进去。</strong> <strong>不要一上来就装整手。</strong>
+先买一块 PCA9685（¥10 上下）、一个 SG90/MG90 舵机和一个 USB-TTL，
+用 <code>tools/hand_debugger/</code> 把单个关节的方向和限位调出来 —— 这是作者自己在 README 里
+用加粗写的顺序：<strong>首次调试先卸掉拉线或断开舵机负载</strong>。
+整手的电子件量级估 <strong>¥200–400</strong>（11 个舵机 + STM32F103 最小系统 + PCA9685 + 独立舵机电源，
+按公开零售价的量级估算，<strong>不是作者核价单</strong>），结构件自己打印。
+RGB-D 那条路要一台 Gemini 336（¥1000+），<strong>没有的话 <code>shoushi.py</code> 那条普通摄像头路线照样能跑</strong>。</p>
+<p><strong>坑。</strong></p>
+<ul>
+<li><strong>舵机电源不能从 STM32 取</strong>，且舵机电源 / STM32 / PCA9685 <strong>必须共地</strong> —— README 首页警告。</li>
+<li><strong>没有 BOM 价格表</strong>（ARM 那个仓有，这个没有），也<strong>没有任何力学数据</strong>
+（夹持力、额定负载、重复定位精度都是空的）。</li>
+<li>0 星全新仓，展示图的文件名带 2019 年日期（<code>InShot_20190627_…</code>），照片可能来自更早的版本，
+<strong>以 STEP/STL 为准，别照着照片认零件</strong>。</li>
+<li>11 个舵机同时动的峰值电流不小，电源余量按 5 A 起步考虑。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/nanshanbot/hand">https://github.com/nanshanbot/hand</a>
+｜ <a href="https://github.com/nanshanbot/hand/tree/main/3d">3d/ 目录（STL / SolidWorks / 组装手册）</a>
+｜ 同作者的六轴臂 <a href="https://github.com/nanshanbot/ARM">nanshanbot/ARM</a>（见 09-13 那期）</p>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· RLE-Bench —— 给「编码 agent 当机器人学习工程师」出了一份资格考试，其中两题不用 GPU</h3>
+<p><strong>是什么。</strong></p>
+<p>9 月 14 日放出的<strong>基准</strong>，<strong>MIT 许可</strong>，33 星，在线排行榜已经开了。
+它问的问题是：<strong>编码 agent 能不能干机器人学习工程师（Robot Learning Engineer）的活？</strong>
+不是「能不能控制机器人」，而是<strong>开发策略、搭感知系统、设计本体</strong>这一整套工程工作。</p>
+<p>九个任务族，四类：</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>类别</th>
+<th>要做的事</th>
+<th>要 GPU 吗</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>task01</td>
+<td>交互控制</td>
+<td>agent 在环，解厨房操作任务</td>
+<td>是</td>
+</tr>
+<tr>
+<td>task02</td>
+<td>交互控制</td>
+<td><strong>给未来的任务搭可复用的工具与技能</strong>（评分方式：另一个全新 agent 拿你造的工具去解一个没见过的任务）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>task03</td>
+<td>交互控制</td>
+<td>解具身推理挑战</td>
+<td>是</td>
+</tr>
+<tr>
+<td>task04</td>
+<td>策略开发</td>
+<td>训人形全身动作跟踪策略，交 ONNX</td>
+<td>是（参考预算 1×RTX 5090）</td>
+</tr>
+<tr>
+<td>task05</td>
+<td>策略开发</td>
+<td><strong>在限量 replay 预算下训 VLA</strong>（NanoVLA Recipe）</td>
+<td>是（参考预算 1×H100）</td>
+</tr>
+<tr>
+<td>task06</td>
+<td>感知估计</td>
+<td>对抗性传感下估物体位姿</td>
+<td>视变体而定</td>
+</tr>
+<tr>
+<td><strong>task07</strong></td>
+<td>感知估计</td>
+<td><strong>清料箱</strong>：磁吸 Franka 把 12–16 个冲压钢件收进料巢</td>
+<td><strong>否（纯 CPU）</strong></td>
+</tr>
+<tr>
+<td><strong>task08</strong></td>
+<td>机械设计</td>
+<td><strong>设计一个麦轮移动底盘</strong>，要同时扛住 Panda / UR5e / xArm7 三条臂</td>
+<td><strong>否（纯 CPU）</strong></td>
+</tr>
+<tr>
+<td>task09</td>
+<td>机械设计</td>
+<td>遥操作硬件与软件协同设计（Gello 重力补偿）</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p><strong>评测方式是这套东西最硬的地方</strong>：agent 在一个容器里干活、写产物到 <code>/logs/artifacts/</code>，
+<strong>verifier 是另一个独立镜像</strong>，拿隐藏的 seed、隐藏的场景、私有的评分代码重跑。
+以 task08 为例：verifier 把你交的 <code>robot.xml</code> 里的 <code>arm_*</code> 子树<strong>删掉</strong>，
+换上可信的适配器和三条标准臂，跑 A–E 五个动力学场景 × 三个隐藏 seed，
+再把你的 <code>controller.py</code> 放进 <strong>uid 隔离的进程</strong>里跑十二个货架目标、1 kg 和 2 kg 各一遍，
+还会重放第一个目标<strong>检查确定性</strong>。最终分数是「三条臂里最差的那条」。
+<code>validity</code> 里有两个 <strong>gate</strong>（模型能加载、结构连通），<strong>挂掉就把总分封在 0.15</strong>。</p>
+<p><strong>为什么现在值得做。</strong></p>
+<p>三个理由，按重要性排：</p>
+<ol>
+<li><strong>它是本季度第一个把 agent 放进「有物理后果」的工程任务里、并且能自动打分的东西。</strong>
+之前 09-15 那期写的 LLMs Robot Arena 是同一方向的浏览器擂台，但<strong>那是表演赛</strong>
+（1560 局、置信区间大面积重叠）；RLE-Bench 有隐藏 seed、私有评分、确定性重放和 gate。</li>
+<li><strong>task07 / task08 / task09 纯 CPU。</strong> 这意味着<strong>门槛不是显卡，是 Docker 和耐心</strong> ——
+对只有一张 16 G 卡（甚至没有卡）的个人来说，这是本期唯一一个「今晚就能开跑」的国外项目。</li>
+<li><strong>RLE-Bench 2.0 正在公开征集任务</strong>，明码写着<strong>共同作者署名</strong>和<strong>高影响力贡献的现金奖励</strong>
+—— 详见下面比赛一节，这是本期新发现的入口。</li>
+</ol>
+<p><strong>个人怎么分步切进去。</strong></p>
+<p><strong>Step 0 —— 先避开 README 的第一个坑。</strong> README 里的安装命令写的是
+<code>git clone https://github.com/RLE-Bench/RLE-Bench-dev.git</code>，<strong>那个仓不存在</strong>
+（我查了，GraphQL 报 <code>Could not resolve to a Repository</code>）。用：</p>
+<pre><code class="language-bash">git clone https://github.com/RLE-Bench/RLE-Bench.git      # 默认分支是 master，不是 main
+cd RLE-Bench &amp;&amp; make install &amp;&amp; source .venv/bin/activate
+</code></pre>
+<p><strong>Step 1（10 分钟）—— 体检。</strong></p>
+<pre><code class="language-bash">rlebench list      # 有哪些任务族、各自准备好了没
+rlebench doctor    # 本机缺什么依赖
+</code></pre>
+<p>需要 Linux + Git + Make + <a href="https://docs.astral.sh/uv/">uv</a> + 跑着的 Docker。GPU 任务还要 Docker 能拿到 NVIDIA 卡。</p>
+<p><strong>Step 2（半小时–数小时，取决于镜像构建）—— 准备最便宜的那题。</strong></p>
+<pre><code class="language-bash">rlebench prepare task08     # 机械设计，无需 GPU
+</code></pre>
+<p><strong>Step 3 —— 跑一轮。</strong> 用 Claude Code 当 agent：</p>
+<pre><code class="language-bash">rlebench run task08 -a claude-code -m &quot;anthropic/MODEL_NAME&quot;
+</code></pre>
+<p>凭据有两条路，<strong>成本差别巨大</strong>：官网 Run 页写明可以用 <strong>Claude Code 订阅登录</strong>
+（订阅制，边际成本 0），也可以走按 token 计费的 API 方式。
+<strong>先用订阅那条跑通，再决定要不要烧 API。</strong>
+<code>--dry-run</code> 可以先看命令不执行；<code>--</code> 之后的参数直接透传给 Harbor。</p>
+<p><strong>Step 4 —— 看结果。</strong></p>
+<pre><code class="language-bash">rlebench summarize jobs    # 写出 summary.json 和 report.md（状态、reward、成本）
+rlebench view jobs         # 浏览器里翻轨迹、verifier 结果和录下来的画面
+</code></pre>
+<p><strong>成本估算（务必当量级看）。</strong> task08 给 agent 的是<strong>两小时会话</strong>，task07 是<strong>四小时会话</strong>。
+按 Anthropic 官方价目表（Sonnet 5 $3/$15 每百万 token）粗估，
+一轮 task08 大致落在 <strong>$2–8</strong>；换 Opus 5（$5/$25）大致 <strong>$4–15</strong>。
+<strong>这个区间会因为输入缓存命中与否差好几倍</strong>，而且 agent 在容器里反复看渲染图会显著推高输入量 ——
+CLI 自己会在 <code>summarize</code> 里报 reported cost，<strong>以它报的为准，别信我这个估算</strong>。
+GPU 任务（task04/task05）官方参考预算是 RTX 5090 / H100 级，<strong>A4000 16 G 不要碰 task05</strong>。</p>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li><strong>README 的 clone 地址是错的</strong>（见 Step 0），默认分支是 <code>master</code>。</li>
+<li><strong>任务的资源预算是规则的一部分</strong>：8 小时 / 50,000 步 / 8 CPU / 1 GPU 这类限额写在任务里，
+超了不算数。设计你的 agent 提示词时要把预算当约束，不是建议。</li>
+<li><strong>隐藏 seed 和私有评分你拿不到</strong>，本地只有公开 seed。本地 5/5 不代表线上 5/5 ——
+task07 明说八个隐藏 120 秒回合才是计分的。</li>
+<li><strong>gate 会把分数封顶</strong>：task08 的 <code>loads</code> / <code>structure</code> 任一失败，总分锁死 0.15；
+task07 两个 20 秒冒烟回合没过，总分锁死 0.1。<strong>先保证能加载、能复现，再谈性能。</strong></li>
+<li>排行榜上目前跑出来的是 GPT-6 Astra、GPT-5.6 Sol、Gemini 3.7 Flash、Claude Opus 5 这类前沿模型
+（名字取自官方博客与排行榜页面）。<strong>排行榜的具体数字由前端脚本加载，我没有拿到可引用的原始数据文件，
+因此本期不引用任何分数。</strong> 想看就自己打开排行榜页。</li>
+</ol>
+<p>→ <strong>仓库</strong> <a href="https://github.com/RLE-Bench/RLE-Bench">https://github.com/RLE-Bench/RLE-Bench</a>
+｜ <a href="https://rle-bench.github.io/">排行榜</a>
+｜ <a href="https://rle-bench.github.io/blog/">研究博客（13 分钟，含九个任务的演示视频）</a>
+｜ <a href="https://rle-bench.github.io/run/">Run 文档</a>
+｜ <a href="https://github.com/RLE-Bench/RLE-Bench/tree/master/tasks/task08">task08 任务说明</a>
+｜ 评测底座 <a href="https://github.com/laude-institute/harbor">laude-institute/harbor</a></p>
+<hr>
+<h3>2 · JEPLO —— 第一个把 JEPA 用在 LiDAR 感知运动上的框架，无地图、单雷达、Go2</h3>
+<p><strong>是什么。</strong> 荷兰格罗宁根方向的 ASIG 实验室（作者 Yuan / Qiu / Cao / Cao / Li）9 月 12 日放出，
+15 日还在推，12 星。用<strong>一颗 Mid-360 LiDAR</strong>、<strong>不建图</strong>，在 Unitree Go2 上做感知型四足运动，
+学习框架是 <strong>JEPA（联合嵌入预测）</strong>。给了 arXiv、项目页、YouTube 演示和 <strong>HF 数据集</strong>。</p>
+<p>对个人真正有用的是它把<strong>三条链路都放出来了</strong>：</p>
+<ul>
+<li><strong>训练</strong>：Isaac Lab 2.3.2 + torch 2.7 / cu128，<code>train.py --num_envs 4096 --max_iterations 20000 --student_env_ratio 0.25 --warmup_iters 5000 10000</code></li>
+<li><strong>回放</strong>：<code>play.py --load_run &#39;^pretrained$&#39;</code> —— <strong>仓里带了预训练策略</strong>，可以直接看效果，
+加 <code>--student</code> 看学生策略，加 <code>--onnx_test_samples</code> 导出部署用的校验样本</li>
+<li><strong>sim-to-sim 验证</strong>：定制版 <code>unitree_mujoco</code>（带 LiDAR 仿真）+ ROS 2 Humble +
+<a href="https://github.com/livox-SDK/livox_ros_driver2">Livox 驱动</a> + 一个独立的深度图生成器 ——
+<strong>故意让 sim 和 real 走同一个部署接口</strong></li>
+</ul>
+<p><strong>两处作者自曝，含金量比正文高。</strong></p>
+<blockquote>
+<p>「训练有时候不稳定，会产出坏模型（我们一般测 15k 之后的 checkpoint，在 MuJoCo 里挑表现最好的那个）。」</p>
+</blockquote>
+<blockquote>
+<p>「我们发现 Jetson Orin 上的 TensorRT <strong>有时会产出垃圾模型</strong>。因此上真机前，模型必须用录制的输入/输出验证过。」</p>
+</blockquote>
+<p>第二条是本周最值钱的一句工程经验：<strong>导出成功 ≠ 数值正确</strong>，
+这和本机 CLAUDE.md 里那条「EP 加载失败 ORT 会静默 fallback 到 CPU」是同一类问题。</p>
+<p><strong>怎么切进去（分三档）。</strong></p>
+<ul>
+<li><strong>0 元档</strong>：拉 HF 数据集看，或读 <code>deployment/</code> 那套「sim 和 real 同接口」的设计。</li>
+<li><strong>只有一张卡</strong>：跑 sim-to-sim。<code>num_envs 4096</code> 在 16 G 上肯定不够，<strong>调到几百先跑通流程</strong>，
+别指望复现论文曲线。作者的验证环境是 RTX 4090 笔记本，而且强调这是<strong>异步</strong>评测环境，
+机器慢了性能会掉 —— 你的分数不一定是策略的锅。</li>
+<li><strong>有 Go2 + Mid-360</strong>：这是完整路线，但<strong>整套硬件量级 ¥3–5 万，超出本系列 ¥5000 的投入上限</strong>，
+属于「有设备的人才做」的那一档。</li>
+</ul>
+<p><strong>坑。</strong></p>
+<ul>
+<li>⚠️ <strong>无 LICENSE。</strong> 又一个。</li>
+<li>依赖链很硬：IsaacLab 2.3.2.post1 + torch 2.7.0 + cu128 + Ubuntu 22.04
+（作者给了 distrobox 方案给非 22.04 的人）。</li>
+<li>README 开头还留着 <code>&lt;!-- Replace the placeholder destinations ... --&gt;</code> 的占位注释 ——
+仓是赶着放出来的，文档可能还会变。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/ASIG-X/JEPLO">https://github.com/ASIG-X/JEPLO</a>
+｜ <a href="https://asig-x.github.io/jeplo_web/">项目页</a>
+｜ <a href="https://arxiv.org/abs/2609.15770">arXiv:2609.15770</a>
+｜ <a href="https://huggingface.co/datasets/ASIG-Lab/JEPLO-Dataset">HF 数据集</a>
+｜ <a href="https://youtu.be/HekLtX37ijs">演示视频</a>
+｜ <a href="https://github.com/ASIG-X/JEPLO/tree/main/deployment">部署目录</a></p>
+<hr>
+<h3>3 · HuRo —— 把第一人称人类视频里的手臂抹掉、换上机器人，直接产出 LeRobot 数据集</h3>
+<p><strong>是什么。</strong> CoRL 2026，<strong>Apache-2.0</strong>，9 月 12 日建仓，23 星，本周涨得最快的一个具身仓。
+它做的事情一句话说完：<strong>把 egocentric 人类视频转成机器人对齐的观测和动作轨迹</strong>，
+用来做 VLA 预训练。手部动作重定向成机器人关节轨迹，<strong>把画面里的人手臂抠掉、把机器人渲染进去</strong>，
+源数据没提供的中间信号（相机几何、手姿、语言）<strong>全部自己估</strong>，所以不同标注水平的视频能统一成同一种格式。</p>
+<p>作者用这条流水线造了 <strong>HuRo 数据集：约 63 万条机器人化 episode、1.42 亿帧，来自五个人类视频源</strong>。
+效果数字：预训练规模上去之后，微调后的整体完成率 <strong>51.5% → 80.3%</strong>，
+空间和视觉分布外的完成率 <strong>34.9% → 72.2%</strong>。</p>
+<p><strong>这次放出来的是流水线，不是数据</strong>（数据页还挂着 &quot;Data coming soon&quot;）。
+十个阶段，<code>./run_pipeline.sh</code> 一把梭，<strong>全部可断点续跑</strong>，
+输出依次是 <code>_intr</code> / <code>_contact</code> / <code>_contact_refined</code> / <code>_hand</code> / <code>_extr</code> / <code>_chunked</code> / <code>_lerobot</code>。
+最后那个就是 <strong>LeRobot V2.0 数据集</strong>。</p>
+<p><strong>怎么切进去。</strong> 这是本期<strong>唯一一条「没有机器人也能产出训练数据」的路</strong>：</p>
+<ol>
+<li>拍或找 egocentric 视频 —— <strong>30 fps、短边 256 px、时长 30 秒到 30 分钟</strong>。README 给了现成的转换命令：<pre><code class="language-bash">ffmpeg -i raw.mp4 -vf &quot;fps=30,scale=&#39;if(gt(iw,ih),-2,256)&#39;:&#39;if(gt(iw,ih),256,-2)&#39;&quot; \
+    -c:v libx264 -crf 18 -an clips/raw_30fps_256.mp4
+</code></pre>
+鱼眼和常规镜头都收，不用先去畸变。</li>
+<li>仓里 <code>examples/clips/</code> 自带两段<strong>已经满足要求</strong>的样例，<strong>改都不用改就能跑</strong>。</li>
+<li>想换机器人：<code>--robot_name</code>，默认 <code>allex</code>（<code>configs/allex.yaml</code>）。README 说加新机器人
+「基本上是配置工作」。</li>
+</ol>
+<p><strong>坑。</strong></p>
+<ul>
+<li>⚠️ <strong>要 ≥24 GB 显存 + 支持 CUDA 12.8 的驱动，机器人叠加那一步还要 RT core。</strong>
+<strong>A4000 16 G 跑不动</strong>，这是硬门槛。租一张 4090（约 ¥2–4/小时）跑两段样例验证流程，
+量级是<strong>几十块钱</strong>的事；批量处理才是真花钱的地方。</li>
+<li><strong>放出的代码不读源数据集自带的标注</strong>，全部从视频自己估。想从第 N 阶段接入已有标注，
+你得自己按 <code>examples/README.md</code> 的格式把第 N-1 阶段的输出<strong>连同 <code>.done</code> 标记</strong>一起写出来 ——
+<strong>没有标记的话，阶段可能把这个 clip 当成已丢弃</strong>。</li>
+<li><strong>标定失败的 clip 是静默丢弃的</strong>：不报错，唯一的记录是一个空的 <code>&lt;clips&gt;_intr/&lt;clip&gt;.json</code>。
+批量跑的时候记得统计空文件数，否则你不知道自己丢了多少。</li>
+<li>只配了 allex 一个机器人；数据集尚未放出。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/3587jjh/HuRo">https://github.com/3587jjh/HuRo</a>
+｜ <a href="https://3587jjh.github.io/HuRo/">项目页</a>
+｜ <a href="https://arxiv.org/abs/2609.10706">arXiv:2609.10706</a>
+｜ 对照：09-15 那期的 EgoWAM（同一周的另一条「人类视频 → 机器人」路线）</p>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<p><strong>本期覆盖的是链路第 2 段「打印执行」，而且刚好凑成一个闭环</strong>：
+国外那条是<strong>打印前的门</strong>（可打印性 + 报价 + 文字 OCR 校验），
+国内那条是<strong>打印后的诊断</strong>（缺陷检测 + 知识库问答）。
+前几期密集写了第 1 段（自动建模：cadloop 的 FEA、cadjson 的 JSON 特征树、SimpleCAD、openscad-skill），
+这期把秤砣挪回执行段。</p>
+<hr>
+<h3>🌍 国外 · SignalEngine/3d-printing —— 七道门，其中一道算钱，一道用 OCR 读模型上的字</h3>
+<p><strong>是什么。</strong> 一个人的 <strong>Bambu Lab A1 工作区仓库</strong>（master 分支，9 月 13 日建，0 星，
+<strong>没有 README 也没有 LICENSE</strong>）。它有意思的地方不在项目本身，在
+<code>skills/model-forge/</code> 这个 agent skill：<strong>一套七道门的交付纪律，每道门都是一个真能跑的脚本</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>门</th>
+<th>它到底检查什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>verify_model.py</code></td>
+<td>硬检查</td>
+<td>水密、绕向、体数、构建体积（256³）、体积、悬垂比例、床面接触、薄壁（面积加权采样）、质量估算。<strong>还会 WARN「需要支撑」</strong>：某层有 &gt;50 mm² 的悬空（超过 50° 自支撑角），或 &gt;2 mm² 的空中孤岛</td>
+</tr>
+<tr>
+<td><code>render.sh</code></td>
+<td>目视</td>
+<td>Xvfb 下用 f3d 真渲染出 iso/front/top/section 四张图，<strong>然后必须用看图工具看</strong></td>
+</tr>
+<tr>
+<td><code>features.py</code></td>
+<td>孔位</td>
+<td>直接从 BREP（要 STEP）列出每个孔的直径、深度、轴向、在哪个面，<code>--expect holes.json</code> 可硬失败</td>
+</tr>
+<tr>
+<td><code>fit.py</code></td>
+<td>配合</td>
+<td>两个零件之间的间隙 / 干涉 / 接触面积，固定 RNG 种子，<strong>顶点并稠密表面采样</strong>，所以棱边接触也读得出真实近零间隙</td>
+</tr>
+<tr>
+<td><code>slice_gate.py</code></td>
+<td>切片 + <strong>报价</strong></td>
+<td><strong>OrcaSlicer 无头真切</strong>（A1、0.4 喷嘴、0.20 mm Standard、Bambu PLA Basic），报打印小时数、耗料克数与钱、机时费、<strong>成本下限</strong>，给 <code>--price</code> 还算<strong>每机时毛利</strong></td>
+</tr>
+<tr>
+<td><code>text_check.py</code></td>
+<td><strong>文字</strong></td>
+<td>把网格切片，<strong>逐切片、逐旋转、逐镜像做 OCR</strong>，验证模型上的凸起文字真的读得出来</td>
+</tr>
+<tr>
+<td><code>run_gates.sh</code></td>
+<td>汇总</td>
+<td>全部串起来，<code>ALL_GATES_OK</code> 才算过</td>
+</tr>
+</tbody></table>
+<p><strong>这期真正的新东西是两条：</strong></p>
+<p><strong>(1) 成本第一次被写进了自动化的门。</strong> <code>slice_gate.py</code> 在切片成功后固定打印一个成本块：
+<code>print hours</code> / <code>material</code>（克 + 英镑）/ <code>machine</code>（英镑）/ <code>cost floor</code>（英镑），
+给了 <code>--price</code> 还会算 <code>margin per printer-hour</code>。
+只有在你传了 <code>--max-hours</code> / <code>--max-grams</code> / <code>--min-gbp-per-hour</code> 并且超标时才 <code>QUOTE FAIL</code> 退 1，
+<strong>不传就是纯信息，不影响 PASS</strong>。<code>GATES.md</code> 里留了逐条证据：
+奖杯件 <code>--max-hours 6</code> 时报 <code>print hours: 15.25</code> → FAIL；旋钮件 <code>--price 5</code> 时每机时 £13.50 → PASS。</p>
+<p><strong>(2) OCR 文字门是我在这条链路上第一次见到有人做。</strong> 作者在 <code>SKILL.md</code> 里写了这条规则的来历：
+<strong>「永远不要从 iso 视图判断文字」—— 2026-09-13 一次真实评审就被 iso 渲染图误导过</strong>（那次文字其实是对的）。
+负样例也做了：HELLO 板子 <code>--expect WORLD</code> → FAIL；HELLO 和 WORLD 挤在同一位置 → OCR 读不出 → FAIL。</p>
+<p><code>GATES.md</code> 更值得读的是<strong>它的写法</strong>：每条门都有 <code>CHECK</code> / <code>EXPECT</code> / <code>EVIDENCE</code>，
+而且 EVIDENCE 里明确记了<strong>实现前是 RED（退 2 <code>unknown gate</code>）、实现后是 GREEN</strong>。
+这就是仓里那句「门必须可证明能过、也可证明能挂 —— 两个方向都验过才可信」的落地。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>只抄 <code>slice_gate.py</code> 的报价块。</strong> 你已经在用任何 text-to-CAD 流程的话，
+把「打印小时数 + 克数 + 成本下限」变成交付里的固定一行，<strong>成本几乎为零，信息量很大</strong>。
+OrcaSlicer 的无头装法 SKILL.md 里给了完整命令（下 AppImage → <code>--appimage-extract</code> →
+补 <code>libglu1-mesa</code>、<code>libwebkit2gtk-4.1-0</code>）。</li>
+<li><strong>抄 <code>text_check.py</code> 的思路。</strong> 任何带姓名、编号、logo 的件，交付前 OCR 验一遍。</li>
+<li><strong>抄 <code>GATES.md</code> 的格式</strong>，哪怕你手写门：<code>CHECK</code> / <code>EXPECT</code> / <code>EVIDENCE</code>，
+并且要求 EVIDENCE 里有「实现前是红的」这句。</li>
+</ol>
+<p><strong>成本（含 API token）。</strong> 这套流程里<strong>花钱的只有 agent 本身</strong>，
+所有门（切片、渲染、OCR、BREP 分析）都是本地确定性脚本，<strong>0 token</strong>。
+跑一个中等复杂度的件，按「一轮提问 + 建模 + 7 道门 + 1–2 次修正」估，
+输入约 5–15 万 token、输出约 1–3 万 token（渲染图会显著推高输入），
+按官方价目表 Sonnet 5（$3/$15）约 <strong>$0.3–0.8 一个件</strong>，Opus 5（$5/$25）约 <strong>$0.8–2.0</strong>。
+<strong>这是量级估算，不是账单</strong>；缓存命中与否能差好几倍。
+有意思的是：<strong>作者自己也在仓里算这笔账</strong> —— 他默认用订阅制的驱动（边际 0），
+把按 token 计费的那条当溢出阀，并写了一句值得抄走的话：
+<strong>「每 token 便宜不等于每结果便宜」</strong>（一个 $0.07/M 的模型在一个它最终没做出来的任务上，
+烧掉的钱超过了当天全部高级用量）。</p>
+<p><strong>坑。</strong></p>
+<ul>
+<li>⚠️ <strong>没有 LICENSE，也没有 README。</strong> 这是别人的个人工作区，不是产品。
+<strong>抄思路和脚本逻辑可以，整仓拿来用之前得问作者。</strong></li>
+<li><strong>脚本里的路径是作者服务器上的绝对路径</strong>（<code>/root/3d-printing/.venv</code> 这类），照抄会全断，要自己改。</li>
+<li><strong><code>verify_model.py</code> 默认 <code>--bodies 1</code> 会误杀多色件</strong>（嵌进主体的字/logo 是独立壳），要手动传实际壳数。</li>
+<li><strong><code>features.py</code> 只认轴对齐的孔</strong>：它把孔轴吸附到最近的 X/Y/Z，斜孔会报错轴向。
+而且 <code>&quot;face&quot;</code> 和 <code>&quot;axis&quot;</code> 不是一回事（通孔报 <code>through Z</code>，盲孔报 <code>+Z</code>/<code>-Z</code>），<code>--expect</code> 写错就永远匹配不上。</li>
+<li><strong>盲孔底厚要 &gt; 0.02 mm</strong> 才读得出是盲孔，否则算通孔。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/SignalEngine/3d-printing">https://github.com/SignalEngine/3d-printing</a>
+｜ <a href="https://github.com/SignalEngine/3d-printing/blob/master/skills/model-forge/SKILL.md">model-forge SKILL.md（七道门的完整说明）</a>
+｜ <a href="https://github.com/SignalEngine/3d-printing/blob/master/GATES.md">GATES.md（逐条门 + 红绿证据）</a>
+｜ <a href="https://github.com/OrcaSlicer/OrcaSlicer">OrcaSlicer</a> ｜ <a href="https://github.com/gumyr/build123d">build123d</a></p>
+<hr>
+<h3>🇨🇳 国内 · 3Dpriting-detect-agent —— 打印完之后那一步：YOLO 找缺陷、SAM 抠出来、本地 3B 模型出中文诊断</h3>
+<p><strong>是什么。</strong> 9 月 11 日建仓、14 日还在推的<strong>离线 3D 打印缺陷检测与诊断 agent</strong>，<strong>AGPL-3.0</strong>。
+作者在仓库描述里就把话说死了：<strong>「目前项目只是一种方法尝试，性能尚不足以满足工业需求」</strong> ——
+这种自曝在本系列里一贯是加分项。</p>
+<p>技术栈全是本地的：</p>
+<ul>
+<li><strong>LangGraph</strong> 编排确定性流程（<strong>不是让模型自己决定调哪个工具</strong>）</li>
+<li><strong>自训练的 Ultralytics YOLO26 OBB 权重</strong>（<code>models/yolo/yolo_best.pt</code>，<strong>仓里直接带着</strong>）找缺陷</li>
+<li><strong>SAM 2.1 Base+</strong> 按检测框出掩码，或在视频里跟踪缺陷</li>
+<li><strong>BGE + BM25 + Qdrant</strong> 三路检索本地 3D 打印知识库（<strong>Qdrant 集合和 BM25 词表都在仓里</strong>）</li>
+<li><strong>Qwen2.5-3B-Instruct</strong> 生成最终中文诊断</li>
+</ul>
+<p><strong>这个设计里最值得学的一句话，写在 README 第二段：</strong></p>
+<blockquote>
+<p>「Qwen 不负责猜测应该调用哪个视觉工具。媒体类型、图片/视频路由、失败处理和结果视频开关<strong>均由程序确定</strong>。」</p>
+</blockquote>
+<p>这正是本系列反复强调的那条线：<strong>模型负责语言，程序负责判定。</strong>
+另一个细节也做对了：视频里的 <code>defect_count</code> 是<strong>经过时序确认的缺陷事件数</strong>，
+不是逐帧检测框的简单累加；完整逐帧结果落在 <code>yolo_defect_events.json</code>，
+LangGraph 状态里只存可 JSON 序列化的摘要和路径。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong><code>python download_models.py --dry-run</code> 先看下载计划</strong>（会显示每个模型的官方许可证链接），
+再 <code>python download_models.py qwen bge</code> / <code>sam</code> 分批下。YOLO 权重不用下，仓里有。</li>
+<li><strong>先跑图片那条路</strong>（比视频便宜得多），用 <code>dataset/image/</code> 里的 Kaggle 样图。</li>
+<li>环境：作者验证过的是 <strong>Python 3.12.11 + torch 2.10.0+cu128 + torchvision 0.25.0+cu128</strong>，
+依赖版本全部钉死（langgraph 1.2.11、transformers 5.9.0、ultralytics 8.4.7、qdrant-client 1.19.0…）。</li>
+<li>想要自己的效果，<strong>换掉那份 YOLO 权重</strong>：用你自己打印失败的照片标一批 OBB 重训。
+这是这个仓最自然的二次开发点，也是作者说「性能不够」的直接原因。</li>
+</ol>
+<p><strong>成本（含 API token）。</strong> <strong>token 费 0</strong> —— 整条链路全本地，README 明说「代码不会在推理时联网」。
+显存这边：Qwen2.5-3B（约 6–7 GB bf16）+ SAM 2.1 Base+ + YOLO + BGE 同时驻留，
+<strong>16 G 卡够用但不宽裕</strong>，跑视频时要注意峰值。
+真正的成本是<strong>标注时间</strong>：想让它在你自己的打印机上有用，得标几百张自己的失败件。</p>
+<p><strong>坑。</strong></p>
+<ul>
+<li>⚠️ <strong>Qwen2.5-3B-Instruct 用的是 Qwen Research License，只允许非商用研究或评估。</strong>
+项目自己是 AGPL-3.0，<strong>AGPL + 研究许可权重的组合，商用基本堵死</strong>。README 自己点出了这条。</li>
+<li><strong><code>dataset/image/</code> 来自 Kaggle</strong>，只作示例，许可注意事项在 <code>dataset/README.md</code>。</li>
+<li><strong>ultralytics 8.4.7 的包元数据在部分平台声明 <code>torch&lt;2.10</code></strong>，和验证环境的 2.10 冲突。
+作者明确写了：<strong>不建议用 <code>--no-deps</code> 硬绕</strong>，应该挑一个同时满足两边的 torch/torchvision 组合再完整冒烟。</li>
+<li>包名是 <code>langGraph</code>（大小写不规范），入口是 <code>python -m langGraph.agent</code>。</li>
+<li>0 星、单人、方法验证阶段 —— 别指望拿来直接上产线，这一点作者比谁都清楚。</li>
+</ul>
+<p>→ <strong>仓库</strong> <a href="https://github.com/xxy-502/3Dpriting-detect-agent">https://github.com/xxy-502/3Dpriting-detect-agent</a>
+｜ <a href="https://huggingface.co/Qwen/Qwen2.5-3B-Instruct">Qwen2.5-3B-Instruct</a>
+｜ <a href="https://huggingface.co/BAAI/bge-small-en-v1.5">BGE Small EN v1.5</a>
+｜ <a href="https://github.com/facebookresearch/sam2">SAM 2</a></p>
+<hr>
+<h3>📌 专题分析：这周这条链路上真正变了的东西（4 点）</h3>
+<p><strong>1. 成本第一次变成了自动化的门，而不是事后的备注。</strong>
+前面几期的门都在问「这个件对不对」（水密、孔位、应力、配合）。
+<code>slice_gate.py</code> 问的是**「这个件值不值」** —— 打印小时数、克数、成本下限、每机时毛利，
+超了 <code>--max-hours</code> 就退 1。这是这条链路从「能做出来」往「做得起」迈的一步，
+而且实现方式非常朴素：<strong>真切一遍，读切片器的数字</strong>。
+对个人的含义：你手上任何一个 text-to-CAD 流程，<strong>今天就能加这一行</strong>。</p>
+<p><strong>2. 「模型不决定调什么工具」正在成为这条链路的共识写法。</strong>
+国内那条把它写进了 README 第二段（路由、失败处理、开关全由程序定），
+国外那条把它写成了 <code>GATES.md</code> 的红绿证据格式，
+再往前数，09-11 的 dsh-print3d（6 个确定性工具 + 5 个知识包）、
+09-14 的 flex-fab-agent（CP-SAT 求最优、agent 只负责对话和审批）也是同一件事。
+<strong>四个互不相识的作者收敛到了同一个架构：LLM 管语言和解释，确定性程序管判定和执行。</strong>
+这条链路上凡是反过来做的（让模型自由决定调用哪个几何工具），到现在没见到一个跑得稳的。</p>
+<p><strong>3. 「打印前的门」和「打印后的诊断」这周第一次同时出现，但两边还没接上。</strong>
+理想的闭环应该是：<code>verify_model.py</code> 说「需要支撑」→ 切片时开树状支撑 →
+打印完 YOLO 在照片里发现拉丝和翘边 → <strong>把这个结果反馈回几何或切片参数</strong>。
+现在这个箭头是断的：国外那条不知道打完什么样，国内那条不知道这个件当初是怎么设计的。
+<strong>谁把它接上，谁就做出了这条链路上第一个真正的自修复回路</strong> —— 这是本期最值得抢的一个坑，
+而且两边都是开源的，不需要征得谁的同意。</p>
+<p><strong>4. 一个反直觉的数据点：这条链路上最好的两个仓，这周都是 0 星。</strong>
+SignalEngine（0 星，没有 README 没有 LICENSE）和 3Dpriting-detect-agent（0 星，自曝不够工业级）。
+<strong>同期星数最高的 3D 打印相关仓是模型管理器和网站</strong>。
+这和 09-15 趋势里那条「低星 + 自曝边界 &gt; 高星 + 全是绿勾」是同一个现象的又一次出现。
+筛这条链路的仓，<strong>看有没有 <code>GATES.md</code> 这种东西，比看星数准得多</strong>。</p>
+<hr>
+<h2>📈 趋势观察</h2>
+<p><strong>1. 「agent 做机器人工程」这周从表演赛升级成了资格考试。</strong>
+09-15 写的 LLMs Robot Arena 是浏览器擂台（1560 局表演赛、置信区间大面积重叠、连 LICENSE 都没有），
+本期的 RLE-Bench 是九个任务族、容器化、隐藏 seed、私有评分、确定性重放、gate 封顶，MIT 许可。
+<strong>一周之内，同一个问题的评测严谨度跨了一个数量级。</strong>
+更关键的是任务的选法：它没有只挑「控制机器人」，而是把<strong>搭工具（task02）、设计本体（task08）、
+协同设计遥操作硬件（task09）</strong> 都算成了机器人学习工程师的活。
+task02 的评分方式尤其漂亮 —— <strong>你造的工具好不好，由另一个全新的 agent 拿去解一个没见过的任务来决定</strong>。
+这个指标很难刷。</p>
+<p><strong>2. 单卡个人和这一轮前沿工作的距离，这周变得可量化了，而且不小。</strong>
+本期六条主线里，<strong>明确写了显存或算力门槛的有三条</strong>：
+HuRo 要 ≥24 GB + RT core（A4000 16 G 出局）、
+RLE-Bench 的 task04/task05 参考预算是 RTX 5090 / H100、
+JEPLO 的 4096 envs 在 16 G 上要砍。
+<strong>但同一周也给出了三条绕过去的路</strong>：RLE-Bench 的 task07/task08/task09 纯 CPU、
+PhysBrain 1.5 放了 2B、JEPLO 带了预训练策略可以只做 sim-to-sim。
+<strong>结论对个人很实在：不要挑「训练」类任务，挑「设计 / 评测 / 工程」类任务</strong> ——
+后者这周的供给突然变多了，而且门槛是 Docker 不是显卡。</p>
+<p><strong>3. 无 LICENSE 仍然是这个领域最普遍的一个硬伤，本期六条里占了三条。</strong>
+PhysBrainEvalKit（21 星）、JEPLO（12 星）、x-wbc（4 星，明说「未来代码和权重的许可尚未确定」）
+都没有许可文件；加上专题的 SignalEngine，本期八条里四条没许可。
+反过来看，<strong>给出许可的那几条都很清楚</strong>：RLE-Bench MIT、HuRo Apache-2.0、
+nanshanbot/hand MIT、3Dpriting-detect-agent AGPL-3.0、OptiDuck 软硬分开（Apache-2.0 / CC-BY-NC-SA）。
+<strong>「提一个加 LICENSE 的 issue」仍然是这个领域投入产出比最高的贡献</strong>，
+本期下面的口子清单里又有三条是这个。</p>
+<p><strong>4. 具身 VLM 开始有「统一尺子」的雏形，而且尺子是中文团队做的。</strong>
+PhysBrainEvalKit 把 28 个 benchmark 的输入协议、prompt、指标口径钉死，
+还为 10 个点定位类任务统一到了 micro-F1。
+这件事的价值不在模型上 —— 它在于<strong>以后再有人报「我在 X 上比 Y 高 3 个点」，
+可以要求对方给出这套工具包下的可复现命令</strong>。
+一个提醒：<strong>统一口径的代价是和各 benchmark 官方数字不可比</strong>，读表时别串。</p>
+<p><strong>5. 本期没写但值得知道的四条（都在这一周，且都有实物进展）：</strong></p>
+<ul>
+<li><strong><a href="https://github.com/sharpa-robotics/WM-Craftnet">WM-Craftnet</a></strong>（CoRL 2026，Sharpa Robotics，
+Apache-2.0 badge + <a href="https://huggingface.co/SharpaIT/WM-Craftnet">HF checkpoint</a>）：
+把本体感觉、带噪腕部深度、触觉接触和动作历史融进一个动作条件的循环状态，
+直接喂给非对称 actor-critic，<strong>不做想象式 rollout</strong>。部署在 22 自由度的 Sharpa Wave 手上。
+没进主线是因为真机那只手对个人不可得，能做的只有 Isaac Gym 里的仿真复现。
+<a href="https://arxiv.org/abs/2609.07002">arXiv:2609.07002</a></li>
+<li><strong><a href="https://github.com/Tengbo-Yu/SEED-UMI">SEED-UMI</a></strong>（CoRL 2026，北大 + Delta Intelligence）：
+<strong>人和机器人戴同一套 20 自由度外骨骼</strong>采数据，于是重定向变成了成对的跨本体监督。
+想法很适合个人复刻，<strong>但仓里目前只有项目页和图，没有代码和 CAD</strong>。
+<a href="https://arxiv.org/abs/2609.11753">arXiv:2609.11753</a></li>
+<li><strong><a href="https://github.com/shengshu-ai/Motus2">Motus2</a></strong>（生数科技，35 星）：一个模型共享权重暴露
+策略 / 模拟器 / 评估器三个接口，形成闭环自进化。<strong>代码和 checkpoint 承诺 9 月内逐步放出，现在只有 README。</strong></li>
+<li><strong><a href="https://github.com/robocurve/stationerybench">stationerybench</a></strong>：五个桌面文具双臂任务
+（拔马克笔帽、从盒里取橡皮、抽中间那叠便签、倒回形针、递尺子），
+每个任务一套固定布置、20 次重复、二值成功判定，<strong>带真人 MP4 示范和实物清单</strong>。
+没进主线是因为它要双臂真机；但<strong>那份任务定义本身可以直接抄去当自己的评测</strong>。</li>
+</ul>
+<hr>
+<h2>🏁 当前仍开放、对个人开放的比赛 / bounty / 众包入口</h2>
+<h3>🆕 本期新发现：RLE-Bench 2.0 任务征集（有现金奖励 + 共同作者，<strong>未标注截止日期</strong>）</h3>
+<p>官方 <a href="https://rle-bench.github.io/contribute/">contribute 页</a>明写的三项回报：
+<strong>对 agent 在你工作流里表现的洞察</strong>、<strong>RLE-Bench 2.0 论文的共同作者署名</strong>、
+<strong>对高影响力贡献的现金奖励</strong>（页面写的是 &quot;Monetary awards for high-impact contributions&quot;，
+<strong>没有写金额，也没有写截止日期</strong> —— 这两点我没核到，动手前请自己发邮件问）。</p>
+<p><strong>为什么它对个人特别合适：你不需要 clone RLE-Bench，也不需要先提案。</strong>
+官方提供一个 <strong>任务创作 ZIP 模板</strong>（Harbor 模板，含可运行示例、作者指南、提交清单、本地检查），
+解压后从 <code>AUTHOR_GUIDE.md</code> 开始，<strong>可以当成一个独立的 Harbor 任务开发完再交</strong>。</p>
+<p>要交的东西（页面逐项列了）：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SUBMISSION.md</code></td>
+<td>任务摘要、评分理由、资源需求、验证证据</td>
+</tr>
+<tr>
+<td><code>task/instruction.md</code></td>
+<td>给 agent 的简报：目标、输入、输出路径与格式、约束、<strong>公开的评分契约</strong></td>
+</tr>
+<tr>
+<td><code>task/task.toml</code></td>
+<td>任务身份与版本、产物交接、超时、agent 与 verifier 的资源</td>
+</tr>
+<tr>
+<td><code>task/environment/</code></td>
+<td>agent 镜像的 Dockerfile、工具、公开资产（<strong>只放 agent 可以看的</strong>）</td>
+</tr>
+<tr>
+<td><code>task/tests/</code></td>
+<td><strong>独立的 verifier 镜像</strong>、私有 harness、评分入口</td>
+</tr>
+<tr>
+<td><code>task/solution/</code></td>
+<td>可选的参考解（Oracle 运行用）；不给就要有其他可复现的可解性证据</td>
+</tr>
+<tr>
+<td><code>author_checks/</code></td>
+<td>给评分器的本地回归检查，<strong>放在运行时镜像之外</strong></td>
+</tr>
+</tbody></table>
+<p>本地验证环境：<strong>Python 3.12 + Docker + Harbor 0.21.0</strong>。
+示例任务的预期 reward 是 <strong>Oracle: 1.0 / Nop: 0.0</strong>，
+页面特意提醒：<strong>命令跑完不等于结果有效，要去看 <code>result.json</code> 和 <code>verifier/reward.json</code></strong>。</p>
+<p>你需要给出四类证据：<strong>可解性</strong>（参考解在声明的资源限额下的成绩）、
+<strong>评分正确性</strong>（独立的指标检查、边界情况、同一产物重复评测）、
+<strong>健壮性</strong>（缺失/畸形输出，以及针对指标的绕过尝试）、
+<strong>隔离性</strong>（私有评测资产和参考解对普通 agent 不可见）。</p>
+<p><strong>务实的判断</strong>：这是个<strong>几天到两周</strong>量级的活，不是一晚上。
+但它是本期唯一一个「有现金 + 有署名 + 对个人开放 + 不要求机构身份」的入口，
+而且<strong>你日常做机器人工程时踩的坑，本身就是素材</strong>。</p>
+<p>→ <a href="https://rle-bench.github.io/contribute/">https://rle-bench.github.io/contribute/</a> ｜ <a href="https://github.com/RLE-Bench/RLE-Bench">仓库</a> ｜
+<a href="https://github.com/RLE-Bench/RLE-Bench/tree/master/tasks/task08">任务说明目录</a> ｜
+<a href="https://github.com/laude-institute/harbor">Harbor</a></p>
+<h3>✅ 复核仍开放（本期逐条重新核过）</h3>
+<p><strong>RoboSynChallenge（NeurIPS 2026 正式竞赛）—— 10 月 11 日截止，还剩 25 天。</strong>
+本期重新读了官网前端 bundle，<strong>日期没变</strong>：报名 2026-07-13 开放，训练期至 <strong>10-11</strong>，
+提交截止 <strong>10-11 AoE</strong>，仿真初评 10-11 至 10-18，<strong>10-18 公布入围</strong>，
+模型更新期至 11-15，<strong>11-15 起在统一的双臂真机平台上做最终评测</strong>。
+<strong>真机评测由主办方做，你不需要任何硬件。</strong>
+（页面仍是 JS 渲染，日期读自前端 bundle 而非可见页面；动手前请自行到官网复核。
+本期另注意到站内有 &quot;Submission backend unavailable&quot; 一类的兜底文案，属于前端代码，不代表当前故障。）
+→ <a href="https://robosyn-bench.net/">https://robosyn-bench.net/</a> ｜ <a href="https://github.com/EDEM-AI/RoboSynChallenge">GitHub</a> ｜
+<a href="https://huggingface.co/RoboSynChallenge">HF 数据</a></p>
+<p><strong>CoRL 2026 Efficient Embodied AI Workshop Challenge —— 本期在官网 Important Dates 重新核到全部节点：</strong></p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>9 月 25 日</strong></td>
+<td><strong>Challenge harness 和参考容器发布</strong> ← 还有 9 天</td>
+</tr>
+<tr>
+<td>10 月 12 日</td>
+<td>论文提交截止（非归档）</td>
+</tr>
+<tr>
+<td><strong>10 月 23 日</strong></td>
+<td><strong>Challenge 提交截止</strong> ← 真正的参赛节点</td>
+</tr>
+<tr>
+<td>10 月 26 日</td>
+<td>论文录用通知</td>
+</tr>
+<tr>
+<td>11 月 5 日</td>
+<td>Challenge 结果核验并公布</td>
+</tr>
+<tr>
+<td>11 月 12 日</td>
+<td>Workshop，CoRL 2026，德州奥斯汀</td>
+</tr>
+</tbody></table>
+<p>全部为 <strong>11:59 PM Anywhere on Earth</strong>。页面同时写明「所有提交、基线和 harness 都会公开」。
+→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a></p>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）—— 提交截止 10/16/2026，获奖公布 11/04/2026，还剩 30 天。</strong>
+本期在 challenge 首页重新核到这两个日期（页面另列一个 07/02/2026 的历史节点）。
+→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p>（规则和当时的最好成绩见 <a href="./2026-09-12.html">09-12 那期</a>。）</p>
+<h3>❌ 维持核销（别去撞墙）</h3>
+<p>ATEC2026（报名 5/30 已截止）、EMR Workshop @ ECCV 2026（9/9 已办完）、
+ICRA 2026 全部九项竞赛（6/1–4 已举办）、GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026（5/15 结束）、
+PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD。
+依据见 <a href="./2026-09-12.html">09-12</a>、<a href="./2026-09-13.html">09-13</a>、<a href="./2026-09-14.html">09-14</a> 三期，本期未变。</p>
+<p><strong>RoboChallenge</strong> —— 状态仍无法确认（整页 JS 渲染，<code>curl</code> 只拿到骨架）。
+<strong>不写「仍开放」，也不核销。</strong> → <a href="https://robochallenge.ai/">https://robochallenge.ai/</a></p>
+<hr>
+<h2>🔧 不是比赛、但确实缺人做的口子（半天到一周量级）</h2>
+<ol>
+<li><strong>在一张 16 G 卡上把 PhysBrainEvalKit 的 2B 模型跑完 28 项，报显存峰值、每项墙钟时间、数据集总体积。</strong>
+作者只给了多卡分片的用法，<strong>单卡数字整个社区是空的</strong>。一到两天，0 元。（国内 TOP 1）</li>
+<li><strong>给 PhysBrainEvalKit 提「加 LICENSE」的 issue。</strong> 21 星、在推的仓，没有许可文件。
+半小时。（国内 TOP 1）</li>
+<li><strong>量一下 FA2 与 FA4 在同一模型上的分数差。</strong> 作者说「在可接受范围内」但没给数字。
+跑两遍就有。（国内 TOP 1）</li>
+<li><strong>给 OptiDuck 提一个 issue：把仓根目录那个记录自家远程登录地址的小文件删掉并清历史。</strong>
+十分钟。（国内第 2）</li>
+<li><strong>在 RLE-Bench 的 task08 上跑一轮，把 <code>summarize</code> 报的实际成本贴出来。</strong>
+官方博客和排行榜有成本轴，但**「个人用订阅跑一轮到底花多少」没人写过**。半天，纯 CPU。（国外 TOP 1）</li>
+<li><strong>给 RLE-Bench 提 PR：修 README 里那个不存在的 <code>RLE-Bench-dev.git</code> clone 地址。</strong>
+十分钟，MIT 仓，几乎必被合。（国外 TOP 1）</li>
+<li><strong>给 JEPLO 提「加 LICENSE」的 issue。</strong> 12 星、CoRL 级别的工作，没有许可。（国外第 2）</li>
+<li><strong>在 A4000 16 G 上把 JEPLO 的 <code>num_envs</code> 砍到能跑的档位，把那个数字报回去。</strong>
+作者只说了 4090 笔记本。一天。（国外第 2）</li>
+<li><strong>给 HuRo 加一个「标定失败 clip 统计」的小 PR。</strong> 现在失败是静默的（空 <code>_intr</code> json），
+批量跑的人不知道自己丢了多少。半天，Apache-2.0。（国外第 3）</li>
+<li><strong>把 <code>slice_gate.py</code> 的报价块移植到你自己的 text-to-CAD 流程里。</strong>
+打印小时数 + 克数 + 成本下限，一行输出，<strong>这是本期最便宜的升级</strong>。半天。（专题 · 国外）</li>
+<li><strong>接上「打印前的门」和「打印后的诊断」。</strong> 让 <code>verify_model.py</code> 的 <code>needs supports</code> WARN
+和 YOLO 在成品照片里找到的翘边/拉丝进同一个回路。<strong>这是本期最值得抢的一个坑</strong>，一周量级。（专题分析第 3 点）</li>
+<li><strong>给 3Dpriting-detect-agent 贡献自己打印失败的标注数据。</strong> 作者明说性能不够工业级，
+直接原因就是权重的数据量。标 200 张，AGPL-3.0。（专题 · 国内）</li>
+</ol>
+<hr>
+<p><em>本期所有对外链接在 2026-09-16 用 <code>curl -sIL -o /dev/null -w &#39;%{http_code}&#39;</code> 逐条验活，全部 200。</em>
+<em>一处例外：Radxa 官网对 <code>curl</code> 返回 403（反爬，不是页面不存在），因此正文没有引用它，板子参数以 OptiDuck 教程为准。</em>
+<em><code>robosyn-bench.net</code> 与 <code>robochallenge.ai</code> 均为 JS 渲染 —— 前者的日期读自前端 bundle 而非可见页面，后者未能核到任何日期。</em>
+<em>RLE-Bench 排行榜的具体分数由前端脚本加载，<strong>本期未引用任何分数</strong>；出现的模型名取自官方博客与排行榜页面的可见文本。</em>
+<em>显存量级（2B 约 4–5 GB、4B 约 8–9 GB、8B 约 16 GB）是按参数量 × 2 字节的估算，不含 KV cache 与视觉激活，以实测为准。</em>
+<em>nanshanbot/hand 的 ¥200–400 与 Radxa ZERO 3W 的 ¥150 均为公开零售价的*<em>量级估算</em></em>，不是作者核价单，下单前请自行核价。*
+<em>API token 成本按 Anthropic 官方价目表（Sonnet 5 $3/$15、Opus 5 $5/$25 每百万 token）做量级估算，</em>
+<em>不是实测账单 —— 输入缓存命中与否会差数倍，动手前请按各家官方价目表自行核算。</em>
+<em>PhysBrainEvalKit、JEPLO、SignalEngine/3d-printing、x-wbc 均无 LICENSE 文件，使用与再分发前请先向作者确认。</em>
+<em>PhysBrain 1.5 的「总分 72.5、开源第一」与 HuRo 的「51.5%→80.3%」均为作者自报数字，本期未复现。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-16.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>
