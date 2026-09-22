@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报 · 2026-09-22</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报 · 2026-09-22</h1>
+<blockquote>
+<p>筛选口径：<strong>个人可参与 / 投入可控（硬件 ≤ 约 ¥5000、算力单卡 RTX A4000 16G 能跑）/ 产出可预期 / 技术可达成</strong>。
+本期所有对外链接在写入前用 <code>curl -sIL</code> 逐条验活，非 200 的没有写进来
+（Inference-Governor 的 GitHub Pages 站点返回 404，因此只给仓库地址；xLeRobot 的正确地址是
+<code>Vector-Wangel/XLeRobot</code>，另一个常被引用的拼法 404）。
+本机现实：<strong>A4000 16G，基线已被别的进程占 ~4.4G</strong>，带宽 448 GB/s ≈ 4090 的 0.44。
+下文凡是引用 4090 / 5090 / 4070 / 3070 的数字，都按 <strong>×2～2.5</strong> 折算成本机口径，并写明是折算值。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>1️⃣ 【深度】FBddcz/embodied-jev「行知」—— 把具身决策实验搬进浏览器，零 GPU 零 API Key 就能跑第一轮</h3>
+<p><strong>是什么。</strong>
+<a href="https://github.com/FBddcz/embodied-jev">embodied-jev</a>（中文名「行知」）是一个 MuJoCo + Franka Panda 的
+<strong>具身决策工作台</strong>：本机起一个服务，浏览器里选任务、选模型、点「运行实验」，看着机械臂把方块搬进托盘。
+2026-09-20 建仓，<strong>两天 162 ★</strong>，MIT。</p>
+<p>三个任务：搬运入盘 / 方块堆叠 / 越障搬运。抓取靠双侧夹爪真实接触判定，成功与否由<strong>独立的物理条件</strong>判，
+不是模型自己说了算。四种控制模式：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>模型看到什么</th>
+<th>模型输出什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>预设技能</td>
+<td>结构化状态或 RGB-D 检测坐标 + 可用技能表</td>
+<td>阶段与技能选择</td>
+</tr>
+<tr>
+<td>逐步 XYZ</td>
+<td>状态 / RGB-D 坐标，或已启用相机的原始 RGB</td>
+<td>一个 XYZ／夹爪短步候选</td>
+</tr>
+<tr>
+<td>分层 XYZ</td>
+<td>状态、接触事实、近期动作</td>
+<td>先出子目标，再分别选 X／Y／Z／夹爪方向</td>
+</tr>
+<tr>
+<td><strong>规则基线</strong></td>
+<td>同模式的可用观测</td>
+<td><strong>由程序选动作，零模型调用</strong></td>
+</tr>
+</tbody></table>
+<p><strong>为什么现在值得做。</strong>
+这条线上大多数「能跑的东西」都卡在装 Isaac Sim、配 CUDA、申请权重。行知把门槛压到了
+<strong>Python 3.11 + Node 22.12 + 一次 <code>npm run build</code></strong>：默认规则基线，<strong>模型调用数 0、花费 0</strong>，
+先把「观察 → 决策 → 执行 → 反馈」这个闭环在自己电脑上看一遍，再决定要不要接模型。</p>
+<p>它对「实验诚实性」的处理值得单独说，这是同类项目最容易糊弄的地方：</p>
+<ul>
+<li><strong>未接通的模型不生成模拟成绩</strong>，未知费用不会显示成 0 美元；</li>
+<li>普通 Chat API 只返回动作选择，界面<strong>不会把模型自报的「信心」当成真实概率</strong>（只有原生返回候选概率的接口才显示）；</li>
+<li>对比实验按<strong>仿真时间</strong>对齐回放，README 明说「实际耗时保留模型等待，不能拿回放速度当推理速度」；</li>
+<li>候选生成、几何计算和安全检查属于控制程序，<strong>不计作模型学到的能力</strong>。</li>
+</ul>
+<p>作者自己放出的一组真实结果也没修饰：官方 Jev 的分层 XYZ 两局搬运<strong>均达到终态</strong>，
+分别 <strong>89 / 88 步、178 / 176 次真实请求、约 72 / 80 秒</strong>；但<strong>两局下放时都失抓</strong>，
+方块落进托盘后完成撤离，所以「还不能称为稳定精确放置」。这个口径比「成功率 100%」有用得多。</p>
+<p><strong>个人怎么切进去（分步 / 带成本和时间）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td><code>git clone</code> → venv → <code>pip install -e .</code> → <code>npm ci &amp;&amp; npm run build</code> → <code>embodied-jev serve --port 8090</code>，浏览器开 <code>127.0.0.1:8090</code>，保持「规则基线」跑三个任务各一遍</td>
+<td>30–60 分钟</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td>接<strong>本地 MiniCPM5-2B</strong>：<code>pip install -e &#39;.[minicpm]&#39;</code>、<code>EMBODIED_MINICPM=1</code>、<code>embodied-jev warmup</code>。首次下 <strong>约 5 GB</strong> 权重，CUDA 下走 FP16。A4000 基线被占 4.4G，剩 ~11.6G，2B 的 FP16 权重约 4–5 GB，<strong>装得下</strong>；缓存全了可以 <code>HF_HUB_OFFLINE=1</code> 离线跑</td>
+<td>半天（含下载）</td>
+<td>0（电费）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>接自己的云端 API（OpenAI 兼容 / Claude 原生），开「模型对比」，统一任务 + 种子 + 动作预算，跑 2–3 路</td>
+<td>1–2 小时</td>
+<td>见下方成本</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>交付</strong>：导出实验 JSON，把「同一任务同一种子下，本地 2B 小模型 vs 云端大模型」的步数 / 请求数 / 耗时 / 失败模式写成一篇对照。这是目前公开数据里<strong>最缺的一格</strong> —— README 自己也写「Jev / Claude 的同设置对照还待完成」</td>
+<td>1–2 天</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>4（可选）</td>
+<td>提 PR。缺口很明显：Windows 路径只提供了命令、<strong>CI 只验过 macOS / Linux</strong>；没有导入历史实验文件的入口（服务重启轨迹就没了）；任务只有三个</td>
+<td>数天</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><strong>云端调用成本怎么估。</strong> 拿作者实测的 <strong>178 次请求 / 局</strong>当基数。逐步 XYZ 模式每次请求是「当前状态 +
+可用动作 + 简短历史」，量不大，按每次 1.5–3k 输入 / 100–200 输出 token 估，一局约
+<strong>270–530k 输入 + 18–36k 输出</strong>。按当前公开价目：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th align="right">输入 $/M</th>
+<th align="right">输出 $/M</th>
+<th align="right">一局(178 次)约</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Claude Sonnet 5</td>
+<td align="right">3</td>
+<td align="right">15</td>
+<td align="right"><strong>$1.1–2.1</strong>（约 ¥8–15）</td>
+</tr>
+<tr>
+<td>Claude Opus 5</td>
+<td align="right">5</td>
+<td align="right">25</td>
+<td align="right"><strong>$1.8–3.4</strong>（约 ¥13–25）</td>
+</tr>
+<tr>
+<td>Claude Haiku 4.5</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right"><strong>$0.4–0.7</strong>（约 ¥3–5）</td>
+</tr>
+</tbody></table>
+<p><strong>做一组三任务 × 三模型 × 三种子的完整对照，量级在 ¥100–300</strong>，这是可以自己掏的。
+本地 MiniCPM5-2B 那一路是 <strong>0</strong>，所以合理的姿势是：<strong>本地模型跑多种子拿方差，云端模型只跑少数几局做上限对照。</strong></p>
+<p><strong>坑与风险。</strong></p>
+<ul>
+<li><strong>项目太新。</strong> 两天 162 ★，接口一定会变。要么钉 commit，要么做好每周同步的准备。</li>
+<li><strong>Windows 未经 CI 验证。</strong> README 给了 PowerShell 命令但明说「当前已验证的环境为 macOS 与 Linux CI」。</li>
+<li><strong>官方 Jev 是邀请制。</strong> 要先到 TypeSafe 官网排 waitlist，拿到邀请才能建 Key。<strong>做对照实验不要把它排进关键路径</strong>，
+用 OpenAI 兼容 / Claude 原生那两个入口即可。</li>
+<li><strong>图像输入的边界要看清。</strong> 原始图像目前只走支持图像的 Chat / Claude 逐步模式；<strong>Jev 只接收文本</strong>，
+它读的是本地检测器给出的 RGB-D 坐标，不是相机图。跨模型对比时这一条必须写进方法部分，否则不公平。</li>
+<li><strong>别拿回放速度当推理速度</strong>（作者已经在 README 里提前堵了这个口子，但导出数据时容易忘）。</li>
+<li>Key 存在系统钥匙串里，系统存储不可用时页面会退化成「仅本次会话」——<strong>不会改存明文</strong>，这点做得对，但注意别在共享机器上留 Key。</li>
+</ul>
+<p><strong>出处与相关链接。</strong>
+仓库 <a href="https://github.com/FBddcz/embodied-jev">https://github.com/FBddcz/embodied-jev</a> ｜
+MuJoCo <a href="https://mujoco.org/">https://mujoco.org/</a> ｜
+对照实验的下游去处：<a href="https://rle-bench.github.io/">RLE-Bench 排行榜</a>（同样是「让模型当机器人工程师」的评测口径）</p>
+<hr>
+<h3>2️⃣ robot-hint/HINT —— 给长程操作装一个「先决定信哪只相机、再锁定意图」的路由器（浙大等，Apache-2.0）</h3>
+<ul>
+<li><strong>是什么</strong>：<a href="https://github.com/robot-hint/HINT">HINT</a>（<a href="https://arxiv.org/abs/2609.02653">arXiv:2609.02653</a>，
+<a href="https://robot-hint.github.io/">项目页</a>）是长程操作的 agentic 框架。核心是一个 <strong>pattern router</strong>：
+它决定<strong>该信哪只相机</strong>、以及<strong>什么时候更新语义</strong>；在这些切换点上，task manager + grounder 解析出当前子任务和目标，
+tracking 在两次更新之间<strong>维持住这个承诺</strong>。追踪到的意图再通过<strong>视觉高亮 + attention prior</strong> 注入动作策略 ——
+<strong>不给基础模型加任何可训练参数</strong>。</li>
+<li><strong>为什么值得做</strong>：长程任务的失败往往不是动作不行，而是「中途把目标搞丢了」。HINT 把这件事拆成可单独替换的模块
+（<code>src/perception/</code> 是 task manager / grounding / tracking，<code>src/intent/</code> 是高亮与 attention prior），
+每一块都能单独换掉做消融 —— 对个人来说这是难得的<strong>可局部动手</strong>的结构。</li>
+<li><strong>个人怎么切进去</strong>：<strong>先别碰真机，也先别训 π₀.₅。</strong> 仓库有 <code>src/dataset_export/</code>，
+能对已有 LeRobot 数据集<strong>离线</strong>导出高亮视频和 attention map。README 明确建议
+「先跑一个 episode 检查高亮效果，再做完整导出」——这是一条零硬件、单卡就能走完的验证路径。
+看懂高亮对不对，再决定要不要投训练。</li>
+<li><strong>坑</strong>：依赖 GroundingDINO + SAM2 + Qwen3-VL + π₀.₅(OpenPI) 四套权重，显存压力主要在这里；
+一个 conda env 同时装了 PyTorch 和 JAX，但 <strong>README 明说「不要在同一个 Python 进程里加载两个模型」</strong>；
+YAML 里<strong>必须填绝对路径</strong>，HINT 不展开 <code>$HOME</code> / <code>$CKPT_ROOT</code>。</li>
+<li><strong>相关</strong>：<a href="https://github.com/Physical-Intelligence/openpi">OpenPI</a> ｜ <a href="https://github.com/huggingface/lerobot">LeRobot</a></li>
+</ul>
+<hr>
+<h3>3️⃣ AiBoBoMaker/MicroDuck-BoBoRedesign —— 把 MicroDuck 的注塑件全部重画成能 FDM/SLA 打印的（硬件）</h3>
+<ul>
+<li><strong>是什么</strong>：<a href="https://github.com/AiBoBoMaker/MicroDuck-BoBoRedesign">MicroDuck BoBoRedesign</a> 是国内
+BoBoMaker 社区对 Pollen Robotics <a href="https://github.com/pollen-robotics/microduck">MicroDuck</a>
+（25 cm 小双足，RL 驱动）的<strong>二次开发</strong>。原版外壳是注塑件，不适合复刻；这个项目把<strong>每一个壳体件重新设计成打印友好的几何</strong>，
+保留外观、加固受力件，并把「逐步支持国产舵机替代 Dynamixel XL330」写进了目标。</li>
+<li><strong>为什么值得做</strong>：这是<strong>双足 RL 这条链上门槛最低的实物入口</strong> —— 有台打印机就能开始，
+而且它和昨天那条 <a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl 诊断</a> 是<strong>同一个 plant</strong>：
+仿真侧的奖励改法可以直接迁到你自己打出来的这只上。</li>
+<li><strong>仓库现状（一定要先看这条）</strong>：目前实际落盘的<strong>只有 <code>01-3DPrint/02-HD-1910-C001/</code> 下的 27 个 STL</strong>
+（下巴、前脸、头盖骨、左右躯干、大腿根 ×2、大腿轴承固定件 ×2、踝关节固定件 ×2、脚底板、电池支撑架、躯干舵机底座、眼圈、舌头…）。
+README 里写的 <code>02-PCB/</code>、<code>03-Code/</code>、<code>04-RL/</code> 三个目录<strong>仓库里还没有</strong>，作者也标了 &quot;in active development&quot;、
+BOM 与打印参数「will be added as each module matures」。</li>
+<li><strong>个人怎么切进去</strong>：现在能做的是<strong>打一套壳、量公差、把配合数据回报给社区</strong>——这正是这类项目最缺的贡献，
+而且是 issue/PR 最容易被接受的那种。等 PCB 和 RL 目录补齐再谈整机。</li>
+<li><strong>坑</strong>：<strong>没有仓库级 LICENSE 文件</strong>，README 声明「跟随原项目」——<strong>代码 Apache-2.0，3D 模型 CC BY-SA-NC（非商用）</strong>；
+想商用的绕开。另外 README 里的 Issues / Discussions 链接写的是 <code>your-username</code> 占位符，没改。</li>
+<li><strong>相关</strong>：<a href="http://opc.bobomaker.com">BoBoMaker</a> ｜ <a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>1️⃣ 【深度】Pro2004-a11/real2sim-droid —— 一条 DROID 真机 episode 进去，一个带真值标注的 MuJoCo 数字孪生出来，全自动</h3>
+<p><strong>是什么。</strong>
+<a href="https://github.com/Pro2004-a11/real2sim-droid">real2sim-droid</a>（MIT，Python 3.12 / MuJoCo 3.13 / PyTorch 2.6）
+吃一条 DROID 数据集里的真机 episode（Franka + Robotiq 2F-85，三台标定过的 ZED），
+吐出一个 MuJoCo 场景：<strong>同一条轨迹、同样的相机位姿</strong>重放一遍，物体位置由 depth + SAM2 自动摆放，
+抓取是<strong>物理仿真出来的</strong>（不是脚本吸附），逐帧输出 mask / 米制深度 / 6-DoF 位姿 / 接触力。
+<strong>No human in the loop。</strong></p>
+<p><strong>为什么现在值得做。</strong>
+Real2Sim 这件事，绝大多数公开实现要么半自动（人工对齐物体），要么只交一个「看着挺像」的叠加图。
+这个仓库的分量全在<strong>它把每一句话都量化成了和真实录像对比的数字</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>门</th>
+<th>IRIS <code>7dfa2da3+2023-05-11</code>（把记号笔从碗里拿出来）</th>
+<th>GuptaLab <code>553d1bd5+2023-05-19</code>（方块叠方块）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FK 门（DROID 末端位姿 vs MuJoCo FK）</td>
+<td><strong>1e-5 mm</strong></td>
+<td><strong>1e-5 mm</strong></td>
+</tr>
+<tr>
+<td>机器人 mask IoU（外部相机 2，中位）</td>
+<td><strong>0.92</strong></td>
+<td><strong>0.76</strong></td>
+</tr>
+<tr>
+<td>物理抓取：持住比例 / 释放误差</td>
+<td><strong>100%</strong> 的闭合步 · 2.4 cm</td>
+<td><strong>100%</strong> · 0.8 cm</td>
+</tr>
+<tr>
+<td>反事实（物体挪 5 cm、轨迹不变）</td>
+<td>持住 <strong>0%</strong> · 24 cm</td>
+<td>持住 <strong>2%</strong> · 5.9 cm</td>
+</tr>
+<tr>
+<td>跨视角物体摆放（ext1 拟合、ext2 重检测）</td>
+<td>中位 <strong>4.0 cm</strong></td>
+<td>n/a（方块在 ext2 里太小）</td>
+</tr>
+</tbody></table>
+<p>最后那行反事实是整个仓库最该被抄走的设计：<strong>它证明了这个数字孪生不是把抓取写死了。</strong>
+物体挪 5 cm、轨迹照旧 → 抓不住。任何号称「复现了真机」的仿真，都应该被这么问一次。</p>
+<p><strong>个人怎么切进去（分步 / 带成本和时间）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td><code>pip install torch --index-url .../cu124</code> → <code>pip install -e .</code>（拉 mujoco、menagerie、transformers、opencv）</td>
+<td>30 分钟</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>python scripts/fetch_droid.py --calib</code> 拉改进过的标定 JSON（HF <code>KarlP/droid</code>，<strong>约 330 MB</strong>）；再 <code>--episode &lt;id&gt;</code> 拉单条 episode（<strong>约 110 MB，走 HTTPS，不需要 gsutil</strong>）</td>
+<td>20 分钟</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>python -m real2sim all --episode &lt;id&gt;</code>。作者实测 <strong>4070 Ti 上约 3 分钟</strong>；<strong>A4000 折算约 6–8 分钟</strong>。产物落在 <code>runs/&lt;episode&gt;/</code>：<code>ingest/</code>（帧、K、cam→base）、<code>depth/</code>、<code>gate/</code>、<code>objects/</code>、<code>sim/</code>（rgb、label map、<code>*_depth.npy</code>、含位姿/四元数/接触力的 <code>state.npz</code>）、<code>compare/</code>（并排 MP4 + <code>metrics.json</code>）</td>
+<td>10 分钟</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>python -m real2sim counterfactual --episode &lt;id&gt;</code> 复现那条反事实。<strong>这一步是理解这个仓库的关键，别跳</strong></td>
+<td>10 分钟</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>交付路线 A（最短）</strong>：换一条你自己挑的 DROID episode 跑一遍，把 mask IoU / 抓取持住率 / 反事实三条数字发进 issue。作者只验过两条 episode，<strong>第三条数据点就是新信息</strong></td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>交付路线 B（更有价值）</strong>：把产出的逐帧真值（mask / 米制深度 / 6-DoF 位姿 / 接触力）当作<strong>免费的标注数据</strong>，喂给你正在训的感知模块。这是把「别人的真机数据」变成「你的带标注仿真数据」的桥</td>
+<td>数天</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><strong>显存</strong>：SAM 2.1-hiera-<strong>small</strong> + Depth-Anything-V2-<strong>Small</strong>，都是小号，A4000 16G（基线占 4.4G）够用。</p>
+<p><strong>坑与风险。</strong></p>
+<ul>
+<li><strong>只验过两条 episode。</strong> 方块叠方块那条的 mask IoU 只有 <strong>0.76</strong>（vs 0.92），跨视角摆放在那条上<strong>直接 n/a</strong>
+（方块在第二个外部相机里太小）—— 小物体是已知短板，别指望它在精细装配类 episode 上同样好。</li>
+<li><strong>跨视角中位误差 4.0 cm</strong> 不小。做需要厘米级绝对位置的下游任务时，这是误差下限。</li>
+<li><strong><code>fetch_droid.py --calib</code> 要 330 MB</strong>，<code>--episode</code> 每条约 110 MB，先看硬盘。</li>
+<li>钉死 cu124 的 PyTorch + MuJoCo 3.13，和你已有的环境大概率冲突，<strong>开独立 venv</strong>。</li>
+<li>反事实那两个数字（持住 0% / 2%）是<strong>特性不是 bug</strong>：它说明这不是一个通用抓取模拟器，
+只是「这一条轨迹在这一个场景下的物理复刻」。别拿它当抓取策略的训练场。</li>
+</ul>
+<p><strong>出处与相关链接。</strong>
+仓库 <a href="https://github.com/Pro2004-a11/real2sim-droid">https://github.com/Pro2004-a11/real2sim-droid</a>（37 个测试，Releases 页有两条 1080p 38 秒对照视频）｜
+<a href="https://droid-dataset.github.io/">DROID 数据集</a>（CC BY 4.0）｜
+<a href="https://huggingface.co/facebook/sam2.1-hiera-small">SAM 2.1-hiera-small</a> ｜
+<a href="https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf">Depth-Anything-V2-Small</a></p>
+<hr>
+<h3>2️⃣ RyanXXYC/Pounce —— 离合式 VR 遥操作 + 一套能替代原厂 FD.exe 的 Feetech STS 舵机工具（硬件 / 遥操作套件，MIT）</h3>
+<ul>
+<li><p><strong>是什么</strong>：<a href="https://github.com/RyanXXYC/Pounce">Pounce</a> 是个 Windows 桌面程序（Python + tkinter），
+用 Oculus Rift S 的 Touch 手柄通过 SteamVR 直接遥操作 <a href="https://github.com/Vector-Wangel/XLeRobot">xLeRobot</a>
+的双臂、四轮底盘和相机云台。数据通路写得很清楚：</p>
+<pre><code>手 → 头显相机(位置) + 手柄 IMU(姿态) → SteamVR → 程序 60 Hz 读位姿
+   → 漂移门 → 离合 delta → 房间系→臂系旋转 → One Euro 滤波 → IK
+   → 两条 USB-serial(1,000,000 bps) 上 20 Hz 关节指令 → STS3215
+</code></pre>
+</li>
+<li><p><strong>为什么值得做</strong>：两件事。一是<strong>离合式控制</strong>（握住 grip 手跟着动、松开臂冻结、再握从原地续上，像把鼠标提起来放下）——
+这意味着<strong>臂永远不会跳</strong>，是遥操作采数据最怕的失败模式。二是那套舵机页（Debug / Program / OneKey / PWM）
+<strong>讲的是纯 Feetech SCS/STS 总线协议</strong>，作者明说「适用于任何 STS 舵机装置，不止 xLeRobot」——
+也就是说，哪怕你不玩 VR，只要手里有 STS3215（SO-101 / SO-100 / xLeRobot 全家都是），
+这就是一套<strong>开源的中位校准与编程工具，可以替掉原厂 FD.exe</strong>。</p>
+</li>
+<li><p><strong>个人怎么切进去</strong>：<strong>283 个单元测试不需要任何硬件</strong> —— 协议、运动学、滤波器、绑定模型、SteamVR 数据文件
+都是纯代码且被覆盖。先 <code>python -m pytest</code> 跑一遍读懂闭式 IK 和 One Euro 的实现，
+再决定要不要买硬件。xLeRobot 整机 <strong>$660</strong>（约 ¥4700），<strong>刚好卡在预算线内</strong>，但 Rift S 得另算。</p>
+</li>
+<li><p><strong>坑</strong>：<strong>只有 Windows</strong>（Python 3.9+，作者在 3.9.13 上开发）。仓库里那份 <code>teleop_config.json</code>
+是<strong>作者自己那台的标定值</strong>（舵机 ID、轮组、增益、运动学符号与零位、操作者坐标系）——
+README 明说「用它当参考，但在信任 EE 模式之前必须在自己的机器上跑 Wheel-ID / Servo-Cal / Cal-Wizard 三个向导」。
+别直接拿来用。</p>
+</li>
+<li><p><strong>相关</strong>：<a href="https://github.com/Vector-Wangel/XLeRobot">xLeRobot</a>（5.5k ★，$660 双臂移动家庭机器人）</p>
+</li>
+</ul>
+<hr>
+<h3>3️⃣ localai-org/gem-x.cpp —— 把 NVIDIA GEM-X 搬成 C++/GGML，摄像头连续进、3D 骨架连续出（Apache-2.0）</h3>
+<ul>
+<li><strong>是什么</strong>：<a href="https://github.com/localai-org/gem-x.cpp">gem-x.cpp</a> 是 <a href="https://github.com/NVlabs/GEM-X">NVIDIA GEM-X</a>
+的 C++23 + GGML 本地化移植，Vulkan 走 GPU。两种模式：<strong>实时摄像头</strong>（连续更新的骨架，可叠在相机画面上或看 3D 视图）
+和<strong>离线视频</strong>（上传或录一段，重建动作，导出带动画的 GLB 给 Blender 之类用，限 120 采样帧）。
+自带一个浏览器 demo，<code>./demo/gemx-demo --threads 8</code> 开 <code>localhost:8098</code>。</li>
+<li><strong>为什么值得做</strong>：人形重定向（retargeting）这条链的上游一直缺一个<strong>能在自己机器上跑、不走云、不要 Python 全家桶</strong>的动捕入口。
+GLB 导出直接接得上 Blender / 各家重定向管线。参数里那个「<strong>每 N 帧跑一次人体检测</strong>」（默认 5，姿态每帧都跑）
+是很实在的算力调度旋钮 —— 人在场景里走动时设 1，站着不动时调大。</li>
+<li><strong>个人怎么切进去</strong>：装 Vulkan 开发包（<code>libvulkan-dev glslc spirv-headers</code>）→ <code>cmake --preset vulkan</code> →
+跑 demo 录一段自己的动作导 GLB → 接进你手上的人形重定向脚本。一个下午的事，0 成本。</li>
+<li><strong>坑</strong>：README 第一句就写了 <strong>&quot;Robot control and SONIC integration are not included yet&quot;</strong> ——
+它现在<strong>只出骨架，不出机器人指令</strong>，重定向那一段要你自己接。<strong>只在 Linux 上测过</strong>，
+需要 GCC 13+ / Clang 17+、CMake 3.24+、Ninja、Go 1.23+（浏览器 demo 用）。
+离线模式还要 <code>sam3d.cpp</code> 子模块的 Body 模型资产，实时摄像头模式不需要。</li>
+<li><strong>相关</strong>：<a href="https://github.com/NVlabs/GEM-X">NVlabs/GEM-X</a></li>
+</ul>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<blockquote>
+<p>本期两条都落在「<strong>自动建模 → 可打印性验证</strong>」这一段，而且是同一个骨架的两种实现：
+<strong>AI 提议，程序用真实几何否决。</strong> 上一期（09-21）碰的是打印机侧的状态流，这期回到建模侧。</p>
+</blockquote>
+<h3>🇨🇳 Jkcode8/patent-3d-demo —— 专利交底书 + CAD 图纸 → 参数化 .scad → manifold STL → 附图 → 配音演示视频（MIT）</h3>
+<p><strong>是什么。</strong> <a href="https://github.com/Jkcode8/patent-3d-demo">patent-3d-demo</a> 是一个 <strong>Agent skill</strong>
+（Codex / Claude Code 等支持 skills 的运行时都能装），把「用三维视频讲清楚一个专利的结构、原理和施工方法」
+这件事做成了一条脚本化流水线，六个阶段：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① 抽取</td>
+<td>交底书正文 + 内嵌图、CAD 实体与文字、图纸页 PNG</td>
+</tr>
+<tr>
+<td>② 建模</td>
+<td>参数化 <code>.scad</code>，固定接口 <code>device(theta, pull, water_z, step, explode, section)</code>；manifold STL；<strong>外加一次投影与原图纸的 overlay 核对</strong></td>
+</tr>
+<tr>
+<td>③ 分镜</td>
+<td>从交底书推出分段计划，<strong>你确认之后才开始渲染</strong></td>
+</tr>
+<tr>
+<td>④ 附图</td>
+<td>彩色渲染、黑白渲染、正交线稿（SVG / <strong>DXF</strong> / PNG）+ 参数表</td>
+</tr>
+<tr>
+<td>⑤ 视频</td>
+<td>逐句 TTS → 时间轴 → 字幕 → 片头 → 配乐 ducking → 响度归一化 MP4</td>
+</tr>
+<tr>
+<td>⑥ 交付</td>
+<td><code>说明.md</code>：参数出处、假设清单、复现命令</td>
+</tr>
+</tbody></table>
+<p><strong>为什么值得做（对具身的人也一样）。</strong> 抛开专利场景，这条链干的事是
+<strong>「二维工程图纸 + 自然语言描述 → 可打印的参数化三维件」</strong>，而且它把
+<strong>「模型建出来的东西和原图纸对不对得上」做成了一道自动门</strong>（②阶段的投影 overlay）。
+这正是改件、做转接板、复刻别人图纸时最容易翻车、又最没人做自动检查的一步。
+<code>device()</code> 那个固定签名（含 <code>explode</code> 爆炸视图和 <code>section</code> 剖面）也意味着同一份模型能直接出装配图和剖视图。</p>
+<p><strong>个人怎么切进去。</strong>
+① <code>git clone</code> 进 <code>~/.claude/skills/</code> 或 <code>${CODEX_HOME}/skills/</code>；
+② 先跑 <code>python scripts/config.py --check</code> —— 它会打印每个依赖的可用性<strong>和缺失时的降级路径</strong>
+（<strong>OpenSCAD 必需</strong>；<code>ffmpeg</code> 缺了只出 GIF、<code>edge-tts</code> 缺了退 Windows SAPI 语音、AutoCAD 缺了就读 DXF 不读 DWG）；
+③ 拿仓库里那个桥墩防撞装置的案例（8 个索连模块 + 滑套 + 浮力箱 + 外膜，38 秒视频样片）跑通一遍；
+④ 把你自己手上一张机加件图纸喂进去，只跑到 ② 阶段，看 overlay 核对能不能抓出你故意改错的那个尺寸。</p>
+<p><strong>成本（含 API token 费）。</strong> 几何计算全在本地 OpenSCAD，<strong>渲染和视频这两段 token 费为 0</strong>；
+花钱的是「读交底书 + 图纸文字 → 写 <code>.scad</code> → 按核对结果返修」这几轮。
+一个中等复杂件按 2–4 轮返修估，累计约 <strong>150–400k 输入 + 20–40k 输出 token</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th align="right">输入 $/M</th>
+<th align="right">输出 $/M</th>
+<th align="right">一个件约</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Claude Sonnet 5</td>
+<td align="right">3</td>
+<td align="right">15</td>
+<td align="right"><strong>$0.8–1.8</strong>（约 ¥6–13）</td>
+</tr>
+<tr>
+<td>Claude Opus 5</td>
+<td align="right">5</td>
+<td align="right">25</td>
+<td align="right"><strong>$1.3–3.0</strong>（约 ¥9–22）</td>
+</tr>
+</tbody></table>
+<p>TTS 走 <code>edge-tts</code> 免费。<strong>结论：一个件不到 ¥25，链路上真正贵的不是硬件也不是打印，是这几轮返修。</strong>
+所以 ③ 阶段「分镜要你确认后才渲染」这个设计是省钱的 —— 别让它在你没看的时候渲一遍。</p>
+<p><strong>坑。</strong> 依赖 OpenSCAD 这一条是硬的；DWG 要 AutoCAD（没有就得先转 DXF）；
+<code>.scad</code> 的参数化质量完全取决于模型这一轮写得好不好，<strong>overlay 核对只能抓住投影对不上的错，抓不住「投影对得上但拓扑错了」的错</strong>。
+有 regression 和 full-pipeline 两条 CI，说明作者在意可复现性，但 CI 跑的是仓库自带的虚构样例。
+→ <a href="https://github.com/Jkcode8/patent-3d-demo">https://github.com/Jkcode8/patent-3d-demo</a></p>
+<hr>
+<h3>🌍 Jinyu-Liu-Jinyu-Liu/Prompt2Print —— AI 画字形，程序用 16 道几何门 + PrusaSlicer 切片检查否决它</h3>
+<p><strong>是什么。</strong> <a href="https://github.com/Jinyu-Liu-Jinyu-Liu/Prompt2Print">Prompt2Print</a> 把「输入一个名字 → 拿到四个能打印的桌牌设计」
+做成了一条<strong>有护栏的</strong>流水线。口号是 <code>AI proposes. Geometry rules constrain. Humans choose.</code></p>
+<p>关键在于<strong>字形是生成的，不是选的</strong>：确定性配方（shapely 算子作用在字体轮廓上，或者模型自己画 SVG glyph path）
+→ <code>polygon()</code> → OpenSCAD。而且<strong>在进 OpenSCAD 之前</strong>，一个 design harness 就用<strong>和最终 STL 相同的平面检查</strong>
+预筛每一个提案，把判定作为工单回灌给模型（有界轮次，每轮记录）。</p>
+<p>底座有五种构型，其中<strong>两种是站立式</strong>：<code>wedge</code> 桌牌（30–90°）和 <code>stand</code> 垂直脚（45–90°）。
+对站立件，程序会<strong>自己挑一个无支撑的打印姿态、算悬垂、并量导出实体的倾覆余量</strong>——
+这是把「打出来站不站得住」变成了一个可计算的量，而不是打完了才发现。</p>
+<p>每个产物过 <strong>16 道几何门 + 平面特征筛查 + PrusaSlicer 切片检查</strong>，状态是
+<code>PASS / WARN / FAIL / UNKNOWN / NOT_RUN</code> 五档，README 一句话点题：<strong>&quot;nothing is ever simulated as a pass&quot;。</strong></p>
+<p><strong>个人怎么切进去。</strong>
+① macOS 上作者 2026-09-19 验过完整链路；<strong>Linux 能跑出 STL 产物</strong>（前端 + OpenSCAD CLI 那部分）；
+② <code>brew install --cask openscad@snapshot</code> → <code>uv sync --extra dev</code> → <code>cd frontend &amp;&amp; npm run build</code> →
+<code>python scripts/app.py</code>，开 <code>127.0.0.1:8000</code>；
+③ <strong>先跑离线确定性预设模式</strong>（完全不调模型），把 16 道几何门和倾覆余量算出来看一遍 —— 这一步 <strong>token 费 0</strong>；
+④ 再接模型，对比「AI 设计的字形」和「预设配方」在同样几道门下的通过率差异。
+⑤ <strong>真正值得搬走的不是这个桌牌产品，是 <code>evidence/</code> 目录那套「每一个候选都留下实测几何 + 判定」的做法</strong> ——
+把它套到你自己的参数化件上。</p>
+<p><strong>成本（含 API token 费）。</strong> 字形设计的上下文比上一条小得多：四个候选 + 有界返修轮次，
+约 <strong>30–80k 输入 + 10–20k 输出</strong>。Sonnet 5 约 <strong>$0.2–0.5</strong>（¥1.5–4）一个名字；Opus 5 约 <strong>$0.4–0.8</strong>。
+<strong>离线确定性预设模式是 $0。</strong> 另外它支持用 <strong>ChatGPT 登录</strong>走 OpenAI 自家的 Codex app server，不一定要 API Key。</p>
+<p><strong>坑。</strong></p>
+<ul>
+<li><strong>许可未识别</strong>：GitHub 的 license API 返回 <code>NOASSERTION</code>，仓库里那份 LICENSE 不是标准模板。
+<strong>想拿它的代码做别的用途之前，先问作者。</strong></li>
+<li><strong>范围很窄</strong>：只做 1–8 个 ASCII 字母的名牌浮雕。中文、复杂几何都不在射程内 ——
+但那套「预筛 → 工单回灌 → 16 道门 → 切片检查」的骨架是可迁移的。</li>
+<li>2026-09-21 建仓，一天，非常新。</li>
+<li>可选的 Minecraft 预览器是个 feature flag，跟主链路无关，别被它带偏。</li>
+</ul>
+<p>→ <a href="https://github.com/Jinyu-Liu-Jinyu-Liu/Prompt2Print">https://github.com/Jinyu-Liu-Jinyu-Liu/Prompt2Print</a></p>
+<hr>
+<h3>📌 专题分析（这一周这条链上真正变化的东西）</h3>
+<ol>
+<li><p><strong>验证的重心从「建得出来吗」移到了「打出来站不站得住」。</strong>
+09-13 那一期的 idea-to-print 是 19 项 DfAM 几何门，09-21 的 gridfinity-designer 把「怎么拿得出来」设计进凹槽，
+这一期 Prompt2Print 直接<strong>算导出实体的倾覆余量、挑无支撑打印姿态、算悬垂</strong>。
+门的数量在涨（19 → 16 + 平面筛查 + 切片检查），但更重要的是<strong>门的性质</strong>变了：
+从「网格合不合法」变成了「这个物理对象在重力下的行为」。这是几何检查在往物理检查靠。</p>
+</li>
+<li><p><strong>「工单回灌」正在成为这条链的标准骨架。</strong>
+两个项目、两个国家、两种 CAD 后端（OpenSCAD 参数化 vs OpenSCAD + CAD 图纸），
+但结构一模一样：<strong>模型提议 → 程序用真实几何测量 → 不过就把测量结果（不是「你错了」，是具体数字）当工单退回去 → 有界轮次</strong>。
+这比「让模型自己检查自己」靠谱得多，也是 token 费真正花在哪的答案 —— <strong>钱花在返修轮次上，不是花在第一次生成上。</strong>
+两个项目都显式限制了轮次上限，这不是小事。</p>
+</li>
+<li><p><strong>成本结构已经稳定了，而且比想象中低。</strong> 连续几期量下来：
+<strong>纯参数化 code-CAD 链，一个件 ¥2–25；mesh 生成链（混元 3D 那类）另算 API 生成费。</strong>
+硬件（打印机、耗材）反而是一次性的。这条链现在的瓶颈<strong>不是钱，是「程序能不能测出这个件的问题」</strong> ——
+所以值得投入的方向是往门里加测量，不是往提示词里加要求。</p>
+</li>
+<li><p><strong>今天这两条都还没碰「和具身智能的接口」那一段</strong>（URDF / SRDF 自动生成、改件→打印→上机的闭环）。
+上一次碰是 09-20 的 text-to-cad（同源产出 STEP/DXF/STL/3MF <strong>和</strong> URDF/SRDF）。
+这一格连续两期空着，下期优先补。</p>
+</li>
+</ol>
+<hr>
+<h2>⚡ 专题 · 流式感知 → 连续决策</h2>
+<blockquote>
+<p>覆盖面轮换：09-19 推理侧 + 模型侧、09-20 模型侧 + 执行侧、09-21 推理侧 ×2。
+<strong>本期补上一直缺的第 4 类「传感器侧连续性」</strong>（TacBench-Lite），
+外加一个前三期完全没碰的角度：<strong>不是让推理更快，而是丢掉已经过期的输入</strong>（Inference-Governor）。</p>
+</blockquote>
+<h3>🇨🇳 yuexinyang526-coder/TacBench-Lite —— 一台笔记本上跑完的视触觉闭环基准，用「冻结触觉」证明了策略要的是动态反馈</h3>
+<p><strong>是什么。</strong> <a href="https://github.com/yuexinyang526-coder/TacBench-Lite">TacBench-Lite</a> 是一条
+<strong>纯 CPU</strong> 的「仿真环境 → 多模态数据 → 多模态模型 → 闭环评测」最小闭环：
+MuJoCo 物理 + <strong>自研的轻量视触觉渲染器</strong>（射线几何穿透 + 力致弹性体压缩 + 三色 LED 光度立体 + 标记点阵）、
+3 自由度笛卡尔龙门 + 40 mm 方形视触觉垫、四个接触密集型任务、<strong>658k 参数</strong>的 TacLite 策略。
+代码 MIT，数据集 CC-BY-4.0（344 MB / 800 episode），<strong>50 个 checkpoint</strong> 走 Release 附件。</p>
+<p>作者的硬件现实写在 README 里：RTX 3050 Laptop（4 GB）+ 16 GB 内存 + i5-11400H，
+Isaac Sim 系（含 TacEx、Tabero 官方栈）跑不动，<strong>所以选了纯 CPU MuJoCo 并自己写渲染器</strong>。</p>
+<p><strong>可量化的口子。</strong> 动作是 <code>[dx, dy, dz, f_des]</code>，由底层<strong>混合力/位置控制器以 50 Hz</strong> 执行，
+<strong>单步 8.3 ms</strong>；渲染器自检：16 mm 方孔平移 0/3/6/10/14 mm 下，<strong>孔心恢复误差 ≤ 0.6 mm 且单调</strong>；
+力 → 形变 0.57→10.8 N 对应 0.14→2.71 mm；剪切 → 标记位移 0→1.04 N 对应 0.22→0.37 mm。
+评测 = 每任务 30 episode × 4 任务 = <strong>150 episode/格</strong>，<strong>每个 seed 重新采一整套数据</strong>（5 个独立数据集），
+配对精确 McNemar + Holm–Bonferroni 校正。</p>
+<p><strong>为什么值得做（这才是这条专题要的东西）。</strong> 6.2 节那张传感器失效表是整个仓库的重点：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>press</th>
+<th>align_hole</th>
+<th>slide_ridge</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正常</td>
+<td>85.3%</td>
+<td><strong>56.7%</strong></td>
+<td>46.0%</td>
+</tr>
+<tr>
+<td>触觉置零</td>
+<td>57.3%</td>
+<td><strong>0.0%</strong></td>
+<td>36.7%</td>
+</tr>
+<tr>
+<td><strong>触觉冻结</strong>（冻在首次接触帧）</td>
+<td>75.3%</td>
+<td><strong>0.0%</strong></td>
+<td>36.7%</td>
+</tr>
+<tr>
+<td>触觉加噪（σ=25/255）</td>
+<td>72.0%</td>
+<td>40.7%</td>
+<td>48.0%</td>
+</tr>
+<tr>
+<td>替换语言指令</td>
+<td><strong>8.0%</strong></td>
+<td>28.7%</td>
+<td>38.0%</td>
+</tr>
+</tbody></table>
+<p><strong>「触觉冻结」和「触觉置零」一样把 align_hole 打到 0%。</strong>
+也就是说：给策略一个<strong>恒定的、正确的</strong>触觉画面（它确实在接触），和干脆不给，<strong>结果完全一样</strong>。
+策略要的不是「有没有接触」这一个 bit，<strong>是这一路信号在持续变化</strong>。
+这是我在这个专题里见过最干净的一次「连续流不可替代」的证据 —— 而且它跑在纯 CPU 上。
+（口径也写得很严：冻结发生在<strong>法向力首次 &gt; 0.3 N 的那一帧</strong>，此前照常送实时帧；早期版本在 episode 第一帧就冻结，
+那时垫子还没接触，该口径已废弃。这种自我纠正在个人项目里很少见。）</p>
+<p>另外两条同样有迁移价值：<strong>去触觉后 align_hole 56.7% → 1.3%</strong>（校正后 <code>p = 5.6e-24</code>，两路视觉撑不起 1.5 mm 容差）；
+<strong>粗触觉编码（6×6 token）下 align_hole 只剩 2.7%</strong> —— 表征的空间分辨率必须和任务容差同量级。</p>
+<p><strong>个人怎么切进去。</strong> ① <code>pip install -r requirements.txt</code>（174 个包，含 torch 2.5.1+<strong>cpu</strong> 和 mujoco 3.13）；
+② <strong>约 1 分钟的最小验证</strong>：<code>python -m sim.validate_tactile</code>（渲染器自检）+ <code>python -m sim.eval_expert</code>
+（脚本专家上界 100/100/96/100%）；③ 从 Release 拉 344 MB 数据 + 127 MB 权重，<code>python -m model.degrade</code>
+复现那张失效表；④ <strong>交付</strong>：把「冻结 vs 置零 vs 加噪」这套协议搬到<strong>你自己的传感器模态上</strong>
+（力矩、事件相机、关节编码器都行）—— 这是一套可以直接复用的「这一路信号到底是不是必须连续」的测法。</p>
+<p><strong>坑（作者自己列的负面结果，非常硬）。</strong> 6.3 节：渲染器对真实 GelSight Mini 的外部效度是<strong>负面的</strong>。
+100/100 帧-几何精确配对下，<strong>本渲染器 vs 真实 NCC = +0.27</strong>，而「真实 vs 另一个数字的渲染」这个随机下限是 <strong>+0.29</strong> ——
+<strong>匹配值不高于随机下限</strong>。渲染器给出正确的接触轮廓，但不携带可区分数字的内部结构。
+光度域差距：亮度 ×0.51，逐通道对比度比约 [1.2, 3.5, 1.6]（真实传感器绿通道几乎是平的，std 9.1；
+渲染器三通道都放了几乎相同的结构，std ≈ 33）。<strong>所以：这是一个做消融和协议设计的台子，不是一个 sim-to-real 的台子。</strong>
+另外一键脚本是 PowerShell（<code>run_all.ps1</code> / <code>ablation.ps1</code>），Linux 上要自己拆成 shell。
+还有一条诚实得少见：分类迁移实验（纯渲染训练 → 真实测试）<strong>作者故意不报数字</strong>，
+因为两个域的触点分布差一个量级，渲染训练 13.3% 与真实训练 1.7% 都落在噪声带内，此时报数字是误导。</p>
+<p>→ <a href="https://github.com/yuexinyang526-coder/TacBench-Lite">https://github.com/yuexinyang526-coder/TacBench-Lite</a> ｜
+参考数据 <a href="https://github.com/TimSchneider42/tactile-mnist">TimSchneider42/tactile-mnist</a></p>
+<hr>
+<h3>🌍 Vigilant-CRS/Inference-Governor-QoS —— 不是算得更快，是<strong>不算已经过期的那一帧</strong></h3>
+<p><strong>是什么。</strong> <a href="https://github.com/Vigilant-CRS/Inference-Governor-QoS">Inference-Governor-QoS</a> 是一个 Rust 写的
+<strong>推理 QoS 调度器</strong>，坐在 NVIDIA Triton（或 TF Lite）前面，<strong>在请求到达 GPU 之前</strong>做六个决定：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>决定</th>
+<th>为什么重要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🗑️</td>
+<td><strong>丢掉已被取代的工作</strong> —— 同一路相机来了新帧就替掉还在排队的旧帧</td>
+<td>旧帧的结果机器人反正会扔掉，算它等于抢新帧的 GPU 时间</td>
+</tr>
+<tr>
+<td>⏱️</td>
+<td><strong>拒绝一定会迟到的工作</strong> —— 算完就已经过期的，干脆不启动</td>
+<td>迟到的答案不是「慢」，是「错」</td>
+</tr>
+<tr>
+<td>🛡️</td>
+<td><strong>压住后台长任务</strong> —— 受保护的流马上要来，长任务就不开工</td>
+<td>这是唯一一处它<strong>故意让 GPU 空着</strong>，也正是相机保持新鲜的原因</td>
+</tr>
+<tr>
+<td>🎚️</td>
+<td><strong>切到还塞得下的小模型变体</strong> —— 压力下宁可精度略低但准时</td>
+<td></td>
+</tr>
+<tr>
+<td>✂️</td>
+<td><strong>把长任务切块续跑</strong> —— 声明 <code>cooperative:</code> 的生成式模型按实际空出的时间切片，块与块之间让出槽位，状态走 prompt 传递</td>
+<td>内部实测：不可守承诺的拒绝 <strong>221 → 0</strong>，受保护相机 <strong>795 → 891 / 910 帧</strong>，总算力不变</td>
+</tr>
+<tr>
+<td>🎯</td>
+<td><strong>兑现一个能写下来的承诺</strong> —— contract 可带 <code>objective:</code>，同时约定占比和最长容忍间隔</td>
+<td>「98% 新鲜，且绝不出现整整一秒空白」这种话运维能讲、调度器能查</td>
+</tr>
+</tbody></table>
+<p>它说的是 <strong>Open Inference Protocol</strong>（和 Triton 同一个 gRPC 接口），<strong>客户端只改一个东西：连接地址。</strong></p>
+<p><strong>可量化的口子（作者自己给的口径很克制，值得抄）。</strong>
+RTX 3070 Laptop (8 GB)、Triton 2.70、真实模型（RF-DETR @ 512 px、ResNet pose、depth，外加一个 95 ms 不可中断块），
+<strong>对手是调过的 Triton</strong>（同模型、同 instance group、同共享内存数据通路、开了带优先级的 rate limiter）：</p>
+<table>
+<thead>
+<tr>
+<th>流</th>
+<th align="right">Triton（调过）</th>
+<th align="right">Vigilant</th>
+<th align="right">未覆盖周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>detector (RF-DETR)</td>
+<td align="right">84–85%</td>
+<td align="right"><strong>99%</strong></td>
+<td align="right"><strong>少 20–22×</strong></td>
+</tr>
+<tr>
+<td>pose</td>
+<td align="right">91%</td>
+<td align="right"><strong>99%</strong></td>
+<td align="right"><strong>少 10–12×</strong></td>
+</tr>
+<tr>
+<td>depth</td>
+<td align="right">97–98%</td>
+<td align="right">90–100%</td>
+<td align="right"><strong>无增益 —— 作者明说「不算作胜利」</strong></td>
+</tr>
+</tbody></table>
+<p>六轮、两个驱动版本各三轮。对上 Triton 的<strong>最强配置</strong>（全局受限共享资源）时 detector 是 12.9–15.1×，
+作者<strong>给区间不给最好看的那个数</strong>，并注明那次比较是 09-10 的 gap 计账修正之前测的、之后没重跑。
+还有<strong>诚实的另一半</strong>：同一轮里后台语言模型覆盖率是 <strong>0%</strong> —— 95 ms 不可中断块塞不进 33 ms 周期，有没有调度器都塞不进，
+区别只是「调度器决定了谁输，并且说出来」。开了 cooperative 切块后：detector 98% → 91%，语言模型 <strong>2 代 → 40 代</strong>。</p>
+<p><strong>换算到本机。</strong> 它测的是 3070 Laptop（8 GB）。A4000 算力更高但<strong>基线已被别的进程占 ~4.4G</strong>，
+而这个工具<strong>要解决的恰恰就是「多个东西抢一张卡」</strong>—— 本机就是它的目标场景。
+延迟数字按 ×1.5～2 折算到 A4000 的多任务负载上看即可（它不是模型推理，是调度开销，绝对值很小）。</p>
+<p><strong>为什么这条值得单独列。</strong> 前三期这个专题写的全是「让一次前向更快」（Triton kernel、CUDA graph、投机解码、流式解码）。
+这条是<strong>正交的另一个维度</strong>：一帧 33 ms 进来一次，检测器要 15 ms，本来塞得下 —— 直到一个语言模型在同一张卡上开了个 95 ms 的活。
+<strong>更快的 GPU 只会更快地算过期的帧。</strong> 这句话（&quot;A faster GPU computes stale frames faster&quot;）是整个仓库的论点，
+也是「流式感知 → 连续决策」里一直被忽略的一环：<strong>连续性不只是模型的事，是排队的事。</strong></p>
+<p><strong>个人怎么切进去。</strong>
+① 先不装，读 README 里那张 ASCII 时序图（F1..F5 四帧被 95 ms 块挤掉的过程），三分钟就懂了；
+② <code>vig autotune --endpoint 127.0.0.1:8001 -c vig.yaml -o qualification</code> —— 它会在你的机器上量你的模型、
+拿你的 contract 试配置、<strong>只保留背靠背重跑还站得住的那些</strong>，并且<strong>在你的负载根本不需要调度器时直说</strong>；
+③ <strong>交付</strong>：在本机（A4000 + 那 4.4G 的占用）上跑一遍 autotune，把「一个 VLA 推理 + 一路相机检测」
+这种真实具身负载下的覆盖率数字发出来 —— 作者测的是通用感知负载，<strong>具身场景的数据点是空的</strong>。</p>
+<p><strong>坑（有一条是硬的）。</strong></p>
+<ul>
+<li>⚠️ <strong>许可是 BUSL-1.1，不是 OSI 开源。</strong> GitHub 把它归到 &quot;Other&quot;。
+Business Source License 通常允许非生产用途、生产用途受限、到期后转为开源许可 ——
+<strong>个人学习和实验没问题，但要用在任何交付物里之前，务必自己读一遍 LICENSE 文件。</strong>
+这是本期唯一一条非标准开源许可的条目。</li>
+<li>状态标的是 <strong>pre-production</strong>（900 个测试通过）。</li>
+<li>它的 GitHub Pages 站点（README 里给的 homepage）<strong>返回 404</strong>，本期没有写进来；视频和 demo 图要在仓库里看。</li>
+<li>0 ★，2026-09-14 建仓。质量和星数在这条上完全不相关，但要有心理准备：<strong>没有社区，出了问题只能自己读 Rust。</strong></li>
+<li>那两组手机数字（Pixel 2 detector 漏帧 293‰ → 99‰、Pixel 5 497‰ → 208‰）作者标了
+<strong>「由低优先级流买单，且不是在每个负载点都成立」</strong> —— 引用时别掐掉后半句。</li>
+</ul>
+<p>→ <a href="https://github.com/Vigilant-CRS/Inference-Governor-QoS">https://github.com/Vigilant-CRS/Inference-Governor-QoS</a></p>
+<hr>
+<h3>📄 本期论文清单（流式感知 → 连续决策）</h3>
+<blockquote>
+<p>均为 2026-09-16 ～ 09-18 上 arXiv 的新文。按「本期主条目没覆盖到的类别」优先选。
+清单里的论文按规则<strong>不进 <code>pushed.jsonl</code> 台账</strong>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>标题 / 链接</th>
+<th>一句话</th>
+<th>代码 / 权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Catch Me If You Can: Real-Time Feedback Denoising for Responsive VLAs</strong><br><a href="https://arxiv.org/abs/2609.21022">https://arxiv.org/abs/2609.21022</a></td>
+<td>【执行侧异步】不把动作块完全去噪完再执行，<strong>留最后一步去噪当作轻量反馈接口</strong>，每个动作执行前用最新观测修一次；动态仿真任务成功率 <strong>27.5% → 85.0%</strong>，真机 <strong>51% → 73%</strong>，静态 LIBERO 上与 GR00T 持平</td>
+<td>✅ 有 —— <a href="https://github.com/jidaxian010/VLA-Feedback-release">jidaxian010/VLA-Feedback-release</a>（权重未核）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>REACT: A Fully Spiking State-Space Model for Real-Time Event-Driven Temporal Perception</strong><br><a href="https://arxiv.org/abs/2609.19204">https://arxiv.org/abs/2609.19204</a></td>
+<td>【传感器侧连续性】事件相机<strong>逐事件处理、不做时间累积</strong>（复值脉冲神经元 C-SiLIF，内部状态由事件间隔驱动）；EvTTC 上 <strong>9.59% 相对 TTC 误差 + 4.6 ms 端到端延迟</strong>，按数据集平均接近速度只对应 <strong>4 cm 车辆位移</strong>（最快对手是 1 m）；INT8 量化后每 32768 事件 <strong>18.5 → 2.8 mJ</strong></td>
+<td>❌ 未见公开代码</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>The EventCV Library for Event-Based Robotic Vision</strong><br><a href="https://arxiv.org/abs/2609.21330">https://arxiv.org/abs/2609.21330</a></td>
+<td>【传感器侧连续性 · 工具】Rust 写的事件相机库 + OpenCV 风格 Python 绑定：去噪、几何变换、角点检测、对比度最大化运动估计、video→events 仿真器、ONNX 推理；<strong>构建表示和解码文件比现有库快 1.1–3.7×</strong>，集成 Neuromorphic Drivers 可直接吃实时流，Jetson Orin AGX 上跑了三个机器人案例</td>
+<td>✅ 有 —— <a href="https://github.com/EventLAB-Team/eventcv">EventLAB-Team/eventcv</a>，Apache-2.0，44 ★</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Reinforcement Learning for Real-Time Vision-Language-Action Policies</strong><br><a href="https://arxiv.org/abs/2609.18207">https://arxiv.org/abs/2609.18207</a></td>
+<td>【执行侧异步 + 推理侧】把「慢而强的动作生成」和「快而反应的动作编辑」解耦：大 VLA 出动作块，轻量 edit policy 按最新状态改写；Kinetix 上 <strong>10/10 个环境</strong>里延迟策略拿到最好成绩，四个真机动态任务（传物体、平衡球、桌上足球、动态抓取）在线数据<strong>只用 10 分钟</strong>上限</td>
+<td>⚠️ 基座 <a href="https://github.com/pd-perry/expo-ft">pd-perry/expo-ft</a>（110 ★）有代码，<strong>实时版未见单独发布</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>FASA: Feedback-Aware Sampling Adaptation for Efficient Diffusion-Based VLA Models</strong><br><a href="https://arxiv.org/abs/2609.19475">https://arxiv.org/abs/2609.19475</a></td>
+<td>【推理侧提速】<strong>免训练</strong>的运行时框架，把实时多模态反馈当作去噪流水线的控制信号：交互驱动的 range adaptor 按视觉 + 夹爪力调全局采样步数预算，proprioception-aware step adaptor 在该区间里挑最优步；最高 <strong>1.45× 提速</strong>且成功率不明显下降</td>
+<td>❌ 未见公开代码</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>PSR: Predictive Sensorimotor Representation Learning for Contact-Rich Manipulation</strong><br><a href="https://arxiv.org/abs/2609.21753">https://arxiv.org/abs/2609.21753</a></td>
+<td>【传感器侧 + 模型侧】不再被动地把力反馈拿来做条件，而是<strong>主动预测未来接触动力学</strong>：多模态 Transformer 预训练出一层层预测表征，再注入 visuomotor 策略的动作流；六个真机接触密集任务 <strong>91.7% 总成功率</strong>，比 π₀.₅ / ForceVLA-π₀.₅ / ForceVLA2-π₀.₅ 分别高 <strong>30.0 / 22.5 / 19.2 个百分点</strong></td>
+<td>❌ 未见公开代码（<a href="https://psr-vla.pages.dev/">项目页</a>有视频）</td>
+</tr>
+</tbody></table>
+<p><strong>读法建议。</strong> 想动手的从 <strong>#3 EventCV</strong> 进（唯一一个开源可用的工具库，Apache-2.0，直接跑），
+想理解「为什么连续反馈不能省」的读 <strong>#1 和 #6</strong>（一个从执行侧、一个从感知侧给出同一个结论），
+<strong>#2 是本期这条线上最漂亮的数字</strong>（4.6 ms 端到端、4 cm 位移）但没代码，只能当思路。
+<strong>#5 是唯一免训练的</strong>，如果你手上已经有个 diffusion VLA，这条的迁移成本最低。</p>
+<hr>
+<h2>📈 趋势观察</h2>
+<p><strong>这一期最清楚的一条线：可信度正在从「跑得多快」转向「哪些数字不算数」。</strong></p>
+<p>把本期九个条目的自述放在一起看，一个模式很刺眼 —— <strong>它们都在主动划掉自己的一部分成绩</strong>：</p>
+<ul>
+<li>embodied-jev：「未接通的模型不生成模拟成绩」「不能拿回放速度当推理速度」「两局下放都失抓，还不能称为稳定精确放置」</li>
+<li>real2sim-droid：反事实实验<strong>故意</strong>证明自己的抓取不泛化；方块那条 IoU 只有 0.76 且跨视角 n/a，照写</li>
+<li>TacBench-Lite：渲染器对真实 GelSight 的匹配 <strong>NCC 0.27 &lt; 随机下限 0.29</strong>，整节标题就叫「负面结果」；
+分类迁移<strong>故意不报数字</strong>，因为都落在噪声带里</li>
+<li>Inference-Governor：depth 流「无增益 —— 不算作胜利」；后台语言模型 0% 覆盖「诚实的另一半」；
+对手最强配置那组数字标注「修正之后没重跑」</li>
+<li>MicroDuck-BoBoRedesign：三个目录写在 README 里但仓库里还没有，作者直接标 &quot;in active development&quot;</li>
+<li>Prompt2Print：五档状态 <code>PASS / WARN / FAIL / UNKNOWN / NOT_RUN</code>，<strong>&quot;nothing is ever simulated as a pass&quot;</strong></li>
+</ul>
+<p>这不是巧合。<strong>当「跑通一个 demo」变得足够容易之后，区分度就从「有没有结果」转移到了「这个结果的边界在哪」。</strong>
+对个人参与者来说这是个好消息：<em>你最容易做出的贡献，不是再训一个模型，而是给别人的项目补上一个它自己没量过的维度。</em>
+本期四条「个人怎么切进去」的交付路线（embodied-jev 的本地 vs 云端对照、real2sim-droid 的第三条 episode、
+TacBench-Lite 的冻结协议迁移、Inference-Governor 的具身负载数据点）<strong>全都是这种形状</strong>。</p>
+<p><strong>第二条线，关于「连续」的定义在变宽。</strong>
+这个专题开到第四期，前三期的答案都是「让模型算得更快 / 让架构吃得下流」。
+这期两条把边界推开了：TacBench-Lite 证明了<strong>连续性是信号的属性</strong>（冻结的正确触觉 = 没有触觉），
+Inference-Governor 证明了<strong>连续性是排队的属性</strong>（更快的 GPU 只会更快地算过期的帧）。
+再加上论文清单里事件相机那两篇（逐事件处理、不做时间累积），
+「流式感知 → 连续决策」这件事的完整形状大概是四层：<strong>传感器怎么采 → 怎么排队 → 怎么算 → 怎么和执行重叠。</strong>
+前三期只碰了后两层。</p>
+<p><strong>第三条，一个反复出现的现实：这条链上最好的工程往往挂 0 星。</strong>
+本期 Inference-Governor 0 ★、Prompt2Print 1 ★、patent-3d-demo 1 ★、Pounce 1 ★、TacBench-Lite 1 ★，
+而 embodied-jev 两天 162 ★。星数衡量的是「有多少人能一眼看懂它解决了什么」，不是工程质量。
+<strong>用 <code>gh search repos --created &quot;&gt;=&lt;日期&gt;&quot;</code> 按时间捞、而不是按星数捞</strong>，这条检索习惯这几期一直在兑现价值。</p>
+<hr>
+<h2>🏁 当前仍开放、对个人开放的比赛 / bounty 入口</h2>
+<blockquote>
+<p>今天是 <strong>2026-09-22</strong>。以下每条本期都重新拉过页面核对。</p>
+</blockquote>
+<h3>✅ 复核仍开放</h3>
+<p><strong>CoRL 2026 Efficient Embodied AI Workshop Challenge</strong> —— 本期从官网 Important Dates 重新提取，<strong>与 09-21 一致，未变</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+<th>距今</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>9 月 25 日</strong></td>
+<td>Challenge harness 和参考容器发布</td>
+<td><strong>还有 3 天</strong></td>
+</tr>
+<tr>
+<td>10 月 12 日</td>
+<td>论文提交截止（非归档）</td>
+<td>20 天</td>
+</tr>
+<tr>
+<td><strong>10 月 23 日</strong></td>
+<td><strong>Challenge 提交截止</strong> ← 真正的参赛节点</td>
+<td><strong>31 天</strong></td>
+</tr>
+<tr>
+<td>10 月 26 日</td>
+<td>论文录用通知</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 5 日</td>
+<td>结果核验并公布</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 12 日</td>
+<td>Workshop @ CoRL 2026，德州奥斯汀</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>所有截止时间为 <strong>11:59 PM Anywhere on Earth</strong>。<strong>本周四 harness 一发就是最近的可执行节点</strong>，发布到提交截止有 28 天。
+→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a>
+（这场比的就是「效率」——本期专题二那两条工程和六篇论文全都在它的射程里，尤其 Inference-Governor 那条
+「丢掉过期输入」的角度，在一个明确以效率计分的赛场上是<strong>没什么人做的方向</strong>。）</p>
+<p><strong>RoboSynChallenge（NeurIPS 2026 正式竞赛）—— 10 月 11 日 AoE 截止，还剩 19 天。</strong>
+本期继续从前端 <code>static/js/pages-app.js</code> 提取（可见页面是 JS 渲染的），与 09-16 起连续七期所核完全一致：
+训练与提交截止 <strong>October 11, 2026 AoE (UTC−12)</strong>，仿真评测 10/11–10/18，模型更新窗口 10/18–11/15。
+<strong>真机评测由主办方做，你不需要任何硬件</strong> —— 这仍是本季度对无硬件个人最友好的一个正式竞赛。
+→ <a href="https://robosyn-bench.net/">https://robosyn-bench.net/</a> ｜ <a href="https://github.com/EDEM-AI/RoboSynChallenge">GitHub</a></p>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）—— 提交截止 10/16/2026，获奖公布 11/04/2026，还剩 24 天。</strong>
+本期在 challenge 首页重新核到这两个日期。
+→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<p><strong>RLE-Bench 2.0 任务征集（现金奖励 + 共同作者）</strong> —— 本期复核 contribute 页仍 200、内容未变。
+⚠️ <strong>页面既没写金额，也没写截止日期 —— 这两点连续七期都没核到</strong>，动手前请自己发邮件问。
+→ <a href="https://rle-bench.github.io/contribute/">https://rle-bench.github.io/contribute/</a>
+（顺带：RLE-Bench 的 <a href="https://rle-bench.github.io/">排行榜</a> 和 <a href="https://rle-bench.github.io/blog/">介绍博文</a> 都在线，
+九个任务族里 <strong>task07 / task08 / task09 明确标注不需要 GPU</strong>（分拣清箱、移动底盘设计、GELLO 遥操作硬件协同设计），
+纯 CPU + Docker 就能跑 —— 对无卡个人，这是目前最实在的一个入口。）</p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性，均 200）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜
+<a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜
+<a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p><strong>本期提示</strong>：这两道题和今天国内第 3 条（MicroDuck 打印复刻）、以及昨天那条 microduck_rl 诊断
+<strong>是同一个 plant 的三层</strong> —— 仿真刷榜 / 奖励诊断 / 实物复刻。三件事共用一套 URDF 和一套 RL 配置，
+挑哪个都能顺着往另外两个走。</p>
+<h3>❌ 维持核销（别去撞墙）</h3>
+<p>ATEC2026（报名 5/30 已截止）、EMR Workshop @ ECCV 2026（9/9 已办完）、ICRA 2026 全部九项竞赛（6 月已办）、
+GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026（5/15 结束）、
+2026 世界机器人大会「具身智能机器人运动会」（8 月已办完）、
+PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD；
+工创赛分拣相关赛事<strong>要求在校生身份</strong>。</p>
+<hr>
+<p><em>本期主线 6 条 + 专题一 2 条 + 专题二 2 条已写入 <code>pushed.jsonl</code> 去重台账；论文清单里的 6 篇按规则不进台账。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-22.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

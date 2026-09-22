@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报 · 2026-09-18</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报 · 2026-09-18</h1>
+<blockquote>
+<p>本期刻意往硬件侧补了一点：09-16、09-17 两期的软/硬比分别是 3:2 和 3:1，连着偏软件。
+但也得如实说 —— <strong>本周是硬件小年</strong>，新仓质量明显不如 09-15、09-16 那两期，
+下面第「🌍 2、3」两条都带着明确的边界说明，没有硬吹。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· PocketVLA —— 3.02M 参数的 VLA，纯 NumPy 仿真，一张普通卡十分钟跑完「数据 → SFT → GRPO → 评测 → OOD」</h3>
+<h4>是什么</h4>
+<p>一个<strong>从零实现的 0.003B（3.02M 参数）VLA</strong>，Apache-2.0，09-10 建仓，09-17 还在更新，30 ★。</p>
+<p>结构和主流 VLA 同构：视觉编码器 + 语言模型主干 + 动作头，标准 VLM 早融合
+（vision token 经线性投影进 LM embedding 空间，与文本 token、本体感知 token、
+可学习 action-query token 拼接后过共享主干），完整兼容 HuggingFace <code>AutoModel</code> / <code>AutoTokenizer</code>。</p>
+<p>下游任务 <strong>2D Grab</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>场景</td>
+<td>红 / 绿 / 蓝三个球 + 一个收纳筐，位置每回合随机</td>
+</tr>
+<tr>
+<td>指令</td>
+<td>自然语言，如 <code>put the blue ball into the bin</code></td>
+</tr>
+<tr>
+<td>观测</td>
+<td>64×64×3 俯视图（含筐，不标记目标）+ 指令 token + 6 维本体感知 <code>(q1, q2, ee_x, ee_y, 夹爪, 持球)</code></td>
+</tr>
+<tr>
+<td>动作</td>
+<td><code>(Δq1, Δq2, grip)</code>，关节增量限幅 ±0.15 rad；<code>grip &gt; 0</code> 闭合</td>
+</tr>
+<tr>
+<td>抓取</td>
+<td>闭合夹爪时末端距球心 &lt; 0.09 即吸附（抓错要自己恢复）</td>
+</tr>
+<tr>
+<td>成功</td>
+<td>已松爪且球完整落在筐内；每回合最多 90 步</td>
+</tr>
+</tbody></table>
+<p>全链路都在仓里：<code>collect</code>（数据生成，闭式 IK + 双速比例控制 + 状态机专家，成功率 100%）
+→ <code>train</code>（SFT，动作 MSE + 类平衡夹爪损失 + 辅助头深监督）
+→ <code>evaluate</code>（500 场景固定测试集闭环，逐场景 GIF + 失败归因 + 分颜色成功率图）
+→ <code>grpo</code>（组采样闭环 rollout + 优势加权回归 + KL 锚）
+→ <code>eval_ood</code>（300 场景，含训练中从未出现过颜色的干扰物）。</p>
+<p>两个 checkpoint 和五份数据（约 65 MB）都放在 HuggingFace 上。</p>
+<h4>为什么现在值得做</h4>
+<p><strong>因为它把「消融」做成了个人十分钟能自己验的东西。</strong></p>
+<p>市面上&quot;从零实现 VLA&quot;的教程绝大多数停在 forward pass。PocketVLA 不但把 GRPO 强化学习和
+OOD 评测也做完了，还给了可复现的对照数字：</p>
+<table>
+<thead>
+<tr>
+<th>变体</th>
+<th>辅助损失</th>
+<th>闭环成功率</th>
+<th>抓对球率</th>
+<th>平均落点距离</th>
+<th>成功回合平均步数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SFT（带辅助头）</td>
+<td>球偏移 + 筐偏移</td>
+<td><strong>74.2%</strong></td>
+<td><strong>79.0%</strong></td>
+<td><strong>0.251</strong></td>
+<td><strong>30.8</strong></td>
+</tr>
+<tr>
+<td>SFT（无辅助头 noaux）</td>
+<td>—</td>
+<td>6.0%</td>
+<td>19.0%</td>
+<td>0.876</td>
+<td>46.4</td>
+</tr>
+</tbody></table>
+<p><strong>关掉辅助头，成功率从 74.2% 崩到 6.0%（−68.2 个点）</strong>，抓对球率 79.0% → 19.0%，
+平均落点距离 0.251 → 0.876（几乎从未接近过目标）。这个量级的结论，在 π₀ / GR00T
+那种规模上根本做不起对照实验 —— 一次训练几百 GPU 时，没人会为了消融再跑一遍。</p>
+<p>而 GRPO 那一段作者也没粉饰：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>阶段</th>
+<th>闭环成功率</th>
+<th>抓对球率</th>
+<th>OOD 成功率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pocketvla-3m-sft</td>
+<td>SFT</td>
+<td>74.2%</td>
+<td>79.0%</td>
+<td>34.7%</td>
+</tr>
+<tr>
+<td>pocketvla-3m-grpo</td>
+<td>SFT + GRPO</td>
+<td><strong>80.2%</strong></td>
+<td>83.4%</td>
+<td>36.0%</td>
+</tr>
+<tr>
+<td>pocketvla-3m（无辅助头）</td>
+<td>SFT</td>
+<td>6.0%</td>
+<td>17.0%</td>
+<td>4.0%</td>
+</tr>
+</tbody></table>
+<p><strong>RL 只带来 +6.0 个点（OOD 上 +1.3 个点），比辅助头的 68.2 个点小一个数量级。</strong>
+把这两组数放在一起看，比读十篇 VLA 论文都直观。</p>
+<h4>个人怎么分步切进去</h4>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>时间</th>
+<th>成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>conda create -n pocketvla python=3.10</code> → <code>pip install -r requirements.txt</code> → <code>bash scripts/run_all.sh</code></td>
+<td>README 称普通 GPU <strong>10 分钟</strong>跑完全流程</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>2</td>
+<td>改 <code>use_aux_heads: false</code> 复现那 −68.2 个点</td>
+<td>半天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>3</td>
+<td>攻 OOD：SFT 74.2% → OOD 34.7%，掉一半。作者在「继续探索」里点名了方向（数据增强 / 域随机化 / 干扰物参与训练 / 颜色词与视觉特征的对比学习）</td>
+<td>1–2 天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>4</td>
+<td>换任务：以 <code>pocketvla-3m</code> 结构为基座做 <code>pocketvla-[x]m-[task]</code></td>
+<td>3–5 天</td>
+<td>0 元</td>
+</tr>
+</tbody></table>
+<p>第 3 步是本期我最推荐的一件事：<strong>固定的 300 场景 OOD 集 + 一条命令
+<code>python3 -m pvla.eval_ood</code>，意味着任何改进都有一个客观、可比、别人能复现的分数</strong>。
+这是&quot;产出可预期&quot;这条标准的教科书式满足 —— 不是开放式研究，是一个有刻度的靶子。</p>
+<p>本机 A4000 16G 严重富余（模型 3.02M，观测 64×64）。<strong>全程零 API 费。</strong></p>
+<h4>坑</h4>
+<ul>
+<li><strong>单次实验有随机性。</strong> README 里的 <code>pat</code> 那组明写是&quot;相同配置的独立重复实验，用于评估训练
+随机性的影响&quot;。<strong>你复现出来的数不会和表里一模一样</strong>；报改进时至少跑两个 seed。</li>
+<li><strong>辅助头不在动作通路上。</strong> 它只做深监督 + 可解释性（输出球/筐相对末端的归一化偏移），
+推理时不给动作提供输入。别误读成&quot;模型靠辅助头定位&quot;。</li>
+<li>加载要求：先 <code>import pvla.model</code> 注册自定义类，再
+<code>AutoModel.from_pretrained(..., trust_remote_code=True)</code>，<strong>必须在仓库根目录跑</strong>。</li>
+<li><strong>这是玩具规模，而且作者没装成不是。</strong> 2 连杆平面臂 + 吸附式抓取（末端距球心 &lt; 0.09
+直接吸住），没有接触力学、没有摩擦、没有夹持力。它教的是 VLA 的<strong>结构与训练范式</strong>，
+不是操作物理。想从这里直接迁移到真机的，会在接触那一步撞墙。</li>
+<li>许可已核：根目录 LICENSE 为 <strong>Apache-2.0</strong>。</li>
+</ul>
+<h4>出处</h4>
+<p>→ <a href="https://github.com/penpenzh/pocketvla">https://github.com/penpenzh/pocketvla</a></p>
+<p>相关：
+<a href="https://huggingface.co/penpenzh/pocketvla-3m-grpo-2d-grab">SFT / GRPO 权重（HF）</a> ｜
+<a href="https://huggingface.co/datasets/penpenzh/pocketvla-dataset-2D-grab">五份数据集（HF）</a> ｜
+<a href="https://github.com/penpenzh/pocketwam">同作者 09-17 新开源的 PocketWAM</a></p>
+<hr>
+<h3>2 · ManiLoop —— 让 GPT 自己去开抽屉、拧灶台旋钮，整个视觉控制回路一步一步摊开给你看</h3>
+<p>MIT ｜ 10 ★ ｜ 09-16 建仓，09-16 仍在提交 ｜ 软件</p>
+<ul>
+<li><strong>本地浏览器工作台 + CLI</strong>：内置 MuJoCo 的 <code>pick_place</code> / <code>push</code>（支持 <strong>ARX X5 与 Franka Panda</strong>，
+各有 <code>tabletop_a</code> / <code>tabletop_b</code> 两种布局），外加 LIBERO 五个套件 <strong>共 130 个任务</strong>
+（spatial 10 / object 10 / goal 10 / libero_90 90 / libero_10 10）。</li>
+<li><strong>最值得抄的一条设计</strong>：策略只拿到图像和机器人传感器状态，<strong>物体真值、仿真器接触、
+奖励、成功信号全部排除在策略输入外</strong>；独立评测可以查看仿真器状态并终止回合，
+而<strong>模型自己声明 <code>done</code> 不构成成功判据</strong>。改指令文本也不会改变任务的评测器。</li>
+<li><strong>Python 3.12，不需要 ROS、不需要 Docker、不需要真机、不需要本地 GPU</strong>（用托管 GPT 推理时）。
+第一步（手动操作臂和夹爪、读传感器、复位）连 API key 都不用。</li>
+<li>三段已验证的 GPT 成功回放（放碗、拧灶台旋钮、把奶油奶酪放进篮子），
+<strong>单回合墙钟 5.5–11.1 分钟</strong>（含模型规划、通信、执行与录制）。
+作者明写：这是<strong>挑选出来的例子，不是平均完成时间，也不是速度排名</strong>。</li>
+<li><strong>坑</strong>：应用界面目前是中文的（README 自己标注了，网站是英文）；LIBERO 套件要另装；
+接 GPT 要自己算 API 费 —— 按 5–11 分钟一回合、每步一次调用估，<strong>一个回合几毛到几块</strong>。</li>
+</ul>
+<p>→ <a href="https://github.com/Daniel-rmc/ManiLoop">https://github.com/Daniel-rmc/ManiLoop</a>
+｜ <a href="https://daniel-rmc.github.io/ManiLoop/">项目页与可播放回放</a>
+｜ <a href="https://github.com/Lifelong-Robot-Learning/LIBERO">LIBERO 上游</a></p>
+<hr>
+<h3>3 · 工创赛智能分拣训练套件 —— 12 件 6 类打印件，STEP + STL + 二维码标签 + 参数化生成器全给</h3>
+<p>MIT ｜ 1 ★ ｜ 09-12 ｜ <strong>硬件（可打印件）</strong></p>
+<p>冲 2027 年中国大学生工程实践与创新能力大赛「智能分拣」初赛做的<strong>训练基准</strong>
+（作者明说<strong>不是组委会官方货物复刻件</strong>）。</p>
+<p><strong>硬约束写死了</strong>：单件三维包络 ≤ 40 mm（实体最大 38 mm，给制造误差留余量）；
+基准组 12 件 6 类，每类 2 件；类别按「形状 + 颜色 + 表面信息」定义，
+同类两件用<strong>完全相同的二维码</strong>；含官方信息显示示例里的五棱柱与正四面体；
+扩展母库 12 种几何体，含两种薄壁货物。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>形状</th>
+<th>颜色</th>
+<th>表面信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C01</td>
+<td>立方体</td>
+<td>红 <code>#E53935</code></td>
+<td>GCXL2027-C01</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>圆柱体</td>
+<td>绿 <code>#43A047</code></td>
+<td>GCXL2027-C02</td>
+</tr>
+<tr>
+<td>C03</td>
+<td>三棱柱</td>
+<td>蓝 <code>#1E88E5</code></td>
+<td>GCXL2027-C03</td>
+</tr>
+<tr>
+<td>C04</td>
+<td>五棱柱</td>
+<td>青 <code>#00ACC1</code></td>
+<td>GCXL2027-C04</td>
+</tr>
+<tr>
+<td>C05</td>
+<td>正四面体</td>
+<td>橙 <code>#FB8C00</code></td>
+<td>GCXL2027-C05</td>
+</tr>
+<tr>
+<td>C06</td>
+<td>四棱锥</td>
+<td>黄 <code>#FDD835</code></td>
+<td>GCXL2027-C06</td>
+</tr>
+</tbody></table>
+<p>给全了：<code>cad/step/</code>（SolidWorks 2026 优先打开，可直接编辑 / 移动面 / 删除面 / FeatureWorks 识别）、
+带颜色的 12 件总装 STEP、<code>print/stl/</code>、<code>surface_labels/</code>（类别二维码 + A4 标签 SVG）、
+<code>source/generate_sorting_goods.py</code> + <code>goods_parameters.json</code>（参数化再生成）、
+<code>baseline_classes.csv</code>、<code>training_classes.yaml</code>（YOLO 类别起点）。</p>
+<p><strong>打印和采集规范也写死了</strong>，这是它比一般&quot;我传几个 STL&quot;强的地方：
+哑光 PLA（避免高光反射影响颜色识别）；每类两件必须同一卷材料、同一打印参数；
+实心件 0.20 mm 层高 / 3 道壁 / 15–25% 填充；薄壁件保持 2 mm 名义壁厚<strong>不要缩放模型</strong>；
+标签打印必须选 <strong>100% 实际尺寸，不能&quot;适合页面&quot;</strong>；正四面体用 12 mm 标签、四棱锥 14 mm、其余 18 mm；
+打印完用卡尺记录真实 X/Y/Z、质量、色号并进训练元数据；
+训练/验证/测试<strong>按不同采集批次拆分，禁止把连续视频帧分到不同集</strong>。</p>
+<ul>
+<li><strong>成本</strong>：12 件 ≤ 40 mm 的实心件，PLA 几十克，<strong>十几块钱</strong> + 一张 A4 标签纸。</li>
+<li><strong>坑 / 边界</strong>：<ul>
+<li><strong>比赛本身要在校大学生身份</strong>，个人无法报名（详见下面「比赛」一节）。
+<strong>但套件是 MIT 的，任何人都能打印来练视觉分拣</strong> —— 这部分才是个人可用的。</li>
+<li>作者自己写明：规则没有公布固定的全部形状、颜色和表面信息，<strong>现场仍可能出现其他
+常见几何体、颜色或标签</strong>。别把这 6 类当成全集去过拟合。</li>
+</ul>
+</li>
+</ul>
+<p>→ <a href="https://github.com/foambai/gongchuang-sorting-goods">https://github.com/foambai/gongchuang-sorting-goods</a>
+｜ <a href="http://www.gcsai.cn/">工创赛官网（首页 JS 渲染，未核到 2027 报名日期）</a></p>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· dexterous-astra —— 转笔和魔方两套灵巧手环境，权重给了，<strong>魔方那半不用装 Isaac</strong></h3>
+<h4>是什么</h4>
+<p>Jianglong Ye（San Diego），09-17 建仓，12 ★，8.6 MB。两个任务、两套手、两个仿真器：</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>手 / 仿真器</th>
+<th>零样本</th>
+<th>训练后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转笔</td>
+<td>Sharpa Wave，<strong>Isaac Lab</strong></td>
+<td>采样手指关键帧规划器</td>
+<td>PPO 策略：转三圈并稳住</td>
+</tr>
+<tr>
+<td>魔方</td>
+<td>Wuji 双手，<strong>MuJoCo</strong></td>
+<td>双手脚本控制器：两步</td>
+<td>单手学到的转面与滚动：解出 <code>U F L</code></td>
+</tr>
+</tbody></table>
+<p>每个任务四件套：<code>sim/</code>（环境）、<code>zero_shot/</code>（脚本）、<code>policy/</code>（跑 checkpoint）、<code>checkpoints/</code>。
+四条命令就是全部入口：</p>
+<pre><code class="language-bash">ISAAC_PY=... PY=... pen/run_zero_shot.sh runs/pen-zero
+ISAAC_PY=... PY=... pen/run_policy.sh    runs/pen-policy
+PY=... cube/run_zero_shot.sh runs/cube-zero
+PY=... cube/run_policy.sh    runs/cube-policy
+</code></pre>
+<h4>为什么现在值得做</h4>
+<p><strong>1. 魔方那一半不需要 Isaac Sim。</strong> <code>cube/requirements.txt</code> 是
+<code>mujoco==3.13.0</code> + <code>mujoco-warp==3.13.0</code> + <code>warp-lang==1.17.0</code> + <code>torch==2.14.0</code> +
+<code>stable-baselines3==2.9.0</code> + <code>gymnasium==1.3.0</code> —— 一张 A4000 就够，
+<strong>省掉 Isaac Lab 那 30 GB 的安装和它自己的一堆坑</strong>。而灵巧手在手内操作这条线上，
+门槛通常就卡在 Isaac 上。</p>
+<p><strong>2. 它把不确定性的来源写进了运行脚本。</strong> <code>cube/run_policy.sh</code> 里：</p>
+<pre><code class="language-bash">export MUJOCO_GL=egl OMP_NUM_THREADS=1   # single-threaded torch: other thread counts change the rollout
+&quot;$PY&quot; policy/solve.py --out &quot;$out&quot; --seed 5005 --scramble &quot;U F L&quot;
+</code></pre>
+<p><strong>注释直接说明&quot;改线程数会改变 rollout&quot;</strong> —— 这种细节通常要你自己踩两天才发现。
+加上固定 seed 5005 和固定打乱 <code>U F L</code>，复现是确定性的。</p>
+<p><strong>3. 有出处记录和验收门。</strong> <code>pen/checkpoints/provenance.json</code>、<code>pen/policy/acceptance.json</code>、
+<code>pen/policy/gate.py</code> —— 不是扔个 <code>.pt</code> 就走。</p>
+<p><strong>4. 魔方有客观终点。</strong> 解开了就是解开了。灵巧手这条线上能给出&quot;可判定成功&quot;的任务不多。</p>
+<h4>个人怎么分步切进去</h4>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>时间</th>
+<th>成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>开独立 venv 装 <code>cube/requirements.txt</code>，跑 <code>cube/run_zero_shot.sh</code> 再跑 <code>cube/run_policy.sh</code>，产出 <code>video.mp4</code> + <code>trajectory.npz</code></td>
+<td>2 小时</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>换 <code>--scramble</code></strong>：脚本已参数化，默认 <code>U F L</code>。换成别的三步打乱，看策略还解不解得开</td>
+<td>半天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>3</td>
+<td>转笔半边：Isaac Lab <strong>2.3.2</strong> + <code>rsl-rl-lib==3.0.1</code>（README 钉死的版本），跑 <code>pen/run_policy.sh</code>；再用 <code>pen/requirements.txt</code>（<strong>纯 CPU</strong>：mujoco 3.3.5 + imageio，官方 Sharpa 网格回放打分）复评</td>
+<td>一天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>4</td>
+<td>把 <code>pen/policy/gate.py</code> + <code>acceptance.json</code> 拿来当自己策略的验收门</td>
+<td>一天</td>
+<td>0 元</td>
+</tr>
+</tbody></table>
+<p>第 2 步是本期最干净的一个空位：<strong>这个策略的打乱泛化边界，现在没有任何人量过</strong>，
+而结果客观可判（解开 / 没解开），一个下午能出一张表。</p>
+<p>磁盘：仓本体 ~9 GB；转笔那边另算 Isaac Lab 的 30 GB。<strong>全程零 API 费。</strong></p>
+<h4>坑</h4>
+<ul>
+<li><strong>没有 LICENSE 文件。</strong> 已核：GitHub license API 返回 404，仓库根 tree 里也没有
+<code>LICENSE</code>/<code>COPYING</code>。个人学习没问题，<strong>任何再分发或商用之前先提 issue 问作者</strong>。</li>
+<li><strong>只有建仓当天那一次提交</strong>（09-17T14:20 建仓，14:20 最后推送），没有 issue、没有 CI，
+也没有安装步骤 —— <code>ISAAC_PY</code> 和 <code>PY</code> 两个 Python 环境要你自己准备好。</li>
+<li><strong>依赖版本很新而且钉死</strong>：torch 2.14.0、numpy 2.4.6、mujoco-warp 3.13.0。
+<strong>拿现有环境装八成冲突</strong>，务必开独立 venv。</li>
+<li><strong>Sharpa Wave 和 Wuji 手都是商业硬件</strong>，仓里只有仿真资产。这是纯仿真项目，别指望上真机。</li>
+</ul>
+<h4>出处</h4>
+<p>→ <a href="https://github.com/jianglongye/dexterous-astra">https://github.com/jianglongye/dexterous-astra</a></p>
+<p>相关：
+<a href="https://github.com/google-deepmind/mujoco_warp">MuJoCo Warp</a> ｜
+<a href="https://github.com/isaac-sim/IsaacLab/releases">Isaac Lab（转笔半边需要 2.3.2）</a> ｜
+<a href="https://www.sharpa.com/pages/wave">Sharpa Wave 手（商业硬件）</a></p>
+<hr>
+<h3>2 · lite3-sdk —— 把云深处绝影 Lite3 的 UDP 线格式逐帧写出来，零依赖，MIT</h3>
+<p>infodriver（旧金山）｜ MIT ｜ 09-15 建仓，09-17 仍在更新 ｜ <strong>硬件</strong></p>
+<p>纯标准库 Python：<strong>不用 ROS、不用在机器人上装任何东西、不用 pip install</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>通道</th>
+<th>方向</th>
+<th>端口</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命令 UDP</td>
+<td>你 → 机器人</td>
+<td><code>43893</code></td>
+<td>auto-mode <code>0x21010C03</code>；速度 <code>0x140</code>(x) / <code>0x145</code>(y) / <code>0x141</code>(yaw) + f64；stand / sit / stop / heartbeat</td>
+</tr>
+<tr>
+<td>遥测 UDP</td>
+<td>机器人 → 你</td>
+<td><code>43897</code></td>
+<td>帧 <code>0x0901</code>：电量、IMU rpy、速度、充电、错误、超声</td>
+</tr>
+</tbody></table>
+<p>帧格式：12 字节小端头 <code>code / value / type</code> + 可选载荷；速度帧 type 1、载荷一个 f64、value 字段 = 8；
+动作 stand <code>0x21010202</code>、sit <code>0x21010203</code>、stop <code>0x21010C0B</code>（值 0 和 1）、heartbeat <code>0x21040001</code>（≥ 2 Hz）。</p>
+<p>CLI 一条条都能用：<code>status</code> / <code>stand</code> / <code>hello</code> / <code>drive --vx 0.4 --wz 0.3 --seconds 2</code> /
+<code>stop</code> / <code>estop --yes</code> / <code>reset-estop</code>。</p>
+<p><strong>安全那段写得很实在</strong>：软 E-stop 只停<strong>这个 SDK 发帧</strong>，物理 E-stop 永远优先；
+最后一个 UDP 帧之后约 1 秒机器人回到自己的阻尼控制器；建议牵绳、离 5 米以上。
+遥测要改机器人侧 <code>~/jy_exe/conf/network.toml</code> 的 ip 再 restart，
+<strong>ssh 密码是一个单引号 <code>&#39;</code></strong> —— 这种细节只有真上过手的人写得出来。</p>
+<ul>
+<li><strong>边界，必须说清楚</strong>：要一台 Lite3，<strong>整机远超本日报「硬件 ≤ 约 5000 元」那条线，
+不符合「投入可控」</strong>。</li>
+<li><strong>那它凭什么进榜</strong>：它的真正价值是<strong>协议文档</strong>。<code>lite3sdk/protocol.py</code>
+是目前少见的、把这台机公开协议整理成一页表的实现。<strong>没有机器也能读</strong>，
+想写自己的驱动（Rust / Go / 嵌入式裸机）可以直接抄帧定义，并且能离线写完
+帧构造与解析的单元测试。</li>
+<li>作者标注了出处：参考 <code>DeepRoboticsLab/Lite3_MotionSDK</code>、<code>EzioPeter/Lite3_UDP</code>
+和同工作区的 Lite3 Pilot 网页控制台。</li>
+</ul>
+<p>→ <a href="https://github.com/infodriver/lite3-sdk">https://github.com/infodriver/lite3-sdk</a>
+｜ <a href="https://github.com/DeepRoboticsLab/Lite3_MotionSDK">官方 Lite3_MotionSDK</a>
+｜ <a href="https://www.deeprobotics.cn/en/index/product2.html">云深处 Lite3 产品页</a></p>
+<hr>
+<h3>3 · Wobble —— 两轮轮腿 + 四连杆下蹲，ROS 2 Jazzy 全栈，目标平台是一块 ESP32-S3</h3>
+<p>09-09 ｜ 1 ★ ｜ <strong>both（仿真完整，实机未完成）</strong></p>
+<ul>
+<li><strong>仿真</strong>：ROS 2 Jazzy + Gazebo Harmonic，用 <strong>RoboStack / Pixi</strong> 装（绕开 apt 那一堆冲突）。</li>
+<li><strong>实机目标平台</strong>：ESP32-S3 + FreeRTOS；姿态由 <strong>2× MG995 180° 舵机</strong>驱动对称 / 差动
+四连杆下蹲（±π/2 rad），平衡由 <strong>2× 直流电机 + 高分辨率磁编码器</strong>。</li>
+<li><strong>四连杆是平行四边形</strong>：底杆（机架髋部）→ 曲柄（舵机直驱）→ 连杆（小腿，托着轮电机，
+下蹲时保持竖直）；轮毂与小腿之间有<strong>被动弹簧减震</strong>，README 明写理由是
+「缓冲冲击并<strong>消除 MG995 上的持续堵转力矩</strong>」—— 设计意图写出来了，不是照抄。</li>
+<li><strong>仓里给的东西</strong>：完整的 <code>wobble_description/urdf/</code>（<code>chassis.xacro</code> / <code>leg_4bar.xacro</code> /
+<code>wheels.xacro</code> / <code>ros2_control.xacro</code> / <code>gazebo.xacro</code> / <code>materials.xacro</code>）、
+<code>balance_params.yaml</code> + <code>controllers.yaml</code>、<code>balance_controller.py</code>、<code>course_navigator.py</code>、
+<code>yolo_detector.py</code>，三个 launch（<code>wobble_sim</code> / <code>hurdle_course</code> / <code>yolo_vision</code>），
+还有 RViz 配置和一个 <code>remote_control.py</code>。</li>
+<li><strong>双相机</strong>：前向 RGB 640×480@30（80° FOV，走 OpenCV 管线，发 <code>/camera/image_raw</code> 与
+<code>/camera/annotated_image</code>）+ 第三人称追踪相机 800×600@30（挂在 <code>base_footprint</code> 后上方）。</li>
+<li><strong>成本（估算，未采购核价）</strong>：ESP32-S3 约 ¥30、MG995 ×2 约 ¥30、
+带磁编码器的直流电机 ×2 约 ¥120–200、电池与驱动板约 ¥100 —— <strong>整机 ¥300–400 量级</strong>，
+远在预算内。</li>
+<li><strong>坑（三条都重要）</strong>：<ol>
+<li><strong>没有 LICENSE</strong>（已核，tree 里没有）。</li>
+<li><strong>仓里没有 CAD / STL</strong>，只有 URDF/xacro。README 把 ESP32-S3 写成
+&quot;Physical Target Platform&quot;，<strong>实机部分还没做</strong>，没有固件目录。想做实物要自己画结构件。</li>
+<li>仓里有 <code>AGENT.md</code>，说明这仓相当程度是 agent 辅助写的。
+<strong>URDF 里的惯量张量值得自己核一遍</strong> —— 这正是本期专题第 2 条点名的头号失败模式，
+两条放一起读效果最好。</li>
+</ol>
+</li>
+</ul>
+<p>→ <a href="https://github.com/Fogyvishnu/Wobble">https://github.com/Fogyvishnu/Wobble</a>
+｜ <a href="https://docs.ros.org/en/jazzy/index.html">ROS 2 Jazzy 文档</a>
+｜ <a href="https://gazebosim.org/docs/harmonic/install/">Gazebo Harmonic 安装</a>
+｜ <a href="https://robostack.github.io/">RoboStack（conda 装 ROS）</a></p>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<p>本期走 <strong>打印执行</strong> 和 <strong>与具身智能的接口</strong> 两段。
+前三期（09-15 cadjson + cadloop、09-16 model-forge + detect-agent、09-17 cadxray + Auto SolidWorks）
+几乎全压在自动建模上，<strong>接口段上一次碰还是 09-14</strong>，这期补回来。</p>
+<h3>🇨🇳 国内 · dsh-print3d —— 把切片和 G-code 分析做成确定性工具，模型一个 token 都不用花在几何上</h3>
+<p>MIT ｜ 2 ★ ｜ 09-05 建仓，09-15 仍在更新 ｜ DeepSeek Harness 的<strong>树外插件</strong>
+（与 09-12 推过的 SimpleCADforDSH 同生态、不同仓）</p>
+<p><strong>6 个模型工具</strong>（注册进全局 tools 注册表）：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>输入 → 输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>print3d_gen_parametric_stl</code></td>
+<td>参数 → 水密 ASCII STL（box / cylinder / tube / sphere / cone / rounded_box / gear）</td>
+</tr>
+<tr>
+<td><code>print3d_gen_calibration_gcode</code></td>
+<td>参数 → 校准件 G-code（cube / temp-tower / first-layer / retraction / bridge）</td>
+</tr>
+<tr>
+<td><code>print3d_stl_analyze</code></td>
+<td>STL → 包围盒 / 体积 / 表面积 / 悬垂 / 非流形 / 水密性 JSON</td>
+</tr>
+<tr>
+<td><code>print3d_gcode_estimate</code></td>
+<td>G-code → 打印时间 / 耗材 / 层数 / 温度 JSON</td>
+</tr>
+<tr>
+<td><code>print3d_gcode_render</code></td>
+<td>G-code → 刀路俯视图 PNG</td>
+</tr>
+<tr>
+<td><code>print3d_slice</code></td>
+<td>STL 路径 → <strong>桥接本机 PrusaSlicer</strong> 出 G-code</td>
+</tr>
+</tbody></table>
+<p><strong>5 个技能</strong>（Markdown 知识包，按需加载）：切片（12 种材料参数表 + 层高/线宽/温度/回抽/冷却规则）、
+G-code（Marlin / Klipper 方言、起收尾脚本、估算口径）、建模（OpenSCAD 写法）、
+分析（STL/G-code 指标判读、3MF 策略）、诊断（10 类打印故障「症状 → 原因 → 修复」）。</p>
+<h4>为什么这条值得单独说</h4>
+<p><strong>它把「大对象落盘、只回路径」写成了默认行为，并且给了理由。</strong></p>
+<p>所有生成类工具（STL / G-code / PNG）默认直接落盘到 <code>桌面/3Doutput/</code>（分 <code>stl</code> / <code>gcode</code> /
+<code>preview</code> 三个目录）并<strong>只返回路径</strong>，README 明写这是为了
+「避免把大段文本塞进上下文（<strong>对本地小模型尤其重要</strong>）」。</p>
+<p>这正是本专题写了九期一直在念的那件事 —— <strong>这条链路真正的开销是 token，不是耗材</strong>。
+一个 500 KB 的 ASCII STL 塞进上下文就是十几万 token；落盘只回一个路径是几十个 token。
+前面九期里 cadjson、model-forge、cadxray 都是隐含地这么做，
+<strong>这是第一个把它当成一等设计约束写出来的</strong>。</p>
+<h4>跑一个件大概多少钱（估算，务必自己复核）</h4>
+<p><strong>几何计算全部是确定性的 Node 逻辑、进程内调用，零模型调用。</strong> 花钱的只有对话本身：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>token 消耗</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「描述件 → 生成 STL → analyze → slice → 看 estimate → 改参数」一轮</td>
+<td>约 6–10 次工具调用</td>
+</tr>
+<tr>
+<td>每次工具返回</td>
+<td>一个路径或一小段 JSON（几十到几百 token）</td>
+</tr>
+<tr>
+<td>一轮累计上下文（估算）</td>
+<td><strong>3–6 万 token</strong></td>
+</tr>
+<tr>
+<td>用本地小模型跑（该插件的 persona 就是为本地模型精简的）</td>
+<td><strong>0 元</strong></td>
+</tr>
+</tbody></table>
+<p>对照 09-13 的 idea-to-print（混元 3D 生成 + 多轮几何门）动辄几十万 token，<strong>差一个数量级</strong>。</p>
+<h4>个人怎么切进去</h4>
+<ol>
+<li>（20 分钟）装 DSH，<code>pnpm exec dsh plugin --profile web add dsh-print3d</code>，重启。</li>
+<li>（半天）<strong>不装 PrusaSlicer 也能用 6 个里的 5 个</strong> —— <code>print3d_slice</code> 是唯一调外部进程的，
+未装会<strong>明确报错而不是静默失败</strong>。先把 analyze / estimate / render 这条只读链路跑通。</li>
+<li>（几十行代码，最容易被合的口子）<code>print3d_stl_analyze</code> 现在给的是
+包围盒 / 体积 / 表面积 / 悬垂 / 非流形 / 水密这一档。
+<strong>加一项「最小特征尺寸 vs 喷嘴直径」检查</strong> —— 这是 DfAM 里最常翻车的一条，现在这个工具查不出来。</li>
+</ol>
+<h4>坑</h4>
+<ul>
+<li><strong>绑死 DeepSeek Harness</strong>，不是通用 MCP server。想在 Claude Code / Codex 里用，
+得自己把 <code>presets/*/scripts/</code> 下那 5 个脚本重新包一层 —— 作者把它们保留成可独立调用的
+CLI（<code>node scripts/xxx.cjs ...</code>），这条路是通的，但要你自己走。</li>
+<li>安装文档是 <strong>PowerShell + Windows 路径</strong>写的；Linux 下路径和「桌面」目录要自己改。</li>
+<li><code>gen_parametric_stl</code> <strong>只有 7 种基础体，不是 text-to-CAD</strong>。复杂件还是要走 OpenSCAD 技能手写。</li>
+<li>输出是 <strong>ASCII STL</strong>，体积比二进制大好几倍；批量生成注意磁盘。</li>
+</ul>
+<p>→ <a href="https://github.com/weisofns/dsh-print3d">https://github.com/weisofns/dsh-print3d</a>
+｜ <a href="https://github.com/deepseek-ai/DeepSeek-Harness">DeepSeek Harness</a>
+｜ <a href="https://github.com/prusa3d/PrusaSlicer/wiki/Slicing-from-the-command-line">PrusaSlicer 命令行切片</a></p>
+<hr>
+<h3>🌍 国外 · claude-code-robotics —— 给 URDF 装上 <code>check_urdf</code> 这道硬门，并且不让 agent 往运行中的机器人上写</h3>
+<p>enesbirlik ｜ MIT ｜ v1.1.0 ｜ 09-15 ｜ 带 CI ｜ 37 KB</p>
+<p>结构很紧凑：<strong>5 个 skill</strong>（<code>ros2-workspace</code> / <code>urdf-xacro-builder</code> / <code>embedded-ros-bridge</code> /
+<code>nav2-moveit2-config</code> / <code>ros2-ecosystem-packages</code>）+ <strong>2 个 hook 脚本</strong>
+（<code>verify_urdf.sh</code>、<code>colcon_build_check.sh</code>）+ <strong>1 个只读 ROS 2 MCP server</strong>（FastMCP，stdio）。</p>
+<h4>为什么这条是接口段现在最该看的</h4>
+<p>README 把问题说得很准：通用 LLM 写机器人代码，会<strong>编出看起来合理但错的 URDF 惯量张量</strong>、
+发明不存在的 <code>rclpy</code> QoS 默认值、靠猜参数名去&quot;修&quot; Nav2 costmap。</p>
+<p>它的回答是两道硬门：</p>
+<ul>
+<li><strong>hook 真的去跑 <code>xacro</code> / <code>check_urdf</code> 和限定范围的 <code>colcon build</code></strong>（用你 <code>PATH</code> 上的工具），
+生成的 URDF 一畸形立刻就知道，而不是等到 RViz 里模型飞了才发现。</li>
+<li><strong>MCP server 能读运行中的 ROS 2 图或 Gazebo 仿真</strong>（节点、话题、实时消息），
+但<strong>永远不能 publish、不能 set parameter、不能改节点生命周期状态</strong>。</li>
+</ul>
+<p>skill 内容也不是泛泛的 ROS 2 教程，README 点名写进去的是&quot;会悄悄弄坏机器人的一致性规则&quot;：
+costmap 坐标系不匹配、<strong>URDF 与 MoveIt 之间的关节限位漂移</strong>、micro-ROS executor handle 数量。</p>
+<p><strong>这条正好接上本期国外第 3 条 Wobble 的坑</strong> —— 一个 agent 辅助写的 URDF，惯量值该不该信。
+两条放一起就是一个完整的检查闭环。</p>
+<h4>个人怎么切进去</h4>
+<ol>
+<li>（10 分钟，0 元）作为 Claude Code plugin 装上（仓里有 <code>.claude-plugin/marketplace.json</code>
+和 <code>.mcp.json</code>）。<strong>本机要有 ROS 2 Humble 或 Jazzy，hook 才有东西可跑。</strong></li>
+<li>（半天）拿任意一个开源臂的 URDF（SO-101、Piper、OpenArm，或者本期的 Wobble）
+跑一遍 <code>verify_urdf.sh</code>，把 <code>check_urdf</code> 报的问题提回上游。
+<strong>这个口子 09-17 那期就列出来了，到今天仍然没人做。</strong></li>
+<li>（一天）5 个 SKILL.md 里目前<strong>没有</strong>&quot;URDF → MJCF / SDF 转换&quot;和
+&quot;<strong>从 CAD 质量属性反算惯量张量</strong>&quot;两节 —— 后者正是它自己点名的头号失败模式。
+补一节，几乎必被合。</li>
+</ol>
+<h4>坑</h4>
+<ul>
+<li><strong>它是知识 + 校验脚本，不是代码生成器。</strong> 真正写 URDF 的还是模型；
+37 KB、2 ★、单次提交后没再动。</li>
+<li><strong>hook 依赖你 <code>PATH</code> 上的 <code>xacro</code> / <code>check_urdf</code> / <code>colcon</code>，没装 ROS 2 就是静默空转</strong>，
+不会提醒你门根本没生效。<strong>装完先故意写一个坏 URDF，确认门是活的。</strong></li>
+<li>MCP server 的&quot;只读&quot;是<strong>它自己代码里实现的只读</strong>，不是 ROS 2 层面的权限隔离。
+接真机之前自己读一遍 <code>mcp-servers/ros2-mcp-server/server.py</code>（就一个文件）。</li>
+<li><strong>token（估算）</strong>：这条链路上模型只写文本和 XML，hook 是本地进程，不花 token。
+一次 URDF 迭代大约 <strong>1–3 万 token</strong>，比几何生成便宜一个数量级。</li>
+</ul>
+<p>→ <a href="https://github.com/enesbirlik/claude-code-robotics">https://github.com/enesbirlik/claude-code-robotics</a>
+｜ <a href="https://github.com/ros/urdfdom">urdfdom（<code>check_urdf</code> 来源）</a>
+｜ <a href="https://micro.ros.org/">micro-ROS</a></p>
+<hr>
+<h3>📌 专题分析：这一周这条链路上真正变了的东西（4 点）</h3>
+<p><strong>1. 「大对象落盘、只回路径」从事后优化变成了写进设计文档的一等约束。</strong>
+dsh-print3d 把它做成默认行为并给了理由（本地小模型的上下文预算）。
+前九期的 cadjson、model-forge、cadxray 都是隐含地这么做，没人把它当成约束写出来。
+<strong>这条链路的成本模型正在从「几何算力」转向「上下文预算」</strong> —— 这是一个方法论上的转折，
+不是某个项目的实现细节。</p>
+<p><strong>2. 校验的位置在持续往上游移，但门本身的可靠性还没人管。</strong>
+09-16 的 detect-agent 在打印<strong>之后</strong>找缺陷；09-17 的 cadxray 在切片<strong>之前</strong>查可打印性；
+这期的 claude-code-robotics 在 <strong>agent 写完文件的那一刻</strong>就跑 <code>check_urdf</code>。
+门越早，返工越便宜。<strong>但没人处理「门没生效」这个失败模式</strong> ——
+claude-code-robotics 的 hook 依赖 <code>PATH</code> 上有 ROS 2 工具，没装就是静默空转，
+而 agent 会当作校验通过了继续往下走。<strong>一个&quot;门自检&quot;机制（启动时验证每道门确实可执行）
+是这条链路上现在完全空白的一块。</strong></p>
+<p><strong>3. 接口段（URDF / SRDF / SDF）仍然只有「检查」，没有「生成」。</strong>
+claude-code-robotics 是检查已有 URDF；国内的 <code>zc110747/RobotForge</code>（0 ★，09-15，
+把 CAD/STEP 转成统一 RobotModel + 原生 MJCF + FK/IK，写了 76 节 spec）方向对，
+但<strong>还在 v0.1、后端是 MockBackend</strong>，MuJoCoBackend 排在 Phase 5。
+<strong>「从一个自己画的零件，自动长出带正确惯量的 URDF」，到今天仍然没有一个能跑通的开源实现。</strong>
+这是本专题连续第十期记录的同一个空缺。</p>
+<p><strong>4. token 成本这一栏，两期之内从「没人写」变成「两条里两条都写了」—— 但仍然没人在运行时打印它。</strong>
+09-17 我还把「给任意一个 text-to-CAD 项目加一段累计 token 输出」列为第一号缺口。
+这期两条：dsh-print3d 把<strong>零模型调用</strong>做成了架构（几何全是确定性 Node 逻辑），
+claude-code-robotics 因为只产文本天然便宜。方向对了。
+<strong>但依然没有一个项目在运行结束时打印「本次消耗 X token / 约 Y 元」</strong> ——
+所有的成本数字（包括我上面写的）都还是估算。那个缺口还在原地。</p>
+<hr>
+<h2>📈 趋势观察</h2>
+<p><strong>1. 「小到能做对照实验」正在成为一种明确的方法，而不是妥协。</strong>
+PocketVLA 用 3.02M 参数把辅助头的消融做成 <strong>−68.2 个百分点</strong>的硬数字，
+并且把 GRPO 只值 +6.0 个点这件事一并写出来；dexterous-astra 把
+<code>OMP_NUM_THREADS=1</code> 和固定 seed 写进 run 脚本、并在注释里说明为什么。
+这两件事在 π₀ / GR00T 那个规模上都做不起 —— 一次训练几百 GPU 时，没人会为消融再跑一遍。
+<strong>个人在这条赛道上能贡献的真正稀缺品不是算力，是对照组。</strong></p>
+<p><strong>2. 本周新仓里「评测 / 诊断 / 工具链」压过了「新模型」。</strong>
+ManiLoop（闭环评测工作台）、robodiag-harness（ROS 2 诊断 agent，杭州，Apache-2.0，22 ★）、
+claude-code-robotics（URDF 校验）、上周的 RLE-Bench —— 而模型侧本周唯一亮眼的
+<strong>Motus2</strong>（生数科技，自演化灵巧操作世界模型，39 ★）<strong>仓里只有 3 KB 的 README，代码没放</strong>。
+CAP（复旦 + TARS，CoRL 2026，20 ★）也明写 &quot;Code release is in preparation&quot;。
+<strong>工具链的开源速度正在超过模型的开源速度。</strong></p>
+<p><strong>3. 硬件这一侧，本期能找到的高质量新仓明显少于软件 —— 如实记一笔。</strong>
+三条硬件相关的里：lite3-sdk 是给一台五万块的机器写驱动（超预算）、
+Wobble 的实机部分还没做（只有 URDF，没有 CAD）、工创赛套件是打印件不是机器人。
+相比 09-15（Easyhand 五指手，整套 ¥200–300）、09-16（OptiDuck、nanshanbot/hand）那两期，
+<strong>本周是硬件小年</strong>。不硬凑，也不假装这三条和那三条是一个成色。</p>
+<p><strong>4. 多条独立线索同时指向同一件事：LLM 写的机器人描述文件不可信。</strong>
+Wobble 有 <code>AGENT.md</code>（agent 辅助写的）且 URDF 惯量没人核过；
+claude-code-robotics 把&quot;编造惯量张量&quot;列为头号失败模式；
+RobotForge 要建&quot;唯一规范内部表示 + 统一坐标系 + 统一单位&quot;来收敛这件事。
+三个仓，三个作者，互不相识，指向同一个洞。
+<strong>一个「从 CAD 质量属性反算惯量并与 URDF 逐项比对」的独立小工具，谁做谁有</strong> ——
+见下面口子第 12 条。</p>
+<p><strong>5. 数据侧安静地上了量，而且都是下载即用。</strong>
+NVIDIA 09-16 放出 <a href="https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Open-H-Embodiment"><code>PhysicalAI-Robotics-Open-H-Embodiment</code></a>（54 likes），
+09-06 放出 <a href="https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL"><code>Locomanipulation-GRAIL</code></a>（29 likes）；
+国内 <a href="https://huggingface.co/datasets/TianxingChen/RoboTwin2.0"><code>TianxingChen/RoboTwin2.0</code></a> 09-14 更新（60 likes）。
+<strong>三个都不需要任何硬件，对单卡个人是本周性价比最高的入口。</strong></p>
+<hr>
+<h2>🏁 当前仍开放、对个人开放的比赛 / bounty / 众包入口</h2>
+<blockquote>
+<p>本期逐条重新核过。<strong>核不到确切截止日期的一律写明「未核到」，不硬凑。</strong></p>
+</blockquote>
+<h3>✅ 复核仍开放（本期重新核过日期）</h3>
+<p><strong>RoboSynChallenge（NeurIPS 2026 正式竞赛）—— 10 月 11 日 AoE 截止，还剩 23 天。</strong>
+本期重新从前端 bundle 读取（注意：<code>static/config.js</code> 只有 211 字节，里面只有 API 地址和
+联系邮箱；<strong>日期在 <code>static/js/pages-app.js</code> 里</strong>）：
+训练与提交截止 <strong>10-11 AoE</strong>，仿真初评 <strong>10-11 → 10-18</strong>，<strong>10-18 公布入围</strong>，
+模型更新期 <strong>10-18 → 11-15</strong>，<strong>11-15 起在统一的双臂真机平台上做最终评测</strong>。
+与 09-16、09-17 两期所核一致，<strong>未变</strong>。<strong>真机评测由主办方做，你不需要任何硬件。</strong>
+（读自前端代码而非可见页面，动手前请自行到官网复核。）
+→ <a href="https://robosyn-bench.net/">https://robosyn-bench.net/</a> ｜ <a href="https://github.com/EDEM-AI/RoboSynChallenge">GitHub</a></p>
+<p><strong>CoRL 2026 Efficient Embodied AI Workshop Challenge —— 本期在官网 Important Dates 逐条重核，全部未变：</strong></p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+<th>距今</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>9 月 25 日</strong></td>
+<td><strong>Challenge harness 和参考容器发布</strong></td>
+<td><strong>还有 7 天</strong></td>
+</tr>
+<tr>
+<td>10 月 12 日</td>
+<td>论文提交截止（非归档）</td>
+<td>24 天</td>
+</tr>
+<tr>
+<td><strong>10 月 23 日</strong></td>
+<td><strong>Challenge 提交截止</strong> ← 真正的参赛节点</td>
+<td><strong>35 天</strong></td>
+</tr>
+<tr>
+<td>10 月 26 日</td>
+<td>论文录用通知</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 5 日</td>
+<td>Challenge 结果核验并公布</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 12 日</td>
+<td>Workshop，CoRL 2026，德州奥斯汀</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>全部为 <strong>11:59 PM Anywhere on Earth</strong>。页面写明所有提交、基线和 harness 都会公开。
+<strong>9 月 25 日 harness 发布是最近的一个可执行节点</strong> —— 那天之前你什么都做不了，
+那天之后到提交截止有 28 天。
+→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a></p>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）—— 提交截止 10/16/2026，获奖公布 11/04/2026，还剩 28 天。</strong>
+本期在 challenge 首页重新核到这两个日期（页面另列一个 07/02/2026 的历史节点）。
+→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<p><strong>RLE-Bench 2.0 任务征集（现金奖励 + 共同作者，⚠️ 仍未标注截止日期，也未标注金额）。</strong>
+09-16 首次发现，本期复核 contribute 页仍可访问（200）、内容未变：
+回报是<strong>洞察 + 论文共同作者署名 + 对高影响力贡献的现金奖励</strong>。
+<strong>页面既没写金额，也没写截止日期</strong> —— 这两点连续三期都没核到，动手前请自己发邮件问。
+交付物与本地验证环境要求见 <a href="./2026-09-16.html">09-16 那期</a>，未变。
+→ <a href="https://rle-bench.github.io/contribute/">https://rle-bench.github.io/contribute/</a> ｜ <a href="https://github.com/RLE-Bench/RLE-Bench">仓库</a></p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性，均 200）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p>（规则和当时的最好成绩见 <a href="./2026-09-12.html">09-12 那期</a>。）</p>
+<h3>🆕 本期新发现，但<strong>不满足「个人可参与」</strong> —— 写明原因，不列为可参与项</h3>
+<p><strong>2027 中国大学生工程实践与创新能力大赛 · 智能分拣。</strong>
+本期国内第 3 条那套训练件就是冲它做的。</p>
+<ul>
+<li><strong>需要在校大学生身份</strong>，个人无法报名 → <strong>不满足第一条筛选标准</strong>。</li>
+<li>官网 <a href="http://www.gcsai.cn/">http://www.gcsai.cn/</a>（200）首页是 JS 渲染，<code>curl</code> 拿到的 102 KB HTML 里
+<strong>没有 2027 赛季的报名日期</strong>，<strong>未核到</strong>。</li>
+<li><strong>但那套训练件是 MIT 的，任何人都能打印来练视觉分拣</strong> —— 这部分是个人可用的，
+已作为国内第 3 条列出。</li>
+</ul>
+<h3>❌ 维持核销（别去撞墙）</h3>
+<p>ATEC2026（报名 5/30 已截止）、EMR Workshop @ ECCV 2026（9/9 已办完）、
+ICRA 2026 全部九项竞赛（6/1–4 已举办）、GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026（5/15 结束）、
+PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD。
+依据见 <a href="./2026-09-12.html">09-12</a>、<a href="./2026-09-13.html">09-13</a>、<a href="./2026-09-14.html">09-14</a> 三期，本期未变。</p>
+<p><strong>RoboChallenge</strong> —— 状态仍无法确认（整页 JS 渲染），<strong>不写「仍开放」，也不核销</strong>。
+→ <a href="https://robochallenge.ai/">https://robochallenge.ai/</a></p>
+<h3>⚠️ 本期的空缺，明说</h3>
+<p><strong>仍然没有找到新的、面向个人、仍开放报名的国内比赛。</strong>
+本期唯一新发现的国内赛事（2027 工创赛）明确要求在校生身份，已在上面写明原因排除。
+按前几期的核销记录，国内这一批的报名窗口集中在上半年，
+<strong>下一波大概率要等 2027 年的赛季公告</strong>。这期不硬凑。</p>
+<hr>
+<h2>🔧 不是比赛、但确实缺人做的口子（半天到一周量级）</h2>
+<ol>
+<li><strong>攻 PocketVLA 的 OOD</strong>：SFT 在测试集 74.2%，OOD 只有 34.7%，掉一半。
+固定 300 场景 + 一条 <code>python3 -m pvla.eval_ood</code>，<strong>任何改进都有客观分数</strong>。1–2 天，0 元。（国内 TOP 1）</li>
+<li><strong>跑两个 seed 复现 PocketVLA 的 74.2% / 80.2%，报方差。</strong>
+README 里 <code>pat</code> 那组就是为看训练随机性准备的，但<strong>没人报过跨 seed 的区间</strong>。半天，0 元。（国内 TOP 1）</li>
+<li><strong>量 dexterous-astra 的打乱泛化边界。</strong> 默认 <code>--scramble &quot;U F L&quot;</code>，换成别的三步打乱，
+看策略还解不解得开。<strong>结果客观可判，现在没人量过。</strong> 半天，纯本机。（国外 TOP 1）</li>
+<li><strong>给 dexterous-astra 提 issue 问许可。</strong> 仓里完全没有 LICENSE。十分钟。（国外 TOP 1）</li>
+<li><strong>给 Wobble 提 issue 问许可，并核一遍 URDF 里的惯量张量。</strong>
+仓里有 <code>AGENT.md</code>，惯量正是 LLM 写 URDF 最常错的地方。半天。（国外第 3）</li>
+<li><strong>用 claude-code-robotics 的 <code>verify_urdf.sh</code> 跑一批开源臂的 URDF，把 <code>check_urdf</code>
+报的问题提回上游。</strong> 09-17 那期就列出来了，<strong>至今没人做</strong>。半天，0 元。（专题 · 国外）</li>
+<li><strong>给 claude-code-robotics 补一节「从 CAD 质量属性反算惯量张量」的 SKILL.md。</strong>
+这是它自己点名的头号失败模式，而 5 个 skill 里没有这一节。一天，几乎必被合。（专题 · 国外）</li>
+<li><strong>给 dsh-print3d 的 <code>print3d_stl_analyze</code> 加「最小特征尺寸 vs 喷嘴直径」检查。</strong>
+几十行，DfAM 里最常翻车的一条，现在查不出来。半天。（专题 · 国内）</li>
+<li><strong>打印工创赛那 12 件，用卡尺量真实 X/Y/Z、质量、色号，把实测元数据回贡给仓库。</strong>
+作者在 README 里要的就是这个。一天，<strong>十几块钱 PLA</strong>。（国内第 3）</li>
+<li><strong>在 ManiLoop 上跑一组 LIBERO-spatial 十任务的 GPT 基线，报成功率和 token 费。</strong>
+作者只给了三段挑选出来的成功回放，<strong>没有任何任务族级别的统计</strong>。一天 + API 费。（国内第 2）</li>
+<li><strong>把 lite3-sdk 的 <code>protocol.py</code> 翻成另一门语言的驱动（Rust / Go / 嵌入式）。</strong>
+帧构造和解析的单元测试<strong>不需要机器人也能写完</strong>。一天。（国外第 2）</li>
+<li><strong>写一个「从 CAD 质量属性反算惯量并与 URDF 逐项比对」的独立小工具。</strong>
+本期趋势第 4 点和专题分析第 3 点共同指向的缺口，<strong>目前没有开源实现</strong>。2–3 天。（跨条目）</li>
+<li><strong>给这条链路上任意一个 agent 项目加「本次运行累计 token + 估算金额」的输出。</strong>
+连续第三期列这一条，<strong>连续第三期没人做</strong>。半天。（专题分析第 4 点）</li>
+</ol>
+<hr>
+<p><em>本期共扫描 GitHub 新建仓 9 轮共 60+ 组查询词（中英文各半），HF models / datasets 两组榜单；
+所有对外链接均以 <code>curl -sIL</code> 验过状态码。许可状态经 GitHub license API + 仓库 tree 双重核对。
+成本、时间、显存等估算值已逐条标注为估算。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-18.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

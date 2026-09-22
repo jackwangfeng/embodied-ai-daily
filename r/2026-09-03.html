@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-09-03 · 具身智能可参与项目日报</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>2026-09-03 · 具身智能可参与项目日报</h1>
+<p>今日主线：<strong>「能跑」的定义从「有权重」变成了「有单卡部署脚本 + 一份完整任务配方」</strong>。国产 4B VLA 的仓库里这周直接多出一个 <code>rtx5090/</code> 目录（装环境、起服务、healthz 检查一条龙）和一份写到动作维度对齐的微调指南 —— 开源姿态从「放权重 + 论文」变成「给你一台单卡机器的部署脚本」。同时国外冒出两个两周龄的新仓库，指向两件事：<strong>LLM 调度既有技能</strong>正在成为 VLA 之外的第二条路（不需要数据、显卡和本体），以及<strong>数据质量开始工具化</strong>（昨天说瓶颈移到数据，今天有了专门查数据的 SDK）。</p>
+<blockquote>
+<p>本期软 4 / 硬 2，相对昨天（软 2 / 硬 3 / 全套 1）主动往软件侧偏一档。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· Wall-OSS-0.5 / WALL-X —— 国产 4B VLA，官方给了单张消费级卡的部署脚本</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元（有显卡即可）｜ 周期 当天见结果，1 周出基线</strong></p>
+<p><strong>是什么。</strong> 自变量机器人（X Square Robot）开源的具身基础模型，口号是 <em>Pretrain Once, Act Anywhere</em>。<strong>4B 参数</strong>（3B 视觉-语言主干 + 动作生成部件），在 20 多种本体形态上预训练、每 epoch 处理百万级机器人轨迹，用「梯度桥接」共训练把离散动作预测、多模态预测和连续 flow matching 缝在一起。官方数字：预训练 checkpoint <strong>不做任务微调</strong>直接零样本测 17 个任务，4 个上 80 分（满分 100）；微调后 15 个任务平均进度 60.5，比 π0.5 高 17.5。权重、代码、技术报告都公开。</p>
+<p><strong>为什么现在值得做。</strong> 模型是 5 月放出来的，但<strong>这周（8 月 31 日）仓库里落的两样东西才让它从「论文 + 权重」变成「能照着跑」</strong>：</p>
+<ol>
+<li><strong><code>workspace/rtx5090/</code></strong> —— 官方写的单张消费级显卡推理部署路径：<code>install.sh</code> 装环境、<code>run_server.sh</code> 起推理服务、<code>DEPLOY.md</code> 是不绑本机的通用流程、还给了 <code>curl http://127.0.0.1:44660/healthz</code> 的健康检查和 <code>ENABLE_CUDA_GRAPH=1</code> 这类实测过的环境变量，外加一份 <code>local/NOTES.md</code> 记录踩坑。国产具身大模型里，官方主动写「怎么在一张民用卡上把服务起起来」的还不多。</li>
+<li><strong><code>workspace/TRAIN_ARRANGE_3_FLOWERS.md</code></strong> —— 一份<strong>配方级</strong>的微调指南。双臂三花插花任务，把 26 维动作空间怎么对齐写得很死：左右臂各「相对位姿 3 + 6 + 夹爪 1 = 10 维」，有效动作 20 维，剩下 6 维用 <code>action_padding</code> 补齐到预训练空间的 26 维且 <strong>loss 不反传</strong>；三视角 448×448、建议 20 fps。配套还加了 <code>x2robot2lerobot.py</code> 数据格式转换脚本和 smoke 配置。这类「动作空间怎么对齐」的文档，恰恰是个人复现 VLA 时最容易卡死、又最没人写的一层。</li>
+</ol>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>今天（2 小时，0 元）</strong>：clone 仓库，从 HF 拉 <code>wall-oss-0.5</code> 权重，跑 <code>python scripts/fake_inference.py --checkpoint-path &lt;ckpt&gt;</code> —— 最小端到端例子，只确认环境和权重对得上。4B 在 bf16 下推理约 8–9 GB 显存，本机 A4000 16G 够用（<code>. /workspace/cuda/env.sh</code> 已配好）。</li>
+<li><strong>第 1–2 天（0 元）</strong>：<code>bash scripts/run_libero.sh &lt;ckpt&gt;</code> 跑 LIBERO 闭环仿真评测，拿一组<strong>自己机器上的基线分数</strong>。纯仿真、可复现，这是第一个真实产出物。</li>
+<li><strong>第 3–5 天（0 元）</strong>：起 WebSocket 推理服务（<code>scripts/run_serving.sh</code>），用开环评测把模型预测动作和公开 LeRobot 数据集里的真值对比，<code>scripts/draw_openloop_plot.py</code> 直接出图。<strong>产出物是一份开环误差曲线</strong>，比一个分数更能说明模型在你关心的任务上差在哪。</li>
+<li><strong>第 2 周起（可选）</strong>：照 <code>TRAIN_ARRANGE_3_FLOWERS.md</code> 那套动作空间对齐方法，把自己的 LeRobot v3 数据集接上做微调。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> 四点，前两点会直接卡住你：</p>
+<p>① <strong>LeRobot 版本被锁在 v0.4.4</strong>，不是当前最新的 0.6.1 —— 装最新版会对不上，官方安装步骤专门交代对 lerobot 用 <code>--no-deps</code> 以免覆盖 wall-x 的依赖。这是「教程跟不上上游」的反面：这里是<strong>上游跑太快，配方锁在旧版</strong>。
+② <strong>训练入口是 <code>wall_x.trainer.fsdp_trainer.train_fsdp</code>（FSDP，多卡取向）</strong>。4B 全量微调不是单张 16 GB 卡的活，按官方配置直接开会 OOM，单卡只能走 LoRA / 极小 batch + 梯度检查点。<strong>推理和评测在 16G 上没问题，微调要降级预期。</strong>
+③ 需要 flash-attn（训练与推理的 vision 模块都要），编译经常是整个流程里最大的时间黑洞，先解决它再谈别的。
+④ 那份插花配方是给双臂 ex001 本体的。<strong>你没有同构本体时，动作空间映射要自己重做</strong>，这一步的工作量比文档看起来大得多 —— 别把「有配方」理解成「换个数据集就能跑」。</p>
+<p><strong>出处。</strong> <a href="https://github.com/X-Square-Robot/wall-x">X-Square-Robot/wall-x</a>（最新提交 2026-08-31）
+相关：<a href="https://arxiv.org/abs/2605.30877">Wall-OSS-0.5 技术报告 arXiv:2605.30877</a> ｜ <a href="https://arxiv.org/abs/2509.11766">前作《Igniting VLMs toward the Embodied Space》arXiv:2509.11766</a> ｜ <a href="https://huggingface.co/x-square-robot/wall-oss-0.5">HF 权重 x-square-robot/wall-oss-0.5</a> ｜ <a href="https://huggingface.co/x-square-robot">组织下全部权重（含 wall-oss-flow / fast）</a></p>
+<hr>
+<h3>2 · 宇树 UniArmL1 —— 8/28 开源的 6-DoF 机械臂，含 BOM / STL / 三种遥操作模式</h3>
+<p><strong>类型：硬件 ｜ 成本 单臂约 ¥5.3k、主从一对约 ¥1.05 万（⚠️ 超出本栏目「≤ 约 5000 元」口径，见下）｜ 周期 2–3 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 宇树科技自己设计并开源的 6-DoF 机械臂，8 月 28 日更新。硬件目录给全了：采购清单（带单价和链接）、STEP、STL、装配指导、电机配置方法；软件侧支持 <strong>VR 手柄 / 键盘 / 主从臂三种控制模式</strong>，固定频率录制关节角与相机图像，输出标准格式数据集，直接对接 <a href="https://github.com/unitreerobotics/unitree_lerobot">unitree_lerobot</a> 做模仿学习训练与部署。整条链是 <code>硬件准备 → 校准 → 配环境 → 遥操作采数 → 训练 → 部署</code>。</li>
+<li><strong>成本要说实话。</strong> 按仓库自带清单算：<strong>J288 舵机 ¥599 × 8 = ¥4792/臂</strong>，加电机控制板 ¥99、腕部相机 ¥190、全局相机 ¥183、线材电源固定件约 ¥100 —— <strong>单条从臂约 ¥5.3k</strong>；官方推荐的主从遥操作要买两套（16 颗舵机），<strong>约 ¥1.05 万</strong>。这条<strong>确实超了本栏目 5000 元的口径</strong>，之所以还列进来：它是本周唯一一个由头部厂商官方开源、软硬件文档都齐的国产机械臂，且有下面这个省钱切法。</li>
+<li><strong>省钱切法。</strong> 框架<strong>支持 VR 手柄和键盘模式</strong>，所以可以<strong>只造一条从臂</strong>，用 Quest 手柄或键盘遥操作采数据 —— 成本直接砍一半，回到 ¥5.3k 一档。想再压就只能降舵机档次，但那会引出下一条坑。</li>
+<li><strong>坑。</strong> ① 成本主体就是舵机，<strong>别指望换廉价舵机省钱</strong> —— 通信协议、减速比、力矩全都对不上，会毁掉整条软件链的开箱可用性；② 仓库许可是 <code>NOASSERTION</code>（没给标准 SPDX 许可标识），个人研究无碍，<strong>商用前必须找官方确认</strong>；③ 采购链接是淘宝/天猫短链，会失效，失效了按型号（J288）自行搜。</li>
+<li><strong>出处。</strong> <a href="https://github.com/unitreerobotics/UniArmL1">unitreerobotics/UniArmL1</a>（2026-08-28 更新）
+相关：<a href="https://github.com/unitreerobotics/UniArmL1/blob/main/hardware/README_zh-CN.md">硬件 BOM / 装配指导</a> ｜ <a href="https://github.com/unitreerobotics/unitree_lerobot">unitree_lerobot（训练与部署对接）</a></li>
+</ul>
+<hr>
+<h3>3 · RoboChallenge —— 不用买机器人也能拿真机分数的远程评测入口</h3>
+<p><strong>类型：软件 / 参与入口 ｜ 成本 0 元（硬件由平台提供）｜ 周期 1–2 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 原力灵机（Dexmal）联合 Hugging Face 做的开源真机评测平台，接入 UR5、Franka Panda、Aloha、ARX-5、DOS-W1 等多种主流本体，开创<strong>大规模远程真机评测</strong>机制，累计执行 <strong>4 万+ 次真机测试</strong>。社区和个人开发者已经把 Pi0、Pi0.5、RDT-1B、CogACT、OpenVLA-OFT 提上去跑完并上了榜。Table30 V2 加入双臂操作任务，以及零样本 / 域外泛化评测。<strong>这是本期六条里唯一一条：你不需要拥有任何硬件、任何场地，就能拿到真机上的成绩。</strong></li>
+<li><strong>怎么切进去。</strong> 读 <code>RoboChallengeInference</code> 的示例代码，把一个开源策略（比如上面第 1 条的 Wall-OSS-0.5，或 OpenVLA-OFT）包成平台的推理接口 → 提交 → 等真机跑完。<strong>产出物是 leaderboard 上一条带你名字的记录</strong> —— 这在具身智能领域是比 GitHub star 更硬的凭证。同团队的 <a href="https://github.com/dexmal/dexbotic">Dexbotic</a>（开源 VLA 工具箱，1.4k★）可以直接拿来当基线，<code>OpenDM</code> 到 9 月 2 日还在更新。</li>
+<li><strong>坑。</strong> ① 真机评测有排队和配额，<strong>别当成 CI 用</strong>，一次提交要当一次实验来准备；② 平台是「持续开放」型入口，<strong>没有公示统一的报名截止日期</strong>，也因此没有明确的「本轮任务集」—— 提交前先去 Community 仓提 issue 问清当前开放哪些任务和本体，别照着旧文档做完才发现任务改了；③ 榜上那些模型是有团队在调的，别拿自己的第一次提交去和它们比绝对分数。</li>
+<li><strong>出处。</strong> <a href="https://robochallenge.ai/">robochallenge.ai</a> ｜ <a href="https://www.robochallenge.ai/leaderboard">Leaderboard</a>
+相关：<a href="https://github.com/RoboChallenge/RoboChallengeInference">RoboChallenge/RoboChallengeInference（提交用示例代码）</a> ｜ <a href="https://github.com/RoboChallenge/Community">RoboChallenge/Community（问任务与配额的地方）</a> ｜ <a href="https://blog.csdn.net/csdnnews/article/details/160250958">平台报道（18 家参与，含个人开发者入口）</a> ｜ <a href="https://github.com/dexmal/opendm">dexmal/opendm（同团队开源基础模型，9/2 仍在更新）</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· quackd —— 给小机器人接一个 LLM 大脑，零硬件零 API key 当天能跑</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元 ｜ 周期 10 分钟起步，1 周出可提交的贡献</strong></p>
+<p><strong>是什么。</strong> 8 月 28 日才建仓的开源项目（Apache-2.0，PyPI 有包，<strong>两周 120★</strong>），定位是「小机器人缺的那层大脑守护进程」—— 名字和 <code>robotd</code> / <code>mediad</code> 这些兄弟守护进程对齐。它<strong>不训练端到端 VLA</strong>，而是让一个 LLM（Claude / OpenAI / Gemini / Grok，或用 Ollama、vLLM、llama.cpp、LM Studio 跑本地模型）<strong>调度机器人已经会的技能</strong>：把 <em>&quot;find the ball and kick it&quot;</em> 这样一句话变成一串它自己的 skill 调用，观察发生了什么，继续循环，直到完成或明确判定不可能。任务写在 <code>.duck</code> 文件里，自带模拟器，<strong>支持 MCP</strong>（可以直接在 Claude 里对话驱动），还有 flock 模式让不同形态的机器人协作（「头负责发现，鸭子负责踢，头负责判定」）。首个目标机型是 Pollen Robotics 的 Microduck 双足，0.4 起通过 adapter 也驱动 Reachy Mini 头、SO-101 级机械臂（走 LeRobot）和任意 rosbridge 轮式底盘。</p>
+<p><strong>为什么现在值得做。</strong> 三点，第三点是关键：</p>
+<p>① <strong>门槛是本期最低的</strong>：<code>uvx quackd run find-and-kick --provider fake</code> —— 不需要机器人、不需要显卡、不需要 API key，自带模拟器在任何笔记本上几秒起来。
+② <strong>技术路线是 VLA 之外的另一条路</strong>。VLA 那条线要数据、要显卡、要本体，个人的第一个可展示成果通常在两三周后。这条线假设机器人已经会 walk / turn / kick / scoop / look around 这些技能，<strong>LLM 只做任务分解和闭环监督</strong> —— 代价是能力天花板受限于机器人已有的技能集，好处是<strong>今天就有能演示的东西</strong>。
+③ <strong>它的空白处就是贡献入口，而且作者把清单列在 README 里了。</strong> 这个仓库诚实到罕见：明确写了「四个硬件后端全是 experimental 或 stub，<strong>没有任何一个在真机上端到端验证过</strong>」；<code>hello-world</code> 和 <code>find-and-kick</code> 已被 scripted pilot 跑通（10/10 seeds + ground truth 检查），但 <strong><code>patrol-and-quack</code> / <code>follow-me</code> / <code>fetch</code> 这三个任务至今没有任何 pilot 跑通过</strong>（scripted pilot 对 follow-me 和 fetch 根本没有脚本，跑两步就宣称成功；patrol 每个 seed 都跑到预算耗尽；模型运行则一次记录都没有）。<strong>一个两周龄、120★、Apache-2.0 的项目，把自己没做完的事逐条列出来 —— 这是最容易变成 merged PR 的形态。</strong></p>
+<p><strong>个人怎么切进去。</strong> 这条是六条里唯一「十分钟内能看到东西动」的：</p>
+<ol>
+<li><strong>今天（10 分钟，0 元）</strong>：<code>uvx quackd run find-and-kick --provider fake</code>，看 scripted pilot 在自带模拟器里找到球并踢出去。确认环境没问题。</li>
+<li><strong>今天（1 小时，0 元）</strong>：<code>claude mcp add quackd -- uvx quackd serve-mcp --robot microduck:sim2d</code>，然后直接用自然语言驱动它。<strong>本机就是 Claude Code 环境，这一步没有额外成本</strong> —— 要我直接接上跑就说一声。</li>
+<li><strong>本周（0 元 / 少量 token）</strong>：换成真模型去跑 <code>follow-me</code> 或 <code>fetch</code>。<strong>README 明确说这两个还没有任何模型跑通记录</strong> —— 跑通并提交一份 run 记录，就是一条实打实的首次贡献。想完全免费就用 Ollama 跑本地模型。</li>
+<li><strong>进阶（有硬件的话）</strong>：写一个 adapter。SO-101 级机械臂的后端目前<strong>只有 mock</strong>，你手上有 SO-101 / SO-ARM101 的话，把它接到真机是这个项目现在最缺的东西 —— 也是把昨天那批便宜机械臂（AM-ARM200、reBot-DevArm）用起来的一个新去处。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> ① <strong>它现在诚实的标签是「LLM 驱动的、目标导向的仿真机器人控制」</strong>，不是能用的实体机器人大脑。别按「买个 Microduck 就能用」来规划 —— <strong>Microduck 硬件要 2026 圣诞才发货</strong>；② 任务分解依赖 LLM，云模型有 token 成本，本地模型（Ollama / llama.cpp）效果会明显掉一档，<code>follow-me</code> 这类多步任务尤其明显；③ 两周龄项目，接口还在动（0.4 才加的多机型 adapter），<strong>锁版本再动手</strong>，别在 main 上建工作流。
+<strong>出处。</strong> <a href="https://github.com/rokbenko/quackd">rokbenko/quackd</a>（建仓 2026-08-28，最新提交 2026-09-02）
+相关：<a href="https://pypi.org/project/quackd/">PyPI 包</a> ｜ <a href="https://github.com/pollen-robotics/microduck#readme">Pollen Robotics Microduck（首个目标机型）</a> ｜ <a href="https://github.com/huggingface/lerobot">LeRobot 主仓（SO-101 adapter 的上游）</a></p>
+<hr>
+<h3>2 · HFlow —— 查「你那批演示数据到底能不能用」的开源 SDK</h3>
+<p><strong>类型：软件 ｜ 成本 0 元 ｜ 周期 1–2 天</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> Hebbian Robotics（YC S26）8 月 18 日开源的多模态机器人数据流水线 SDK，Apache-2.0，<strong>两周 228★</strong>。它解决的问题非常具体：一批语料里混着来自不同录制系统的视频、状态、动作、时间戳和元数据，你怎么知道<strong>相机有没有卡帧、多路流有没有失同步、必需的 topic 有没有消失、有没有重复录制混进来</strong>。HFlow 给每个处理过的 episode 打 provenance 戳、把流水线渲染成图、把元数据和质量证据写进可查询的目录 —— <strong>不加载原始录像就能审计整个语料库</strong>。<strong>这条直接接上昨天的判断（瓶颈从算力移到数据）</strong>：个人做模仿学习最隐蔽的失败模式是「数据脏了但你不知道」—— 训练 loss 好看，真机不动，然后你去调超参，方向就彻底错了。</li>
+<li><strong>怎么切进去。</strong> 拿 HF 上任意公开 LeRobot 数据集跑内建 checks → <strong>产出物是一份 QC 报告</strong>（哪些 episode 该扔、为什么）；进一步写一个自己的 check（比如夹爪状态跳变、动作值越界检测）提 PR。0 元、0 硬件、一两天，而且这份报告在你后面真机采数据时会一直有用。</li>
+<li><strong>坑。</strong> ① 是<strong>公司主导</strong>的开源项目（YC S26），路线图跟着商业产品走，别当社区中立基建来押长期；② 它<strong>管数据不管模型</strong> —— 别指望它提升 policy 效果，它只让你知道数据有没有问题，价值在「省掉一周走错方向」；③ 内建 checks 是通用的，你的具体任务（比如力控、触觉）要自己写 check 才有意义。</li>
+<li><strong>出处。</strong> <a href="https://github.com/Hebbian-Robotics/hflow">Hebbian-Robotics/hflow</a>（建仓 2026-08-18，最新提交 2026-09-02）
+相关：<a href="https://hebbianrobotics.com">官网</a> ｜ <a href="https://github.com/dsta022/Loop-Engineering-for-VLA">Loop-Engineering-for-VLA（另一条路线：LeRobot RGB-D 数据集采集/合并/审计/发布工具链，495★，MIT）</a> ｜ <a href="https://github.com/huggingface/lerobot-dataset-visualizer">lerobot-dataset-visualizer（HF 官方数据集可视化）</a></li>
+</ul>
+<hr>
+<h3>3 · LeRobot Humanoid —— HF 官方的 &lt; $5000 开源人形，8/27 五个子仓同日更新</h3>
+<p><strong>类型：硬件 ｜ 成本 分层：0 元 / 几百元 / $5000（见下）｜ 周期 0 元层 1 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> Hugging Face 官方的开源低成本人形机器人工作区，<strong>8 月 27 日 design / hardware / model / runtime / identification 五个子仓同日更新</strong>。目标写得很明确：整机 <strong>&lt; $5000</strong>、优先减重与可维护、<strong>3D 打印优先</strong>（多数自制机械件可打印且有文档）、从 CAD 到运行时全链可复现。hardware 仓里有<strong>公开的 Onshape CAD 源</strong>、机读 + 人读双份 BOM、按左右腿和子装配拆好的 STL（<code>hipx</code> / <code>hipz</code> / <code>thigh</code> / <code>knee_mechanism</code> / <code>shin</code> / <code>ankle_mechanism</code> / <code>ankle</code> / <code>foot</code>）、接线与连接器映射、电机预装配调试工具。当前范围只做双足平台，上半身暂不在内。</li>
+<li><strong>怎么切进去（成本分层，别只看 $5000）。</strong><ul>
+<li><strong>0 元层（推荐先做这个）</strong>：<code>lerobot-humanoid-identification</code> 是<strong>纯仿真</strong> —— MJWarp 批量回放 + CMA-ES 辨识仿真参数，README 明确写「真机采集 / 延迟工具<strong>刻意不在本仓范围内</strong>」。也就是说这一半<strong>完全不需要任何硬件</strong>，一张显卡就能做，产出物是一组辨识出来的仿真参数 + 运行产物。这是本机 A4000 现在就能开工的活。</li>
+<li><strong>几百元层</strong>：STL 已经按子装配拆好了，<strong>可以只打印并复现一个关节模块</strong>（比如 <code>knee_mechanism</code> 或 <code>ankle_mechanism</code>），验证打印件公差和电机预装配流程，成本是几百元的打印件加一两颗电机。</li>
+<li><strong>$5000 层</strong>：完整双足平台。<strong>超出本栏目预算，作为长期目标看，不建议作为入门投入。</strong></li>
+</ul>
+</li>
+<li><strong>坑。</strong> ① <strong>顶层仓库没有 LICENSE 文件</strong>（五个子仓要逐个看），商用前必须逐仓确认；② $5000 是「取决于采购、运费和关税」的裸估，<strong>跨境实际会更高</strong>，别按 3.5 万人民币做预算；③ <strong>CAD 真源在 Onshape 而不是 git</strong>，导出的 STL 可能滞后于 CAD —— 动手打印前先对一遍版本，否则打出来装不上。</li>
+<li><strong>出处。</strong> <a href="https://github.com/huggingface/lerobot-humanoid">huggingface/lerobot-humanoid（总入口）</a>
+相关：<a href="https://github.com/huggingface/lerobot-humanoid-hardware">lerobot-humanoid-hardware（BOM / STL / 接线 / Onshape CAD）</a> ｜ <a href="https://github.com/huggingface/lerobot-humanoid-identification">lerobot-humanoid-identification（0 元层：MJWarp + CMA-ES 纯仿真辨识）</a> ｜ <a href="https://github.com/enactic/openarm">enactic/openarm（对照：全开源人形手臂，2.9k★，Apache-2.0，8/31 更新）</a> ｜ <a href="https://huggingface.co/blog/lerobot-release-v060">LeRobot v0.6.0 发布说明（世界模型策略 + 统一奖励模型 API + 6 个仿真 benchmark）</a></li>
+</ul>
+<hr>
+<h2>趋势观察</h2>
+<ol>
+<li><p><strong>国产 VLA 开始写「消费级单卡」的官方文档。</strong> Wall-X 8 月 31 日直接在仓库里加了一个 <code>rtx5090/</code> 目录：装环境、起服务、健康检查、实测笔记。一年前国产具身大模型的开源姿态是「放权重 + 发论文」，现在是「给你一台单卡机器的完整部署脚本 + 一份写到动作维度的任务配方」。<strong>这个变化比模型分数更值得注意</strong> —— 它意味着「个人复现」被当成了正式的支持场景，而不是社区自己想办法。</p>
+</li>
+<li><p><strong>「LLM 调度既有技能」正在成为 VLA 之外的第二条路。</strong> quackd 这类项目不训练动作，只做任务分解和闭环监督，把机器人已有的 skill 当工具来调（甚至直接走 MCP）。对个人的意义很实在：<strong>不需要数据、不需要显卡、不需要本体，当天就能有能演示的东西</strong>；代价是能力天花板被机器人已有的技能集锁住。两条路不冲突 —— VLA 负责把技能做出来，这一层负责把技能编排起来，个人从哪头切都行。</p>
+</li>
+<li><p><strong>数据质量工具化了，评价标准跟着变。</strong> 昨天判断「瓶颈从算力移到数据」，今天就出现了专门查数据的 SDK（HFlow）和成体系的数据集采集 / 审计 / 发布工具链（Loop-Engineering-for-VLA）。判断标准也该跟着改：以前问「你有多少 episode」，现在该问**「你有多少 episode 通过了 QC」<strong>。对个人尤其重要 —— 50 组干净数据打得过 200 组脏数据，但前提是你能</strong>证明**它干净。</p>
+</li>
+<li><p><strong>参与入口（本期核对结果）。</strong></p>
+<ul>
+<li>✅ <strong><a href="https://robochallenge.ai/">RoboChallenge 真机远程评测</a></strong> —— <strong>本期唯一无条件对个人开放的入口</strong>。持续开放型，不需要硬件、不需要机构身份、不需要报名，交模型拿真机分数。</li>
+<li>⚠️ <strong><a href="https://xingxiancn.com/article/40644">iCAN「金视线杯」具身智能应用设计挑战赛</a></strong> —— 报名截止 <strong>2026-09-24</strong>（全国初赛 11 月、总决赛 12 月，官网 <a href="https://www.g-ican.com">g-ican.com</a>），时间上确实还开着，<strong>但要求「经学校推荐、由院校统一组队报名」，且单个院校每组别最多晋级 2 支团队</strong> —— 不满足本栏目「不需要机构身份」的口径。<strong>在校学生可参与，社会个人不行</strong>，列在这里备查。</li>
+<li>❌ 已核实关闭的：<strong>GOSIM Paris 2026 Robotics Hackathon</strong>（页面显示 &quot;GOSIM Paris 2026 Has Concluded&quot;）｜第二届无人系统具身智能算法挑战赛（报名 7 月 15 日截止）｜美团低空经济与具身智能挑战赛（9 月 1 日截止，且限高校在校学生）｜亦智杯·亦庄具身智能开发者挑战赛（已从 500 人线上预选收到 43 支团队进线下决赛）。</li>
+<li>结论：<strong>比赛类入口对社会个人依然稀缺，绝大多数国内赛事绑定在校学生身份。</strong> 相比之下 RoboChallenge 这种「持续开放的远程真机评测」才是个人真正能反复使用的入口，本栏目后续会持续跟踪这一类，而不是追赛事公告。</li>
+</ul>
+</li>
+</ol>
+</article><div class="actions">
+<a class="btn" href="2026-09-03.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报 · 2026-09-17</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报 · 2026-09-17</h1>
+<blockquote>
+<p>筛选标准：<strong>个人可参与</strong>（不要机构身份/实验室场地）、<strong>投入可控</strong>（硬件 ≤ 约 5000 元，单卡 RTX A4000 16G 能跑，周期 ≤ 数周）、
+<strong>产出可预期</strong>（有可复现的终点）、<strong>技术可达成</strong>（依赖已开源、有文档）。
+本期检索窗口：GitHub <code>created:&gt;=2026-09-08</code>（多轮 1–2 词查询）+ HF models/datasets + 官网核对。
+所有链接在发出前用 <code>curl -sIL</code> 验过状态码。</p>
+</blockquote>
+<p><strong>本期一句话</strong>：国外这边冒出两个「零真机也能跑完整闭环」的东西（一条真机 episode 变数字孪生、五个双臂任务带 mock），
+国内这边最扎实的是一份把 π₀ 真机踩坑写全了的中文工程文档；
+<strong>开源硬件这一周是真的荒</strong>——GitHub 上新建的机器人本体项目几乎全被 microduck 生态吸走了，这本身是个信号（见趋势观察）。</p>
+<p><strong>本期软硬配比</strong>：软件 3 · 硬件 1 · 软硬兼有 2。上两期（09-15 / 09-16）也是软 3 / 硬 2 / 兼 1，没有连续偏向一侧。</p>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· vla_pi0 —— 把 π₀ 装到自己那台臂上，从遥操作采集一直写到真机部署，中间的坑一个没省</h3>
+<p><strong>是什么</strong></p>
+<p><code>joykraft/vla_pi0</code>（51 ★，2026-09-11 建，中文 + 英文双 README）是一份<strong>端到端的单臂 VLA 工程文档 + 可运行代码包</strong>：
+基于 OpenPI（π₀）和 LeRobot，覆盖「主从臂遥操作采集 → LeRobot 数据集 → 字段适配与归一化统计 →
+π₀ LoRA 微调 → WebSocket 策略服务 → 真机闭环执行」整条链路，用的是 Episode1 单臂（恩培那套主从臂）。</p>
+<p>仓里带一段 <strong>1 分 40 秒的原速实机视频</strong>（<code>docs/media/demo.mp4</code>），演示抽屉开关和红色方块抓放，
+<strong>中间有人为干扰</strong>（反复把抽屉关上、把方块挪走），不是挑好的那一遍剪出来的。</p>
+<p><strong>为什么现在值得做</strong></p>
+<p>过去半年 VLA 的开源程度已经足够了：π₀ 基础权重在 <code>gs://openpi-assets/checkpoints/pi0_base</code> 公开，
+LeRobot 的采集/数据格式是事实标准，SmolVLA / π₀.₅ 的微调脚本到处都是。
+<strong>真正拦住个人的不是模型，是那一堆「不会有人写在论文里」的对齐问题</strong>：
+你用 <code>lerobot.record</code> 采出来的数据字段叫 <code>observation.images.fixed</code>，
+而 openpi 的 <code>LeRobotLiberoDataConfig</code> 要的是 <code>observation/image</code>；
+你采集时用角度、训练时用弧度，模型照样收敛，只是上机就抽；
+你的动作已经是增量了，配置里又对前 6 维做了一次相对动作转换，于是差分了两遍。</p>
+<p><strong>这个仓最大的价值就是把这些逐条写出来了</strong>，而且写法是「当前配置是这样、你要改成那样、为什么」。
+这是我在这个日报里见过的把 VLA 真机部署讲得最具体的中文文档之一。</p>
+<p><strong>个人怎么分步切进去</strong></p>
+<p>这条路分两段，<strong>第一段完全不需要机械臂</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>做什么</th>
+<th>需要什么</th>
+<th>时间</th>
+<th>钱</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>把 <code>docs/media/demo.mp4</code> 看完，确认这台臂的形态和你的目标接近</td>
+<td>浏览器</td>
+<td>10 分钟</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>只装训练端：<code>cd openpi_episode1_student &amp;&amp; GIT_LFS_SKIP_SMUDGE=1 uv sync</code>，跑 <code>uv run python -c &quot;import jax; print(jax.devices())&quot;</code> 确认看到 GPU</td>
+<td>Linux + CUDA 12 驱动，Python 3.11</td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>拿别人的公开 LeRobot 数据集</strong>（HF 上 SO-101 的一堆）走一遍「字段适配 → <code>compute_norm_stats.py</code>」，验证你能把任意 LeRobot 数据喂进 openpi</td>
+<td>A4000 16G 够（这一步只读数据）</td>
+<td>1 天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LoRA 微调。<strong>这一步 16G 不够</strong>，见下面「坑」</td>
+<td>云上 4090/A100</td>
+<td>1–2 天挂机</td>
+<td>¥50–200</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>serve_policy.py --port 6006</code> 起策略服务，用 <code>openpi_client_test.py</code> 在没有真机的情况下打一发假观测，确认服务能返回 50×7 的动作块</td>
+<td>任意机器</td>
+<td>2 小时</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>真机闭环（只有这一步要臂）</td>
+<td>Episode1 或任何能凑出「6 关节 + 夹爪 + 两路相机」的臂</td>
+<td>数天</td>
+<td>看你有什么</td>
+</tr>
+</tbody></table>
+<p><strong>第 2 步是我最推荐的切入点</strong>：整条链路里最容易出错、也最没人写的就是字段映射，
+而它<strong>零硬件、零 GPU 成本</strong>，产出是一份「我把 X 数据集接进 openpi 的 RepackTransform 写法」——
+这东西发出去大概率有人用。</p>
+<p>具体要改的地方仓里写明了：<code>openpi_episode1_student/src/openpi/training/config.py</code> 里那个
+<code>enpei_robot_demo_drawer_low_mem_finetune</code>，<code>RepackTransform</code> 改成：</p>
+<pre><code class="language-python">{
+    &quot;observation/image&quot;: &quot;observation.images.fixed&quot;,
+    &quot;observation/wrist_image&quot;: &quot;observation.images.handeye&quot;,
+    &quot;observation/state&quot;: &quot;observation.state&quot;,
+    &quot;actions&quot;: &quot;action&quot;,
+    &quot;prompt&quot;: &quot;prompt&quot;,
+}
+</code></pre>
+<p>同时在 <code>dataclasses.replace(...)</code> 里设 <code>action_sequence_keys=(&quot;action&quot;,)</code>。
+<strong>改之前先看你数据集的 <code>meta/info.json</code> 里的 <code>features</code>，别照抄。</strong></p>
+<p><strong>坑</strong></p>
+<ol>
+<li><strong>显存：默认 <code>batch_size=32</code>，A4000 16G 跑不动 π₀ LoRA。</strong> 作者的 <code>weight_loader</code> 路径写的是
+<code>/root/autodl-tmp/pi0_base/params</code>——这是 AutoDL 的路径，说明作者自己也是租卡跑的。
+实测口径我没有，但 π₀ LoRA 在 24G 卡上通常要把 batch 压到 4–8。
+<strong>按 20000 步、租一张 4090 算，¥2–3/小时 × 10–20 小时 ≈ ¥50–200 一次。</strong></li>
+<li><strong>微调权重没有公开下载。</strong> README 原话：「微调权重目前没有公开下载链接，未来是否发布及发布地址待确定」。
+所以这个仓是<strong>流程可复现，结果不可直接复现</strong>——你必须自己采数据、自己训。
+如果你的目标是「跑通一个 demo 就行」，先去看 LeRobot 官方的 SmolVLA 教程，成本低得多。</li>
+<li><strong>根目录没有 LICENSE 文件。</strong> <code>lerobot/</code> 和 <code>openpi/</code> 两个子目录各自带上游的 LICENSE（Apache-2.0），
+但作者自己写的适配代码（<code>enpei_scripts/</code>、<code>robots/enpei_follower/</code>、<code>teleoperators/enpei_leader/</code>）
+处于无明示许可状态。<strong>要拿去做任何公开的事，先去提个 issue 问许可。</strong></li>
+<li><strong><code>robots/enpei_follower/episode_server.py</code> 不是控制服务，是 TCP 客户端。</strong>
+README 明说了「配套控制程序需要另行准备」，默认连 <code>localhost:12345</code>。
+没有这台臂的配套控制程序，第 5 步是走不通的——<strong>别以为 clone 下来就能驱动任意机械臂</strong>。</li>
+<li><strong>两个端必须用独立 Python 环境</strong>：训练端 Python 3.11 + <code>jax[cuda12]==0.5.3</code> + <code>torch&gt;=2.7</code>，
+机器人端 Python 3.10 + <code>torch==2.6.0</code>。装一起必挂。</li>
+<li><code>--fps=30</code> 是控制目标频率，<strong>不代表模型推理能到 30 Hz</strong>。客户端把图缩到 224×224、开独立线程请求动作块，
+真实推理频率取决于你那张卡和网络。</li>
+</ol>
+<p><strong>出处</strong></p>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/joykraft/vla_pi0">https://github.com/joykraft/vla_pi0</a>
+相关：<a href="https://github.com/Physical-Intelligence/openpi">OpenPI 官方仓（π₀ 基础权重来源）</a> ｜
+<a href="https://github.com/huggingface/lerobot">LeRobot</a> ｜
+<a href="https://github.com/joykraft/vla_pi0/blob/main/README_EN.md">英文 README</a></p>
+<hr>
+<h3>2 · laotawayer/microduck —— 一个人维护的 MicroDuck 复刻图纸，有版本号、有制造验证、有标准件清单，<strong>许可是非商业的</strong></h3>
+<ul>
+<li><strong>是什么</strong>：个人玩家 <code>laotawayer</code> 独立复刻维护的 MicroDuck 三维模型仓（6 ★，09-09 建，09-14 仍在推）。
+提供 <strong>SolidWorks 2023 源文件（v0.1.0 / v0.2.0 / v0.2.1 三版并存）+ 整机 STEP 导出</strong>
+（<code>exports/step/v0.2.1/microduck-0914.STEP</code>），带 <code>models.sha256</code> 校验、<code>CHANGELOG.md</code>、<code>ROADMAP.md</code>、
+<code>STANDARD_PARTS.md</code> 标准件 BOM、<code>DISCLAIMER.md</code> 非关联声明。</li>
+<li><strong>和前面四只鸭子有什么不一样</strong>：本日报 09-12 / 09-13 / 09-16 已经写过 microduck 装机教程、playground、OptiDuck 移植。
+<strong>这一条补的是「图纸本身的工程化」那一格</strong>：它有版本号、有 changelog（v0.2.0 明确写了「修复部分模型干涉问题、
+精简装配体、明确单位为 mm」）、有 <strong><code>制造验证：已通过</code></strong> 的标注，还老老实实在 ROADMAP 里留着
+「⬜ 核对并确认标准件精确数量」「⬜ 补充打印材料、层高、填充和支撑建议」两个未完成项。</li>
+<li><strong>标准件清单</strong>（可直接下单，整包买）：M2×4 ×20、M2×5 ×60、M2×6 ×30、M2×8 ×24、M2.5×10 ×8、
+轴承 W 61702-2RS1 ×8、深沟球轴承 6700 ×4。作者注明数量已含损耗和备件余量。
+这部分<strong>几十块钱就能备齐</strong>，是整台鸭子里最便宜也最容易买错的一块。</li>
+<li><strong>怎么切进去（最小成本）</strong>：ROADMAP 里那两个空框就是现成的 PR 位。
+① 你要是有 SolidWorks 2024+，把源文件转存一份低版本并在 issue 里注明转换版本和验证结果——README 里<strong>作者点名求这个</strong>；
+② 你要是打过这只鸭子，把实际用的打印材料 / 层高 / 填充 / 支撑参数补进去。<strong>两个都是半小时级别的贡献。</strong></li>
+<li><strong>坑（重要）</strong>：许可是作者自写的
+<strong>「MicroDuck Non-Commercial Source-Available License 2.0」</strong>，不是标准开源协议。
+个人研究、打印、教学、非营利比赛都明确允许，转发要署名 + 附链接 + 声明是否修改；
+但<strong>任何收费行为都要事先书面许可</strong>——包括「代打印服务」「卖零件包」「用在有广告收益的内容里」。
+社区非营利活动只能收材料和运费的直接成本，不能有工时费和加价。
+<strong>这条和本日报「开源许可允许个人用」的标准是符合的，但如果你打算做成套件卖，这个仓不能用。</strong>
+另外源文件是 SW2023 保存的，<strong>SolidWorks 2022 及以下打不开</strong>，没有 SW 的人只能用 STEP。</li>
+</ul>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/laotawayer/microduck">https://github.com/laotawayer/microduck</a>
+相关：<a href="https://github.com/laotawayer/microduck/blob/main/STANDARD_PARTS.md">标准件 BOM</a> ｜
+<a href="https://github.com/laotawayer/microduck/releases">Release（v0.2.1 源文件包）</a> ｜
+<a href="https://github.com/fanhao375/microduck-replica-cad">另一条复刻线：fanhao375/microduck-replica-cad（37 ★，可编辑 SolidWorks 图纸 + 21 页装配说明书）</a></p>
+<hr>
+<h3>3 · sixdof-arm —— 自己画的臂不知道 DH 参数怎么办：写脚本从 STL 网格里把六根关节轴求出来</h3>
+<ul>
+<li><p><strong>是什么</strong>：<code>315nailong/sixdof-arm</code>（2 ★，09-08 建，09-11 推）。C++17 + Eigen，<strong>不依赖 ROS，不需要真机</strong>。
+README 的开场白值得原样引用：「我在 SolidWorks 里画了台六轴臂，画完发现一个问题：我不知道它的运动学参数。
+量产的 UR5 可以抄官方文档，我这台不行，参数只存在于我自己的装配图里。」</p>
+</li>
+<li><p><strong>它做了什么</strong>：Python 脚本读 STL，从网格里求出 6 根关节轴，转成标准 DH 参数；
+然后补上解析逆解、笛卡尔直线插补，最后用 C++ 算出的关节角驱动 STL 模型做动画。
+仓里 <code>models/stl/</code> 直接放着那台臂的七个零件 STL（底座、大臂、小臂、法兰…），有 LICENSE，有 <code>tests/</code>。</p>
+</li>
+<li><p><strong>为什么值得看</strong>：它给了<strong>四个自校验数字</strong>，这在个人项目里很少见——</p>
+<table>
+<thead>
+<tr>
+<th>检查</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从 CAD 反推的 DH 与手工测量的偏差</td>
+<td>0.014 mm</td>
+</tr>
+<tr>
+<td>200 组随机位姿正逆解往返误差</td>
+<td>~1e-16 m</td>
+</tr>
+<tr>
+<td>笛卡尔直线插补的到位偏差</td>
+<td>1.2e-16 m</td>
+</tr>
+<tr>
+<td>C++ 与 Python 两套实现的末端位置偏差</td>
+<td>8.5e-7 mm</td>
+</tr>
+</tbody></table>
+<p>最后一项作者自己解释了动机：「C++ 和 Python 各写了一遍 DH，不校一下不放心。两边参数要是漂了，动画照样能画出来，看不出问题。」
+<strong>这句话是整个仓最有价值的一句</strong>——它描述的正是仿真类项目最常见的静默失败。</p>
+</li>
+<li><p><strong>怎么切进去</strong>：<code>cmake -S . -B build &amp;&amp; cmake --build build -j &amp;&amp; ctest --test-dir build</code>，
+只要 C++17 + CMake ≥3.16 + Eigen3（<code>libeigen3-dev</code>）。<strong>十分钟能跑完，零成本，零硬件。</strong>
+<code>include/robot/</code> 是纯头文件，整个拷走就能用在别的项目里。
+真要做贡献：仓里只有 <code>arm6.hpp</code>（作者那台）和 <code>ur5.hpp</code>（参考），
+<strong>加一套 SO-101 或 Piper 的 DH 参数并跑通那 200 组往返测试，是个一天量级、结果客观可验的 PR。</strong></p>
+</li>
+<li><p><strong>坑</strong>：解析逆解只对特定构型成立（球腕/三轴交于一点这类），换一台臂不一定有闭式解；
+README 没写这台臂的构型假设，套用前先自己确认。Python 脚本还额外要 NumPy + matplotlib。</p>
+</li>
+</ul>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/315nailong/sixdof-arm">https://github.com/315nailong/sixdof-arm</a></p>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· real2sim-droid —— 一条真机录像进去，一个 MuJoCo 数字孪生出来，全自动，一张卡三分钟</h3>
+<p><strong>是什么</strong></p>
+<p><code>Pro2004-a11/real2sim-droid</code>（MIT，09-14 建）。输入是<strong>一条 DROID 数据集的真机 episode</strong>
+（Franka + Robotiq 2F-85，三台标定过的 ZED 相机），输出是一个 MuJoCo 场景：
+<strong>同一条轨迹、同样的三台相机视角</strong>重放，物体位置由 SAM2 掩码 + 深度反推，
+夹爪是<strong>物理仿真的抓取</strong>（不是把物体焊在手上），每帧带掩码 / 米制深度 / 6-DoF 位姿 / 接触力标注。
+<strong>全程无人在环。</strong></p>
+<p><strong>为什么现在值得做</strong></p>
+<p>Real2Sim 这个方向以前是「有大规模真机采集能力的组才玩得起」的东西。
+今年变了三件事：DROID 的原始 episode 可以按需单条 HTTPS 下载（约 110 MB），
+KarlP/droid 放出了改进后的标定 JSON，SAM2.1 和 Depth-Anything-V2 都是 Apache-2.0 的小模型。
+<strong>结果就是：一条真机数据 + 一张消费级卡 + 三分钟 = 一个可以做反事实实验的数字孪生。</strong></p>
+<p>这对个人特别有用的地方在于——<strong>你可以拿它给 VLA 策略做评测环境</strong>，
+而不必自己有臂。作者在 README 里点名了这个用途：「a policy-evaluation loop through the real cameras」。</p>
+<p><strong>这个仓真正难得的地方不是它能跑，是它把每个数字都量了</strong>，而且量的方式是「在没有拟合的那个维度上打分」：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IRIS <code>7dfa2da3+2023-05-11</code>（把马克笔从碗里拿出）</th>
+<th>GuptaLab <code>553d1bd5+2023-05-19</code>（方块叠方块）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FK 门（DROID 末端位姿 vs MuJoCo FK）</td>
+<td>1e-5 mm</td>
+<td>1e-5 mm</td>
+</tr>
+<tr>
+<td>机器人掩码 IoU，外部相机 2（中位数）</td>
+<td><strong>0.92</strong></td>
+<td><strong>0.76</strong></td>
+</tr>
+<tr>
+<td>物理抓取：夹持成功 / 放置误差</td>
+<td><strong>闭合步的 100%</strong> · 2.4 cm</td>
+<td><strong>100%</strong> · 0.8 cm</td>
+</tr>
+<tr>
+<td><strong>反事实</strong>（物体挪 5 cm，轨迹不变）</td>
+<td>夹住 0% · 24 cm</td>
+<td>夹住 2% · 5.9 cm</td>
+</tr>
+<tr>
+<td>跨视角物体摆放（ext1 拟合，ext2 重检测）</td>
+<td>中位 4.0 cm</td>
+<td>n/a（方块在 ext2 里太小）</td>
+</tr>
+</tbody></table>
+<p><strong>注意那一行反事实</strong>：物体挪 5 cm、轨迹照旧，抓取成功率掉到 0%。
+这不是 bug，<strong>这是仿真器在正确地报告「这条轨迹确实依赖物体在原位」</strong>——
+一个会把反事实也抓住的孪生体，说明它根本没在物理上做手脚。
+一个项目敢把「我在这个条件下失败」印在 README 的表格里，可信度比十张对齐得很好的叠图都高。</p>
+<p><strong>个人怎么分步切进去</strong></p>
+<pre><code class="language-bash">git clone https://github.com/Pro2004-a11/real2sim-droid.git &amp;&amp; cd real2sim-droid
+python -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install torch --index-url https://download.pytorch.org/whl/cu124   # 先装 CUDA 版
+pip install -e .
+
+export REAL2SIM_DATA=./data
+python scripts/fetch_droid.py --calib     # 改进标定 JSON，约 330 MB
+python scripts/fetch_droid.py --episode IRIS+7dfa2da3+2023-05-11-14h-12m-38s   # 单条 episode，约 110 MB，走 HTTPS 不用 gsutil
+
+export MUJOCO_GL=egl                      # Linux 无头必须
+python -m real2sim all --episode IRIS+7dfa2da3+2023-05-11-14h-12m-38s          # 作者实测 4070 Ti 约 3 分钟
+python -m real2sim counterfactual --episode IRIS+7dfa2da3+2023-05-11-14h-12m-38s
+python -m real2sim showcase --episode IRIS+7dfa2da3+2023-05-11-14h-12m-38s
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>做什么</th>
+<th>时间</th>
+<th>成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>复现作者那两条 episode，对比 <code>compare/metrics.json</code> 里的数字和 README 表格</td>
+<td>半天（含 ~450 MB 下载）</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>2</td>
+<td>用 <code>python scripts/fetch_droid.py --list-candidates</code> 列出<strong>两台外部相机都有真值标定且有立体视频</strong>的 episode，挑 10 条批量跑</td>
+<td>1 天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>把「跨视角物体摆放误差」的分布在这 10 条上统计出来</strong>，报中位数 / 90 分位 / 失败原因分类</td>
+<td>1 天</td>
+<td>0 元</td>
+</tr>
+<tr>
+<td>4</td>
+<td>接一个策略进去：起一个 π₀ / SmolVLA 服务，用孪生体的三路相机做闭环评测</td>
+<td>数天</td>
+<td>0–少量</td>
+</tr>
+</tbody></table>
+<p><strong>第 3 步是本期国外最值得抢的活。</strong> 作者自己只跑了两条 episode（README 的「Limitations」第一条就是
+「Two episodes so far」）。DROID 里符合条件的 episode 有的是，<strong>把这个管线的统计特性做出来，
+基本等同于替这个项目写了评测章节</strong>，而且纯下载 + 纯计算，零硬件、零 API 费。</p>
+<p><strong>显存与本机可行性</strong>：管线里最重的是 SAM2.1-hiera-small 和 Depth-Anything-V2-Small，都是小模型；
+MuJoCo 渲染走 EGL。<strong>A4000 16G 跑得动</strong>，只是比 4070 Ti 慢一些。作者标的 3 分钟是 4070 Ti 的数。</p>
+<p><strong>坑（作者自己列了一节 &quot;Traps we hit&quot;，这里挑最要命的几条）</strong></p>
+<ol>
+<li><strong>运动学覆写的手臂在 MuJoCo 的接触求解器里是隐形的</strong>——物体永远不会被拿起来。
+手臂必须是动态的（重力补偿 + 4 倍增益跟踪，能把录制轨迹跟到 1.25° 以内）。
+这一条是所有做 real2sim 的人都会踩的。</li>
+<li><strong>2F-85 的指垫 body 比指垫 geom 靠后 19 mm</strong>，且闭合时指垫沿接近方向还走约 1 cm。
+抓取点要从<strong>远端指垫 geom 在记录的闭合开度下</strong>读，不能读 body。</li>
+<li><strong>一个指垫先碰到自由物体会把它弹飞</strong>，第二个指垫还没到。要把物体按住到两侧都接触为止。</li>
+<li><strong>DROID 的时间戳是 epoch 毫秒</strong>，帧 <em>i</em> 对应步 <em>i</em>，<strong>相机比机器人状态读数早约 54 ms</strong>——渲染要按相机的时间来。</li>
+<li><strong>SAM2 的自动掩码在 CUDA 上每次跑结果会飘</strong>，会静默改变重建出来的场景。仓里按图缓存掩码来压住这个。</li>
+<li>MuJoCo 相机的 <code>principal_pixel = [w/2 − cx, h/2 − cy]</code>（x 的符号不是直觉那个）；纹理必须 PNG；
+视觉 geom 必须 <code>density=0</code>，否则会额外加质量。</li>
+<li><strong>ext1 那路的机器人 IoU 只有 0.31，作者明说这是度量假象</strong>——机器人在画面边缘，SAM2 只分出了小臂。
+别拿这个数去比较。</li>
+<li>代理物体只有盒/柱/胶囊（碗有个空心特例），<strong>布料被当成刚性平板</strong>；只有容器和被抓物体与机器人碰撞。</li>
+<li>ZED SDK 没用上，深度是 SGBM + Depth-Anything-V2 融合，<strong>区域性偏差有几厘米，只用了相对高度</strong>。
+<code>.svo</code> 的 <code>zed</code> 后端写了但<strong>没测过</strong>。</li>
+</ol>
+<p><strong>许可</strong>：代码 MIT。输入与资产各自的许可写得很清楚：
+DROID（CC BY 4.0）、KarlP/droid 标定、MuJoCo Menagerie 的 Panda（Apache-2.0）和 2F-85（BSD-2）、
+SAM 2.1 与 Depth Anything V2（Apache-2.0）、Poly Haven 纹理（CC0）。</p>
+<p><strong>出处</strong></p>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/Pro2004-a11/real2sim-droid">https://github.com/Pro2004-a11/real2sim-droid</a>
+相关：<a href="https://droid-dataset.github.io/">DROID 数据集</a> ｜
+<a href="https://huggingface.co/KarlP/droid">KarlP/droid 改进标定</a> ｜
+<a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> ｜
+<a href="https://huggingface.co/facebook/sam2.1-hiera-small">SAM 2.1 hiera-small</a></p>
+<hr>
+<h3>2 · StationeryBench —— 五个「桌上文具」双臂任务，写成了可安装的包，<strong>不用真机也能先跑通整条评测流水线</strong></h3>
+<ul>
+<li><p><strong>是什么</strong>：<code>robocurve/stationerybench</code>（MIT，4 ★，09-10 建）。五个双臂操作任务：
+<strong>拔马克笔帽 / 从盒里取橡皮并合盖 / 从一摞便利贴里抽出中间那本 / 把回形针倒进举起的碗 / 两臂之间用纸杯传递直尺</strong>。
+每个任务一套固定摆放、20 次重复、二值成功判定。
+建在 <a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a> 上。组织的自我介绍是
+「We measure and report frontier robotics capabilities to the public.」</p>
+</li>
+<li><p><strong>为什么它比大多数 benchmark 更适合个人</strong>：<strong>它把「没有机器人」当成一等公民</strong>。
+装完就注册五个任务、一个 <code>stationery</code> embodiment 和三个 mock policy，
+其中 <code>stationery_scripted</code> 读特权状态、必定成功——<strong>它不测模型能力，它测的是你的评测流水线通不通</strong>。</p>
+<pre><code class="language-bash">uv pip install &quot;stationerybench @ git+https://github.com/robocurve/stationerybench&quot;
+inspect-robots list tasks
+inspect-robots run --task stationerybench/uncap_marker --policy stationery_scripted \
+    --embodiment stationery --epochs 2
+</code></pre>
+<p>这三行在任何一台笔记本上都能跑完，<strong>零硬件、零 GPU、零 API 费</strong>。</p>
+</li>
+<li><p><strong>任务文档的质量是这个仓真正的资产</strong>：每个任务都有<strong>摆放照片、清单、逐字指令、分阶段评分细则、
+以及人类演示的 MP4</strong>（<code>docs/assets/*-human.mp4</code>）。物体规格精确到「黑色 Sharpie 细头油性笔，带帽」
+「约 30×22×7 cm 的布面翻盖书型盒」「三块 3×3 英寸收缩膜包装的便利贴方砖」「约 15 cm 的轻质陶瓷碗」。
+<strong>这意味着你可以用几十块钱的文具，在自己桌上把这套场景 1:1 复现出来。</strong></p>
+</li>
+<li><p><strong>怎么切进去</strong>：
+① 半小时——跑通 mock，确认 <code>inspect-robots view logs/</code> 能看到那份 JSON（20 个 epoch 写在同一个文件里）；
+② 一天——按任务文档买齐五套文具，拍自己的摆放照片，<strong>对照官方照片写一份「复现偏差记录」</strong>；
+③ 有臂的话——接你自己的 embodiment adapter（仓里 <code>src/stationerybench/embodiment.py</code> 是模板），
+官方给的是 YAM 双臂的适配（<code>inspect-robots-yam 0.36</code>）。</p>
+</li>
+<li><p><strong>坑</strong>：</p>
+<ol>
+<li><strong><code>stationery_noop</code> 和 <code>stationery_random</code> 无人值守跑必须加 <code>--no-prompt</code></strong>，
+否则每个非确定性 epoch 结束后终端会停下来等你输入判定。mock 永远不会自己报失败终止。</li>
+<li><strong><code>partial</code> 算失败。</strong> 官方报告里是从录像打 0–4 分阶段分，这个包只记操作员的二值判定，
+评分细则保留但不记数字阶段，<strong>和论文的 CSV/断点续跑流程不等价</strong>——README 专门有一节
+&quot;Differences from the published report&quot; 说这事。</li>
+<li>默认 120 s 时限对应报告里的 VLA 条件（10 Hz × 1200 步）；<strong>agent 条件是 90 s</strong>，要复现得加 <code>-T max_seconds=90</code>。</li>
+<li>真机跑的时候手臂<strong>会带力矩保持 home 位姿</strong>等你摆物体。README 反复提醒：等手臂停稳再伸手，急停放在手边。</li>
+<li>仓库本身的 CI 门很硬（覆盖率 100%、mypy strict、Ruff D1 要求公开接口都有契约 docstring），
+<strong>提 PR 前先本地跑那条 <code>uv sync --locked ...</code> 长命令</strong>，不然过不了。</li>
+</ol>
+</li>
+</ul>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/robocurve/stationerybench">https://github.com/robocurve/stationerybench</a>
+相关：<a href="https://robocurve.github.io/stationerybench/">任务参考页（照片 / 视频 / 评分细则）</a> ｜
+<a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a> ｜
+<a href="https://github.com/robocurve/stationerybench/blob/main/docs/tasks/uncap_marker.md">uncap_marker 任务文档</a></p>
+<hr>
+<h3>3 · humanoid-companion —— 本地跑的语言模型当脑子，PPO 策略当腿，<strong>没有 GPU 也能看它走</strong></h3>
+<ul>
+<li><strong>是什么</strong>：<code>YauhenBichel/humanoid-companion</code>（Apache-2.0，09-11 建）。
+一台会说话的小人形：用强化学习策略<strong>走路</strong>，说话时<strong>挥手、点头、跳舞</strong>，
+有一张带口型同步的<strong>脸</strong>，用你自己跑的语言模型（Ollama / llama.cpp / vLLM / 任何 OpenAI 兼容 API）当大脑。
+身体目前是 MuJoCo 里的 ROBOTIS OP3，<strong>但跑的就是真机会跑的那个控制回路</strong>，目标是把同一份代码放到一台真的 50 cm 机器人上。</li>
+<li><strong>为什么值得看（而且和市面上的「LLM 控制机器人」demo 不一样）</strong>：
+<strong>它把「不信任模型输出」写进了架构</strong>。README 里那张表原话：
+语言模型只能<strong>请求</strong>走路，走路规划器才决定走不走；模型的回答按 JSON schema 解析、校验、
+<strong>夹到训练时的指令范围和限速内</strong>；停止词根本不送进模型；<strong>任何解析失败一律等于「站着不动」</strong>。
+手势是叠加在行走策略上的头/臂偏移，<strong>腿留给策略保平衡，而且每个手势都单独测过稳定性才被允许</strong>
+（<code>docs/gesture-stability.md</code>）。
+这套「不可信输出 → 确定性闸门 → 安全降级」的结构，就是本日报反复说的那件事的一个干净样本。</li>
+<li><strong>算力门槛极低</strong>：走路策略是 MuJoCo Playground（MJX）里 PPO 训出来、<strong>导出成纯 NumPy</strong> 的
+（<code>policies/op3_walk.npz</code>，300 KB，与 Brax 对齐到 1e-5）。50 Hz 控制回路带安全停：
+倾角、关节限位、看门狗超时、急停。<strong>跑它不需要 GPU</strong>（macOS / Linux，Python 3.12 + uv）。</li>
+<li><strong>怎么切进去</strong>：<pre><code class="language-bash">git clone https://github.com/YauhenBichel/humanoid-companion &amp;&amp; cd humanoid-companion
+uv sync --frozen
+uv run humanoid-sim --vx 0.5 --seconds 10 --record walk.mp4    # 只看它走，不用大模型
+ollama pull llama3.1:8b &amp;&amp; export HUMANOID_LLM_MODEL=llama3.1:8b
+uv run humanoid-talk --open                                     # 脸和身体并排出现在浏览器里
+</code></pre>
+<strong>半小时能看到东西。</strong> 想深入就去改 <code>train.py</code>（Brax PPO，CPU 或 GPU 都行，
+环境里已经带了推挤、动作延迟、编码器偏置、域随机化）。</li>
+<li><strong>坑</strong>：<ol>
+<li><strong>身体是仿真的</strong>，README 自己写明了「Today its body is a simulated ROBOTIS OP3」。
+想上真机你得自己有一台 OP3 或等价的 20 自由度小人形——<strong>这部分不在 5000 元预算内</strong>。
+所以本条按<strong>软件</strong>算。</li>
+<li>语音要另外起服务（Kokoro 的 <code>ghcr.io/remsky/kokoro-fastapi-cpu</code>，走 OpenAI speech API）；
+不起也能用，只是变成字幕 + 动作。</li>
+<li>演示视频里那段白俄罗斯语告别用的是作者自己的 <a href="https://github.com/YauhenBichel/belarusian-tts">belarusian-tts</a>，
+换语言要自己找声音。</li>
+<li>本地 8B 模型输出 JSON 的稳定性是这套东西的实际瓶颈——<strong>解析失败的降级是「站着不动」，
+所以模型不行的时候表现就是「它不动了」，不是报错</strong>。调试时先看解析日志。</li>
+</ol>
+</li>
+</ul>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/YauhenBichel/humanoid-companion">https://github.com/YauhenBichel/humanoid-companion</a>
+相关：<a href="https://github.com/YauhenBichel/humanoid-companion/blob/main/docs/gesture-stability.md">手势稳定性测量记录</a> ｜
+<a href="https://github.com/YauhenBichel/humanoid-companion/blob/main/docs/speed-sweep.md">速度扫描记录</a></p>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<blockquote>
+<p>本期覆盖：<strong>自动建模（STEP/STL → 参数化重建）</strong>、<strong>可打印性检查与 DfAM 自动改件</strong>、<strong>工程图 → 参数化模型</strong>。
+09-16 走的是打印执行与打印后诊断，09-15 走的是 FEA 与 code-CAD，<strong>本期回到链路最前端那一段</strong>。
+「和具身智能的接口」那一段本期没有独立条目，原因和替代方案见专题分析第 3 点。</p>
+</blockquote>
+<h3>🌍 国外 · cadxray —— 把 FreeCAD 变成 agent 能「看进去」的东西：36 个工具，从诊断红草图一直到 FEM 和打印取向</h3>
+<p><strong>是什么</strong></p>
+<p><code>WaveSimm/cadxray</code>（MIT，09-10 建，09-13 推）。一个 <strong>MCP 服务器 + FreeCAD 插件</strong>的组合：
+插件跑在 FreeCAD 里（<code>freecad/cadxray</code>），桥接跑在 AI 工具那边（标准 MCP stdio），
+两者<strong>只通过 <code>127.0.0.1:9877</code> 通信，不对外</strong>。支持 FreeCAD 1.0.x / 1.1.x（在 1.1.3 上验证过），
+Windows / macOS / Linux 都行。任何支持 MCP 的客户端都能接：Claude Code、Claude Desktop、Cursor、VS Code、
+Windsurf、Codex CLI、Gemini CLI。</p>
+<p>装它就两行：</p>
+<pre><code class="language-bash">uvx --from git+https://github.com/WaveSimm/cadxray#subdirectory=bridge cadxray install
+claude mcp add --scope user cadxray -- uvx --from git+https://github.com/WaveSimm/cadxray#subdirectory=bridge cadxray
+</code></pre>
+<p>第一行把插件装进 FreeCAD 的 Mod 目录，第二行注册。<strong>重启 FreeCAD 后报告视图里会打印
+<code>[CAD X-ray] 서버 시작 http://127.0.0.1:9877 (툴 36개)</code></strong>（README 是韩语的，英文版在 <code>README.en.md</code>）。
+装不上跑 <code>cadxray doctor</code>，会逐项告诉你插件装没装、FreeCAD 服务连不连得上、版本对不对。</p>
+<p><strong>它凭什么比一般的 FreeCAD MCP 强</strong></p>
+<p>关键在于<strong>它不让模型直接吐坐标</strong>。看这几个工具的设计：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>做的事</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>classify_faces</code></td>
+<td><strong>STEP → 参数化的第一步</strong>：判定每个面到底是什么（平面/圆柱/圆锥/球/自由曲面）。<strong>BSpline 面会被采样后拟合</strong>，所以「假自由曲面」能被还原成圆锥并给出轴、顶点、半角</td>
+</tr>
+<tr>
+<td><code>section_profile</code></td>
+<td>在某个高度切截面，直接输出<strong>草图可用的 2D 线/弧/圆</strong>（先在 3D 里把孔、沉头、倒角填掉，只留外轮廓）</td>
+</tr>
+<tr>
+<td><code>build_features</code></td>
+<td>在 Body 上一次一个特征地堆 草图 + Pad/Pocket/Groove/Revolution/Fillet/Chamfer，<strong>每步 recompute + 校验</strong>；<code>profile.section</code> 直接描原始截面，<strong>坐标不经过 LLM</strong>；参数进 Spreadsheet</td>
+</tr>
+<tr>
+<td><code>compare_shapes</code></td>
+<td>体积/面积/包围盒差 + 模糊差集碎片及其包围盒——<strong>告诉你重建错在哪儿</strong></td>
+</tr>
+<tr>
+<td><code>suggest_sketch_fixes</code></td>
+<td>约束修复提案：接近/开口端点合并、缺失的水平/竖直/相等、删冗余或冲突约束、给剩余自由度补尺寸。<strong>每条都在副本上试过，附带效果（DoF、状态）和置信度，什么都不自动改</strong></td>
+</tr>
+<tr>
+<td><code>check_printability</code></td>
+<td>给定材料/喷嘴/热床配置，查薄壁、悬垂与桥接（支撑面积）、小孔与水平孔、超出热床、首层接触 → 打分 + 问题清单 + 修复候选，<code>paint=True</code> 直接按结果给面上色</td>
+</tr>
+<tr>
+<td><code>apply_print_fixes</code></td>
+<td><strong>把 DfAM 改件做成 PartDesign 特征</strong>：象脚倒角、竖直孔补偿、水平孔泪滴化、薄面加厚、悬垂下 45° 填充、超尺寸拆件</td>
+</tr>
+<tr>
+<td><code>setup_analysis</code> / <code>run_analysis</code></td>
+<td>材料 + 固定面 + 载荷 + Gmsh 二阶网格 + CalculiX，一次调用；跑完给最大 von Mises 应力及位置、最大位移、<strong>安全系数</strong>、结论，并把应力云图画在 3D 视图里</td>
+</tr>
+</tbody></table>
+<p><strong>一句话：它把「模型负责说要什么、引擎负责保证怎么做对」这条原则，落到了 FreeCAD 的 API 层。</strong></p>
+<p><strong>测过什么（README 的 &quot;What it has been tested on&quot; 一节）</strong></p>
+<ul>
+<li>287 个 handler 测试无头跑：<code>freecadcmd tests/in_freecad/test_handlers.py</code>，4 秒</li>
+<li>一个 80 零件的厂商装配体（3149 个面）：带沉头和倒角的孔、螺纹提示、零干涉、按钢密度 8.5 kg</li>
+<li><strong>STEP → 参数化重建</strong>：一个支架做到 <strong>0.0 mm³ 体积差</strong>；一个 44 面夹爪钳口（BSpline 过渡、燕尾槽、倒角唇）做到 <strong>0.0004%</strong>。
+先手写一遍，再<strong>只用那四个工具</strong>重做一遍：12 个特征、每个草图全约束、<code>compare_shapes</code> 判定 <em>identical</em>。
+8 个 BSpline 过渡面被识别成圆锥（轴、顶点、59.63° 半角，残差 6.6e-5）</li>
+<li><strong>整个装配体参数化重建</strong>：80 零件里的 20 种零件全部重建（15 个完全一致、4 个吻合、1 个因自由曲面圆角差 0.14%），
+再用 <code>align_shapes</code> 放置 80 次，零干涉，<strong>3.5 分钟</strong></li>
+<li>一个 5758 面片的线轴导向件 STL 被重建到<strong>每个网格顶点误差 0.03 mm 以内</strong>，含 M44.5×2 外螺纹</li>
+</ul>
+<p><strong>个人怎么切进去</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>装好，跑官方 <a href="https://wavesimm.github.io/cadxray/practice/01-plate-holes/">10 个实操练习</a> 的头两个</td>
+<td>1 小时</td>
+<td>几毛钱 token</td>
+</tr>
+<tr>
+<td>2</td>
+<td>拿一个你从立创/GrabCAD 下的<strong>厂商 STEP</strong>，用 <code>classify_faces → section_profile → build_features → compare_shapes</code> 重建成参数化件</td>
+<td>半天</td>
+<td>见下</td>
+</tr>
+<tr>
+<td>3</td>
+<td>对同一个件跑 <code>check_printability</code> + <code>suggest_orientation</code> + <code>apply_print_fixes</code>，<strong>把改前改后的支撑面积差记下来</strong></td>
+<td>2 小时</td>
+<td>少量</td>
+</tr>
+<tr>
+<td>4</td>
+<td>跑 <code>setup_analysis</code>/<code>run_analysis</code> 拿安全系数，和 09-15 写过的 <a href="./2026-09-15.html">cadloop</a>（Gmsh + FEniCSx）对同一个件互相印证</td>
+<td>1 天</td>
+<td>少量</td>
+</tr>
+</tbody></table>
+<p><strong>第 4 步是个真空位</strong>：cadxray 用 CalculiX，cadloop 用 FEniCSx，<strong>两条链路在同一个件上给出的安全系数差多少，
+现在没人量过</strong>。这是一天量级、纯软件、结论客观的活。</p>
+<p><strong>成本：跑一个件大概多少钱</strong></p>
+<p>这条链路的开销主要是 <strong>API token，不是耗材</strong>。按我对工具回合数的估算（<strong>是估算，不是实测</strong>）：</p>
+<ul>
+<li>一个中等复杂度的零件（10–15 个特征）做「STEP → 参数化 → 可打印性 → 改件」，
+大约 <strong>40–80 次工具往返</strong>。每次回包硬上限 100 KB，但实际多数在几 KB。</li>
+<li>按 Sonnet 档（约 $3/M 输入、$15/M 输出）粗算：输入累计 150k–400k tokens、输出 15k–30k tokens
+→ <strong>单件约 $1–3</strong>（约 ¥7–22）。开了提示缓存能再省一截。</li>
+<li>换 Opus 档大约是 5 倍。<strong>建议：探索阶段用便宜模型跑工具循环，只在最后的判断题上换大模型。</strong></li>
+<li><code>check_printability</code> / <code>estimate_print</code> / FEM 这几个是<strong>纯本地计算，不花 token</strong>——
+贵的永远是「让模型看懂几何然后决定下一步」那部分。</li>
+</ul>
+<p><strong>坑</strong></p>
+<ol>
+<li><strong><code>through</code>（通孔判定）是启发式的</strong>——开进一个凹槽的孔可能被读成通孔。</li>
+<li><strong>厂商 STEP 里不含螺纹模型</strong>，<code>thread_hint</code> 只按直径推断。</li>
+<li><strong>STL/OBJ 网格没有面和实体</strong>，孔/干涉类工具读不了。要走 M9 那条路：
+<code>import_mesh → analyze_mesh → section_profile → build_features → compare_shapes</code>。
+<strong>绝对不要对 <code>makeShapeFromMesh</code> 出来的实体调 <code>compare_shapes</code></strong>（布尔运算 10 分钟起），要直接传网格。</li>
+<li><strong>只在 FreeCAD 1.1.3 / Windows 上实跑验证过</strong>。1.0.x 的代码路径是对着 1.0.2 源码核过的，<strong>没有实跑</strong>。</li>
+<li>README 主体是韩语，英文在 <code>README.en.md</code>；<code>docs/api-notes.md</code> 里记了每条依赖的 FreeCAD API 事实和验证版本
+（比如 <code>solve()</code> 在两个值不同的尺寸约束下返回 <code>-4</code> 而不是 <code>-3</code>、失败求解后 <code>FullyConstrained</code> 会残留 <code>True</code>）——
+<strong>这份笔记本身对任何写 FreeCAD 自动化的人都有用</strong>。</li>
+</ol>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/WaveSimm/cadxray">https://github.com/WaveSimm/cadxray</a>
+相关：<a href="https://wavesimm.github.io/cadxray/en/">文档站（英文）</a> ｜
+<a href="https://wavesimm.github.io/cadxray/practice/01-plate-holes/">10 个实操练习</a> ｜
+<a href="https://github.com/theosib/FreeCAD-MCP-Server">工具设计参考的 theosib/FreeCAD-MCP-Server</a> ｜
+<a href="https://github.com/neka-nat/freecad-mcp">插件服务模式参考的 neka-nat/freecad-mcp</a></p>
+<hr>
+<h3>🇨🇳 国内 · Auto SolidWorks —— 把一张工程图 PDF 丢进去，本机 SolidWorks 里长出参数化零件</h3>
+<p><strong>是什么</strong></p>
+<p><code>qdaia/Auto-SolidWorks</code>（代码 MIT，09-06 建，09-09 推，C#）。
+<strong>Windows + 本机 SolidWorks + 9 个 MCP 工具</strong>的 Codex 插件：
+用自然语言<strong>或工程图</strong>创建和修改参数化零件、装配体，保存原生模型和 STEP/STL。</p>
+<p>工具流程是固定的：
+<code>cad_get_capabilities → cad_read_drawing（有图时）→ cad_create_model_plan → cad_build_model → cad_inspect_model</code>。
+装配、型材、连接诊断另有 <code>cad_build_assembly</code>、<code>cad_list_weldment_profiles</code>、<code>cad_executor_health</code>。
+<strong>计划直接传 typed draft / IR，不通过任意 shell 或脚本接口操作 CAD</strong>——这一点和 cadxray 的
+<code>execute_code</code>（在 FreeCAD 里跑任意 Python）是两种不同的安全取舍。</p>
+<p><strong>测试案例摆在 README 第一屏</strong>：一个 <strong>PPL001M45.1-2 空心轴</strong>，以多视图工程图为输入，
+含阶梯轴段、侧面长窗口、键槽、环槽、端面孔组，<strong>原始 PDF 图纸和三张模型视图都放出来了</strong>。
+而且作者紧跟一句：「本案例展示提供的图纸与模型效果；<strong>截图不作为全部尺寸、公差和图纸等价性已通过验证的证明</strong>。」
+——这种自我设限在国内开源项目里不常见，加分。</p>
+<p><strong>能力范围</strong>（README 原表）：草图（矩形/圆/弧/多边形/槽/椭圆/样条 + 约束与驱动尺寸）、
+零件（拉伸/切除/旋转/孔/圆角/倒角/抽壳/拔模/肋/放样/扫描）、阵列镜像布尔分割、
+<strong>钣金（基体与法兰、展开）/ 焊件（型材构件与裁剪）/ 曲面</strong>、装配（插入、配合、干涉检查）、
+图纸输入（本地图片与 PDF、<strong>OCR 候选</strong>、分区/旋转提示、尺寸绑定检查）、
+输出 SLDPRT / SLDASM / STEP / STL / SLDDRW / PDF。
+<code>cad_export_drawing</code> 还能从已保存零件导出<strong>第一角法 A3 原生工程图 + PDF</strong>，四视图、原生尺寸、参数表，
+<strong>最多支持 44 个源参数</strong>。</p>
+<p><strong>为什么它值得国内这一格</strong></p>
+<p>国内制造业的存量资产是<strong>二维工程图</strong>，不是 STEP，更不是 Fusion 的参数化历史树。
+本日报之前写过的 text-to-CAD 项目（<a href="./2026-09-15.html">cadjson</a>、<a href="./2026-09-12.html">SimpleCADforDSH</a>、
+<a href="./2026-09-13.html">idea-to-print</a>）全都是「从零生成」，
+<strong>Auto-SolidWorks 是第一条把「已有图纸 → 参数化模型」这条路做出可运行产物的</strong>。
+配合 cadxray 的「STEP → 参数化」，这一周等于两个方向都补上了入口。</p>
+<p><strong>个人怎么切进去</strong></p>
+<ol>
+<li>装 .NET 9 Windows Desktop Runtime（x64）+ 支持插件的 Codex CLI，
+从 <a href="https://github.com/qdaia/Auto-SolidWorks/releases">Release 页</a>下 <code>auto-solidworks-0.5.4-windows-x64.zip</code>，
+解压后 PowerShell 跑 <code>install.ps1</code>。<strong>半小时。</strong></li>
+<li>先用文字试最简单的：「创建一个 80 × 50 × 10 mm 的矩形板，中心有一个直径 10 mm 的通孔，保存 SLDPRT 和 STEP」。
+<strong>确认它真的起了 SolidWorks 并存出了文件。</strong></li>
+<li>再喂图。<strong>推荐从自己画过、知道正确答案的零件图开始</strong>，这样你能判断 OCR 读错了没有。</li>
+<li>产出建议：<strong>把「同一张图，模型出来的尺寸 vs 图纸标注」逐条对一遍，做成一份误差表</strong>。
+作者自己没做这件事（他明说了截图不构成等价性证明），<strong>这是个现成的、结论客观的贡献位</strong>。</li>
+</ol>
+<p><strong>成本：跑一个件大概多少钱</strong></p>
+<ul>
+<li><strong>图纸输入这一步是视觉 token 大户</strong>。一张 A3 工程图要看清尺寸标注，
+分辨率不能压太狠——按高分辨率单图约 2–4k 视觉 token 估，
+<code>cad_read_drawing</code> 可能要分区多看几次，一个零件在读图上就可能花 <strong>10k–30k 输入 token</strong>。</li>
+<li>加上 plan / build / inspect 三轮的工具往返，一个中等复杂度零件我估在
+<strong>输入 80k–250k tokens、输出 10k–25k tokens</strong>，Sonnet 档 <strong>约 $0.5–1.5（¥4–11）</strong>。</li>
+<li><strong>纯文字驱动（不读图）会便宜一个量级</strong>，大约 $0.05–0.2 一个件。</li>
+<li><strong>同样是估算，不是实测。</strong> 作者没给 token 统计——<strong>顺带说，「跑一个件到底花多少钱」这个数字，
+本专题写了七八期，还没有任何一个项目自己报过。</strong></li>
+</ul>
+<p><strong>坑</strong></p>
+<ol>
+<li><strong>最大的坑：SolidWorks 是商业软件，且必须本机安装并激活。</strong>
+插件包不分发 SolidWorks 程序或 interop DLL，安装脚本是从你本机 SolidWorks 目录读 interop 组件的。
+<strong>代码是 MIT，但这条链路整体不是零成本的</strong>——没有 SolidWorks 许可的人，这条直接跳过，去看上面的 cadxray（FreeCAD 免费）。</li>
+<li><strong>只支持 Windows。</strong></li>
+<li><strong>GitHub 自动生成的 &quot;Source code (zip)&quot; 不含编译后的运行程序</strong>，直接把仓库加成远程插件源也不会自动下载运行程序。
+<strong>普通用户必须用 Release ZIP。</strong></li>
+<li><strong>当前版本不生成物理螺旋螺纹</strong>（攻丝孔用底孔 + 原生装饰螺纹），<strong>也不完整解释任意 GD&amp;T</strong>。</li>
+<li><strong>OCR 数字必须结合原图判断</strong>，作者原话。未声明单位时按 mm。关键尺寸缺失或冲突时会要求澄清。</li>
+<li>本机开发验证用的是 <strong>SolidWorks 2025</strong>，其他版本要自己验。</li>
+<li><strong>「几何创建、重建和测量成功，不能自动证明与任意工程图等价」</strong>——这句是作者自己写的，
+请把它当成使用这类工具的通用免责条款。</li>
+<li>云端 AI 会话怎么处理你的图纸和提示，取决于客户端——<strong>作者明确拒绝把这个项目描述成完全离线</strong>。
+涉密图纸别往里丢。</li>
+</ol>
+<p>→ <strong>原始出处</strong>：<a href="https://github.com/qdaia/Auto-SolidWorks">https://github.com/qdaia/Auto-SolidWorks</a>
+相关：<a href="https://github.com/qdaia/Auto-SolidWorks/releases">Release（0.5.4 Windows x64）</a></p>
+<hr>
+<h3>📌 专题分析：这周这条链路上真正变了的东西（4 点）</h3>
+<p><strong>1. 「逆向」这一格，一周之内被两边同时补上了，而且补法完全不同。</strong></p>
+<p>过去这个专题写的项目，输入几乎都是「一句话」或「一张参考图」——<strong>从零生成</strong>。
+这一周出现的两条都是<strong>逆向</strong>：cadxray 是 <strong>STEP/STL → 参数化特征树</strong>，Auto-SolidWorks 是 <strong>二维工程图 → 参数化模型</strong>。
+这个转向是有道理的：从零生成的东西你不敢用在会承力的地方，而<strong>逆向的终点是可验证的</strong>——
+cadxray 的 <code>compare_shapes</code> 能给出「体积差 0.0 mm³」，Auto-SolidWorks 的尺寸能逐条对回图纸标注。
+<strong>一个能被证伪的产出，比一个好看的产出有用得多。</strong></p>
+<p>值得一并记住的是 cadxray 那条硬数据：<strong>44 面的夹爪钳口，只用四个工具重建到 0.0004% 体积差，
+8 个 BSpline 过渡面被识别成圆锥（残差 6.6e-5）</strong>。
+这说明「厂商 STEP 里那些看起来是自由曲面的东西，大部分其实是规则面」——
+对做开源机械臂改件的人来说，这意味着<strong>你下载的那个电机座 STEP，很可能是可以被完整参数化的</strong>。</p>
+<p><strong>2. 「模型不吐坐标」正在变成这条链路的共识写法。</strong></p>
+<p>cadxray 的 <code>build_features</code> 里那句 <code>profile.section</code> 直接描原始截面、<strong>坐标不经过 LLM</strong>，
+和 Auto-SolidWorks 的「计划直接传 typed draft / IR，不通过任意 shell 或脚本接口操作 CAD」，
+说的是同一件事：<strong>让模型产出意图和约束，让引擎产出几何。</strong>
+这和本专题 09-15 写过的 <a href="./2026-09-15.html">cadjson</a>（选择器不按索引、一个零件一个 JSON）、
+09-13 写过的 <a href="./2026-09-13.html">ModelRift openscad-skill</a>（render/inspect/revise 回路）是同一条演化线。</p>
+<p>对个人的直接含义：<strong>评估一个 text-to-CAD 项目时，先看它让模型写什么。</strong>
+写坐标的，token 成本随零件规模线性涨，且跨轮次必漂；
+写意图 + 稳定 ID 的，才有可能做到第十轮编辑还找得到第一轮那个孔。
+KJDraw（<code>KanJieTeam/kjdraw</code>，Apache-2.0）把这条原则写成了一句标语——
+「The model decides what to draw. The engine decides how to draw it correctly.」——虽然它做的是 2D DXF。</p>
+<p><strong>3. 「和具身智能的接口」这一段，本周只有一个 2 星的东西，但它的形状是对的。</strong></p>
+<p>按覆盖面轮换，本期本该有一条 URDF/SRDF/SDF 自动生成。<strong>找遍了，这周新建的只有
+<code>enesbirlik/claude-code-robotics</code>（MIT，09-15 建，2 ★）够得上标准</strong>，所以没给它独立条目，放在这里说：</p>
+<p>它是个 Claude Code 插件，五个技能（ROS 2 工作区 / <strong>URDF-Xacro 构建器</strong> / micro-ROS 桥 / Nav2-MoveIt2 配置 / ROS 2 生态包速查），
+<strong>加上两个真的会执行的 hook</strong>：<code>verify_urdf.sh</code> 跑 <code>xacro</code> 和 <code>check_urdf</code>，
+<code>colcon_build_check.sh</code> 跑限定范围的 <code>colcon build</code>，都是 <code>PostToolUse</code> 触发——
+<strong>模型一写完 URDF 就立刻知道它是不是畸形的</strong>。
+另外带一个<strong>只读</strong>的 ROS 2 MCP 服务器（<code>ros2_node_list</code> / <code>ros2_topic_echo</code> / <code>gz_topic_echo</code> 等六个工具），
+<strong>没有 publish、没有 set_parameter、不能改生命周期状态</strong>。</p>
+<p>它针对的问题 README 说得很准：通用 LLM 写机器人代码时会<strong>编出看起来合理但错误的 URDF 惯性张量</strong>、
+发明不存在的 <code>rclpy</code> QoS 默认值、靠猜参数名去「修」Nav2 代价地图。
+<code>skills/urdf-xacro-builder/SKILL.md</code> 里直接给了闭式惯性张量公式和宏。</p>
+<p><strong>这就是本期最便宜的一个动手位</strong>：装上它，拿你手上任意一个开源臂的 URDF
+（SO-101、Piper、OpenArm 都行），让它跑一遍一致性检查，<strong>把 <code>check_urdf</code> 报出来的问题提回上游仓库</strong>。
+半天，零成本。它和 cadxray 合起来其实就是那条完整闭环的两端——
+<strong>cadxray 负责「件对不对、打不打得出来」，claude-code-robotics 负责「装上去之后模型描述对不对」</strong>，
+中间那一段（CAD 装配体 → URDF 关节树自动导出）<strong>这周依然是空的</strong>，
+最近一次有像样东西是 09-12 的 <a href="./2026-09-12.html">robotics-design-skill-suite</a>。</p>
+<p><strong>4. 「跑一个件多少钱」，八期了，还是没有任何一个项目自己报过。</strong></p>
+<p>本专题从 09-10 开始每期都要求把 API token 费算进去。到今天写了十几个项目，
+<strong>只有 09-16 的 <a href="./2026-09-16.html">3Dpriting-detect-agent</a>（全本地 Qwen2.5-3B，token 费 0）和
+09-14 的 <a href="./2026-09-14.html">flex-fab-agent</a>（求解在 OR-Tools 里，不花 token）能给出确定的数字，
+而它们给得出来的原因都是「压根没调云端模型」。</strong>
+所有真正用大模型做几何推理的项目，成本都是我在这里估的。</p>
+<p>这件事的实际后果是：<strong>你没法比较两个 text-to-CAD 方案哪个更便宜</strong>，
+而这条链路上便宜和贵能差一个量级（见上面 cadxray 的 $1–3 和 Auto-SolidWorks 纯文字的 $0.05–0.2）。
+<strong>所以本期把这个列为第一号缺口</strong>：给任意一个这类项目加一段「本次运行累计输入/输出 token + 估算金额」的输出，
+是几十行代码的事，而且<strong>几乎必被合</strong>。</p>
+<hr>
+<h2>📈 趋势观察</h2>
+<p><strong>1. 本周开源硬件是真的荒，而且荒得有结构。</strong></p>
+<p>我这期按 <code>created:&gt;=2026-09-08</code> 扫了 40 多个查询词（机械臂、灵巧手、四足、遥操作、外骨骼、
+BOM、STEP/STL、CERN-OHL、topic:open-source-hardware…），<strong>新建的、带真实 CAD/BOM、够得上「个人能照着做出来」的本体项目，
+一只手数得过来，而且其中大半是 microduck 的衍生</strong>：
+<code>laotawayer/microduck</code>、<code>7757/fanduck</code>、<code>fanhao375/microduck-replica-cad</code>（37 ★）、
+<code>microai-lab/microduck-studio</code>、<code>joeynyc/awesome-microduck</code>(116 ★)、<code>srayuth089/microduck-docker</code>…</p>
+<p>这不是坏事，但要看清它是什么：<strong>一个便宜、有官方 MJCF、有预训练策略、能一个人装完的平台，
+会把整个社区的硬件精力吸过去</strong>。代价是别的形态（桌面臂、灵巧手、轮足）这周几乎没有新供给。
+<strong>对个人的操作含义</strong>：如果你想做硬件且想让别人用上，<strong>现在做 microduck 的配件/改件，
+比从零设计一个新本体的曝光率高一个量级</strong>；反过来，如果你想做的是别的形态，
+这一周的空窗恰恰说明<strong>竞争者也少</strong>。</p>
+<p><strong>2. 「零真机也能跑完整闭环」这一类，本周同时出现了两个强样本。</strong></p>
+<p>real2sim-droid（一条公开 episode → 可做反事实的 MuJoCo 孪生）和 StationeryBench（装完就有 mock policy，
+三行命令跑通整条评测流水线）看起来毫不相干，但它们解的是同一个问题：
+<strong>把「需要机器人」这个门槛，从流程的第 1 步推到第 N 步。</strong></p>
+<p>这和 09-16 的 <a href="./2026-09-16.html">RLE-Bench</a>（九任务族里 task07/08/09 纯 CPU）、
+09-15 的 <a href="./2026-09-15.html">LLMs Robot Arena</a>（浏览器擂台）是同一个方向。
+<strong>趋势判断：2026 下半年「具身智能个人可参与性」的增量，主要来自评测和仿真侧，不是硬件侧。</strong>
+硬件降本已经到了平台期（一只鸭子几千块、一只手两百块，见 09-15 的 <a href="./2026-09-15.html">Easyhand</a>），
+而「不用买硬件就能产出可验证结果」的工具链还在快速变好。</p>
+<p><strong>3. 不可信输出 → 确定性闸门 → 安全降级，正在从「好设计」变成「默认结构」。</strong></p>
+<p>本期六条主线里有三条是同一个骨架：
+humanoid-companion（LLM 只能<strong>请求</strong>走路，规划器决定，解析失败 = 站着不动）、
+claude-code-robotics（hook 真的跑 <code>check_urdf</code>、MCP 只读不能 publish）、
+cadxray（<code>suggest_sketch_fixes</code> 什么都不自动改，<code>apply_sketch_fixes</code> 要指定 id 且会 fingerprint 校验、变差就回滚）。</p>
+<p>再往前数：09-16 的 <a href="./2026-09-16.html">model-forge 七道门</a>、09-13 的
+<a href="./2026-09-13.html">idea-to-print 19 项 DfAM 几何门</a>、09-12 的
+<a href="./2026-09-12.html">SimpleCADforDSH 几何 QA 硬门</a>。
+<strong>如果你现在要做一个 agent × 物理世界的项目，&quot;模型的输出必须先过一道能失败的确定性检查&quot; 已经不是加分项，
+是评审会默认问你的第一个问题。</strong></p>
+<p><strong>4. 一个反向提醒：有名字、有星、有 arXiv，不代表你能跑。</strong></p>
+<p>本期扫到两个很显眼但<strong>最终没进榜</strong>的项目，理由值得写下来：</p>
+<ul>
+<li><strong><code>shengshu-ai/Motus2</code></strong>（38 ★，生数科技，arXiv 2608.30237）——自进化通用世界模型，做灵巧操作。
+README 里开源路线图<strong>七项全是未勾选</strong>，更新写的是「我们计划在 2026 年 9 月内逐步发布代码和检查点」。
+<strong>今天还什么都没有。</strong> 不满足「技术可达成」。</li>
+<li><strong><code>Tengbo-Yu/SEED-UMI</code></strong>（9 ★，CoRL26，北大通研院 + Delta Intelligence）——人和机器人<strong>戴同一副外骨骼</strong>采数据，
+20 自由度，思路非常漂亮（把运动重定向变成成对的跨本体监督）。但仓里只有<strong>项目页前端 + 论文 PDF</strong>，
+<strong>没有代码，没有 CAD</strong>。不满足「产出可预期」。</li>
+</ul>
+<p>这两个都值得<strong>加星观望</strong>，但本周别指望动手。</p>
+<hr>
+<h2>🏁 当前仍开放、对个人开放的比赛 / bounty / 众包入口</h2>
+<blockquote>
+<p>本期逐条重新核过。<strong>核不到确切截止日期的，一律写明「未核到」，不硬凑。</strong></p>
+</blockquote>
+<h3>✅ 复核仍开放（本期重新核过日期）</h3>
+<p><strong>RoboSynChallenge（NeurIPS 2026 正式竞赛）—— 10 月 11 日截止，还剩 24 天。</strong>
+官网整页 JS 渲染，<code>curl</code> 只拿到 3.2 KB 骨架，<strong>日期仍读自前端 bundle</strong>（<code>static/config.js</code>）：
+训练与提交截止 <strong>10-11 AoE</strong>，仿真初评 10-11 → 10-18，<strong>10-18 公布入围</strong>，
+模型更新期至 <strong>11-15</strong>，<strong>11-15 起在统一的双臂真机平台上做最终评测</strong>。
+与 09-16 那期所核一致，<strong>未变</strong>。<strong>真机评测由主办方做，你不需要任何硬件。</strong>
+（读自前端代码而非可见页面，动手前请自行到官网复核。）
+→ <a href="https://robosyn-bench.net/">https://robosyn-bench.net/</a> ｜ <a href="https://github.com/EDEM-AI/RoboSynChallenge">GitHub</a></p>
+<p><strong>CoRL 2026 Efficient Embodied AI Workshop Challenge —— 本期在官网 Important Dates 逐条重核，全部未变：</strong></p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+<th>距今</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>9 月 25 日</strong></td>
+<td><strong>Challenge harness 和参考容器发布</strong></td>
+<td><strong>还有 8 天</strong></td>
+</tr>
+<tr>
+<td>10 月 12 日</td>
+<td>论文提交截止（非归档）</td>
+<td>25 天</td>
+</tr>
+<tr>
+<td><strong>10 月 23 日</strong></td>
+<td><strong>Challenge 提交截止</strong> ← 真正的参赛节点</td>
+<td><strong>36 天</strong></td>
+</tr>
+<tr>
+<td>10 月 26 日</td>
+<td>论文录用通知</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 5 日</td>
+<td>Challenge 结果核验并公布</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 12 日</td>
+<td>Workshop，CoRL 2026，德州奥斯汀</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>全部为 <strong>11:59 PM Anywhere on Earth</strong>。页面写明「所有提交、基线和 harness 都会公开」。
+<strong>9 月 25 日 harness 发布是本期最近的一个可执行节点</strong>——那天之前你什么都做不了，那天之后有 28 天。
+→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a></p>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）—— 提交截止 10/16/2026，获奖公布 11/04/2026，还剩 29 天。</strong>
+本期在 challenge 首页重新核到这两个日期（页面另列一个 07/02/2026 的历史节点）。
+→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<p><strong>RLE-Bench 2.0 任务征集（现金奖励 + 共同作者，⚠️ 仍未标注截止日期）。</strong>
+09-16 首次发现，本期复核 contribute 页仍可访问、内容未变：
+回报是<strong>洞察 + 论文共同作者署名 + 对高影响力贡献的现金奖励</strong>，
+<strong>页面既没写金额，也没写截止日期</strong>——这两点我依然没核到，动手前请自己发邮件问。
+交付物、本地验证环境（Python 3.12 + Docker + Harbor 0.21.0）和四类证据要求见 <a href="./2026-09-16.html">09-16 那期</a>，未变。
+→ <a href="https://rle-bench.github.io/contribute/">https://rle-bench.github.io/contribute/</a> ｜ <a href="https://github.com/RLE-Bench/RLE-Bench">仓库</a></p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性，均 200）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p>（规则和当时的最好成绩见 <a href="./2026-09-12.html">09-12 那期</a>。）</p>
+<h3>❌ 维持核销（别去撞墙）</h3>
+<p>ATEC2026（报名 5/30 已截止）、EMR Workshop @ ECCV 2026（9/9 已办完）、
+ICRA 2026 全部九项竞赛（6/1–4 已举办）、GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026（5/15 结束）、
+PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD。
+依据见 <a href="./2026-09-12.html">09-12</a>、<a href="./2026-09-13.html">09-13</a>、<a href="./2026-09-14.html">09-14</a> 三期，本期未变。</p>
+<p><strong>RoboChallenge</strong> —— 状态仍无法确认（整页 JS 渲染，<code>curl</code> 只拿到骨架，本期未再深挖）。
+<strong>不写「仍开放」，也不核销。</strong> → <a href="https://robochallenge.ai/">https://robochallenge.ai/</a></p>
+<h3>⚠️ 本期的空缺，明说</h3>
+<p><strong>没有找到新的、面向个人、仍开放报名的国内比赛。</strong>
+按前几期的核销记录，国内这一批（江源杯、全国具身智能技术应用大赛、亦智杯等）的报名窗口集中在上半年，
+<strong>下一波大概率要等 2027 年的赛季公告</strong>。这期不硬凑。</p>
+<hr>
+<h2>🔧 不是比赛、但确实缺人做的口子（半天到一周量级）</h2>
+<ol>
+<li><strong>给 real2sim-droid 跑 10 条 episode，把跨视角物体摆放误差的分布统计出来。</strong>
+作者只跑了两条（README 的 Limitations 第一条）。纯下载 + 纯计算，零硬件零 API 费。一天。（国外 TOP 1）</li>
+<li><strong>在 A4000 16G 上把 real2sim-droid 的 <code>all</code> 跑一遍，报墙钟时间和显存峰值。</strong>
+作者只给了 4070 Ti 的 3 分钟。两小时。（国外 TOP 1）</li>
+<li><strong>把「一条 LeRobot 公开数据集 → openpi RepackTransform」的写法整理成一篇可复制的说明。</strong>
+vla_pi0 把坑列全了但只覆盖它自己那台臂，<strong>零硬件、零 GPU 成本</strong>。一天。（国内 TOP 1）</li>
+<li><strong>给 vla_pi0 提 issue 问根目录许可。</strong> 子目录有上游 Apache-2.0，作者自写的适配代码无明示许可。十分钟。（国内 TOP 1）</li>
+<li><strong>给 laotawayer/microduck 转存一份 SolidWorks 低版本文件。</strong> README 里作者点名求这个，转完在 issue 注明版本和验证结果。半小时。（国内第 2）</li>
+<li><strong>补 microduck ROADMAP 里那两个空框之一</strong>：标准件精确数量核对，或打印材料/层高/填充/支撑建议。半小时到两小时。（国内第 2）</li>
+<li><strong>给 sixdof-arm 加一套 SO-101 或 Piper 的 DH 参数，并跑通那 200 组正逆解往返测试。</strong>
+结果客观可验，一天，纯 C++。（国内第 3）</li>
+<li><strong>按 StationeryBench 的任务文档买齐五套文具复现摆放，写一份「复现偏差记录」。</strong>
+官方给了摆放照片、物体规格和人类演示视频，<strong>几十块钱</strong>。一天。（国外第 2）</li>
+<li><strong>量一下同一个件在 cadxray（CalculiX）和 cadloop（FEniCSx）上的安全系数差多少。</strong>
+两条 FEA 链路在同一个件上的一致性，<strong>现在没人量过</strong>。一天，纯软件。（专题 · 国外）</li>
+<li><strong>给任意一个 text-to-CAD 项目加一段「本次运行累计 token + 估算金额」的输出。</strong>
+几十行代码，几乎必被合，而且<strong>这是本专题写了八期都还没人做的第一号缺口</strong>。半天。（专题分析第 4 点）</li>
+<li><strong>装上 claude-code-robotics，拿一个开源臂的 URDF 跑一遍一致性检查，把 <code>check_urdf</code> 报的问题提回上游。</strong>
+半天，零成本。（专题分析第 3 点）</li>
+<li><strong>给 Auto-SolidWorks 做一份「模型尺寸 vs 图纸标注」的逐条误差表。</strong>
+作者明说截图不构成等价性证明——这个位置是空的。一天（需要 Windows + SolidWorks）。（专题 · 国内）</li>
+</ol>
+<hr>
+<p><em>本期共扫描 GitHub 新建仓 40+ 组查询词、HF models/datasets 两组榜单；所有对外链接均以 <code>curl -sIL</code> 验过状态码。
+估算值（token 成本、显存）已逐条标注为估算。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-17.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

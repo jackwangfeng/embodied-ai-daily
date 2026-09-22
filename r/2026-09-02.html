@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-09-02 · 具身智能可参与项目日报</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>2026-09-02 · 具身智能可参与项目日报</h1>
+<p>今日主线：<strong>门槛已经掉到「一张消费级显卡 + 两千块硬件」这一档</strong>。硬件侧被「3D 打印 + 舵机 + LeRobot 统一接口」拉平，模型侧被 450M 级 VLA 拉平 —— 这两件事在一年前分别属于机械工程实验室和 GPU 集群。国内的独特入口是<strong>成体系的中文复现教程</strong>（把「能不能做」变成「照着做」），国外的独特入口是<strong>已经跑通并被引用的开源本体 + 模型权重</strong>。</p>
+<blockquote>
+<p>本篇为改版首期：国内 / 国外各 3 条，各自 top1 深度讲解，软件与硬件两侧都覆盖。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· Datawhale <code>every-embodied</code> —— 从 0 手写 VLA 的中文工程路径</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元（可纯仿真）｜ 周期 2–4 周（官方组队学习按 20 天排）</strong></p>
+<p><strong>是什么。</strong> Datawhale 社区维护的开源具身智能实战库，定位是「仅需 Python 基础，从 0 构建自己的具身智能机器人」。它的核心不是又一份 awesome 列表，而是<strong>把 VLA 这条链路拆成能逐步手写的模块</strong>：从最小可用的 VLA 骨架开始，逐层对照 OpenVLA / SmolVLA / π0 三个真实实现，最后落到能跑的抓取 demo。配套内容包括 MuJoCo 机械臂抓取基础 demo、LeRobot 遥操作（支持把 RDK-X5 接到 SO-101 机械臂）、以及在 Genie Sim / Isaac Sim 上部署 π0 的高保真仿真示例。同门项目 <code>dive-into-embodied-ai</code> 覆盖更偏决策侧的强化学习、World-Model 与运动规划，2026 年 7 月按「操作控制 / 感知建图 / 导航规划 / 世界模型」四条主线重排了 20 天路径。</p>
+<p><strong>为什么现在值得做。</strong> 具身智能这条链路的痛点从来不是缺论文，而是<strong>缺一条已经被别人走通、且每一步都能验证的路</strong>。个人自学最常见的死法是：看完 OpenVLA 论文，下载权重，跑不起来，卡在 CUDA / 数据格式 / 动作空间对不上，两周后放弃 —— 因为你无法判断是自己配错了还是本来就该这样。中文教程 + 逐步手写的价值正在于<strong>每一步都有可对照的中间产物</strong>，出错时能定位到具体哪一层。这类项目 2025 年基本不存在，2026 年才成熟起来。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<ol>
+<li><strong>第一天（0 元，2 小时）</strong>：clone 仓库，跑通 MuJoCo 抓取 demo。纯仿真，不需要任何硬件，这一步就能确认环境没问题。</li>
+<li><strong>第一周（0 元）</strong>：跟着手写最小 VLA —— 视觉编码器 + 语言条件 + 动作头，在仿真数据上过拟合到能动。<strong>产出物是你自己写的、能跑的 VLA</strong>，这是最有说服力的入门凭证。</li>
+<li><strong>第二周（0 元）</strong>：换成 SmolVLA / π0 的真实实现做对照，理解自己写的那版差在哪。</li>
+<li><strong>第三周起（可选，约 ¥1700–2700）</strong>：接真机（SO-101 或下面第 2 条的 reBot-DevArm），用 LeRobot 录自己的演示数据，微调、部署。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> 三点要提前知道：① 社区教程的<strong>更新节奏跟不上上游</strong> —— LeRobot 主仓接口迭代很快，教程里的脚本可能对不上最新版，遇到报错先看仓库 issue 和 commit 日期，必要时锁定教程配套的 LeRobot 版本；② 仿真到真机有明确的鸿沟，<strong>仿真跑通 ≠ 真机能抓</strong>，别把仿真成功率当真机预期；③ 组队学习是周期性开的，错过了就只能自学，但材料本身一直在仓库里。</p>
+<p><strong>出处。</strong> <a href="https://github.com/datawhalechina/every-embodied">datawhalechina/every-embodied</a>
+相关：<a href="https://github.com/datawhalechina/dive-into-embodied-ai">dive-into-embodied-ai（决策与世界模型侧）</a> ｜ <a href="https://github.com/TianxingChen/Embodied-AI-Guide">Embodied-AI-Guide（Lumina 社区技术指南，配套阅读）</a> ｜ <a href="https://github.com/CSCSX/LeRobotTutorial-CN">LeRobotTutorial-CN（LeRobot 中文入门）</a></p>
+<hr>
+<h3>2 · Seeed reBot-DevArm —— 100% 全栈开源的开发用机械臂</h3>
+<p><strong>类型：硬件 ｜ 成本约 ¥1500–2500 ｜ 周期 2–3 周（含到货与装配）</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 明确以「降低具身智能学习门槛」为目标的机械臂项目，2026 年 5 月 11 日转为 <strong>CERN-OHL-W 2.0</strong> 许可，硬件与软件双侧 100% 开源 —— 这在国产机械臂里少见，多数是「软件开源、图纸不给」。国内供应链买件和售后是实打实的优势，不用等跨境物流。</li>
+<li><strong>怎么切进去。</strong> 直接买套件（比自己打印省事，精度也更稳），装完接 LeRobot 的录制脚本采数据。第一个可交付产出：<strong>50 组抓取演示 + 一个能复现抓取的 policy</strong>，数据集可以直接传 Hugging Face。</li>
+<li><strong>坑。</strong> 舵机型号和固件版本要和文档严格对上，替换件容易在通信协议上踩坑；开源许可 CERN-OHL-W 是「弱互惠」，改了硬件设计再分发需要同样开源。</li>
+<li><strong>出处。</strong> <a href="https://github.com/Seeed-Projects/reBot-DevArm">Seeed-Projects/reBot-DevArm</a>
+相关：<a href="https://wiki.seeedstudio.com/cn/lerobot_starai_arm/">Seeed StarAI 机械臂 LeRobot 中文入门教程</a> ｜ <a href="https://github.com/huggingface/lerobot">LeRobot 主仓</a></li>
+</ul>
+<hr>
+<h3>3 · 智元灵犀 X1 —— 人形机器人「0 元购」全套图纸 + RL 训练代码</h3>
+<p><strong>类型：软硬件全套 ｜ 个人参与成本 0 元（只用仿真侧）｜ 周期 1–2 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 智元把模块化高自由度人形机器人 X1 整套开源：整机结构图纸、硬件框图、细到螺丝齿轮的 BOM，以及 AimRT 中间件组件、URDF、Sim2Sim / Sim2Real 代码、强化学习训练代码、模型转换与调试工具。<strong>整机对个人显然不是「投入可控」，但仿真 + RL 训练那一半是完全免费的</strong> —— 这是个人少有的、能拿到工业级人形机器人完整 RL 训练管线的机会。</li>
+<li><strong>怎么切进去。</strong> 只碰 <code>agibot_x1_train</code>：在仿真里训一个行走策略，跑 Sim2Sim 验证迁移，用他们的可视化工具看训练曲线。<strong>产出物是一条自己训出来的人形步态策略</strong>，纯软件、纯显卡时间。想更进一步再看硬件仓的 BOM 评估局部复现（比如只做一条腿）。</li>
+<li><strong>坑。</strong> RL 训练对显存和时间敏感，参数没调好会长时间不收敛，先按官方给的默认配置跑通再改；<code>Sim2Real</code> 那部分没有真机就无法验证，别把它当成「已经会了」。</li>
+<li><strong>出处。</strong> <a href="https://github.com/AgibotTech/agibot_x1_train">AgibotTech/agibot_x1_train（训练）</a>
+相关：<a href="https://github.com/AgibotTech/agibot_x1_hardware">agibot_x1_hardware（图纸与 BOM）</a> ｜ <a href="https://github.com/AgibotTech/agibot_x1_infer">agibot_x1_infer（推理）</a> ｜ <a href="https://www.zhiyuan-robot.com/article/188/detail/44.html">官方开源说明</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· SmolVLA —— 450M 参数的 VLA，单卡就能全量微调</h3>
+<p><strong>类型：软件 ｜ 硬件成本 0 元（有显卡即可）｜ 周期 1–2 天出结果</strong></p>
+<p><strong>是什么。</strong> Hugging Face 发布的视觉-语言-动作模型，建立在 SmolVLM 之上，加了一个 diffusion 动作头，从图像观测 + 语言指令直接输出机器人关节指令。<strong>450M 参数，比前沿机器人模型（5–7B）小一个数量级。</strong></p>
+<p><strong>为什么现在值得做。</strong> 这是整条链路上<strong>唯一被真正打穿的瓶颈</strong>。此前个人做 VLA 的现实是：OpenVLA 级模型微调要多卡 A100，等于把门槛设在「有实验室或愿意烧租金」。SmolVLA 把数字改成了：<strong>单张 RTX 4090（24 GB）可全量微调，200 组演示 4–12 小时</strong>；有人在笔记本 RTX 3050 Ti 加免费 Colab 上做完了微调。INT8 量化后权重约 2.5 GB，8 GB 显存能推理。代价是精度让了一点 —— LIBERO benchmark 上 82–90%，和 OpenVLA 差 5% 以内，对比 π0 是 78% vs 85%。<strong>用 7% 的精度换掉 16 倍的参数量和整个 GPU 集群，对个人来说这个交易毫无悬念。</strong></p>
+<p><strong>个人怎么切进去。</strong> 这条<strong>今天就能开工，完全不用等硬件到货</strong>，也是六条里唯一当天能看到进展的：</p>
+<ol>
+<li><strong>今天（2 小时）</strong>：拉 LeRobot 上现成的公开数据集，按官方微调脚本跑一次，把「数据加载 → 训练 → 评估」这条流程走通。先不求效果，只求不报错。</li>
+<li><strong>明天（4–12 小时显卡时间）</strong>：换一个具体任务的 200 组演示做全量微调，记下 benchmark 前后差值。<strong>产出物是一个你自己微调的 VLA checkpoint + 一条可复现的训练配置</strong>，可以直接传 HF。</li>
+<li><strong>硬件到货后</strong>：把公开数据集换成自己录的真机数据，同一套流程不用改。</li>
+<li><strong>本机备注</strong>：这台机器就是 RTX A4000 16G（驱动 590.48 / CUDA 13.1，<code>. /workspace/cuda/env.sh</code> 已配好）—— 16 GB 做全量微调偏紧，可以用 LoRA 或减小 batch，推理绰绰有余。要我直接开跑就说一声。</li>
+</ol>
+<p><strong>坑 / 风险。</strong> ① <strong>benchmark 分数不是你的场景分数</strong> —— 换到新环境掉点比论文里狠得多，per-task 微调基本是必须的，别拿 82–90% 当自己的预期；② 4090 的 24 GB 是官方给的全量微调门槛，<strong>16 GB 以下要走 LoRA / 梯度检查点</strong>，直接跑会 OOM；③ 演示数据的质量比数量重要得多，200 组抖动混乱的遥操作数据不如 50 组干净的。</p>
+<p><strong>出处。</strong> <a href="https://huggingface.co/blog/smolvla">SmolVLA 官方博客</a>
+相关：<a href="https://arxiv.org/abs/2506.01844">论文 arXiv:2506.01844</a> ｜ <a href="https://medium.com/correll-lab/fine-tuning-smolvla-for-new-environments-code-included-af266c56d632">微调实操教程（含完整代码）</a> ｜ <a href="https://github.com/huggingface/lerobot">LeRobot 主仓</a></p>
+<hr>
+<h3>2 · AM-ARM200 —— $240 的 6+1 DoF 开源机械臂，LeRobot 开箱即用</h3>
+<p><strong>类型：硬件 ｜ 成本 $240 单臂 / $380 全套遥操作套件（约 ¥1700 / ¥2700）｜ 周期 2–3 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> 全 3D 打印、6+1 自由度、1 kg 负载，<strong>开箱即与 LeRobot 对接</strong> —— SO-101 那套录制和训练脚本直接能用，省掉最烦的驱动适配。follower $240 / leader $140 / 全套 $380。它的意义是把「遥操作采数据」这件事的成本压到了个人可承受区间，而采数据是所有模仿学习的前提。</li>
+<li><strong>怎么切进去。</strong> 买 leader + follower 套件（或找打印服务出件）→ 装配 → <code>lerobot record</code> 采 50 组演示 → 微调策略 → 复现抓取。产出物是一个能跑的 policy 加一份自有数据集。</li>
+<li><strong>坑。</strong> FDM 打印件的层高与舵机间隙直接吃掉重复定位精度，别指望亚毫米；跨境到货周期要算进计划。</li>
+<li><strong>出处。</strong> <a href="https://github.com/liyiteng/AM-ARM">liyiteng/AM-ARM</a>
+相关：<a href="https://arxiv.org/abs/2503.10070">AhaRobot：$1000 双臂移动操作机，0.7 mm 重复定位（arXiv:2503.10070）</a></li>
+</ul>
+<hr>
+<h3>3 · LEAP Hand v2 —— $200、8 自由度、两小时装完的灵巧手</h3>
+<p><strong>类型：硬件 ｜ 成本 $200（约 ¥1500）｜ 周期 1 周</strong></p>
+<ul>
+<li><strong>是什么 / 为什么。</strong> RSS 2026 的 demo 论文项目。全 3D 打印，<strong>按官方说明两小时内可装完</strong>，刚性-柔性混合结构耐摔，通用灵巧 MCP 关节支持多种抓取姿态。软件 MIT 许可，附 MANO / Vision Pro 人手视频重定向代码、Manus 手套动捕遥操作代码、URDF 与仿真示例。</li>
+<li><strong>怎么切进去。</strong> 装好后先跑视频重定向 —— 摄像头拍自己的手，把动作映射到机械手上。<strong>不需要机械臂本体就能出可展示的成果</strong>，是六条里最快见到东西的一条。</li>
+<li><strong>坑。</strong> CAD 文件是 <strong>CC BY-NC-SA（非商用）</strong>，个人项目无碍，想商用需另行取得授权；软件侧的 MIT 和 CAD 侧的许可是两套，别混起来理解。</li>
+<li><strong>出处。</strong> <a href="https://v2.leaphand.com/">v2.leaphand.com</a>
+相关：<a href="https://github.com/leap-hand/LEAP_Hand_V2_API">控制 API（LEAP_Hand_V2_API）</a> ｜ <a href="https://github.com/leap-hand/LEAP_Hand_V2_Adv_API">17-DoF 进阶版 API</a> ｜ <a href="https://openreview.net/forum?id=eQomRzRZEP">论文（OpenReview）</a></li>
+</ul>
+<hr>
+<h2>趋势观察</h2>
+<ol>
+<li><strong>国内外的分工正在清晰。</strong> 国外产出「被引用的开源本体和模型权重」（LeRobot 生态、SmolVLA、LEAP Hand），国内产出「成体系的复现路径和供应链」（Datawhale 教程、Seeed 套件、智元全套图纸）。对个人最优的组合是<strong>用国外的模型和框架，走国内的教程和供应链</strong>。</li>
+<li><strong>硬件形态在收敛。</strong> 「3D 打印结构件 + 串行总线舵机 + LeRobot 接口」几乎成了默认答案，AhaRobot 把双臂移动操作机做到 $1000 / 0.7 mm 重复定位 —— 一年前这是实验室价位。形态收敛意味着<strong>换本体不用重写软件栈</strong>，个人的时间投入终于可以积累了。</li>
+<li><strong>瓶颈从「算力」移到了「数据」。</strong> 模型能单卡微调之后，卡人的变成了「你有没有一批干净的真机演示数据」。这也解释了为什么低成本遥操作套件（leader-follower）比机械臂本身更值得先买。</li>
+<li><strong>参与入口（比赛）本期空缺。</strong> 已知的国内赛事时间点都偏早：<a href="https://tech.china.com/articles/20260508/202605081862979.html">高通具身智能与机器人开发者大赛</a> 5 月启动、第二届无人系统具身智能算法挑战赛报名 7 月 15 日截止、清华-西门子工业具身智能挑战赛（9.4 万奖金）也已开赛。<strong>均未核实到当前仍开放的报名入口，故不列为可参与项</strong>，后续每期会专门核一遍截止日期。</li>
+</ol>
+</article><div class="actions">
+<a class="btn" href="2026-09-02.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

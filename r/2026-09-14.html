@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报（2026-09-14）</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报（2026-09-14）</h1>
+<blockquote>
+<p>本期软硬配比：软件 2 / 硬件 1 / 软硬兼有 3。
+前两期分别是 4 软 2 硬（09-12）和 3 软 2 硬 1 兼（09-13），<strong>连续两期偏软</strong>，这期把重心往硬件一侧挪：
+六条里有四条要么带实物 BOM、要么带传感器 / 舵机选型，其中两条给出了可以直接下单的具体型号和价格。
+依然要说清楚的是：<strong>GitHub 上「全新整机」这一类仓本周仍然稀薄</strong>，硬件侧真正有内容的动作，
+集中在「传感器协议」「配件改件」「便宜 IMU 阵列」这种增量上 —— 这已经是连续第二周观察到同一现象，趋势观察里展开。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>★ TOP 1（深度）· RoboGesture —— 让人形一边说话一边比手势，54 类动作的部署权重直接给了</h3>
+<p><strong>是什么。</strong></p>
+<p>银河通用（Galaxy General）+ 清华（Li Yi、He Wang 组）的 <strong>ECCV 2026</strong> 工作，9 月 5 日建仓、9 月 11 日仍在推。
+MIT 许可。它解决的是一个被 VLA 热潮盖住、但做人机交互一定会撞上的问题：
+<strong>人形机器人说话的时候，身体该怎么动。</strong></p>
+<p>技术路径一句话：把一段 WAV <strong>直接</strong>映射成 30 FPS 的 41 维 qpos 序列，中间不经过转写文本。</p>
+<ul>
+<li>音频用 <a href="https://huggingface.co/kyutai/mimi">Mimi</a>（Kyutai 的音频 tokenizer，CC-BY-4.0）编码；</li>
+<li>一个音频条件的动作生成器输出 41 关节轨迹，外挂一个 <strong>54 类语义头</strong>，让动作和话里的语义对齐，
+而不是只跟着韵律抖；</li>
+<li>可选地接一条对话链路：英文 ASR → Qwen3-4B-Instruct + LoRA（rank 8 / alpha 32）产生<strong>带动作标签</strong>的回复
+→ TTS → 手势播放。</li>
+</ul>
+<p>它明确不是「实时流式」：每句话的音频和动作是<strong>整句生成、整句做碰撞过滤、然后同步播放</strong>的。
+README 里自己写清楚了这一点，没有含糊过去。</p>
+<p><strong>为什么现在值得做。</strong></p>
+<ol>
+<li><strong>这是本周唯一一个「顶会 + 代码 + 真权重」三样齐全的国内具身工作。</strong> 同期开源的
+<a href="https://github.com/LogosRoboticsGroup/x-wbc">X-WBC</a>（CoRL 2026，跨本体人形全身控制）和
+<a href="https://github.com/Hoshi-No-Ai/CAP">CAP</a>（CoRL 2026，复旦 + TARS，感知退化下的人形行走）
+<strong>都只有项目页和一串未勾选的 checkbox</strong>。RoboGesture 的 <code>checkpoints/</code> 里躺着实打实的
+<code>motion/model.pt</code> 和 <code>qwen_lora/adapter_model.safetensors</code>，还附了 SHA-256。</li>
+<li><strong>入门那一步被降到了「不用下任何模型」。</strong> 仓里带了 <strong>15 对</strong> <code>sample_XX.wav</code> + <code>sample_XX.npz</code>
+（音频 + 动作），<code>robogesture render</code> 就能把它们合成 960×720 的 H.264/AAC MP4。
+这意味着你可以先花 20 分钟确认「这东西到底长什么样」，再决定要不要投入。</li>
+<li><strong>手势这条线几乎没人做，而它是「机器人像个人」的最短路径。</strong> 本系列做到第十期，
+翻过的国内仓绝大多数在抓取、导航、行走上打转。语音 → 语义对齐的上半身动作，是一个空得多的口子。</li>
+</ol>
+<p><strong>个人怎么分步切进去（带成本和时间）。</strong></p>
+<p>先把硬现实说清楚：<strong>官方测试环境是 Linux x86-64 + Python 3.10 + RTX 4090（24 GB）+ CUDA 12.1。</strong>
+本机 A4000 16 G 的情况分三段，我按「先做哪个」排序。</p>
+<p><strong>第一步 —— 只渲染（30 分钟，0 元，16 G 绰绰有余，大概率连 GPU 都不太用得上）。</strong></p>
+<pre><code class="language-bash">git clone https://github.com/GalaxyGeneralRobotics/RoboGesture.git
+cd RoboGesture
+# Ubuntu 上先补系统包
+sudo apt-get install git git-lfs python3.10-venv libportaudio2 libegl1 libgl1 libglib2.0-0
+bash scripts/setup.sh          # 建 .venv/，装 PyTorch 2.5.1+cu121 和钉住版本的 Unitree SDK
+
+.venv/bin/robogesture render examples/sample_01.npz --output outputs/sample_01.mp4
+</code></pre>
+<p><strong>注意 <code>render</code> 这一步不需要任何 checkpoint</strong> —— NPZ 里已经是动作，渲染器自动找同名的 WAV 配上。
+15 个样本全渲一遍，你就有了这个模型能力边界的第一手印象。</p>
+<p><strong>第二步 —— WAV → 动作（半天，0 元，16 G 应该够）。</strong></p>
+<pre><code class="language-bash">git lfs install --local &amp;&amp; git lfs pull &amp;&amp; git lfs fsck
+.venv/bin/python scripts/download_models.py --only mimi
+
+.venv/bin/robogesture infer examples/sample_06.wav --output outputs/generated.npz
+.venv/bin/robogesture render outputs/generated.npz --output outputs/generated.mp4
+</code></pre>
+<p>然后把 <code>examples/sample_06.wav</code> 换成<strong>你自己录的一段中文</strong>。论文和 LoRA 都是英文对话链路，
+<strong>中文语音喂进纯音频的动作生成器会发生什么，仓里没有任何数据</strong> —— 这是一个半天就能做完、
+而且现在没人做过的实验。把结果贴回 issue 就是有效贡献。</p>
+<p><strong>第三步 —— 完整对话链路（1–2 天，几十元量级，16 G 是未知数）。</strong></p>
+<pre><code class="language-bash">.venv/bin/python scripts/download_models.py        # 再拉 Qwen3-4B-Instruct-2507
+.venv/bin/python scripts/check_install.py --require-cuda
+.venv/bin/robogesture stream                        # 不连设备，只看入口
+</code></pre>
+<p>Qwen3-4B bf16 约 8 GB，加上 Mimi 和动作模型，<strong>16 G 理论上装得下但没人验证过</strong>。
+另外这条链路要你自己的<strong>火山引擎 ASR / TTS 凭据</strong>（<code>docs/robot.md</code> 里写明了），
+这是唯一一处真金白银的花费，按调用量计，试几十句是几元到几十元的量级。</p>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li><strong><code>checkpoints/</code> 里的两个文件在 GitHub 网页上看是 134 字节和 133 字节 —— 那是 Git LFS 指针。</strong>
+直接 <code>git clone</code> 然后加载会报一个和权重无关的怪错。必须 <code>git lfs install --local &amp;&amp; git lfs pull</code>。
+这是本条最容易浪费一小时的地方。</li>
+<li><strong>这不是论文的复现包。</strong> README 原文：「Full training workflows, preprocessing and private datasets
+are not included; this is not a full reproduction package for the paper&#39;s experiments.」
+训练数据是私有的，你能拿到的是<strong>部署版的 54 类推理变体</strong>，外加两个用合成张量跑的训练核心示例。
+想复现论文数字的，趁早死心；想拿它做交互 demo 的，够用。</li>
+<li><strong>真机那一端的门槛在钱不在码。</strong> 官方验证平台是 <strong>Unitree G1 + BrainCo Revo2 灵巧手</strong>，
+这套东西远超本系列「≤ 约 5000 元」的线。但<strong>第一步和第二步完全不需要机器人</strong>，
+MuJoCo 里的固定基座场景（腿角全零）就能看动作。</li>
+<li><strong>离线渲染带平滑和碰撞过滤，不等于真机可以直接播。</strong> README 自己标了
+「suitable for inspecting motion, not a replacement for a live robot preflight」。</li>
+</ol>
+<p><strong>出处与相关链接。</strong></p>
+<ul>
+<li>原始出处：<a href="https://github.com/GalaxyGeneralRobotics/RoboGesture">https://github.com/GalaxyGeneralRobotics/RoboGesture</a></li>
+<li>论文（ECCV 2026）：<a href="https://arxiv.org/abs/2608.28693">https://arxiv.org/abs/2608.28693</a></li>
+<li>项目页与真机视频：<a href="https://robogesture.github.io/">https://robogesture.github.io/</a></li>
+<li>依赖的音频 tokenizer：<a href="https://huggingface.co/kyutai/mimi">https://huggingface.co/kyutai/mimi</a></li>
+<li>对话基座：<a href="https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507">https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507</a></li>
+</ul>
+<hr>
+<h3>2 · TacStack —— 把触觉传感器的串口协议一条条抄进代码，并且附了一份能直接下单的选型清单</h3>
+<p><strong>一句话</strong>：一个跨传感器的触觉数据契约 + 运行时，Apache-2.0，
+<strong>已经把五种真实传感器的协议层写完并逐字节对着厂家手册验过 —— 而作者的传感器还没到货。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>现状</td>
+<td>Phase 4 完成 / Phase 5（第一只真传感器）准备中。<strong>离线闭环已通</strong>：数据集 → <code>TactileObservation</code> → MCAP / Rerun 回放 → 接触 / 滑移事件 → benchmark 报告</td>
+</tr>
+<tr>
+<td>已验协议</td>
+<td><strong>M0404S</strong>（4×4 压阻阵列，115200 主动上报，35 字节帧）、<strong>帕西尼 PX-6AX GEN3</strong>（逐点三轴力，921600 请求-应答）、<strong>帕西尼 PX6D</strong>（六维力，float32，最高 1 kHz 自动回传）、<strong>帕西尼 PX3Q</strong>（三轴关节扭矩）、<strong>Meta DIGIT</strong>（320×240 视觉触觉）</td>
+</tr>
+<tr>
+<td>生态</td>
+<td>Observation 流可导出 / 回放 <strong>LeRobot v3.0</strong> 数据集目录（taxel 特征），直接骑现成工具链</td>
+</tr>
+<tr>
+<td>未做</td>
+<td>ROS2 未接；自带 fixture 是<strong>合成的</strong>；live 采集适配器等硬件到货</td>
+</tr>
+<tr>
+<td>花钱的地方</td>
+<td><code>docs/plans/sensor-procurement.zh-CN.md</code> 写着<strong>帕西尼 PX-6AX GEN3 ¥199</strong>（注意：<strong>不含单路串口转接板，要另购</strong>），主选是 M0404S 串口版（<strong>必须买串口版，蓝牙版的 Micro USB 只充电</strong>）</td>
+</tr>
+</tbody></table>
+<p><strong>为什么值得看</strong>：这份采购文档是我这十期里见过<strong>最不糊弄的硬件选型记录</strong>。
+它给了六条硬性要求（USB 虚拟串口 / 帧格式有文档 / 连续输出而非请求-应答 / 帧率 ≥ 30 Hz /
+至少 4 个感应区 / 7 天无理由退货），还顺手纠了厂家手册的错（「M0404S 手册说 256 个感应点是复制错误，实际 16 点」）。</p>
+<p><strong>个人怎么切进去</strong>：<code>pip install --pre tacstack &amp;&amp; tacstack contract-demo</code> —— 零下载、零硬件，
+先看那个打了 <code>synthetic: true</code> 标记的 JSON 事件长什么样。想认真玩就 clone 下来 <code>uv run tacstack demo</code>。
+<strong>真正值钱的贡献是买一只 ¥199 的 PX-6AX 把 live 适配器补上</strong> —— 这是作者自己标出来的 Phase 5 唯一缺口。</p>
+<p><strong>坑</strong>：PX6D / PX3Q 的<strong>应答帧 CRC 规则没能从手册反推出来</strong>（作者穷举了含反射变体也没命中），
+代码里默认宽松校验、把这个洞写在模块 docstring 里等实机流量来定。
+另外文档目前<strong>绝大部分是中文</strong>，英文翻译要等 v0.1。</p>
+<p>→ 出处 <a href="https://github.com/mailes/TacStack">https://github.com/mailes/TacStack</a> ｜
+<a href="https://pypi.org/project/tacstack/">PyPI 预发布</a> ｜
+<a href="https://github.com/mailes/TacStack/blob/main/docs/plans/sensor-procurement.zh-CN.md">采购清单（中文）</a></p>
+<hr>
+<h3>3 · Vision_Sync_Dexterous_Hand —— 一个摄像头把手指弯曲映射到灵巧手，默认不动、先 dry-run</h3>
+<p><strong>一句话</strong>：MediaPipe 21 点 → 六维归一化关节命令 → USB-RS485 驱动 <strong>BrainCo Revo2</strong>，
+MIT，32 个文件，22 项单测，<strong>默认以 <code>dry_run</code> 安全模式启动</strong>。</p>
+<p>值得写的不是「视觉遥操作」这件事（这个已经烂大街了），而是<strong>它把安全当成了默认行为</strong>：</p>
+<ul>
+<li>默认<strong>不使能</strong>，要显式开；</li>
+<li>张手 / 握拳<strong>双姿态标定</strong>，自动兼容正向和反向特征；</li>
+<li>滤波是四层叠的：关键点 EMA → 滚动中值 → One Euro 低通 → 死区 → 关节速度限制；</li>
+<li><strong>丢手超时自动暂停并保持最后姿态</strong>（不是归零，不是继续跟最后一帧抖）；</li>
+<li>README 第一段就是警告：「首次运行务必 dry_run……测试时保留物理断电手段。」</li>
+</ul>
+<p>后端是分离的三个：<code>DryRunBackend</code> / <code>Rs485Backend</code>（走 <code>bc-stark-sdk</code>）/ 实验性的 <code>DdsBackend</code>
+（Unitree DDS，接 <code>brainco_hand_service</code>）。<strong>换一只别的灵巧手，只要写一个新 backend。</strong></p>
+<p><strong>个人怎么切进去</strong>：Windows 或 Linux，Python 3.9–3.12，一个普通 USB 摄像头。
+<code>python -m venv .venv &amp;&amp; pip install -r requirements.txt</code>，跑 <code>scripts/teleop_mediapipe.py</code>，
+浏览器里打开中文 WebUI 看骨架预览和手动滑块。<strong>整个过程零硬件、零成本、半小时。</strong></p>
+<p><strong>坑</strong>：真机需要 BrainCo Revo2（不便宜）+ USB-RS485 转换器 + <code>bc-stark-sdk</code>，
+而 README 自己说「如果当前平台没有可用的 PyPI 包，请从……」—— 也就是 SDK 的平台覆盖有缺口。
+另外 Revo2 的关节顺序 <code>[thumb, thumb_aux, index, middle, ring, pinky]</code> 是硬编码的假设，
+换手要一起改映射层。仓建于 8 月 31 日，<strong>建完当天推完就再没动过</strong>，1 star。</p>
+<p><strong>顺带一提</strong>：这条和上面的 TOP 1 撞在同一只手上 —— RoboGesture 的官方验证平台也是 G1 + <strong>BrainCo Revo2</strong>。
+本周国内两条独立的线索指向同一款灵巧手，这件事本身值得注意（趋势观察第 2 点）。</p>
+<p>→ 出处 <a href="https://github.com/wsdd2/Vision_Sync_Dexterous_Hand">https://github.com/wsdd2/Vision_Sync_Dexterous_Hand</a></p>
+<hr>
+<h2>🌍 国外</h2>
+<h3>★ TOP 1（深度）· mjbatch —— 4096 个 MuJoCo 仿真，纯 CPU 并行，Go1 在五年前的 M1 笔记本上一分钟学会走路</h3>
+<p><strong>是什么。</strong></p>
+<p>Kevin Zakka（MuJoCo Menagerie、mjctrl 的作者）9 月 10 日开的新仓，四天 <strong>400 star</strong>，Apache-2.0，
+PyPI 上已有包。一句话：<strong>一个把成千上万个 MuJoCo 仿真塞进 CPU 线程池并行跑的 Python 库。</strong></p>
+<p>三个特性，每一个都对应一类以前很别扭的写法：</p>
+<ul>
+<li><strong>C++ 线程池执行，全程释放 GIL</strong> —— 不是 <code>multiprocessing</code>，没有进程间拷贝；</li>
+<li><strong><code>bind</code> 给 MjData 字段做批量活视图</strong> —— <code>batch.bind(&quot;qpos&quot;)</code> 拿到的是一个
+<code>(num_sims, nq)</code> 的 numpy 数组，<strong>原地更新</strong>，你的控制器一次算完 4096 个；</li>
+<li><strong><code>expand</code> 给 MjModel 字段做逐仿真参数化</strong> —— 每个仿真可以有自己的摩擦、自己的几何、自己的齿轮比，
+配 <code>set_const</code> 重算派生常量。这是域随机化和<strong>硬件协同设计</strong>的关键。</li>
+</ul>
+<p>核心用法短到可以整段抄：</p>
+<pre><code class="language-python">import mujoco, numpy as np
+from mjbatch import Batch
+
+model = mujoco.MjModel.from_xml_path(&quot;scene.xml&quot;)
+batch = Batch(model, num_sims=4096)              # 线程数默认吃满所有逻辑核
+qpos, ctrl = batch.bind(&quot;qpos&quot;), batch.bind(&quot;ctrl&quot;)
+batch.expand(&quot;geom_friction&quot;)[:, :, 0] = np.random.uniform(0.4, 1.2, (4096, 1))
+for _ in range(1000):
+    ctrl[:] = policy(qpos)                        # 你的控制器，4096 个一起算
+    batch.step()                                  # 并行推进，qpos 原地更新
+</code></pre>
+<p><strong>为什么现在值得做。</strong></p>
+<ol>
+<li><strong>它把「做具身 RL / MPC 需要一张好显卡」这个前提拆掉了。</strong> README 原话：Go1 的 RL 控制器
+<strong>在一台五年前的 M1 笔记本上不到一分钟学会走路</strong>。本系列的读者里，
+卡在「买不起 / 租不到 GPU」这一步的人，比卡在算法上的多得多。</li>
+<li><strong>它带的六个示例本身就是六份可抄的模板</strong>，而且覆盖面是刻意铺开的：<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>做什么</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hello.py</code></td>
+<td>4096 个单摆，1000 步一次调用跑完</td>
+<td>最小骨架</td>
+</tr>
+<tr>
+<td><code>cartpole_swingup.py</code></td>
+<td>双杆小车摆起</td>
+<td>iLQR</td>
+</tr>
+<tr>
+<td><code>cartpole_mpc.py</code></td>
+<td>小车摆起控制器</td>
+<td>predictive sampling</td>
+</tr>
+<tr>
+<td><code>g1_flip.py</code></td>
+<td>G1 人形跟踪参考后空翻</td>
+<td>滚动时域 iLQR</td>
+</tr>
+<tr>
+<td><code>go1_joystick.py</code></td>
+<td>Go1 四足跟随摇杆</td>
+<td>PPO，1024 个并行环境</td>
+</tr>
+<tr>
+<td><code>arm_throw.py</code></td>
+<td><strong>同时</strong>优化机械臂的比例、齿轮和控制</td>
+<td>CEM 协同设计</td>
+</tr>
+<tr>
+<td><code>rizon_inertia.py</code></td>
+<td>拟合 Rizon 臂的惯性参数</td>
+<td>阻尼 Gauss–Newton</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong><code>arm_throw.py</code> 这一类东西以前几乎没有平民实现。</strong> 「本体形状和控制策略一起优化」
+在论文里很常见，在开源代码里很少见，因为它要求你能<strong>便宜地同时仿真一堆不同的机器人</strong>——
+而这正好是 <code>expand</code> 干的事。对个人来说这是一条真正新开的路：
+<strong>你可以在打印之前，先让 CEM 告诉你连杆该多长。</strong></li>
+</ol>
+<p><strong>个人怎么分步切进去（带成本和时间）。</strong></p>
+<p><strong>第一步 —— 装上、跑 hello（15 分钟，0 元，任何一台电脑）。</strong></p>
+<pre><code class="language-bash">pip install mjbatch
+# 或者跟着仓库走
+git clone https://github.com/kevinzakka/mjbatch &amp;&amp; cd mjbatch
+uv run examples/hello.py        # 4096 个单摆，打印 sim-steps/s 和线程数
+</code></pre>
+<p><code>hello.py</code> 会直接打印你这台机器的吞吐。<strong>先记下这个数</strong>，它是你后面所有决策的基准。</p>
+<p><strong>第二步 —— 摸自己机器的天花板（半天，0 元）。</strong></p>
+<pre><code class="language-bash">uv run python benchmarks/scaling.py unitree_g1 --threads 1,8,24
+</code></pre>
+<p>这个脚本会用<strong>单个 <code>mjData</code> 在纯 Python 循环里步进</strong>作基线，再逐线程数报吞吐。
+它还接受 Menagerie 的模型名直接加载。跑一遍 G1、Go1 和你自己的 XML，你就知道
+「我这台机器能撑多少个并行环境」——这是本系列一直缺的一份数据。</p>
+<p><strong>第三步 —— 复跑 Go1 PPO 并改一个东西（1–2 天，0 元）。</strong></p>
+<pre><code class="language-bash">uv sync --group examples
+uv run examples/go1_joystick.py --headless
+</code></pre>
+<p><code>go1_joystick.py</code> 的常量全摊在文件开头，改起来毫无心理负担：
+<code>NUM_ENVS, HORIZON, ITERS, EPISODE = 1024, 24, 600, 500</code>，
+<code>FRICTION = (0.4, 1.0)</code>，<code>COMMAND_RANGE = [1.5, 0.8, 1.2]</code>（前进 m/s、横移 m/s、偏航 rad/s），
+奖励项是一个字典 <code>REWARD = dict(track=1.0, turn=0.5, gait=2.0, pose=0.5, orient=-5.0, ...)</code>。
+<strong>把 <code>gait=2.0</code> 调到 0 看它会不会变成拖着走</strong>，这种一行改动的消融，在这套代码里成本接近于零。</p>
+<p><strong>第四步（可选，最有意思的那条）—— 拿 <code>arm_throw.py</code> 改成你自己的臂。</strong>
+把 CEM 的设计变量从示例的比例 / 齿轮换成你打算打印的连杆长度，跑出来的结果拿去建模。
+这条和本期专题那条「改件 → 打印 → 上机」是同一条链路的上游。</p>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li><strong>它是 CPU 并行，不是 GPU 并行。</strong> 吞吐量级和 MJX / Isaac 不是一回事。
+它的价值是<strong>在没有好显卡的机器上把门槛拉到零</strong>，而不是在有 A100 的机器上更快。
+拿它去和 MJX 比绝对吞吐会得出错误结论。</li>
+<li><strong><code>bind</code> 返回的是活视图，不是快照。</strong> <code>qpos = batch.bind(&quot;qpos&quot;)</code> 之后 <code>batch.step()</code>，
+<code>qpos</code> 的内容<strong>就地变了</strong>。想留历史必须自己 <code>.copy()</code>。这是最容易写出静默 bug 的地方。</li>
+<li><strong><code>expand</code> 改了 MjModel 字段之后，派生常量要用 <code>set_const</code> 重算</strong>，
+否则你改的摩擦 / 惯量可能不生效，而且不报错。</li>
+<li><strong>部分示例要开窗口</strong>（<code>window.py</code>），无头机器上记得加 <code>--headless</code>；
+有些示例还需要 <code>uv sync --group examples</code> 才有依赖。</li>
+<li><strong>仓库四天大，API 还会动。</strong> 现在写的代码，两周后可能要改。
+这不是不做的理由，但别把它塞进你不想维护的东西里。</li>
+</ol>
+<p><strong>出处与相关链接。</strong></p>
+<ul>
+<li>原始出处：<a href="https://github.com/kevinzakka/mjbatch">https://github.com/kevinzakka/mjbatch</a></li>
+<li>PyPI：<a href="https://pypi.org/project/mjbatch/">https://pypi.org/project/mjbatch/</a></li>
+<li>同作者的模型库（<code>scaling.py</code> 直接支持按名加载）：<a href="https://github.com/kevinzakka/mujoco_menagerie">https://github.com/kevinzakka/mujoco_menagerie</a></li>
+<li>MuJoCo 文档：<a href="https://mujoco.readthedocs.io/">https://mujoco.readthedocs.io/</a></li>
+</ul>
+<hr>
+<h3>2 · DogLegs —— 给四足的每条腿多贴一个 IMU，状态估计就换了一个量级；数据集和 C++ 程序都放出来了</h3>
+<p><strong>一句话</strong>：波恩大学 + 武汉大学的 IROS 2025 工作，用<strong>机身 IMU + 四个腿载 IMU + 关节编码器</strong>
+估计机身位姿、速度和 IMU 误差。<strong>独立的 C++17 程序，ROS 只用来录包，不用来跑。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跑起来</td>
+<td><code>cmake -S . -B build -DCMAKE_BUILD_TYPE=Release &amp;&amp; cmake --build build -j</code>，然后 <code>./build/DogLegs config/parking_lots.yaml</code></td>
+</tr>
+<tr>
+<td>数据</td>
+<td>五个野外序列全部公开（Google Drive）：<code>parking_lots</code> / <code>grass</code> / <code>asphalt_road</code> / <code>construction_site</code> / <code>offroad</code></td>
+</tr>
+<tr>
+<td>输入格式</td>
+<td><strong>未压缩 ROS1 v2 包</strong>，六个话题：一个机身 IMU + 四个腿 IMU（<code>fl/fr/rl/rr</code>）+ <code>robot_sensor</code>（29 个值：时间戳 + 12 关节位置 + 12 关节速度 + 4 个足端力）</td>
+</tr>
+<tr>
+<td>配置粒度</td>
+<td>YAML 里连 IMU 噪声（arw 1.2 deg/√hr、vrw 6 m/s/√hr、gbstd 20 deg/hr）、<strong>每条腿的杆臂</strong>（<code>[0, ±0.03, 0.048]</code>）和安装角都摊开了</td>
+</tr>
+<tr>
+<td>基线</td>
+<td>同作者另开一个 <a href="https://github.com/YibinWu/leg-odometry">leg-odometry</a> 仓做对照（只有机身 IMU + 编码器，不加腿载 IMU）</td>
+</tr>
+</tbody></table>
+<p><strong>为什么把它放进「硬件 / 软硬兼有」</strong>：它的核心命题是一个<strong>硬件决策</strong> ——
+「多花几十块钱在每条腿上贴一个 IMU 值不值」。而且它把「不值 / 值」的对照实现成了两个独立仓库。
+消费级 6 轴 IMU 模块（ICM-42688 一类）单个几十元量级，<strong>四个加起来比一个舵机还便宜</strong>。</p>
+<p><strong>个人怎么切进去（三档）</strong>：
+① <strong>零硬件</strong>：下数据集，编译，跑五个序列，<code>python3 utils/plot.py output/parking_lots</code> 画轨迹，
+和 <code>leg-odometry</code> 的结果并排比 —— 半天，0 元，就能自己回答「腿载 IMU 到底带来多少」。
+② <strong>有四足</strong>：按 YAML 里的杆臂和安装角字段，在自己的狗上贴四个 IMU，录一段包灌进去。
+③ <strong>改 YAML 做消融</strong>：<code>if_estimate_leverarm</code> 现在是 <code>false</code>，打开它看杆臂在线估计收不收敛；
+或者故意把 <code>fl_imu_mountingangle</code> 拧 5°，看估计器的鲁棒边界在哪 —— 这类实验作者没做，<strong>是空的</strong>。</p>
+<p><strong>坑</strong>：① 数据集在 <strong>Google Drive</strong>，国内要自己解决网络；
+② 必须是<strong>未压缩的 ROS1 v2 包</strong>，你自己录的包多半是压缩的或者 ROS2 的，得先转；
+③ 论文是 IROS <strong>2025</strong>，仓是 2026 年 9 月才建的 —— <strong>这不是本周的新研究，是本周才变成可跑的代码</strong>。
+本系列的标准是「个人现在能不能动手」，按这条它合格；但别把它当最新成果引用。</p>
+<p>→ 出处 <a href="https://github.com/YibinWu/DogLegs">https://github.com/YibinWu/DogLegs</a> ｜
+<a href="https://arxiv.org/abs/2503.04580">论文 arXiv:2503.04580</a> ｜
+<a href="https://github.com/YibinWu/leg-odometry">对照基线 leg-odometry</a></p>
+<hr>
+<h3>3 · Palmimo DevKit —— 给 AI agent 装身体的六足桌面机器人，SDK 是 Apache-2.0，机器要 $3,980</h3>
+<p><strong>先把不好的消息放前面：这台机器 ¥598,000 日元（不含税），约 $3,980，折人民币约 2.8 万 —— 
+远超本系列「硬件 ≤ 约 5000 元」的线。作为「买来玩」的推荐，它不合格。</strong></p>
+<p>放进来是因为<strong>它的软件那一半是免费的、开源的、而且可以完全脱离硬件运行</strong>，
+并且那一半恰好是本系列一直在找的一种东西：<strong>一个把 LLM tool call 变成机器人动作的干净参考实现。</strong></p>
+<p>架构是一条直线，而且每一段都可以单独拆下来：</p>
+<pre><code>Palmimo.forward() → step() → MotionEngine 计算 → {servo_name: tick} → ServoDriver → 硬件
+                                                              （或 dry-run 模式下只算不发）
+</code></pre>
+<ul>
+<li><strong><code>MotionEngine</code> 是纯的</strong>：步态 + 逆运动学，<strong>不碰任何 I/O</strong>。这意味着你可以直接把它拿去驱动你自己的六足。</li>
+<li><strong><code>palmimo_sdk.mcp</code> 把同一套工具通过 MCP 暴露</strong>给 Claude Code / OpenClaw / 任何 MCP 客户端。</li>
+<li><strong><code>palmimo_sdk.agent</code> 把 LLM tool call 翻成动作</strong>（walk / wave / look / set a face / speak / capture a frame），
+背后的模型是可换的。</li>
+<li><strong>18 个内置动作</strong>：行走转向（<code>forward</code> / <code>strafe_left|right</code> / <code>rotate_left|right</code> / <code>creep</code>，反相三脚步态）、
+手势（<code>wave</code> / <code>bow</code> / <code>clap</code>…）、姿势（<code>stretch</code> / <code>dance</code> / <code>pushup</code>…）。</li>
+<li><strong>每一个动作都能在没有硬件的情况下算完</strong>（dry-run 优先是设计原则，不是附加功能）。</li>
+</ul>
+<p>硬件规格（官网 Specs &amp; pricing 栏，2026-09-14 抓取）：400×300×300 mm / 约 2 kg；
+<strong>21 轴</strong>（腿 3×6 = 18 + 颈 3）；执行器 <strong>DYNAMIXEL XC330-M288-T × 21（5 V）</strong>；
+主控 <strong>Raspberry Pi 5 / 16 GB</strong> 板载 + 舵机接口板（USB↔串口，1 Mbps）；
+2.8 吋圆形触摸屏 480×480（RP2350）；500 万像素 USB 摄像头；ReSpeaker 麦克风阵列 + 3 W 立体声。</p>
+<p><strong>个人怎么切进去（不买机器的那条路）</strong>：
+<code>pip</code> 装 SDK（仓库标 pre-release），全程 dry-run 跑一遍 18 个动作，把 MCP server 接到你自己的 agent 上，
+<strong>看着日志里的 <code>{servo_name: tick}</code> 流出来</strong>。然后拿 <code>MotionEngine</code> 去驱动一台便宜得多的六足
+（18 个 MG996R 级舵机 + ESP32 的方案，整机一千元以内）。<strong>这才是这个仓对个人的真实价值。</strong></p>
+<p><strong>坑</strong>：① 价格如上，且是「Early Builders / Early Partners」早期价、不含税、按台报价给企业；
+② 仓库标 <code>status: pre-release</code>，API 会动；
+③ 语音那部分（<code>piper-plus</code> TTS + GTCRN 降噪）是可选依赖，装起来比核心麻烦；
+④ 官网主语言是日语，<code>/en</code> 是英文版。</p>
+<p>→ 出处 <a href="https://github.com/Jizai-inc/palmimo-devkit">https://github.com/Jizai-inc/palmimo-devkit</a> ｜
+<a href="https://palmimo.dev/en">产品与规格页</a> ｜
+<a href="https://docs.palmimo.dev">文档</a></p>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<p><strong>本期覆盖：第 3 段（和具身智能的接口 / 改件 → 打印 → 上机闭环）+ 第 2 段（打印执行 / 多机排产）。</strong>
+前四期在「自动建模」上扎堆（MAC、SimpleCADforDSH、openscad-skill、idea-to-print），这期两条都不写建模。</p>
+<hr>
+<h3>🌍 国外 · rebot-b601-rs-d405-wrist-mount —— 一个把「改件 → 打印 → 上机」全程留证的腕部相机支架</h3>
+<p><strong>是什么。</strong></p>
+<p>Bowen Zhu（@JuliaLabs）给 <a href="https://github.com/Seeed-Projects/reBot-DevArm">Seeed reBot Arm B601-RS</a>
+重做的 <strong>RealSense D405 眼在手上支架</strong>。这台臂本系列 09-02 那期推过。
+上游是 Seeed 自己的 <code>D405_305_Mount.step</code>（约 15° 下倾），<strong>作者把它钉在了一个具体 commit 上</strong>，
+然后做了四处改动：<strong>30° 固定下倾、横向平移 9 mm、抬高 6 mm、实体放样过渡填掉侧面缺口</strong>，
+手性和 USB 侧不变。</p>
+<p><strong>为什么这条值得单拎出来写。</strong></p>
+<p>因为它是本系列迄今唯一一个<strong>把整条闭环走完并且每一步都留了可核对证据</strong>的改件：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>留下了什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>为什么改</td>
+<td>D405 官方规格（理想距离 7–50 cm、87°×58° 深度 FOV、<strong>RGB 由左目 + ISP 生成，没有独立 RGB</strong>）和标定手册（<strong>左目是参考相机，位于世界原点</strong>）→ 推出三条约束</td>
+</tr>
+<tr>
+<td>改多少</td>
+<td><strong>20°–36° 按 1° 步进扫了一遍</strong>，两条与任务无关的边界：D405 到绿色夹爪件的保守间隙 ≥ 原厂基线（仿真 ~9 mm / 实测 ~10 mm），光学参考点到 TCP 代理 ≥ 70 mm</td>
+</tr>
+<tr>
+<td>为什么正好 30°</td>
+<td>表就在 README 里：29° → 9.53 mm / 70.8 mm（可行）；<strong>30° → 9.12 mm / 70.2 mm（选中的边界解）</strong>；31° → 8.71 mm / 69.6 mm（两条都破）</td>
+</tr>
+<tr>
+<td>为什么不插值到 30.3°</td>
+<td>原文：<strong>「打印、就位、网格和标定的不确定度都大于 0.3°，插值是虚假精度」</strong></td>
+</tr>
+<tr>
+<td>为什么平移 9 mm</td>
+<td>D405 立体基线 18 mm（数据手册第 146 页），左目距壳体中点正好 9 mm</td>
+</tr>
+<tr>
+<td>出货</td>
+<td>STEP + STL + <strong><code>geometry.json</code>（机器可读的位姿、尺寸和验证元数据）</strong>，三份同时挂在 GitHub Release v1.0.0</td>
+</tr>
+<tr>
+<td>实物</td>
+<td>PETG / 100% 填充和 ABS / 60% 填充<strong>都真打了并装了</strong>，照片 12 张（做了隐私模糊）</td>
+</tr>
+<tr>
+<td>数据</td>
+<td><code>data/</code> 下有 1° 扫描 CSV、出厂标定指标 CSV、历史 15/25/35/45 对照 CSV、实物采集溯源 JSON</td>
+</tr>
+<tr>
+<td>修正</td>
+<td>发布的文件<strong>已经并入实装时发现的后孔 1 mm 修正</strong></td>
+</tr>
+</tbody></table>
+<p><strong>个人怎么切进去（带成本和时间）。</strong></p>
+<ul>
+<li><strong>零硬件那一档（1 小时，0 元）</strong>：只读 <code>docs/design-rationale.md</code> 和 <code>docs/validation.md</code>，
+把「1° 扫描 + 两条任务无关边界 + 选边界解」这个<strong>方法</strong>抄走。这是这个仓最值钱的东西，比 STL 值钱。</li>
+<li><strong>只打印那一档（1 天，料费 ¥3–10）</strong>：下 STL，PETG 或 ABS，0.4 mm 喷嘴 / 0.2 mm 层高 /
+螺丝和过渡区 ≥ 4 圈外壁 / 填充 40–80%。作者明确说了<strong>相机支架不会因为 100% 填充自动变好</strong>，
+壁数、层向和螺丝区几何比堆质量更重要。</li>
+<li><strong>完整那一档（要 B601-RS + D405）</strong>：2× M3×6 相机螺丝 + 2 颗原厂接口螺丝 + 一根足够长的柔性 USB3 线。
+<strong>安装前先做 fit-check：断电机电源，检查裂纹、分层、堵孔、翘曲坐面。</strong></li>
+</ul>
+<p><strong>API token 成本（这条几乎为零，而这正是重点）。</strong></p>
+<p>这条链路里真正花钱的是 <strong>D405 本体</strong>（市售约 ¥1500–2000 量级，未逐项核价）和打印料（几元），
+<strong>模型调用费几乎可以忽略</strong> —— 因为 17 个角度的扫描和 MuJoCo 测量<strong>是确定性脚本干的，不是模型干的</strong>。
+模型只在「写那个脚本」和「读手册提取三条约束」时被用到，量级是几万 token，按主流 API 价目表算是<strong>几毛钱</strong>。
+对照本专题前几期动辄「一个件几块到几十块」的 mesh 生成路线，<strong>这是一个数量级的差别</strong>，原因见下面的分析。</p>
+<p><strong>坑。</strong></p>
+<ol>
+<li><strong>许可是混合的</strong>（仓里 <code>LICENSES/</code> 同时有 MIT、CC-BY-4.0 和 <strong>CERN-OHL-W-2.0</strong>），
+<code>LICENSE.md</code> 是 <code>other</code>。硬件那部分走 CERN-OHL-W 意味着<strong>改了要回馈</strong>，商用前务必读一遍。</li>
+<li><strong>只在 B601-RS 上验过。</strong> 上游文件躺在 Seeed 的 B601-<strong>DM</strong> 目录下，作者明说
+「本仓库不主张 B601-DM 的验证」。别默认通用。</li>
+<li><strong>「最好」是有前提的最好。</strong> 原文：「Best means the best validated general-purpose compromise
+under the stated B601-RS geometry and constraints.」换个任务、换个位姿就未必。</li>
+<li><strong>D405 后孔最大旋入深度 4.0 mm</strong> —— 螺丝在内部顶死会<strong>在支架看起来还松的时候就损坏相机</strong>。
+这是全篇最容易造成实物损失的一句话。</li>
+<li><strong>实物照片用的是在线打印服务，它自己选的摆放和支撑</strong> —— 别从照片的纹路去反推「最优摆放」。</li>
+</ol>
+<p>→ 出处 <a href="https://github.com/bowenszhu/rebot-b601-rs-d405-wrist-mount">https://github.com/bowenszhu/rebot-b601-rs-d405-wrist-mount</a> ｜
+<a href="https://github.com/Seeed-Projects/reBot-DevArm">上游 reBot-DevArm</a> ｜
+<a href="https://www.realsenseai.com/products/stereo-depth-camera-d405/">D405 产品规格</a></p>
+<hr>
+<h3>🇨🇳 国内 · flex-fab-agent —— 把「打印执行」这一段往上抬到排产：CP-SAT 求最优排单，agent 只负责对话和审批</h3>
+<p><strong>是什么。</strong></p>
+<p>面向 <strong>3D 打印柔性制造</strong>的排产智能体，MIT，Docker 一键起。它管的不是「怎么切一个件」，
+而是**「十台机器、一堆订单、来了急单、坏了一台，接下来先打哪个」**。
+这是本专题第 2 段（打印执行）里一直没被碰过的一层。</p>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>怎么做的</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数学规划排产</td>
+<td><strong>OR-Tools CP-SAT</strong>，九大约束（C1–C9），求全局最优排单，<strong>不是启发式</strong></td>
+</tr>
+<tr>
+<td>对话式智能体</td>
+<td><strong>LangGraph 编排 18 种工具</strong>：查订单 / 设备 / 库存 / 客户 / 合同，跑排产，审批版本</td>
+</tr>
+<tr>
+<td>事件驱动模拟</td>
+<td>订单到达 → 前道 → 打印 → 完成，<strong>随机注入设备故障和插单</strong></td>
+</tr>
+<tr>
+<td>全链路自动化</td>
+<td>自动排产调度器 + FIFO 审批 + <strong>幂等防重复</strong>（同一订单只被打印一次）</td>
+</tr>
+<tr>
+<td>评估</td>
+<td>三层评估（工具 / 轨迹 / 语义）+ RAGAS 回归 + <strong>61 个自动化测试文件</strong></td>
+</tr>
+</tbody></table>
+<p><strong>为什么这一层重要。</strong> 本专题写到第五期，「一句话 → 一个件」这条路已经被走了很多遍。
+但只要你不止打一个件 —— 打一批、给别人打、或者做「改件 → 打印 → 上机」的<strong>多轮迭代</strong> ——
+你撞上的下一堵墙就是排产，而不是建模。<strong>这是第一个正面处理这堵墙的开源仓。</strong>
+而且它把「幂等」和「审批」写进了核心，说明作者被重复打印坑过。</p>
+<p><strong>个人怎么切进去（带成本和时间）。</strong></p>
+<p><strong>第一步（1 小时，0 元）</strong> —— 不碰 LLM 先把架子跑起来：</p>
+<pre><code class="language-bash">git clone https://github.com/sjs1919/flex-fab-agent &amp;&amp; cd flex-fab-agent
+docker compose build &amp;&amp; docker compose up -d     # http://localhost:8000
+python run_all_tests.py                          # 全量单测，mock LLM，零成本
+</code></pre>
+<p>README 明写 <code>run_all_tests.py</code> 用 <strong>mock LLM，零成本</strong>，<code>smoke_test.py --skip-llm</code> 也不花钱。
+<strong>先把这两个跑绿，再决定要不要充值。</strong></p>
+<p><strong>第二步（半天，几元）</strong> —— 填 <code>.env</code>，接真模型。<code>.env.example</code> 里主备双供应商：
+<code>PRIMARY_PROVIDER=DeepSeek</code>（<code>deepseek-chat</code>），备用火山方舟。
+把 <code>FLEX_FAB_AGENT_DATA_SOURCE</code> 先设成 <code>csv</code> 可以跳过 MySQL。</p>
+<p><strong>第三步（1–2 天，0 元）</strong> —— 最有价值的改造：<strong>把 C1–C9 那九条约束换成你自己打印机的约束</strong>
+（喷嘴口径、料盘容量、换料时间、夜间不可值守时段）。CP-SAT 那一层是通用的，
+<strong>约束建模才是你的场景知识</strong>。这一步不花 API 费，因为求解器不是模型。</p>
+<p><strong>API token 成本（跑一个件大概多少钱）。</strong></p>
+<p>这条链路和上面那条是两种成本结构，值得对照着记：</p>
+<ul>
+<li><strong>求解不花钱。</strong> CP-SAT 是本地 OR-Tools，<strong>排一次产的模型调用次数是 0</strong>。</li>
+<li><strong>花钱的是对话和审批。</strong> 一次「帮我把这批单排一下并给出理由」的往返，量级是
+几千到两万 input token + 一千量级 output。按 DeepSeek 公开价目表的量级，
+<strong>单次在人民币一毛以内</strong>；一天几十次对话是<strong>几元</strong>的量级。</li>
+<li><strong>真正的开销在评估。</strong> <code>python -m flex_fab_agent.eval.runner</code> 是<strong>三层评估 + RAGAS，用真实 LLM</strong>，
+一轮下来调用数高一两个量级 —— 这是唯一一处可能让你意外的账单，<strong>跑之前先看清楚配置</strong>。</li>
+</ul>
+<p>⚠️ 以上是<strong>量级估算，不是实测账单</strong>，具体按 <a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek 官方价目表</a>
+自行核算（输入是否命中缓存会差好几倍）。</p>
+<p><strong>坑。</strong></p>
+<ol>
+<li><strong>它现在还不连真打印机。</strong> 仓里是「下单 → 排队 → 排产 → 审批 → 上机打印 → 完成」的<strong>事件驱动模拟</strong>，
+「上机打印」这一步是仿真事件，不是 Moonraker / Bambu MQTT。
+<strong>要接真机，你得自己补最后一公里</strong> —— 这也是这个仓最明显的贡献口子。</li>
+<li><strong>默认依赖 MySQL</strong>（可切 csv）。别在没读 <code>.env.example</code> 之前 <code>docker compose up</code> 然后奇怪为什么报错。</li>
+<li><strong>仓库主语言标的是 HTML</strong>（Vue3 控制台占了体积），别被语言标签误导，核心是 Python 包。</li>
+<li><strong>1 star，作者信息基本为空。</strong> 代码量和文档量（<code>docs/demo/</code> 下几十份中文设计稿）远超 star 数，
+但<strong>没有外部使用者</strong>，遇到问题基本只能自己啃。</li>
+<li><code>.env.example</code> 里留着作者的内网代理端口注释（「家里 Clash 7890 / 公司 3450」）——
+无害，但说明这仓是从私有项目直接开源出来的，<strong>其他地方可能也残留内部假设</strong>。</li>
+</ol>
+<p>→ 出处 <a href="https://github.com/sjs1919/flex-fab-agent">https://github.com/sjs1919/flex-fab-agent</a></p>
+<hr>
+<h3>专题分析：这一周这条链路上真正变了什么</h3>
+<p><strong>1. 「让模型生成几何」和「让模型生成搜索脚本」的成本差了一个数量级，而后者这周第一次有了完整样本。</strong></p>
+<p>本专题前几期的成本结构基本都是：一个件 = N 次 mesh 生成 / CAD 代码生成 + M 次几何门重试，
+token 费按次累加，失败重试直接翻倍。<strong>wrist-mount 这条把结构整个翻过来了</strong>：
+模型只用来（a）从数据手册里提三条约束、（b）写一个 1° 步进的扫描脚本，
+剩下 17 个角度的几何计算和 MuJoCo 测量<strong>全是确定性代码在跑，一次模型调用都不发</strong>。
+结果是几毛钱做完一件带完整验证证据的改件。
+<strong>这条经验可以直接搬到建模段</strong>：凡是「在一个参数区间里找最优」的问题，
+让模型写搜索脚本，别让模型当搜索器。</p>
+<p><strong>2. 「可打印性检查」正在被「可安装性检查」取代 —— 后者才是具身场景真正卡人的地方。</strong></p>
+<p>前几期的几何门（idea-to-print 的 19 项 DfAM、SimpleCADforDSH 的单体 / 水密 / 0.2 mm 包络）
+回答的都是「这个件能不能打出来」。wrist-mount 关心的三件事 ——
+<strong>相机到夹爪的保守间隙 ≥ 9 mm、光学参考点到 TCP ≥ 70 mm、螺丝旋入深度 ≤ 4.0 mm</strong> ——
+没有一条是打印约束，<strong>全是装到机器人上之后才会发作的约束</strong>。
+而且它们的来源是<strong>厂家数据手册的具体页码</strong>，不是常识。
+这提示了自动建模 agent 的下一个明确缺口：<strong>一个能从器件手册里抽出装配约束的工具</strong>。
+目前没人做。</p>
+<p><strong>3. 「一句话造一个件」已经饱和，「造一批件」还是空的。</strong></p>
+<p>本周专题的两条，一条是把单件做到极致（wrist-mount 的 1° 扫描 + 12 张实物照 + 4 份 CSV），
+一条是直接跳过单件去管批量（flex-fab-agent 的 CP-SAT 排产）。中间那一段 —— 
+<strong>同一个 agent 连续迭代同一个件的 v1→v2→v3，并且记住上一版为什么失败</strong> —— 
+两边都没做。<a href="https://github.com/neda1274473-sh/agentic-additive">agentic-additive</a>（Vibe Print MCP）
+喊的就是这件事（SQLite 打印历史 + 缺陷检测 + 推荐引擎），但它自己的
+<code>ONE_RUN_RESULT.md</code> 里<strong>切片那一步标的是 <code>MOCK</code>（没装真切片器）</strong>，闭环并未真的闭上。
+这是整条链路上现在最空的一格。</p>
+<p><strong>4. 建模段本周最大的那个仓，值钱的是它顺手做的 URDF 导出。</strong></p>
+<p><a href="https://github.com/SpatiaOS/Procedura">Procedura</a>（SpatiaOS，210 star，MIT，8 月 27 日）
+把文本变成<strong>可编辑的参数化程序</strong>（命名零件 + 带类型的配合关系），而不是三角面片汤 ——
+这是又一个 text-to-CAD。但它有一个别人没有的开关：<strong><code>--motion</code> 把关节运动导出成 OpenUSD / URDF</strong>。
+也就是说这条建模线<strong>自己长出了通往具身的接口</strong>。
+本期不把它列为专题条目（建模段这四期已经写了四条），但这个能力值得单独记一笔。
+顺带它 README 里那个坑非常值钱：<strong>OpenSCAD 如果不是 Manifold 后端，会静默退回 CGAL，
+一个 <code>hull()</code> 从 1.77 秒变成 1774 秒</strong> —— 看起来像卡死，实际是在算。
+装 OpenSCAD 时务必 <code>openscad --backend</code> 确认，发行版打包的 2021.01 版本是没有的。</p>
+<hr>
+<h2>趋势观察</h2>
+<p><strong>1. 「开源 = 有代码」这个假设，这周第三次被打破，而且是在同一个会议上。</strong></p>
+<p>本周三个 CoRL / ECCV 级别的国内外人形工作同时开仓：
+<a href="https://github.com/LogosRoboticsGroup/x-wbc">X-WBC</a>（CoRL 2026，跨本体全身控制，九个仿真本体 + 四个真机）、
+<a href="https://github.com/Hoshi-No-Ai/CAP">CAP</a>（CoRL 2026，复旦 + TARS + 哈工大，感知退化下的 G1 行走）、
+<a href="https://github.com/GalaxyGeneralRobotics/RoboGesture">RoboGesture</a>（ECCV 2026）。
+<strong>前两个的 Release status 全是未勾选的 checkbox</strong>，<code>main</code> 分支明说是 placeholder；
+只有第三个放了真权重。上一期我写过生数 Motus2 和北大 SEED-UMI 的同一问题 ——
+<strong>这已经不是偶发，是本季度的常态</strong>。</p>
+<p>对个人的操作建议很具体：<strong>看到 arXiv 别动，先 <code>git clone</code> 然后 <code>ls</code>。</strong>
+再具体一点：<strong><code>checkpoints/</code> 目录里文件大小是三位数字节的，那是 Git LFS 指针，不是权重</strong>
+（RoboGesture 就是这样，但它 <code>git lfs pull</code> 是真的能拉下来 —— 另外两个拉下来也是空的）。</p>
+<p><strong>2. 国内的灵巧手这周意外地收敛到了同一款：BrainCo Revo2。</strong></p>
+<p>TOP 1 的 RoboGesture，官方验证平台是 Unitree G1 + <strong>BrainCo Revo2</strong>；
+第 3 条的 Vision_Sync_Dexterous_Hand，整个包就是围着 <strong>Revo2</strong> 的 RS485 协议写的
+（外加一条走 Unitree DDS <code>brainco_hand_service</code> 的路）。两个作者、两个完全无关的项目、同一只手。
+这和上半年「大家都在接 π0」是同一种现象的硬件版：<strong>一个平台一旦被够多的上层工作默认，
+它就变成了事实标准，学它的接口比学具体项目更划算。</strong>
+如果你打算在国内做灵巧手相关的事，Revo2 的 SDK（<code>bc-stark-sdk</code>）值得先摸一遍。</p>
+<p><strong>3. 硬件侧连续第二周是「配件周」，而且这次连数据都对上了。</strong></p>
+<p>上一期我提出「开源本体多到一定程度后，给现有本体做增量比再造一台更有产出效率」。
+这周的证据更足：我用十几个硬件向查询词扫 09-01 之后创建的新仓，<strong>star &gt; 0 的整机项目依然是个位数</strong>，
+而增量类的有一串 ——
+<a href="https://github.com/bowenszhu/rebot-b601-rs-d405-wrist-mount">reBot 的 D405 支架</a>（本期专题）、
+<a href="https://github.com/Jdowdy05/unitree-z1-wrist">Unitree Z1 的双轴打印腕</a>（4× XL330，FreeCAD + STEP + STL）、
+<a href="https://github.com/lingzolabs/microduck-hardware-replica">Microduck 的 FreeCAD 整机装配 + Excel BOM</a>（70 个零件、39 个 BOM 项）、
+<a href="https://github.com/Shiyao-Huang/ChinaMicroDuck">Microduck 的国产复刻询价库</a>（四方案对比 + 实价询价 + 打板规格、1548 个文件）、
+<a href="https://github.com/YibinWu/DogLegs">DogLegs 的腿载 IMU 阵列</a>（本期国外第 2）。
+<strong>注意后两个都自己标了上游模型是 CC BY-NC-SA，衍生件禁商用</strong> —— 这是复刻圈现在最大的法务暗礁，
+lingzolabs 甚至明写「本项目不满足 OSHWA/OSI 对开源硬件的通常定义」。这种诚实值得表扬，也值得你抄进自己的仓。</p>
+<p><strong>4. 「不要显卡」这件事，这周被两个方向同时证明了。</strong></p>
+<p>一个是 <a href="https://github.com/kevinzakka/mjbatch">mjbatch</a>（本期国外 TOP 1）：4096 个 MuJoCo 仿真跑在 CPU 上，
+Go1 在五年前的 M1 上一分钟学会走。另一个是 <a href="https://github.com/00make/microduck-arena">microduck-arena</a>：
+<strong>MuJoCo 编译成 WASM，9 个 ONNX 策略在浏览器里 50 Hz 跑 3v3 机器人足球，零后端、零安装</strong>
+（<a href="https://microduck-arena.com/">https://microduck-arena.com/</a> 打开就能看）。
+方向不同，指向同一件事：<strong>具身仿真的算力门槛正在从「有没有 GPU」下沉到「有没有电脑」。</strong>
+本系列一直把「单卡 A4000 能不能跑」当筛选线，这周开始这条线在很多任务上已经不是约束了。</p>
+<p><strong>5. 一个反例，提醒这个榜单的筛选标准还是有用的。</strong>
+本周还翻到两个看起来对口但过不了线的：
+<a href="https://github.com/linsuyun/FMG-Dexterous-Hand-Control">FMG 灵巧手</a> README 承诺
+<code>1_hardware/CAD_files/</code> 和 <code>BOM.csv</code>，<strong>实际目录里只有两个 markdown，CAD 和 BOM 都不存在</strong>；
+<a href="https://github.com/qqqqya/handled">qqqqya/handled</a> 开源了一整套「已量产夹爪」的 STM32G474 工程
+（9261 个文件，带 micro-ROS、固件加密和 SN 工具），<strong>但整个仓没有 README，也没有 LICENSE</strong>。
+后者其实很可惜 —— 内容量摆在那，<strong>补一份 README 就是一个很有价值的仓</strong>，这是个明摆着的贡献机会。</p>
+<hr>
+<h2>仍开放的比赛 / bounty / 众包入口</h2>
+<h3>✅ 复核并<strong>更新</strong>：CoRL 2026 那个挑战赛多了一条个人能走的路</h3>
+<p><strong>Embodied Efficiency Challenge @ CoRL 2026 · Efficient Foundation Models for Real-Time Embodied AI Workshop</strong></p>
+<p>上一期已经登过，本期在官网重新逐条核对，<strong>补到了上期没写的论文那一路</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>日期（全部 23:59 AoE）</th>
+<th>事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2026-09-25</strong></td>
+<td><strong>挑战赛 harness + 参考 Docker 容器发布 —— 还有 11 天</strong></td>
+</tr>
+<tr>
+<td><strong>2026-10-12</strong></td>
+<td><strong>论文提交截止（4 页 + 无限参考文献，OpenReview，双盲，非归档）</strong></td>
+</tr>
+<tr>
+<td>2026-10-23</td>
+<td><strong>挑战赛提交截止</strong></td>
+</tr>
+<tr>
+<td>2026-10-26</td>
+<td>论文录用通知</td>
+</tr>
+<tr>
+<td>2026-11-05</td>
+<td>挑战赛结果验证完毕并公布</td>
+</tr>
+<tr>
+<td>2026-11-12</td>
+<td>Workshop，CoRL 2026，Austin, Texas</td>
+</tr>
+</tbody></table>
+<p><strong>本期新增的关键信息</strong>：</p>
+<ol>
+<li><strong>论文这一路对个人更友好。</strong> <strong>非归档</strong> —— 官网原文：「submitting here does not affect your ability
+to submit the same work to a main conference」，允许并行投稿、允许在投，<strong>已发表的相关工作也可以投</strong>
+（单独一轨评审）。<strong>OpenReview 场地现在已经开了。</strong> 四页的工程报告对个人是够得着的。
+⚠️ 提醒：OpenReview 对新建账号有审核，<strong>用机构邮箱注册会自动激活，非机构邮箱要走人工审核</strong>，别卡在截止前一天。</li>
+<li><strong>挑战赛规则复核无误</strong>：参考模型 <strong>OpenVLA-7B</strong> + 冻结评测 harness，bf16 约 14 GB，<strong>装不进 16 GB Jetson</strong>，
+所以必须量化 / 分片 / offload。目标预算是 <strong>Jetson Orin NX（16 GB）class</strong> 硬件，<strong>在你自己的设备上跑</strong>，
+提交代码 + 上报指标 + 硬件证明。组织方<strong>复跑排名靠前的条目</strong>做验证。</li>
+<li><strong>评分顺序是明确的</strong>：先看成功率（<strong>必须在公布基线的 15 个百分点以内</strong>），再看每个 action 的中位 / p99 延迟，
+最后看参数量和峰值内存。</li>
+<li>所有提交最终会并进 <code>embodied-efficiency-bench</code> 永久开源。设 Best Efficiency Award + 报告位，差旅资助看赞助。</li>
+</ol>
+<p><strong>对个人的现实提醒（同上期）</strong>：Jetson Orin NX 16 GB 开发套件国内大致 ¥4500–6000，卡在本系列预算的边线。
+规则写的是「class hardware」，<strong>是否接受等价设备官网仍无明文</strong>，想参加先问组织方。
+harness 要到 <strong>9 月 25 日</strong>才发，现在能做的准备是把 OpenVLA-7B 的 INT4 / INT8 路线在手头卡上跑通。</p>
+<p>→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a></p>
+<h3>✅ 复核仍开放，日期未变</h3>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）</strong> —— 本期重新在 challenge 首页核对：
+<strong>Submission Deadline 10/16/2026</strong>、<strong>Winners Announcement 11/04/2026</strong>（页面同时列了一个 07/02/2026 的历史节点）。
+<strong>还有一个月出头。</strong> 上期提到的那个返回 404 的 <code>challenge/dates.html</code> 子页<strong>至今仍是 404</strong>，日期读自首页正文。</p>
+<p>→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性，未重新核对榜单）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜ <a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p>（规则和当前最好成绩见 <a href="./2026-09-12.html">09-12 那期</a>。）</p>
+<h3>⚠️ 状态无法确认</h3>
+<p><strong>RoboChallenge</strong>（远程真机评测，09-03 那期推过）—— 首页仍返回 200，但<strong>整页由 JS 渲染，
+<code>curl</code> 抓下来只有 1.2 KB 骨架</strong>，本期<strong>没能核到任何截止日期或开放状态</strong>。
+不写「仍开放」，也不核销。要用的人请自己开浏览器确认。 → <a href="https://robochallenge.ai/">https://robochallenge.ai/</a></p>
+<h3>❌ 本期新核销掉的（别去撞墙）</h3>
+<table>
+<thead>
+<tr>
+<th>入口</th>
+<th>状态</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ATEC2026</strong>（号称具身智能「图灵测试」）</td>
+<td><strong>报名已截止</strong> —— 报名 4/1 起至 <strong>2026-05-30</strong> 止；线上资格赛 5/1–6/30 已结束。真实世界预赛匹兹堡（9 月）/ 上海（10 月）/ 香港（11 月）+ 12 月香港总决赛<strong>只对已报名队伍</strong>，现在<strong>看得了、报不了</strong></td>
+<td><a href="https://www.roboticstomorrow.com/story/2026/04/atec2026-launches-as-the-turing-test-for-embodied-ai-challenging-robots-to-survive-the-real-world/26437/">RoboticsTomorrow 报道</a></td>
+</tr>
+<tr>
+<td><strong>EMR Workshop @ ECCV 2026</strong>（含 Challenge）</td>
+<td><strong>全部截止</strong> —— 全文 7/19、扩展摘要 7/24，workshop 已于 <strong>2026-09-09</strong> 在 Malmö 举办完毕（五天前）</td>
+<td><a href="https://emr-workshop.github.io/">EMR 官网</a></td>
+</tr>
+<tr>
+<td><strong>ICRA 2026 全部九项竞赛</strong>（含 LeHome、AgiBot World、REAL-I、BARN、Legged Robot Challenges）</td>
+<td><strong>已举办完毕</strong> —— 官网标 <strong>Competitions – Submission Closed</strong>，比赛于 2026 年 6 月 1–4 日现场进行，颁奖 6/4</td>
+<td><a href="https://2026.ieee-icra.org/program/competitions/">ICRA 2026 Competitions</a></td>
+</tr>
+<tr>
+<td><strong>NeurIPS 2026 Competition Track</strong></td>
+<td><strong>不是参赛入口</strong> —— 现在开放的是<strong>竞赛提案征集</strong>（组织方投 OpenReview），不是选手报名</td>
+<td><a href="https://neurips.cc/Conferences/2026/CallForCompetitions">NeurIPS 2026 Call For Competitions</a></td>
+</tr>
+<tr>
+<td>GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026</td>
+<td>均已于 2026-05-15 结束</td>
+<td>见上期及 WebSearch 结果</td>
+</tr>
+<tr>
+<td>PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD</td>
+<td><strong>已在 09-12、09-13 两期核销</strong>，本期未变</td>
+<td>见 <a href="./2026-09-13.html">09-13 报告</a></td>
+</tr>
+</tbody></table>
+<p><strong>空缺说明</strong>：本期<strong>没有找到任何新开放的、面向个人的比赛 / bounty</strong>。
+上面唯一还在收提交的两个（CoRL 效率挑战赛、BEHAVIOR）都是上期就登过的。
+按本系列的规矩：<strong>没有就说没有，不硬凑。</strong></p>
+<h3>🔧 不是比赛、但确实缺人做的口子（半天到一周量级）</h3>
+<ol>
+<li><strong>拿中文语音喂 RoboGesture。</strong> 模型是纯音频条件的（不过转写），但 LoRA 和论文都只做了英文。
+录 20 句中文，<code>infer</code> + <code>render</code>，把 MP4 贴回 issue。<strong>半天，0 元，现在没人做过。</strong>（国内 TOP 1）</li>
+<li><strong>在 A4000 16 G 上把 RoboGesture 的完整对话链路跑通并报显存。</strong> 官方只测过 4090/24G。
+Qwen3-4B bf16 约 8 GB，16 G 能不能扛住没人验证。<strong>这是一个明确的、可交付的数字。</strong>（国内 TOP 1）</li>
+<li><strong>买一只 ¥199 的帕西尼 PX-6AX，把 TacStack 的 live 适配器补上。</strong> 作者自己标的 Phase 5 唯一缺口，
+协议层已经写好并对着手册验过了，你只需要接 pyserial 和验帧率。<strong>买之前记得确认要串口版、转接板要另购。</strong>（国内第 2）</li>
+<li><strong>给 flex-fab-agent 接一台真打印机。</strong> 现在「上机打印」是仿真事件。
+接 Moonraker 或 Bambu LAN MQTT，把最后一公里补上 —— 这是这个仓最明显的缺口。<strong>一周量级。</strong>（专题 · 国内）</li>
+<li><strong>用 <code>benchmarks/scaling.py</code> 给 mjbatch 交一份中端 CPU 的吞吐表。</strong>
+现在 README 只有「M1 笔记本一分钟」这一个数据点。跑 <code>unitree_g1</code> / <code>go1</code> / 一个自定义 XML × 多个线程数，
+做成表提 PR。<strong>半天，0 元，对所有人都有用。</strong>（国外 TOP 1）</li>
+<li><strong>拿 DogLegs 的五个序列做一次 <code>leg-odometry</code> 对照，并打开 <code>if_estimate_leverarm</code>。</strong>
+「腿载 IMU 值不值那几十块钱」这个问题现在只有作者论文里的答案，<strong>没有第三方复现</strong>。（国外第 2）</li>
+<li><strong>给 qqqqya/handled 写一份 README 和 LICENSE。</strong> 9261 个文件的量产夹爪 STM32 工程，
+带 micro-ROS 和固件加密工具，<strong>没有一行说明</strong>。先开 issue 问作者意图。（趋势观察第 5 点）</li>
+<li><strong>做一个「从器件数据手册抽装配约束」的 agent 工具。</strong> wrist-mount 里那三条约束
+（间隙 ≥ 9 mm / 距离 ≥ 70 mm / 旋入 ≤ 4.0 mm）全是人肉从 PDF 里读出来的。
+这是自动建模链路上现在最空的一格。（专题分析第 2 点）</li>
+</ol>
+<hr>
+<p><em>本期所有对外链接在 2026-09-14 用 <code>curl -sIL -o /dev/null -w &#39;%{http_code}&#39;</code> 逐条验活。</em>
+<em>两处例外已在正文说明：<code>robochallenge.ai</code> 返回 200 但内容由 JS 渲染、无法核到日期；</em>
+<em><code>behavior.stanford.edu/challenge/dates.html</code> 仍为 404（日期读自 challenge 首页正文）。</em>
+<em>RoboGesture 的 checkpoint 为 Git LFS 托管，GitHub 网页上显示的 134 / 133 字节是指针文件，不是权重本身。</em>
+<em>Palmimo DevKit 的 ¥598,000（≈$3,980）为官网 2026-09-14 抓取的「Early Builders / Early Partners」不含税单价，按台报价给企业，可能变动。</em>
+<em>Jetson Orin NX、RealSense D405、帕西尼 PX-6AX 的价格为公开报价的量级参考，除 PX-6AX 的 ¥199 直接引自 TacStack 采购文档外，其余未逐项核价。</em>
+<em>API token 成本为量级估算，不是实测账单 —— 动手前请按各家官方价目表自行核算（输入缓存命中与否会差数倍）。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-14.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>

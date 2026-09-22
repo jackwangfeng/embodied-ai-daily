@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>具身智能 · 个人可参与项目日报 · 2026-09-21</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#6b7280;--line:#e5e7eb;--link:#0d6efd;
+--code-bg:#f6f8fa;--card:#fafafa;--accent:#0d9488}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e6e6;--muted:#9aa3af;
+--line:#262b33;--link:#6ea8fe;--code-bg:#161a20;--card:#151922;--accent:#2dd4bf}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+header.site{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:32px}
+header.site h1{font-size:22px;margin:0 0 6px}
+header.site p{margin:0;color:var(--muted);font-size:14px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{line-height:1.35;margin:1.8em 0 .6em;font-weight:650}
+h1{font-size:26px}h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:17px}
+p,ul,ol,blockquote,table{margin:.7em 0}
+ul,ol{padding-left:1.4em}
+li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+blockquote{margin-left:0;padding:.1em 1em;border-left:3px solid var(--accent);color:var(--muted)}
+code{background:var(--code-bg);padding:.15em .4em;border-radius:4px;font-size:.88em;
+font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;
+border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:.85em;line-height:1.6}
+table{border-collapse:collapse;width:100%;font-size:.92em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:left}
+th{background:var(--code-bg);font-weight:600}
+img{max-width:100%}
+.meta{color:var(--muted);font-size:14px;margin:-.2em 0 1.6em}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px}
+.btn{display:inline-block;padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+font-size:14px;color:var(--fg);background:var(--card)}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.list{list-style:none;padding:0}
+.list li{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;
+background:var(--card)}
+.list .d{font-size:13px;color:var(--muted);letter-spacing:.03em}
+.list .t{font-size:17px;font-weight:600;margin:4px 0 6px}
+.list .s{font-size:14px;color:var(--muted);margin:0 0 10px}
+.list .lk{font-size:14px}
+.list .lk a+a{margin-left:14px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+</style></head>
+<body><div class="wrap">
+<header class="site"><h1><a href="../index.html">具身智能 · 每日可参与项目情报</a></h1>
+<p>国内 / 国外各 3 条 · 个人可参与、投入可控、产出可预期、技术可达成</p></header>
+<article><h1>具身智能 · 个人可参与项目日报 · 2026-09-21</h1>
+<blockquote>
+<p>筛选口径：<strong>个人可参与 / 投入可控（硬件 ≤ 约 ¥5000、单卡 RTX A4000 16G 能跑）/ 产出可预期 / 技术可达成</strong>。
+本期所有对外链接在写入前用 <code>curl -sIL</code> 逐条验活，非 200 的没有写进来
+（primo 的 Onshape CAD 直链返回 302 登录跳转，因此只给仓库里的 STL / URDF 路径，不给那条链接）。
+本机现实：<strong>A4000 16G，基线已被别的进程占 ~4.4G</strong>，带宽 448 GB/s ≈ 4090 的 0.44。
+下文凡是引用 4090 / 5090 / 5070 的数字，都按 <strong>×2～2.5</strong> 折算成本机口径，并写明是折算值。</p>
+</blockquote>
+<hr>
+<h2>🇨🇳 国内</h2>
+<h3>1️⃣ 【深度】Qi-hub-dot/microduck-locomotion-diagnosis —— 把一个 2164★ 项目里没人回答的 issue 复现、定位、修好</h3>
+<p><strong>是什么。</strong>
+<a href="https://github.com/pollen-robotics/microduck_rl">microduck_rl</a> 是 Pollen Robotics 给 Microduck
+（25 cm、约 800 g、14 个 Dynamixel XL330 的小双足）开源的训练代码，MuJoCo-Warp 做 GPU 物理、PPO 训到 50 Hz 再导 ONNX 上真机。
+仓库里有个开放 issue <a href="https://github.com/pollen-robotics/microduck_rl/issues/46">#46</a>：<strong>走路任务训不出来</strong>。
+报告人用 4 张 L4 跑了七组对照实验，结论是策略收敛到原地站着、脚从不离地，<strong>这个 issue 至今没有回复</strong>。</p>
+<p>这个仓库是一个人把它从头做完的完整记录：在 Windows 上跑通 → 复现失败 → 拆奖励定位原因 → 改掉 → 再测 →
+<strong>最后发现项目自己的评估指标有系统性偏差</strong>。四件事每件都有落盘证据和源码行号。</p>
+<p><strong>为什么现在值得做。</strong>
+这是个人参与开源具身项目<strong>性价比最高的那种姿势</strong>：不需要自己定义问题（issue 已经写好了）、
+不需要硬件（纯仿真）、不需要说服谁（issue 摆在那里没人管），产出终点非常硬 ——
+一条能被 maintainer 验证的 PR 或 issue 回复。</p>
+<p>而且它给出的三条结论本身就有迁移价值，任何人调 legged locomotion 的奖励都会撞上：</p>
+<ol>
+<li><strong><code>air_time</code> 奖励的门控问题。</strong> 它的权重 3.0 是所有正项里最大的，但门控只比较<strong>有没有指令</strong>，
+不问<strong>实际有没有前进</strong> —— 被命令前进却原地踏步的策略照样拿满这份奖励（microduck 把
+<code>command_threshold</code> 设成了 0.01）。改成按「实际水平速度达到指令 30%」门控后，
+<code>error_vel_xy</code> 从 0.43 降到 <strong>0.35</strong>。
+注意作者这里和报告人的现象还不一样：报告人测到 <code>air_time ≈ 0.002</code>（脚从不离地），
+作者复现出的是 <strong>0.9997（脚一直在抬但不前进）</strong> —— 卡的位置不同，是一个更具体的漏洞。</li>
+<li><strong>前向 / 侧向误差等权是错的。</strong> 单独写脚本测「它到底走不走」：固定前进指令跑 20 秒，
+路径走了 <strong>7–9.5 米</strong>、一千步只摔一次、轨迹平滑 —— <strong>它会走，只是横着滑走</strong>。
+逐步读身体系速度：恒定指令 <code>(+0.30, 0.00)</code> 下第 7 步前向 +0.112、侧向 <strong>−0.230</strong>，侧漂到了前向的两倍。
+把侧向误差乘 3 倍、跟踪项权重 2.0 → 4.0，同一第 7 步侧漂降到 <strong>−0.044</strong>（五分之一），前向几乎没变，
+<code>error_vel_xy</code> 从 0.35 降到 <strong>0.21</strong>。</li>
+<li><strong>那个指标本身会高估误差约三倍。</strong> 把测量从 8 步延到 400 步看稳态：前向速度稳定在 0.23–0.27
+（指令 0.30，跟踪率 77–90%），侧向在 ±0.06 内，<strong>逐帧稳态误差 0.07，而同一时刻日志里的
+<code>error_vel_xy</code> 是 0.206</strong>。看实现就明白了 —— 它把五类指令模式（站住 / 只控朝向 / 世界系 /
+只控前向 / 普通）的误差混在一起，还做整回合累积平均，把起步加速段（误差 0.30）和踉跄（0.17–0.24）都算进去。
+<strong>盯着这一个数字，没法判断策略会不会走</strong>，这也解释了报告人为什么查不出是哪类环境在失败。</li>
+</ol>
+<p><strong>个人怎么切进去（分步 / 带成本和时间）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>先读这个仓库的复现章节，不跑训练。把三条结论和 <code>rewards.py:L209</code>、<code>velocity_command.py:L64</code> 两处源码对上</td>
+<td>1–2 小时</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>装环境跑一轮短训（几百轮就够看曲线）。Linux 上比作者的 Windows 路径顺得多，他踩的四个坑（PyPI 限速、<code>download.pytorch.org</code> 走 Cloudflare、<code>pyproject.toml</code> 漏 Windows CUDA 索引、<code>Rhoban/bam</code> 必须钉 <code>62bd8ce</code> 那个 commit）<strong>只有最后一条在 Linux 上也会踩</strong></td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>完整复现基线。4096 并行环境、五千轮，作者在单张 4070 上约 <strong>10 小时</strong>。A4000 折算 <strong>约 20–25 小时</strong>，建议 <code>nohup</code> 挂后台，分两晚跑</td>
+<td>1–2 天（挂机）</td>
+<td>电费</td>
+</tr>
+<tr>
+<td>3</td>
+<td>打上两个修复（air_time 前进门控 + 侧向 3× 权重），重跑，对齐 0.43 → 0.35 → 0.21 这条曲线</td>
+<td>1–2 天（挂机）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>交付</strong>：把复现曲线 + 逐帧速度表贴进 issue #46。这是第一条实质回复。要更进一步就提 PR，<strong>把奖励门控改成可配置</strong>而不是写死</td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5（可选）</td>
+<td>作者把头部相机接进了观测但<strong>没跑视觉对照实验</strong>，并且明说了为什么不跑。这一格是空的，且他已经配好了带障碍的地形（孤立障碍 40% / 带间隙踏脚石 20% / 平地 20% / 缓坡 20%）—— 想做视觉 locomotion 的，这是现成的起跑线</td>
+<td>数天</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li><strong>仓库没有 LICENSE。</strong> 作者自己的分析文字和脚本默认保留所有权利，<strong>想引用或二次分发先开 issue 问</strong>。
+上游 microduck_rl 的许可另算，提 PR 时以上游为准。</li>
+<li><strong>作者的环境是 Windows + RTX 4070。</strong> 上面第 2 步的 10 小时是他的口径，本机要按 ×2–2.5 折算。
+<code>4096</code> 并行环境在 A4000 16G 上要先确认显存够 —— MuJoCo-Warp 的显存占用随环境数近似线性，
+跑不起来就先降到 2048 并在结论里注明（并行数会影响 PPO 的样本效率，<strong>不要拿不同并行数的曲线直接对比</strong>）。</li>
+<li><strong>修复本身是有范围的，别过度宣称。</strong> 作者自己写明：<code>air_time</code> 的门控用的是「线性范数 + 角速度绝对值」，
+所以被命令<strong>原地转身</strong>的环境也通过门控 —— 但转身时原地踏步本来就对，不算漏洞。
+真正的漏洞只在「被命令前进却原地踏步」这一类。往 issue 里写的时候照抄这个范围说明。</li>
+<li><strong>接相机的三个坑他已经踩过了</strong>（深度图 <code>(B,1,H,W)</code> 不能和向量观测放同一扁平组，要单独成组 + <code>concatenate_dim=0</code>；
+默认 <code>obs_groups</code> 不含 camera，不显式挂 CNN 会报 <code>No 2D observations are provided</code>；
+平铺 MLP 处理不了 1024 维图像，要换 <code>SpatialSoftmaxCNNModel</code> 配 <code>cnn_cfg</code>）。做第 5 步直接抄，别重走。</li>
+</ol>
+<p><strong>出处</strong>：<a href="https://github.com/Qi-hub-dot/microduck-locomotion-diagnosis">https://github.com/Qi-hub-dot/microduck-locomotion-diagnosis</a>（1★，2026-09-18 建并最后推送，<strong>无 LICENSE</strong>）
+<strong>相关</strong>：<a href="https://github.com/pollen-robotics/microduck_rl">上游 microduck_rl（2164★）</a> ｜
+<a href="https://github.com/pollen-robotics/microduck_rl/issues/46">issue #46 原帖</a> ｜
+<a href="https://github.com/pollen-robotics/microduck">Microduck 本体仓库</a> ｜
+<a href="https://pollen-robotics.com/microduck/">Microduck 官方页</a></p>
+<hr>
+<h3>2️⃣ DeRuiChen258/ACT-so101 —— ACT 全流程复现，TorchScript 导出到 C++ 新进程重载，12.69 ms</h3>
+<ul>
+<li><strong>是什么</strong>：SO-101 上的 LeRobot ACT 实验台，四段闭合：数据集审计 → CUDA 训练 → TorchScript 导出 →
+<strong>C++（LibTorch）在独立新进程里重新加载并前向</strong>，最后用 MuJoCo Menagerie 的 SO-ARM100 把真实抓取回放出来。
+上游编排是一个 C++17 CLI（<code>actlab</code>），Python 只出现在数据集扫描、导出、离线评测、可视化这几个点。</li>
+<li><strong>数字（全部实测、逐条有落盘证据）</strong>：训练 3000 步 loss <strong>13.628 → 0.716</strong>，27 samples/s，<strong>峰值显存 3.69 GB</strong>，15.3 分钟；
+TorchScript 与官方 pipeline <strong>max_abs_diff = 0.0</strong>（freeze+reload 相对差 3.59e-4）；
+C++ 推理 <strong>mean 12.69 ms / p95 14.05 ms</strong>（warmup 5 + 30 次），C++ vs Python 最大绝对差 0.0445；
+专家 vs 预测末端 MAE 0.1206 m；物理抓取在 1.00×/1.05×/1.10×/1.20× 四档尺寸下全部 HELD。</li>
+<li><strong>本机口径</strong>：他的卡是 <strong>RTX 5070 Laptop（sm_120）</strong>，模型只有 51.6 M 参数、峰值显存 3.69 GB ——
+A4000 16G 跑训练<strong>绰绰有余</strong>，折算约 <strong>30–40 分钟</strong>跑完 3000 步。推理侧折算约 <strong>25–32 ms</strong>，
+仍然远高于 SO-101 的控制需求。这是本期最容易在本机一天内完整复现的一条。</li>
+<li><strong>最该抄走的一条</strong>：<code>infer_act</code> 这个<strong>跨进程重载硬门禁</strong>。很多人的 checkpoint 只在训练脚本的 Python 进程里能跑，
+一换进程就废；把「独立进程加载 <code>.pt</code> 并前向」做成流水线里的一道 PASS/FAIL，是部署前最便宜的一次体检。</li>
+<li><strong>坑</strong>：① <strong>README 自己顶着一行免责</strong>：本项目未接真机、未接仿真环境，<strong>仿真成功率 / 真机成功率一律 <code>NOT_MEASURED</code></strong>，
+离线动作误差不等于任务成功率 —— 引用时别把 MAE 当成功率；
+② LibTorch 是 <code>2.12.0+cu132</code>、训练侧是 <code>torch 2.11.0+cu130</code>，<strong>跨版本加载他实测通过</strong>，但换你自己的组合要重验；
+③ 数据集路径写死在 <code>configs/paths.yaml</code> 里的作者目录，改自己的再跑。</li>
+<li><strong>出处</strong>：<a href="https://github.com/DeRuiChen258/ACT-so101">https://github.com/DeRuiChen258/ACT-so101</a>（1★，2026-09-19 建并最后推送，<strong>MIT</strong>）
+｜<a href="https://huggingface.co/datasets/lerobot/svla_so101_pickplace">数据集 lerobot/svla_so101_pickplace</a>（50 episodes / 11 939 帧 / 30 fps / 双相机）
+｜<a href="https://github.com/huggingface/lerobot">LeRobot</a> ｜<a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie（SO-ARM100 模型来源）</a></li>
+</ul>
+<hr>
+<h3>3️⃣ N-B-Studio/5010-3DOF-Foc-kinematic-chain —— 三个 5010 云台电机做成的 FOC 三关节链，MIT，STEP 齐</h3>
+<ul>
+<li><strong>是什么</strong>：一条<strong>可复用的三关节串联 FOC 平台</strong>，既能当腿（髋 / 膝 / 踝），也能当 3-DOF 机械臂。
+三个 5010 电机走 <strong>CAN 1 Mbps</strong> 分布式 FOC；主控 STM32H723 跑 <strong>1 kHz 外环</strong> + 安全状态机 + UART 命令；
+<strong>每个关节另配一颗独立的输出端编码器</strong>（AS5047P，挂在 STM32G030 编码器节点上），外加足底触点开关。</li>
+<li><strong>为什么值得做</strong>：现在开源腿足几乎都直接上成品准直驱模组（RobStride / 宇树 / 本末），一条腿就四位数起。
+这个仓库是少见的**「从航模云台电机自己搭一条带输出端编码器的关节链」<strong>的完整路径：
+固件、IK、URDF、RViz、STEP 装配体都在，而且</strong>把安全做成了显式命令**
+（<code>CLEAR</code> / <code>ZERO</code> / <code>POWER ON</code> / <code>ARM</code> / <code>DISARM</code> / <code>POWER OFF</code>，加关节空间 PD 的力矩上限和看门狗）。
+<strong>输出端编码器</strong>这件事尤其值钱 —— 只有电机端编码器的自制关节，减速齿隙和形变是看不见的，
+做力控 / 落地检测时会被这段未知量直接拖死。</li>
+<li><strong>个人怎么切进去</strong>：① 先只做<strong>一个</strong>关节：一颗 5010 + 一块 FOC 驱动板 + 一颗 AS5047P，
+把「电机端 vs 输出端」的角度差扫出来，这张图本身就是能发出去的结果；
+② 再照 STEP 打印连杆串成三关节，跑仓库里的 Python IK 轨迹，用 RViz 看 <code>JointState</code>；
+③ 想更进一步：它的 1 kHz 外环 + CAN 是现成的底座，<strong>把上层换成本机上跑的策略</strong>即可。</li>
+<li><strong>成本估算（未实测，按国内电商常见价推）</strong>：5010 云台电机 3× ≈ ¥300–450、FOC 驱动板 3× ≈ ¥300–600、
+STM32H723 核心板 ≈ ¥100–180、STM32G030 + AS5047P 3× ≈ ¥150、CAN 收发器 / 线材 / 电源 ≈ ¥200、
+打印件 ≈ ¥100 —— <strong>整条链大致 ¥1200–2200，单关节起步约 ¥300–500</strong>，在预算内。</li>
+<li><strong>坑</strong>：① README 里 YouTube 是 <code>TODO</code>，<strong>演示只有 B 站那一条</strong>，下手前先看完；
+② 驱动板型号 README 没写死（只说「CAN FOC 驱动器」），选板要自己确认协议和 1 Mbps 波特率；
+③ 5010 是航模云台电机，<strong>持续力矩很小</strong>，拿它当腿只能做轻质验证平台，别指望承重；
+④ 安全命令齐全不等于安全 —— 1 kHz 外环 + 力矩上限第一次上电务必先 <code>DISARM</code> 状态空跑一遍。</li>
+<li><strong>出处</strong>：<a href="https://github.com/N-B-Studio/5010-3DOF-Foc-kinematic-chain">https://github.com/N-B-Studio/5010-3DOF-Foc-kinematic-chain</a>（2★，2026-09-17 建、09-18 推送，<strong>MIT</strong>）
+｜<a href="https://www.bilibili.com/video/BV1ziem6XE5T/">B 站演示视频</a></li>
+</ul>
+<hr>
+<h2>🌍 国外</h2>
+<h3>1️⃣ 【深度】AlessioPagliai/primo —— 30 自由度 3D 打印人形，整套 BOM / STL / URDF / 仿真先放出来，邀请一起造</h3>
+<p><strong>是什么。</strong>
+一台<strong>还没造出来</strong>的开源人形：1.40 m、购入质量 33 kg（成品估 45 kg）、30 个自由度
+（腿 6+6、臂 7+7、腰 2、颈 2），结构全部 3D 打印（PA-CF / PPA-CF，Bambu Lab H2C，0.4 喷嘴），
+全身 RobStride 准直驱，Jetson AGX Thor 做算力，5 路 CAN @ 1 Mbps，运动学参考 Unitree G1。
+作者的原话是「<strong>还在设计阶段，没造出来，现在放出来就是为了一起造</strong>」。
+仓库里 BOM（xlsx，每行有供应商、链接、质量、备注）、电气方案、可打印 STL、URDF、Isaac Lab 仿真、
+设计笔记，以及一份给 AI 接手用的 <code>AGENTS.md</code>，全在。</p>
+<p><strong>为什么现在值得做。</strong>
+开源人形有两类：一类是权重和策略开源、本体买不到；另一类是本体图纸开源、但只给你一个完工的 zip，
+你看不到任何<strong>设计决策过程</strong>。primo 是罕见的第三类 —— 它把<strong>尚未定稿的分歧</strong>也写出来了。
+比如脚踝：两个电机装在小腿里、两根推杆、偏置万向节，<strong>pitch 是两者之和、roll 是两者之差</strong>；
+再比如髋偏航电机，<strong>CAD 里装的是 RS06、BOM 里写的是 RS03，作者明说「下腿单之前由仿真决定」</strong>。
+这种「还没决定、等人来算」的口子，就是个人能真正插进去的地方 —— 不需要你有这台机器人，
+你只需要在 Isaac Lab 里用他的 URDF 把这个选型问题跑出一个答案。</p>
+<p><strong>个人怎么切进去（分步 / 带成本和时间）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>拉仓库，只看 <code>sim/urdf/primo.urdf</code> + <code>docs/</code>。先在 MuJoCo 或 Isaac Lab 里把 URDF 加载起来看它站不站得住</td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>接最明确的那个口子</strong>：髋偏航到底用 RS06 还是 RS03。用他的 URDF 改两版惯量 / 力矩上限，在仿真里跑同一套步态，把力矩峰值和功耗对比出来，写成 issue</td>
+<td>2–5 天</td>
+<td>0（A4000 够，Isaac Lab 把 <code>num_envs</code> 降到 512–1024）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>打一个脚踝机构</strong>。两电机推杆差动这套结构，用普通 PLA 先打一版不带电机的运动学验证件（连杆 + 偏置万向节），量一下 pitch/roll 解耦的实际行程和干涉</td>
+<td>2–3 天</td>
+<td>打印耗材 ≈ ¥50–100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>想真投钱：BOM 的 <code>Phase</code> 列可以筛。<strong>Phase 1（右臂 + 右手 + 一套脚踝件 + 电池 + 安全链 + 桌面躯干）= €4 009</strong>，约 ¥32 000 —— <strong>已经远超本日报 ¥5000 的预算线</strong>，作为个人不建议整期买</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>交付形态：一条带数据的 issue / 一次 PR（补仿真配置或修 URDF）/ 一个打印验证件的实测报告。三者都不需要你拥有这台机器人</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p><strong>坑与风险。</strong></p>
+<ol>
+<li><strong>仓库根目录没有 LICENSE 文件。</strong> 一台机械设计全开的机器人却没写许可，意味着<strong>默认保留所有权利</strong>。
+自己打印学习没问题，<strong>任何再分发或商用先问作者</strong>。这是本条最大的硬伤。</li>
+<li><strong>成本必须讲清楚</strong>：整机全新约 <strong>€30 000</strong>；如果 Thor 和手已经有了，约 <strong>€10 300</strong>。
+这条<strong>不满足本日报的「投入可控」</strong>，写进来是因为它的<strong>设计资料和仿真入口对个人完全开放</strong>，
+可参与的是设计与仿真，不是整机。别被 Phase 1 的 €4 009 误导成「四千欧就能玩」。</li>
+<li><strong>它还没被造出来过。</strong> 没有任何一个零件通过实物验证，<code>images/preview.gif</code> 是 CAD 巡览 + Isaac Lab 里的行走。
+打印任何结构件之前先自己核一遍尺寸链。</li>
+<li><strong>手是外购的 Inspire RH56DFX</strong>，自研 15 自由度手在 <code>docs/hand-design.md</code> 里还是设计稿。</li>
+<li><strong>Onshape CAD 直链需要登录（返回 302）</strong>，所以本文不给那条链接；仓库里的 <code>cad/stl/</code> 和
+<code>sim/urdf/primo.urdf</code> 是不需要登录就能拿到的等价入口。</li>
+</ol>
+<p><strong>出处</strong>：<a href="https://github.com/AlessioPagliai/primo">https://github.com/AlessioPagliai/primo</a>（3★，2026-09-19 建、09-20 推送，<strong>无 LICENSE</strong>）
+<strong>相关</strong>：<a href="https://youtu.be/6nTcHpFmKbQ">CAD 巡览 + Isaac Lab 行走视频（4K）</a> ｜
+<a href="https://github.com/isaac-sim/IsaacLab">Isaac Lab</a></p>
+<hr>
+<h3>2️⃣ j1s4nn/wmdrift —— 给自回归视频世界模型补一套「说得出数字」的失效诊断，纯 CPU 能跑</h3>
+<ul>
+<li><strong>是什么</strong>：喂一段 rollout 视频 + 模型当时被 condition 的相机轨迹，它量四件事：
+<strong>相机漂移、时序抖动、记忆衰减、画质衰退</strong>，输出 <code>report.md</code> + <code>metrics.csv</code> + <code>per_frame.csv</code> + 四张 PNG。
+仅推理，<strong>CPU 可跑</strong>，只有 LPIPS 和可选的 CLIP 对齐会用 GPU。</li>
+<li><strong>它从哪来（这点最值得看）</strong>：作者在读 <a href="https://github.com/shengshu-ai/minWM">minWM</a>，
+发现那个项目的 debug skill <strong>只用文字描述</strong>长程失效（相机偏离指令路径、帧抖、忘掉去过的地方、画质衰减），
+<a href="https://github.com/shengshu-ai/minWM/issues/11">issue #11</a> 讨论长程训练、#18 讨论相机平移尺度歧义，
+<strong>但没有一处把这些失效量成可跨 run 对比的数字</strong>。于是他自己写了那个「我想要的工具」。
+—— 这和本期国内那条 microduck 诊断是同一种打法：<strong>上游把问题描述清楚了但没量化，个人补上那把尺</strong>。</li>
+<li><strong>怎么上手</strong>：仓库自带四段合成视频（<code>scripts/make_fixtures.py</code> 渲的，带真值位姿），
+<code>python -m wmdrift analyze tests/fixtures/synthetic_pan.mp4 --pose &quot;w*30&quot; --output reports/pan</code>
+一条命令就有报告，<strong>不需要你先有一个世界模型</strong>。另有 <code>batch</code> 和 <code>compare</code> 两个子命令做跨 run 对比。</li>
+<li><strong>个人切入点</strong>：① 拿本期专题二那条 lingbot 的输出视频喂进去，量一下「加速前后画质是不是真的无损」
+—— 它自己报的是 PSNR/SSIM/LPIPS，wmdrift 量的是另一组维度（漂移 / 抖动 / 记忆），两边能互相打靶；
+② 把它做成 minWM 的 CI 检查项提上去。</li>
+<li><strong>坑</strong>：① 作者的测试环境是 Windows + torch 2.14(cu126) + opencv 4.11，Linux 没测；
+② 四个指标都是<strong>相对指标</strong>，跨模型比要固定同一条相机轨迹，否则数字没有可比性；
+③ 合成视频只有四段，<strong>真实 rollout 上的指标分布是未知的</strong>，别拿 fixture 上的阈值当通用门限。</li>
+<li><strong>出处</strong>：<a href="https://github.com/j1s4nn/wmdrift">https://github.com/j1s4nn/wmdrift</a>（12★，2026-09-13 建、09-16 推送，<strong>MIT</strong>）
+｜<a href="https://github.com/shengshu-ai/minWM">上游 minWM</a> ｜<a href="https://github.com/shengshu-ai/minWM/issues/11">issue #11（长程训练讨论）</a></li>
+</ul>
+<hr>
+<h3>3️⃣ Kenn3o3/Vista + vt_franka —— CoRL 2026 视触觉等变扩散策略，仿真数据集直接开放下载</h3>
+<ul>
+<li><strong>是什么</strong>：VISTA 把腕部视觉和触觉编成球面特征，<strong>用末端姿态把表征对齐到工作空间</strong>，
+再用有限群等变的扩散策略出动作块。作者的说法是：这是<strong>最早把「工作空间级等变性」做进端到端视触觉扩散策略</strong>的工作之一。
+两个仓库分工明确 —— <code>Vista</code> 是论文主仓（训练 / 离线推理），<code>vt_franka</code> 是真机那半（两台电脑 + Polymetis + HTTP 控制 API）。</li>
+<li><strong>对个人最有用的一点</strong>：<strong>训练和离线推理不需要 Isaac Sim，也不需要机器人</strong>。
+仿真数据集挂在 ModelScope 上（<code>MIDFOV_EXPERIMENT</code>，八个任务：抓取分类 / 插 HDMI / 插孔 / 插管 /
+举瓶 / 举罐 / 拔钥匙 / 放瓶上架），一条 <code>bash scripts/download_data_from_modelscope.sh</code> 拿下来就能训。
+仓库还给了一条 <strong>smoke run</strong>（<code>--max-train-steps 1</code>）专门用来验流水线通不通，不用等一轮训练。</li>
+<li><strong>本机口径</strong>：参考环境是 Python 3.9 + PyTorch 2.1.0 + CUDA 11.8 + PyTorch3D 0.7.5，
+默认 <code>--batch-size 32 --num-epochs 300</code>。单任务扩散策略这个量级，<strong>A4000 16G 装得下</strong>，
+batch 32 若显存吃紧降到 16 即可；八个任务用 <code>all</code> 串行跑，按天计。</li>
+<li><strong>坑</strong>：① <strong>两个仓库都没有 LICENSE</strong>，论文代码默认保留所有权利，复现自用没问题，二次分发先问；
+② 包名还叫 <code>univtac</code>（兼容旧 checkpoint），别以为拿错了仓库；
+③ <strong>真机那半门槛很高</strong>：Franka + Polymetis + 触觉传感器 + 两台电脑直连子网（<code>10.0.0.1/24</code>），
+完全不在个人预算内 —— 但 <code>vt_franka</code> 里那套「控制机 / 工作站分离 + HTTP :8092」的架构文档本身可以抄；
+④ <code>vt_franka</code> 明确提醒 <strong>8092 端口只在直连链路上放行，不要暴露到不可信网络</strong>。</li>
+<li><strong>出处</strong>：<a href="https://github.com/Kenn3o3/Vista">https://github.com/Kenn3o3/Vista</a>（0★）+ <a href="https://github.com/Kenn3o3/vt_franka">https://github.com/Kenn3o3/vt_franka</a>（0★），
+均 2026-09-14 建、09-15 推送，<strong>均无 LICENSE</strong>
+｜<a href="https://vista-paper.github.io/">项目页</a> ｜<a href="https://modelscope.cn/datasets/kenn3o3/MIDFOV_EXPERIMENT">仿真数据集（ModelScope）</a></li>
+</ul>
+<hr>
+<h2>🧩 专题 · AI Agent × 3D 打印 / 自动建模</h2>
+<blockquote>
+<p>本期轮换到链路的<strong>后半段</strong>：上期（09-20）两条都在「自动建模」那一格（DATUM 照片→参数化 CAD、
+text-to-cad 直出 URDF/SRDF）。这期一条走 <strong>DfAM / 可取出性</strong>，一条走 <strong>打印执行与状态回流</strong>。</p>
+</blockquote>
+<h3>1️⃣ 🌍 mattz1337/gridfinity-designer —— 把「东西怎么拿得出来」设计进凹槽里，而不是事后补一个指甲槽</h3>
+<ul>
+<li><strong>是什么</strong>：一个 Codex skill，配一台外接的 <strong>FreeCAD MCP server</strong>，
+从照片 / 实测尺寸 / 已有 CAD 出发，生成合身的 Gridfinity 收纳件。
+流程是：确定朝向与形状 → <strong>把实测值、估算值、原型假设三类数字严格分开</strong> → 设计取出方式 →
+出带尺寸的排布图供确认 → 实现 → 产出 FreeCAD 原生文件、STEP/STL、预览图和一份<strong>诚实的校核报告</strong>。</li>
+<li><strong>它真正新的地方</strong>：<strong>把「取出性」当成一等设计目标</strong>。多数 text-to-CAD 的收纳件做出来是个精确的坑，
+东西塞进去就抠不出来。这个 skill 把取出方式列进设计变量：手指凹槽、露出高度、可拆插件、
+<strong>press-to-lift（按住后端、笔的带帽端翘起来）</strong>—— 仓库里那段真打印的演示 GIF/视频就是这个机构，
+用户自己录的 1×3 收纳件。它还照顾了 Gridfinity 的底脚、堆叠唇、高度约定和局部地板厚度。</li>
+<li><strong>个人怎么切进去</strong>：① 没有 FreeCAD MCP 也能用 —— skill 会退化成「只出测量、规格和图纸，
+并明确报告没有生成 CAD」，先用这一档验证它的测量引导问得对不对；
+② 接上 FreeCAD MCP 跑一个你桌上真有的东西（笔、卡尺、电烙铁头），打出来试配；
+③ 迁移到具身场景：把「取出性」换成「<strong>装配可达性</strong>」—— 灵巧手指节的固定座、腕部相机支架，
+同样是「装得进去还要拆得出来」的问题，这套把实测 / 估算 / 假设分开记的做法可以直接搬。</li>
+<li><strong>成本（含 API token 费，这条链路的主要开销）</strong>：FreeCAD 和 MCP server 本身<strong>不花钱</strong>，
+花钱的是 agent 的来回。一个件的完整会话（测量引导 + 方案 + CAD 往返 + 校核报告）
+<strong>估算 15–40 轮工具调用</strong>：用 Opus 级模型大致 <strong>$1–4 / 件</strong>，用便宜档模型大致 <strong>$0.2–0.6 / 件</strong>，
+打印耗材几毛到几块。<strong>反复试配才是成本大头</strong> —— 所以它专门做了「不改被测尺寸的前提下减料出首版试配件」，
+这一条是实打实省钱的。（此为估算，作者没公布 token 统计。）</li>
+<li><strong>坑</strong>：① README 自己写明：<strong>不安装 FreeCAD、不自带 MCP server、不保证照片能算出物理合身</strong>；
+② 它假设 Codex 的本地 skill 支持，用别的 harness 要自己搬 <code>skills/gridfinity-designer/SKILL.md</code>；
+③ MCP 实现差异大，skill 是<strong>发现可用工具</strong>而不是假定 schema —— 换 server 要重验一遍工具覆盖；
+④ 远端 MCP server 还需要一个可达的输出落盘位置。</li>
+<li><strong>出处</strong>：<a href="https://github.com/mattz1337/gridfinity-designer">https://github.com/mattz1337/gridfinity-designer</a>（1★，2026-09-20 建并推送，<strong>MIT</strong>）</li>
+</ul>
+<h3>2️⃣ 🇨🇳 asahiba/bambu-monitor —— agent 想闭环打印，先得有一只能持续看的眼睛</h3>
+<ul>
+<li><strong>是什么</strong>：局域网内的拓竹打印机<strong>多画面实时监控台</strong>。画面墙 + 每路下面的进度 / 喷嘴 / 热床 / 腔体温度 / 料盘余量。
+<strong>IP + 访问码直连，不经过拓竹云端</strong>；自动搜索走 SSDP 组播 + 单播补扫 + 2021 端口广播三通道。
+四种交付形态同一内核：Windows 单文件 exe、Linux 单文件、Docker 镜像、安卓 APK（内置 Python，平板可脱机跑），
+网页端是统一操作界面。</li>
+<li><strong>为什么放进这个专题</strong>：这个专题前几期一直在补「agent 怎么把件建出来、切出来、送进打印机」，
+<strong>回流那一段一直是缺的</strong>。上期之前写过的 3Dpriting-detect-agent 是<strong>打印后</strong>诊断；
+这个是<strong>打印中</strong>的状态流。一个真要做自修复的 agent，需要的正是这种「不依赖厂商云、
+结构化、能被程序订阅」的状态源。它还做了<strong>设备族抽象</strong>，已内置 <strong>Klipper / Moonraker</strong>（覆盖 Snapmaker U1 等），
+也就是说这层抽象不只服务拓竹。</li>
+<li><strong>个人怎么切进去</strong>：① <strong>完全离线可开发</strong> —— 内置打印机模拟器，<strong>没有真机也能跑通全链路</strong>，
+这是最省事的起点（<code>--headless --port 8080</code> 起服务，先把状态字段摸清）；
+② 在它的设备族抽象上加一个你自己的打印机适配（见 <code>docs/ARCHITECTURE.md</code>），这是最自然的一个 PR；
+③ 真正的具身向用法：<strong>把状态流接成 agent 的工具</strong> —— 进度 / 温度 / 余料三个信号足够支撑
+「余料不够先暂停并重排」「腔温异常时改参数重切」这类闭环，配合上期那条打印后诊断就是完整的一圈。</li>
+<li><strong>成本（含 API token 费）</strong>：<strong>这条本身 token 费为 0</strong> —— 它不调任何模型，纯协议与 UI。
+它在这条链路里扮演的是「便宜的眼睛」：把状态查询从 agent 的上下文里挪出去，
+每次只回若干字段而不是整页 HTML，<strong>省下来的恰恰是 token</strong>。</li>
+<li><strong>坑</strong>：① 它是<strong>监控</strong>，不是控制 —— 别指望它下发打印指令，闭环的「手」还得另找（PrusaSlicer/OrcaSlicer CLI + 厂商接口）；
+② 局域网访问码直连绕过云端是优点也是约束，<strong>打印机必须和你在同一网段</strong>；
+③ 支持机型列了一长串（A1/A1 mini/P1P/P1S/X1/X1C/X1E/A2L/P2S/H2D/H2D Pro/H2C/X2D），
+未知机型「也能连、协议通用」是作者的说法，<strong>换机型要自己验</strong>；
+④ 安卓 APK 要允许「未知来源」，下载后建议核 <code>SHA256SUMS.txt</code>。</li>
+<li><strong>出处</strong>：<a href="https://github.com/asahiba/bambu-monitor">https://github.com/asahiba/bambu-monitor</a>（1★，2026-09-12 建、09-20 推送，<strong>MIT</strong>，带 CI 和 Release）</li>
+</ul>
+<h3>📌 专题分析</h3>
+<ol>
+<li><strong>这周这条链路上真正变的，是「证据」开始比「生成」值钱了。</strong> gridfinity-designer 的核心卖点不是它能建模，
+是它<strong>把实测值、估算值、原型假设三类数字分开记</strong>，并输出一份会承认自己没验证什么的报告。
+连着看上期的 DATUM（错误尺寸保留上一版）、09-15 的 cadloop（结论稳健性分区），
+三期三个项目不约而同在做同一件事：<strong>给 agent 生成的几何配一条可追溯的来源链</strong>。
+text-to-CAD 的竞争点已经从「能不能出 STEP」移到「出的这个 STEP 凭什么信」。</li>
+<li><strong>「可取出性」是 DfAM 里第一个被 agent 真正接住的软约束。</strong> 壁厚、悬垂角、最小特征这类硬规则早就能查，
+但「东西塞进去能不能拿出来」以前只能靠人看。把它变成设计变量（凹槽 / 露出 / 插件 / press-to-lift）
+并且有一段真打印视频作证，是这周唯一一个从「几何合法」走到「人能用」的例子。
+具身侧完全同构的问题是<strong>装配可达性</strong>，还没人做。</li>
+<li><strong>回流那一段仍然是整条链最薄的。</strong> 这周能找到的「打印中状态」方案（bambu-monitor）本身不含任何 agent 成分，
+它只是恰好提供了 agent 需要的东西。也就是说：<strong>建模侧一周好几个新项目，执行回流侧要靠拿非 agent 工具来拼。</strong>
+这个缺口对个人是机会 —— 把 Moonraker/拓竹的状态流封成一个 MCP server，是当前这条链上最缺、也最好做的那块。</li>
+<li><strong>成本结构提醒</strong>：这条链的开销依然<strong>不在硬件，在 token</strong>。本期两条一个 $0.2–4/件、一个 $0，
+差别就在「几何计算有没有交给确定性工具」。凡是让模型直接吐坐标的方案，成本和错误率会一起涨。</li>
+</ol>
+<hr>
+<h2>⚡ 专题 · 流式感知 → 连续决策</h2>
+<blockquote>
+<p>覆盖面说明：主条目两条本期都落在 <strong>① 推理侧提速</strong> 这一格，
+因为这周真正带硬数字的两个工程都在这里。<strong>② 执行侧异步 / ③ 模型侧流式 / ④ 传感器侧连续性</strong>
+由下面的论文清单补齐（ForceDelta-VLA 和 Agile-WAM 是触觉/力的连续闭环，
+SkipVLA 是执行侧跳步，One-Step Drifting 是模型侧一步生成的<strong>负面结果</strong>）。
+上期（09-20）主条目是 StreamPI（模型侧）+ edge-reflex（执行侧反射层），09-19 是 Dexmal（推理侧）+ FlashVLA（模型侧）。</p>
+</blockquote>
+<h3>1️⃣ 🇨🇳 BUAA-CI-LAB/EmbodiInfer —— 北航做的「具身版 vLLM」，π0.5 一次前向从 74.33 ms 压到 38.89 ms</h3>
+<p><strong>是什么。</strong>
+一个<strong>同时服务推理和 RL rollout</strong> 的具身模型执行引擎。操作策略、世界-动作模型、循环式导航策略
+走同一套 Python 接口，引擎负责批处理、会话状态、多卡分发，各模型只写自己的 adapter（加载 / 预处理 / 解码）。
+配套还有一个 <a href="https://github.com/BUAA-CI-LAB/EmbodiRun">EmbodiRun</a>：配一个模型、一个算力节点、一个机器人或仿真器，
+整条闭环从一个文件里跑起来。两个仓库都是 2026-09-20 才推的。</p>
+<p><strong>为什么对「连续决策」关键。</strong>
+它做的四件事恰好对应连续流的四个痛点：
+<strong>CUDA graph 重放</strong> prefix 和 decode 路径（省内核启动）、
+<strong>跨环境批处理</strong>（多个环境的观测攒一批、或者随环境推进滚动聚合）、
+<strong>循环会话</strong>把导航策略的隐状态跟着观测走（显式 commit / reset / cancel）、
+<strong>同一个引擎直接出 log-prob 供 RL refit</strong>。第三条尤其少见 —— 大多数推理框架假设每次请求无状态，
+而连续感知的导航策略恰恰是有状态的。</p>
+<p><strong>数字（作者口径：RTX 4090、BF16、batch 1、每个模型 1600 条 LIBERO-10 观测，2026-09-09 记录）。</strong></p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th align="right">优化前</th>
+<th align="right">优化后</th>
+<th align="right">吞吐</th>
+<th>折算到本机 A4000（×2–2.5）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>π0.5（10 步去噪）</td>
+<td align="right">74.33 ms</td>
+<td align="right"><strong>38.89 ms</strong></td>
+<td align="right">25.71 obs/s</td>
+<td><strong>约 78–97 ms → 约 10–13 Hz</strong></td>
+</tr>
+<tr>
+<td>GR00T N1.7（4 步去噪）</td>
+<td align="right">45.51 ms</td>
+<td align="right"><strong>31.30 ms</strong></td>
+<td align="right">31.95 obs/s</td>
+<td><strong>约 63–78 ms → 约 13–16 Hz</strong></td>
+</tr>
+</tbody></table>
+<p>降幅：π0.5 <strong>−47.7%</strong>、GR00T <strong>−31.2%</strong>。基线走 SDPA，优化路径加了原生推理和 prefix graph，
+π0.5 用 Triton 写的 prefix / denoising attention，GR00T 用 SDPA。
+计时口径是<strong>解码后的 CPU 观测进 → CPU 动作出</strong>，warmup 10 条跨任务观测之后才开始计。
+<strong>batch 32 时 GR00T 优化路径达到 59.33 obs/s</strong>（同一张卡）。</p>
+<p><strong>个人怎么切进去。</strong></p>
+<table>
+<thead>
+<tr>
+<th>步</th>
+<th>做什么</th>
+<th>时间</th>
+<th>花费</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td><strong>不要 checkpoint 也能跑</strong>：<code>uv sync --frozen &amp;&amp; uv run python examples/quickstart.py</code>，用合成策略走一遍单条 / 批量请求，看动作块形状</td>
+<td>1 小时</td>
+<td>0（注意 Linux lock 里含 CUDA 版 torch wheel，<strong>即使纯 CPU 机器安装体积也很大</strong>）</td>
+</tr>
+<tr>
+<td>1</td>
+<td>上 π0.5：<code>uv sync --python 3.12 --frozen --no-dev --group pi05</code>，<strong>模型 profile 要装在独立环境里</strong></td>
+<td>半天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在 A4000 上重跑他们的 benchmark，把「4090 → A4000」这条折算曲线自己测出来 —— <strong>这件事目前没人做过，量出来就是一条能提的 issue</strong></td>
+<td>1 天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>显存不够就看 <code>benchmarks/pi05-quant-benchmark/</code>（量化 π0.5）和 <code>streamvln-quant-benchmark/</code>。A4000 只有 ~11.6 G 可用，量化那条路更现实</td>
+<td>1–2 天</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>想做贡献：<strong>加一个新策略的 adapter</strong>。引擎明说「adapter 拥有 checkpoint 加载 / 预处理 / 解码，调度器不用改」，这是最干净的贡献面</td>
+<td>数天</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><strong>坑。</strong>
+① <strong>刚发两天（2026-09-20 首推、2★）</strong>，接口还会动，别急着在上面盖生产代码；
+② 模型支持矩阵很不平 —— π0.5 / GR00T / OpenVLA-OFT / LingBot-VLA 走无状态批处理，
+StreamVLN / Qwen R2R / NaViDA 是<strong>循环、只支持 B=1</strong>，<strong>网络 adapter 一律只服务 batch 1</strong>；
+ActiveVLN 还是 eager 执行、<strong>真 checkpoint 的 GPU 对齐尚未完成</strong>；
+③ <strong>模型 profile 必须装在各自独立的环境里</strong>，DM0.5 还要一个外部 OpenDM 环境；
+④ 那些数字是 <strong>4090</strong> 的，本机务必按 ×2–2.5 折算再写进任何结论；
+⑤ Apache-2.0，这点是干净的。</p>
+<p><strong>出处</strong>：<a href="https://github.com/BUAA-CI-LAB/EmbodiInfer">https://github.com/BUAA-CI-LAB/EmbodiInfer</a>（2★，2026-09-20 建并推送，<strong>Apache-2.0</strong>）
+<strong>相关</strong>：<a href="https://embodiinfer.readthedocs.io/">文档</a> ｜
+<a href="https://github.com/BUAA-CI-LAB/EmbodiRun">EmbodiRun（部署 / 执行运行时）</a> ｜
+<a href="https://github.com/dexmal/realtime-vla">Dexmal Realtime-VLA（09-19 写过的另一条推理侧）</a> ｜
+<a href="https://github.com/z-lab/flashvla">FlashVLA（09-19 的模型侧流式）</a></p>
+<h3>2️⃣ 🌍 kaarelkaarelson/lingbot-world-v2-realtime —— 1.3B 世界模型跑到 16.1 FPS，一张六级优化阶梯全部量了</h3>
+<ul>
+<li><strong>是什么</strong>：把 LingBot-World 2.0（1.3B 视频世界模型）的推理<strong>在不改模型的前提下</strong>提到
+<strong>单张 RTX 5090 上 16.1 FPS</strong>，是论文原码的 <strong>2.7×</strong>，且<strong>无损</strong>。
+WASD 连续输入 → 连续出画面，<code>lingbot play dragon</code> 就是一个能玩的窗口。</li>
+<li><strong>横向对比（同一条 22 秒片段，<code>lingbot bench</code>，2026-09-17 在 RunPod 5090 上测）</strong>：
+原论文代码 2.68 s/chunk（6.0 FPS）、SGLang Diffusion 2.48（6.45）、LightX2V 2.07（7.73）、
+NVIDIA FlashDreams 1.85（8.65）、<strong>本项目 0.98（16.1）</strong>。</li>
+<li><strong>那张阶梯（这才是能带走的东西）</strong>：主机同步（每层都 CPU↔GPU 同步 → 记账搬到 GPU）2.68→2.57；
+解码器（Wan 2.1 VAE fp32 → fp16 + 亚像素上采样）2.57→<strong>1.95</strong>；编译（eager → 单张编译图）1.95→1.68；
+矩阵乘（bf16 linear → torchao FP8 rowwise）1.68→1.47；注意力（FlashAttention-2 → SageAttention 2.2）1.47→<strong>1.04</strong>；
+内核融合（norm / RoPE / residual / FP8 量化融成一个）1.04→0.98。
+总体：内核启动 ~20 000 → <strong>~4 800</strong>，主机同步 110 → <strong>2</strong>，GPU 占用 90% → <strong>98%</strong>。
+作者还诚实地写了<strong>到此为止</strong>：FP8 matmul 已到卡峰值 90%、解码卷积 83%，手写注意力内核最多再换 1 FPS，所以不写。</li>
+<li><strong>本机能不能跑：不能，要说清楚。</strong> 作者自己标的最低配是 <strong>RTX 4090 / 24 GB（未测，预计 ~12 FPS）</strong>，
+<strong>A4000 16G 装不下</strong>；而且 A4000 是 <strong>sm_86（Ampere）</strong>，<strong>没有 FP8 张量核</strong>，
+阶梯里的第四级直接用不了，第五级 SageAttention 走 INT8 路径能不能覆盖 sm_86 也要自己验。
+所以本条的价值是<strong>方法论而非可复现性</strong> —— 六级里<strong>主机同步、fp16 解码器 + 亚像素上采样、
+单张编译图、内核融合这四级在 A4000 上一样成立</strong>，拿去优化你自己在跑的 DiT / 扩散策略，是能落地的。</li>
+<li><strong>个人切入点</strong>：把这张阶梯当模板，对你手头的策略逐级测一遍（<strong>每一级单独计时，不要一把梭</strong>），
+最容易吃到的是前两级 —— 主机同步和 fp32 解码器几乎是所有开源实现的默认坑。</li>
+<li><strong>坑</strong>：① <strong>仓库没有 LICENSE</strong>，权重要 HF token 自己下，上游模型的许可另算；
+② 首次启动编译 ~2.5 分钟，之后 35 秒 —— <strong>测速要跳过首次</strong>（和本机 CUDA 那套规矩一样）；
+③ 「无损」是有口径的：六级里四级 bit-identical，FP8 和注意力内核在相同输入上单独核过，
+其余用 PSNR/SSIM/LPIPS 与原 fp32 解码器对比，数字在 <code>quality_summary.tsv</code>；
+④ 它是<strong>世界模型</strong>不是控制策略，别直接当 VLA 引擎用。</li>
+<li><strong>出处</strong>：<a href="https://github.com/kaarelkaarelson/lingbot-world-v2-realtime">https://github.com/kaarelkaarelson/lingbot-world-v2-realtime</a>（14★，2026-09-16 建、09-19 推送，<strong>无 LICENSE</strong>）
+｜<a href="https://kaarelkaarelson.com/lingbot/">作者的优化记录</a> ｜<a href="https://arxiv.org/abs/2607.07534">原论文 arXiv:2607.07534</a></li>
+</ul>
+<h3>📄 本期论文清单（6 篇，均 2026-09-16 ~ 09-17 新投）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>标题 / 链接</th>
+<th>一句话</th>
+<th>代码 / 权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>rMuscle: Robotic Muscle Memory for Efficient VLA Model Inference</strong><br><a href="https://arxiv.org/abs/2609.19104">https://arxiv.org/abs/2609.19104</a></td>
+<td>抓住「同一工位重复执行」这件事：Context Cache 复用视觉 token 输出省计算、Action Cache 复用神经元激活模式省权重访存，<strong>4090 和 Jetson Thor 上 1.29–1.42× 提速且真机成功率不变</strong>（折算到 A4000 ≈ 同样倍率，但绝对延迟 ×2–2.5）</td>
+<td>❌ 未见公开代码</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>VLA-ULAP: Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction at the Edge</strong><br><a href="https://arxiv.org/abs/2609.18663">https://arxiv.org/abs/2609.18663</a></td>
+<td>云端大 VLA 和一个 <strong>7.4 M 参数</strong>本地预测器交替出手：Orin Nano 上 <strong>19.9 ms / 0.183 J</strong>，对比 GR00T 在 A6000 上 284.3 ms / 50.55 J；砍掉 <strong>48.8–76.7%</strong> 的云端调用还保住 95.0–97.5% 成功率，<strong>真机是 SO-101</strong></td>
+<td>❌ 未见公开代码</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Agile-WAM: An Agile Tactile World Action Model for Contact-Rich Robot Control</strong><br><a href="https://arxiv.org/abs/2609.20761">https://arxiv.org/abs/2609.20761</a></td>
+<td>传感器侧：视觉和触觉<strong>时间尺度本就不同</strong>（相邻视觉帧高度相似、触觉在接触瞬间突变），于是视觉 latent 监督放在更远的时间偏移、触觉只预测下一帧；五个真机任务成功率<strong>相对 +29.4%</strong>，推理延迟 <strong>11.9 ms</strong></td>
+<td>⚠️ <a href="https://hanchuzhou.github.io/TARO_project_page/">项目页</a>标「Code coming soon」</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>ForceDelta-VLA: Distilling Force-Conditioned Action Corrections for Contact-Rich Manipulation</strong><br><a href="https://arxiv.org/abs/2609.18242">https://arxiv.org/abs/2609.18242</a></td>
+<td>传感器侧：把动作拆成「可复用参考动作 + 力驱动修正量」，用冻结教师的力条件 / 力无关两种模式配对蒸馏出修正目标；<strong>在两次参考动作更新之间就能响应接触变化，不用重生成整段动作块</strong>。九个任务 <strong>82.2% vs ForceVLA 54.4%</strong>，接触力峰值降约 <strong>26%</strong></td>
+<td>⚠️ 仅<a href="https://github.com/Ju6276/ForceDelta-VLA-project">项目页仓库</a>（无代码）</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>SkipVLA: Skipping VLA Steps with Classical Planning for Fast Robot Manipulation</strong><br><a href="https://arxiv.org/abs/2609.20648">https://arxiv.org/abs/2609.20648</a></td>
+<td>执行侧：自由空间交给经典运动规划器，<strong>只在抓 / 放这类接触密集的技能上查 VLA</strong>；复用冻结的视觉-语言骨干预测每段规划的目标位姿，不需要额外演示。三个 VLA × 13 个 LIBERO 任务 + 真机 6-DoF YAM 臂，<strong>最高 2.5× 更快且成功率持平</strong></td>
+<td>❌ 未见公开代码</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Technical Report: One-Step Drifting Action Heads for GR00T N1.7</strong><br><a href="https://arxiv.org/abs/2609.18108">https://arxiv.org/abs/2609.18108</a></td>
+<td>模型侧的<strong>负面结果，值得单独看</strong>：把 GR00T N1.7 的迭代扩散动作头换成一步 drifting 头，动作头前向 <strong>45.3 ms → 5.0 ms</strong>、骨干+头 70.0 → 30.6 ms，<strong>但成功率系统性下降</strong>（LIBERO-Spatial 64.0±4.0%、Goal 52.0±1.0%、Long 26.0±2.6%），三个种子方差都很小说明不是初始化问题。作者把它报成速度-成功率的权衡而非改进</td>
+<td>❌ drifting 头未开源；<a href="https://github.com/NVIDIA/Isaac-GR00T">底座 GR00T N1.7 是开放的</a></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>清单里的论文按规则<strong>不进 <code>pushed.jsonl</code></strong>。本期六篇没有一篇放出可跑代码 —— 这本身是个信号，见下面的小结。</p>
+</blockquote>
+<h3>📌 专题小结</h3>
+<ol>
+<li><strong>这周的加速全部发生在「重复性」上，而不是「模型更小」上。</strong> rMuscle 复用跨执行的内部状态、
+EmbodiInfer 复用去噪步之间的中间结果和 CUDA graph、SkipVLA 复用经典规划器去跳过自由空间、
+VLA-ULAP 复用一个 7.4 M 的本地头去跳过云端调用。四条路子不同，假设是同一个：
+<strong>连续控制里绝大多数前向是在重复算已经算过的东西</strong>。这对个人是好消息 —— 这类优化不需要重训模型。</li>
+<li><strong>「一步生成」这条路本周被明确打了个问号。</strong> One-Step Drifting 那份技术报告把速度提了 9 倍，
+成功率却在 LIBERO-Long 掉到 26%，而且三个种子方差只有 2.6 个百分点。
+它列的可疑因素里有一条特别值得记：<strong>同步的 LIBERO 评测根本不会走异步 overlap 那条路径</strong> ——
+也就是说，一步生成的收益要在<strong>异步执行</strong>下才可能兑现，用同步 benchmark 评它本身就低估了它。
+凡是看到「一次前向省了多少毫秒」，先问评测是不是异步的。</li>
+<li><strong>触觉终于开始按自己的时间尺度进闭环了。</strong> Agile-WAM 和 ForceDelta-VLA 是从两头逼近同一件事：
+前者让触觉 latent 只预测下一帧、视觉 latent 预测更远（<strong>承认两种模态的采样节奏不同</strong>），
+后者让力修正在两次参考动作更新<strong>之间</strong>生效（<strong>承认动作块的时间粒度太粗</strong>）。
+过去把触觉当成「多一路图像」塞进视觉编码器的做法，本周被这两篇同时绕开了。</li>
+<li><strong>一个不好的信号：本期六篇论文无一放出可跑代码。</strong> 对照本专题前两期（FlashVLA、StreamPI、edge-reflex、
+Dexmal 三件套都是有仓库的），这周是纯论文周。所以主条目只能从工程仓库里选，
+也是为什么两条都落在推理侧 —— <strong>带硬数字又有代码的，这周只有推理侧那两个</strong>。</li>
+<li><strong>给本机的一条实操建议</strong>：EmbodiInfer 的 4090 数字折到 A4000 是 π0.5 ≈ 10–13 Hz、GR00T ≈ 13–16 Hz。
+这个频率<strong>够做桌面操作，不够做动态任务</strong>。想再往上，本期给的两条现实路径是
+<strong>量化</strong>（EmbodiInfer 自带 π0.5 / StreamVLN 的量化 benchmark）和 <strong>云边交替</strong>（VLA-ULAP 那套思路，
+本地那颗 7.4 M 的头在 A4000 上是白送的算力）。
+另外若要在执行侧补上连续目标流，<a href="https://github.com/OpenGHz/servopy">ServoPy</a>（MIT，PyPI 上直接装，
+NumPy 是唯一必需依赖，Panda 演示 <strong>100 Hz 伺服 / 500 Hz 物理</strong>，纯 CPU）是本周新出的现成件 ——
+它把「新目标随时进来、下一个控制周期就用上」这件事做成了库。</li>
+</ol>
+<hr>
+<h2>📈 趋势观察</h2>
+<p><strong>这周最值得记的一条：个人参与开源具身项目的姿势，正在从「造新东西」转向「给已有项目补一把尺」。</strong>
+本期国内 top1（microduck 诊断）和国外第 2（wmdrift）是两个互不相干的人、在两个互不相干的项目上，
+做了同一件事：<strong>上游把失效现象描述清楚了，但没有量化，于是个人写出那个缺失的测量工具</strong>。
+microduck 那条更狠一步 —— 它量到最后发现<strong>上游自己的评估指标高估误差约三倍</strong>，
+这解释了为什么 issue 报告人用七组对照实验也定位不到问题。
+这种贡献不需要算力、不需要硬件、不需要你比 maintainer 聪明，只需要你<strong>真的把数字逐帧读一遍</strong>。
+对只有一张 A4000 的个人来说，这是当前投入产出比最高的一类工作。</p>
+<p><strong>第二条：「诚实性披露」开始变成开源具身仓库的标配，而且是自发的。</strong>
+本期 ACT-so101 在 README 顶部写「未接真机、成功率一律 <code>NOT_MEASURED</code>，离线动作误差不等于任务成功率」；
+microduck 那条主动标注自己修复的<strong>适用范围</strong>（只覆盖「被命令前进却原地踏步」，不含原地转身）；
+wmdrift 写明合成 fixture 上的阈值不能当通用门限；One-Step Drifting 把自己报成<strong>权衡而非改进</strong>；
+gridfinity-designer 把实测 / 估算 / 假设三类数字分列。
+五个项目、三个国家、互不相识。对个人的直接影响是：<strong>现在往 README 里写一句「我没验证什么」，
+比多贴一张 GIF 更能让人认真看你的仓库。</strong></p>
+<p><strong>第三条：本周论文和代码明显脱节。</strong> 专题二那六篇新论文，数字都很硬（11.9 ms、19.9 ms、82.2%、2.5×），
+<strong>但没有一篇放出可跑代码</strong>（一篇标 coming soon、一篇只有项目页）。同一周里能直接跑的工程，
+反而都来自没有论文的个人 / 实验室工程仓（EmbodiInfer、lingbot、ServoPy）。
+短期内如果你要<strong>复现</strong>，看仓库；如果你要<strong>找方向</strong>，看论文 —— 这两条线这周是分开的，别指望论文自带代码。</p>
+<p><strong>第四条：硬件侧出现了「不买模组，自己搭关节」的回潮。</strong> 5010 那条（三个航模云台电机 + 独立输出端编码器 +
+1 kHz STM32 外环，整链 ¥1200–2200）和 primo 那条（30 个 RobStride、整机 €30 000）是同一周的两个极端。
+前者承重弱但<strong>把输出端编码器这件事做对了</strong>，后者设计完整但个人买不起。
+中间那一档 —— 「能承重、又在四位数人民币内的开源关节」—— 依然是空的。</p>
+<hr>
+<h2>🏁 当前仍开放、对个人开放的比赛 / bounty 入口</h2>
+<blockquote>
+<p>今天是 <strong>2026-09-21</strong>。以下每条本期都重新拉过页面核对。</p>
+</blockquote>
+<h3>✅ 复核仍开放</h3>
+<p><strong>CoRL 2026 Efficient Embodied AI Workshop Challenge</strong> —— 本期从官网 Important Dates 重新提取，<strong>与 09-20 一致，未变</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事项</th>
+<th>距今</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>9 月 25 日</strong></td>
+<td>Challenge harness 和参考容器发布</td>
+<td><strong>还有 4 天</strong></td>
+</tr>
+<tr>
+<td>10 月 12 日</td>
+<td>论文提交截止（非归档）</td>
+<td>21 天</td>
+</tr>
+<tr>
+<td><strong>10 月 23 日</strong></td>
+<td><strong>Challenge 提交截止</strong> ← 真正的参赛节点</td>
+<td><strong>32 天</strong></td>
+</tr>
+<tr>
+<td>10 月 26 日</td>
+<td>论文录用通知</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 5 日</td>
+<td>结果核验并公布</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11 月 12 日</td>
+<td>Workshop @ CoRL 2026，德州奥斯汀</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>所有截止时间为 <strong>11:59 PM Anywhere on Earth</strong>。<strong>本周五 harness 一发就是最近的可执行节点</strong>，
+发布到提交截止有 28 天。→ <a href="https://efficient-embodied-ai.github.io/">https://efficient-embodied-ai.github.io/</a>
+（顺带一提：这场比的就是「效率」，本期专题二那两条工程和六篇论文全都是它的射程。）</p>
+<p><strong>RoboSynChallenge（NeurIPS 2026 正式竞赛）—— 10 月 11 日 AoE 截止，还剩 20 天。</strong>
+本期继续从前端 <code>static/js/pages-app.js</code> 提取（可见页面是 JS 渲染的）：训练与提交截止
+<strong>October 11, 2026 AoE (UTC−12)</strong>，与 09-16 起连续六期所核完全一致。
+<strong>真机评测由主办方做，你不需要任何硬件</strong> —— 这仍是本季度对无硬件个人最友好的一个正式竞赛。
+→ <a href="https://robosyn-bench.net/">https://robosyn-bench.net/</a> ｜ <a href="https://github.com/EDEM-AI/RoboSynChallenge">GitHub</a></p>
+<p><strong>2026 BEHAVIOR Challenge（Stanford）—— 提交截止 10/16/2026，获奖公布 11/04/2026，还剩 25 天。</strong>
+本期在 challenge 首页重新核到这两个日期（页面另列一个 07/02/2026 的历史节点，不是报名窗口）。
+→ <a href="https://behavior.stanford.edu/challenge/index.html">https://behavior.stanford.edu/challenge/index.html</a></p>
+<p><strong>RLE-Bench 2.0 任务征集（现金奖励 + 共同作者）</strong> —— 本期复核 contribute 页仍 200、内容未变。
+⚠️ <strong>页面既没写金额，也没写截止日期 —— 这两点连续六期都没核到</strong>，动手前请自己发邮件问。
+→ <a href="https://rle-bench.github.io/contribute/">https://rle-bench.github.io/contribute/</a></p>
+<h3>✅ 零硬件、无截止日期（本期只复核可访问性，均 200）</h3>
+<ol>
+<li><strong>Microduck Stairs Challenge</strong> ｜ CC-BY-4.0 ｜ 纯 MuJoCo ｜
+<a href="https://huggingface.co/datasets/craigm26/microduck-stairs-challenge">https://huggingface.co/datasets/craigm26/microduck-stairs-challenge</a></li>
+<li><strong>Microduck Ball Challenge</strong> ｜ CC-BY-4.0 ｜ 同一个 plant ｜
+<a href="https://huggingface.co/datasets/craigm26/microduck-ball-challenge">https://huggingface.co/datasets/craigm26/microduck-ball-challenge</a></li>
+</ol>
+<p><strong>本期新增提示</strong>：这两道题和今天国内 top1 那条是同一个 plant。
+先照那篇把 <code>air_time</code> 门控和侧向权重改掉再来刷榜，起点会高不少。</p>
+<h3>❌ 维持核销（别去撞墙）</h3>
+<p>ATEC2026（报名 5/30 已截止）、EMR Workshop @ ECCV 2026（9/9 已办完）、ICRA 2026 全部九项竞赛（6 月已办）、
+GigaBrain Challenge / Embodied AI Workshop @ CVPR 2026（5/15 结束）、
+2026 世界机器人大会「具身智能机器人运动会」（8 月已办完）、
+PrimeBot / 江源杯 / 全国具身智能技术应用大赛 / Dobot / 亦智杯 / ERA / RoboPAD；
+工创赛分拣相关赛事<strong>要求在校生身份</strong>。</p>
+<hr>
+<p><em>本期主线 6 条 + 专题一 2 条 + 专题二 2 条已写入 <code>pushed.jsonl</code> 去重台账；论文清单里的 6 篇按规则不进台账。</em></p>
+</article><div class="actions">
+<a class="btn" href="2026-09-21.md" download>⬇ 下载 Markdown</a>
+<a class="btn" href="../index.html">← 全部报告</a></div>
+<footer>由 Claude 每日 05:00 自动生成 · 全部内容附原始出处链接，判断部分为分析非事实</footer>
+</div></body></html>
